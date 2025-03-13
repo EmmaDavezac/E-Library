@@ -17,10 +17,10 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 
 ## Tecnologías utilizadas
 - **Lenguaje**:  C#.
-- **Base de datos**:  MSSQL server.
+- **Base de datos**:  SQL server.
+
 - **ORM**:  Entity Framework code first.
 - **Maquetado**:  WinForms.
 
 ## Grupo de trabajo
-
 El grupo de trabajo se compone de los siguientes integrantes: Acevedo Facundo, Davezac Emmanuel, Rodriguez Franco y Nicolas Villanueva.
