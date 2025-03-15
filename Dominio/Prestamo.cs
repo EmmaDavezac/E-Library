@@ -157,7 +157,7 @@ namespace Dominio
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
-        private int CalcularScoring(UsuarioSimple usuario)
+        public int CalcularScoring(UsuarioSimple usuario)
         {
             int scoring = usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
