@@ -176,6 +176,10 @@ namespace Dominio
             {
                 scoring += 5;
             }
+            if (scoring<0)//Para que el scoring no sea negativo
+            {
+              scoring = 0;
+            }
             return scoring;
         }
         /// <summary>
