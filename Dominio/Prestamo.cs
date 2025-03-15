@@ -121,9 +121,9 @@ namespace Dominio
         /// <returns>True si el prestamo esta retrasado</returns>
         public bool Retrasado()
         {
-            if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
+            if ((DateTime.Now.Date >= Convert.ToDateTime(FechaLimite).Date))
             {
-                if (string.IsNullOrEmpty(FechaDevolucion))
+                if (string.IsNullOrEmpty(FechaDevolucion) || (Convert.ToDateTime(FechaDevolucion).Date >= Convert.ToDateTime(FechaLimite).Date))
                 { return true; }
                 else return false;
                 }
