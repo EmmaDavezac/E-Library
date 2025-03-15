@@ -122,7 +122,7 @@ namespace Programa
             foreach (var item in usuarios)//recorremos cada item de la lista y lo agregamos a la tabla
             {
                 int n = dataGridViewUsuarios.Rows.Add();
-                dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
+                dataGridViewUsuarios.Rows[n].Cells[1].Value = item.nombreUsuario;
                 dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
                 dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold); 
                 if (item.Scoring >= 0)

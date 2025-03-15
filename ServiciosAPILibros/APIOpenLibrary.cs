@@ -9,10 +9,14 @@ using System.Web;
 using Bitacora;
 
 namespace ServiciosAPILibros
-{
-    public class APIOpenLibrary : IServicioAPILibros//ESta clase es una implementacion de IServiciosAPILibros con la API De busueda de OpenLibrery
-    {
-        private string TratarCadenaBusqueda(string ca)//Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
+{   ///<summary>
+    ///Resumen: Esta clase nos permite realizar una busqueda en la API de OpenLibrary y obtener una lista de libros que coincidan con el termino de busqueda.
+    ///</summary>
+    public class APIOpenLibrary : IServicioAPILibros
+    {   ///<summary>
+        ///Resumen: Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
+        ///</summary>
+        private string TratarCadenaBusqueda(string ca)
         {
             string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
             string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos la cadena vacia
@@ -24,7 +28,12 @@ namespace ServiciosAPILibros
             }
             return c.ToUpper();//Convertimos la cadena c a mayusculas y la devolvemos como resultado
         }
-        public List<Libro> ListarPorCoincidecia(string cadena)//Este metodo nos permite realizar una busqueda en la API de OPenLibrery y obtener como resultado una lista de libros que conincidan con el termino buscado
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener una lista de libros que coincidan con el termino de busqueda.
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
+        public List<Libro> ListarPorCoincidecia(string cadena)
         {  
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
             List<Libro> lista = new List<Libro>();//Creamos una lista de libro

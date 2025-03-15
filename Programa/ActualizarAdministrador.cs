@@ -6,7 +6,9 @@ using UtilidadesPresentacion;
 using Bitacora;
 
 namespace Programa
-{
+{   /// <summary>
+    /// Resumen: Este formulario nos permite actualizar los datos de un administrador.
+    /// </summary>
     public partial class ActualizarAdministrador : Form
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
@@ -14,19 +16,31 @@ namespace Programa
         private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string nombreUsuario { get; set; }
+        /// <summary>
+        /// Resumen: Constructor de la clase.
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de volver a la ventana anterior.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
             this.Owner.Show();
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de guardar los datos del administrador en la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGuardar_Click(object sender, EventArgs e)
         {try
         {
@@ -160,6 +174,11 @@ namespace Programa
             buttonGuardar.Enabled = true;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo se encarga de volver a la ventana anterior.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ActualizarAdministrador_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
@@ -170,17 +189,23 @@ namespace Programa
         {
 
         }
+        /// <summary>
+        /// Resumen: Este metodo se encarga de habilitar el boton de guardar cuando se modifica el nombre de usuario.
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de cargar los datos del administrador en la ventana.
+        /// </summary>
+        /// <param name="pNombreUsuario"></param>
+        /// <param name="pBaja"></param>
         public void CargarAdministradorExistente(string pNombreUsuario,string pBaja)//Se encarga de inicializar los datos del adminsitrador en la ventana.
         {
             try
             {
             var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);//Obtiene el administrador.
-            textBoxNombreUsuario.Text = usuario.NombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
+            textBoxNombreUsuario.Text = usuario.nombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
             dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;
@@ -198,7 +223,11 @@ namespace Programa
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de modificar la contraseña del administrador.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonModificarContraseña_Click(object sender, EventArgs e)
         {
             try
@@ -213,7 +242,10 @@ namespace Programa
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de cargar la contraseña nueva del administrador.
+        /// </summary>
+        /// <param name="contraseña"></param>
         public void CargarContraseña(string contraseña)
         {
             contraseñaNueva = contraseña;
@@ -223,7 +255,11 @@ namespace Programa
         {
             buttonGuardar.Enabled = true;
         }
-
+        /// <summary>
+        /// Resumen: Este metodo se encarga de dar de baja o alta a un administrador.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
         {
             try

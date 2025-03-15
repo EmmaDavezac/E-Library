@@ -697,7 +697,7 @@ namespace Nucleo
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())
                 {
-                    lista = unitOfWork.RepositorioPrestamos.GetAllRestrasados();
+                    lista = unitOfWork.RepositorioPrestamos.GetAllRetrasados();
                 }
                 msg = "La lista de prestamos retrasados ha sido obtenida correctamente.";
             }
@@ -723,8 +723,8 @@ namespace Nucleo
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
                 UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                Libro libro = ObtenerLibro(item.idLibro);
-                NotificarProximoAVencer(usuario.NombreUsuario, libro.Titulo, item.FechaLimite);
+                Libro libro = ObtenerLibro(item.IdLibro);
+                NotificarProximoAVencer(usuario.nombreUsuario, libro.Titulo, item.FechaLimite);
             }
         }
 
@@ -737,8 +737,8 @@ namespace Nucleo
             foreach (var item in ObtenerListadePrestamosRetrasados())
             {
                 UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                Libro libro = ObtenerLibro(item.idLibro);
-                NotificarRetraso(usuario.NombreUsuario, libro.Titulo, item.FechaLimite);
+                Libro libro = ObtenerLibro(item.IdLibro);
+                NotificarRetraso(usuario.nombreUsuario, libro.Titulo, item.FechaLimite);
             }
         }
 

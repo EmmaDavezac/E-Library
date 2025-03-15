@@ -172,7 +172,7 @@ namespace Programa
             {
             var usuario = interfazNucleo.ObtenerUsuario(pNombreUsuario);
             //VaciarCampos();
-            textBoxNombreUsuario.Text = usuario.NombreUsuario;
+            textBoxNombreUsuario.Text = usuario.nombreUsuario;
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
             dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;

@@ -120,7 +120,7 @@ namespace Programa
             foreach (var item in administradores)
             {
                 int n = dataGridViewAdministradores.Rows.Add();
-                dataGridViewAdministradores.Rows[n].Cells[1].Value = item.NombreUsuario;
+                dataGridViewAdministradores.Rows[n].Cells[1].Value = item.nombreUsuario;
                 dataGridViewAdministradores.Rows[n].Cells[2].Value = item.Nombre;
                 dataGridViewAdministradores.Rows[n].Cells[3].Value = item.Apellido;
                 dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();

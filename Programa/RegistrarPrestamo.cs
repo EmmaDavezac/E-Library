@@ -185,7 +185,7 @@ namespace Programa
                 if (item.Baja == false)
                 {
                     int n = dataGridViewUsuarios.Rows.Add();
-                    dataGridViewUsuarios.Rows[n].Cells[0].Value = item.NombreUsuario;
+                    dataGridViewUsuarios.Rows[n].Cells[0].Value = item.nombreUsuario;
                     dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
                     dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
                     dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();

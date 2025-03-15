@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 
 namespace ServiciosAPILibros
-{
-    public interface IServicioAPILibros//Interface que nos permite buscar informacion sobre libros en una API de libros
-    {
-        List<Libro> ListarPorCoincidecia(string cadena);//Metodo que nos permite obtener una lista de libros que coinciden con el termino buscado
+{   ///<summary>
+    ///Resumen: Esta interfaz nos permite definir los metodos que se deben implementar al consumir una API de libros.
+    ///</summary>
+    public interface IServicioAPILibros
+    {   ///<summary>
+        ///Resumen: Metodo que nos permite obtener una lista de libros que coinciden con el termino buscado.
+        ///</summary>
+        List<Libro> ListarPorCoincidecia(string cadena);
 
 
     }

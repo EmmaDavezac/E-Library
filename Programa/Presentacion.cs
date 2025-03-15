@@ -8,10 +8,14 @@ using Nucleo;
 
 
 namespace Programa
-{
+{   /// <summary>
+    /// Resumen: Esta clase es la encargada de iniciar la aplicacion
+    /// </summary>
     class Presentacion
     //Programa principal de la aplicacion
-    {
+    {   /// <summary>
+        /// Resumen: Este metodo es el encargado de iniciar la aplicacion, tanto la tarea de primer y segundo plano.
+        /// </summary>
         [STAThread]
         private static async Task Main()
         {

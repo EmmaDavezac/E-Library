@@ -20,7 +20,7 @@ namespace NotificacionAUsuario
                             </style>
                             <h1>" + encabezado + "</h1>  <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro "+titulo+"  renueve el prestamo antes del "+fechaLimite+ " para evitar penalizaciones.</h2> <br><p>Atte Gestor de prestamos</p>";
             string asunto = "Informe de prestamo proximo a vencer";
-            string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
+            string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.nombreUsuario + ").";//mensaje en el caso de que falle el envio
             try
             {
                 MailMessage mail = new MailMessage
@@ -38,7 +38,7 @@ namespace NotificacionAUsuario
                     EnableSsl = true//indicamos que el proveedor de mail posee cifrado ssl
                 }; //Aquí establecemos el servidor SMTP Y el puerto
                 client.Send(mail);//enviamos el mail
-                return msge = "¡Correo enviado exitosamente!(Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que el envio se realizo correctamente
+                return msge = "¡Correo enviado exitosamente!(Usuario: " + to.nombreUsuario + ").";//mensaje en el caso de que el envio se realizo correctamente
             }
             catch (Exception ex)//captamos la excepcion en el caso de que el codigo entre el bloque try haya lanzado una interrupcion
             {
@@ -55,7 +55,7 @@ namespace NotificacionAUsuario
                             </style>
                             <h1>" + encabezado + "</h1> <h2>Estimado " + to.Nombre + " " + to.Apellido + " , de acuerdo a nuestro registro usted no ha devuelto a tiempo un material prestado, el prestamo a vencido el " + fechaLimite + " . <br>Por favor devuelva el libro " + titulo + " para evitar penalizaciones.</h2> <br> <p>Atte Gestor de prestamos</p>";
             string asunto = "Informe Prestamo Retrasado";
-            string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que falle el envio
+            string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + to.nombreUsuario + ").";//mensaje en el caso de que falle el envio
             try
             {
                 MailMessage mail = new MailMessage
@@ -73,7 +73,7 @@ namespace NotificacionAUsuario
                     EnableSsl = true//indicamos que el proveedor de mail posee cifrado ssl
                 }; //Aquí establecemos el servidor SMTP Y el puerto
                 client.Send(mail);//enviamos el mail
-                return msge = "¡Correo enviado exitosamente!(Usuario: " + to.NombreUsuario + ").";//mensaje en el caso de que el envio se realizo correctamente
+                return msge = "¡Correo enviado exitosamente!(Usuario: " + to.nombreUsuario + ").";//mensaje en el caso de que el envio se realizo correctamente
             }
             catch (Exception ex)//captamos la excepcion en el caso de que el codigo entre el bloque try haya lanzado una interrupcion
             {

@@ -2,24 +2,61 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Dominio
-{
-    public class Prestamo//Esta clase tiene como finalidad representar un prestamo de un ejemplar
-    {
-        public int Id { get; set; }//Clave primaria que nos permite diferenciar los prestamos
-        public string FechaPrestamo { get; set; }//Fecha en que se realizo el prestamo
+{   ///<summary>
+    ///Resumen: Esta clase nos permite definir un prestamo de un ejemplar de un libro.
+    ///</summary>
+    public class Prestamo
+    {   ///<summary>
+        ///Resumen: Clave primaria que nos permite diferenciar los prestamos.
+        ///</summary>
+        public int Id { get; set; }
+        /// <summary>
+        /// Resumen: Fecha en la que se realizo el prestamo.
+        /// </summary>
+        public string FechaPrestamo { get; set; }
+        /// <summary>
+        /// Resumen: Fecha en la que vence el presamo.
+        /// </summary>
         public string FechaLimite { get; set; }//Fecha en la que vence el presamo
-        public string FechaDevolucion { get; set; }//Fecha en la que se devolvio el prestamo
-        public EstadoPrestamo EstadoPrestamo { get; set; }//Estado del ejemplar(Normal,Proximo a vencer,Retrasado)
-        public EstadoEjemplar EstadoDevolucion { get; set; }//Estado de devolucion del ejemplar
-        public string nombreUsuario { get; set; }//Clave foranea que permite relacionar el usuario con el prestamo
+        /// <summary>
+        /// resumen: Fecha en la que se devolvio el prestamo (si fue devuelto).
+        /// </summary>
+        public string FechaDevolucion { get; set; }
+        /// <summary>   
+        /// Resumen: Estado del ejemplar(Normal,Proximo a vencer,Retrasado)
+        /// </summary>
+        public EstadoPrestamo EstadoPrestamo { get; set; }
+        /// <summary>
+        /// Resumen: Estado de devolucion del ejemplar( Bueno,Malo)
+        public EstadoEjemplar EstadoDevolucion { get; set; }
+        /// <summary>
+        /// Resumen: Nombre del usuario que solicito el prestamo.
+        /// </summary>
+        public string nombreUsuario { get; set; }
         [ForeignKey("nombreUsuario")]
-        public virtual UsuarioSimple Usuario { get; set; }// Instancia del usuario relacionado al prestamo
-        public int idEjemplar { get; set; }//Clave foranea que nos permite relacionar el prestamo con el ejemplar
+        /// <summary>
+        /// Resumen: Instancia del usuario relacionado al prestamo.
+        /// </summary>
+        public virtual UsuarioSimple Usuario { get; set; }
+        /// <summary>
+        /// Resumen: Clave foranea que nos permite relacionar el prestamo con un ejemplar.
+        /// </summary>
+        public int idEjemplar { get; set; }
         [ForeignKey("idEjemplar")]
-        public virtual Ejemplar Ejemplar { get; set; }//Instancia del ejemplar relacionado al prestamo
-        public int idLibro { get; set; }//id del libro
-
-        private DateTime CalcularFechaLimite(UsuarioSimple usuario)//Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
+        /// <summary>
+        /// Resumen: Instancia del ejemplar relacionado al prestamo.
+        /// </summary>
+        public virtual Ejemplar Ejemplar { get; set; }
+        /// <summary>
+        /// Resumen: Identificador del libro.
+        /// </summary>
+        public int IdLibro { get; set; }
+        /// <summary>
+        /// Resumen Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Fecha limite del prestamo</returns>
+        private DateTime CalcularFechaLimite(UsuarioSimple usuario)
         {
             int scoring = usuario.Scoring;
 
@@ -34,23 +71,35 @@ namespace Dominio
             }
             else return DateTime.Now.AddDays(5);
         }
-        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar, Libro libro)//Constructor de la clase 
+        /// <summary>
+        /// Resumen: Constructor de la clase
+        /// </summary>
+        /// <param name="usuario">Usuario que solicita el prestamo</param>
+        /// <param name="ejemplar">Ejemplar que se presta</param>   
+        /// <param name="libro">Libro que se presta</param>
+        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar, Libro libro)
         {
             FechaPrestamo = DateTime.Now.ToShortDateString();
             FechaLimite = CalcularFechaLimite(usuario).ToShortDateString();
-            nombreUsuario = usuario.NombreUsuario;
+            nombreUsuario = usuario.nombreUsuario;
             Usuario = usuario;
             idEjemplar = ejemplar.Id;
             Ejemplar = ejemplar;
             EstadoPrestamo = EstadoPrestamo.Normal;
-            idLibro = libro.Id;
+            IdLibro = libro.Id;
         }
-        public Prestamo()//Constructor de la clase sin parametros
+        /// <summary>
+        /// Resumen: Constructor de la clase
+        /// </summary>
+        public Prestamo()
         {
 
         }
-
-        public EstadoPrestamo ActualizarEstado()//Este metodo nos permite actualizar el estado actual del prestamo y devolverlo
+        /// <summary>
+        /// Resumen: Este metodo nos permite actualizar el estado del prestamo  del prestamo y devolverlo
+        /// </summary>
+        /// <returns>Estado del prestamo</returns>
+        public EstadoPrestamo ActualizarEstado()
         {
             if (Retrasado() )
             {
@@ -66,8 +115,11 @@ namespace Dominio
             }
             return EstadoPrestamo;
         }
-
-        public bool Retrasado()//Este metodo nos permite saber si el prestamo se encuenta retrasado
+        /// <summary>
+        /// Resumen: Este metodo nos permite saber si el prestamo se encuenta retrasado
+        /// </summary>
+        /// <returns>True si el prestamo esta retrasado</returns>
+        public bool Retrasado()
         {
             if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date))
             {
@@ -77,7 +129,11 @@ namespace Dominio
                 }
             else return false;
         }
-        public bool ProximoAVencerse()//Este metodo nos permite saber si un prestamo esta proximo a vencerse
+        /// <summary>
+        /// Resumen: Este metodo nos permite saber si el prestamo esta proximo a vencerse
+        /// </summary>
+        /// <returns>True si el prestamo esta proximo a vencerse</returns>
+        public bool ProximoAVencerse()
         {
             int cantDiasParaConsiderarseProximo = 3;
             if (!this.Retrasado())
@@ -96,7 +152,12 @@ namespace Dominio
             }
             else return false;
         }
-        private int CalcularScoring(UsuarioSimple usuario)//Este metodo nos permite actualizar el scoring de un usario luego de devuelto el ejemplar
+        /// <summary>
+        /// Resumen: Este metodo nos permite actualizar el scoring de un usuario luego de devuelto el ejemplar.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        private int CalcularScoring(UsuarioSimple usuario)
         {
             int scoring = usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
@@ -115,7 +176,11 @@ namespace Dominio
             }
             return scoring;
         }
-        public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)//Este metodo nos permite permite registrar la devolucion de un ejemplar
+        /// <summary>
+        /// Resumen: Este metodo nos permite registrar la devolucion de un ejemplar
+        /// </summary>
+        /// <param name="estadoDevolucion">Estado de devolucion del ejemplar</param>
+        public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
         {
             EstadoDevolucion = estadoDevolucion;
             if (estadoDevolucion == EstadoEjemplar.Malo)

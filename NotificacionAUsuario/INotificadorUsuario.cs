@@ -1,10 +1,26 @@
 ﻿using Dominio;
 
 namespace NotificacionAUsuario
-{
-    public interface INotificadorUsuario//Interface para notificar a un usuario
+{   ///<summary>
+    ///Resumen: Esta interfaz nos permite notificar a un usuario.
+    ///</summary>
+    public interface INotificadorUsuario
     {
-        string NotificarProximoAVencer(UsuarioSimple usuario,string titulo,string fechaLimite);//Metodo para notificar a un usuario que posee un prestamo proximo vencer
-        string NotificarRetraso(UsuarioSimple usuario, string titulo, string fechaLimite);//Metodo para notificar a un usuario que posee un prestamo retrasado
+        /// <summary>
+        /// Resumen: Este metodo notifica a un usuario que posee un prestamo proximo a vencer.
+        /// </summary>
+        /// <param name="usuario">Usuario a notificar</param>
+        /// <param name="titulo">Titulo del libro</param>
+        /// <param name="fechaLimite">Fecha limite de devolucion</param>
+        /// <returns>Cadena de confirmacion de exito o de error</returns>
+        string NotificarProximoAVencer(UsuarioSimple usuario,string titulo,string fechaLimite);
+        /// <summary>
+        /// Resumen: Este metodo notifica a un usuario que posee un prestamo retrasado.
+        /// </summary>
+        /// <param name="usuario">Usuario a notificar</param>
+        /// <param name="titulo">Titulo del libro</param>
+        /// <param name="fechaLimite">Fecha limite de devolucion</param>
+        /// <returns>Cadena de confirmacion de exito o de error</returns>
+        string NotificarRetraso(UsuarioSimple usuario, string titulo, string fechaLimite);
     }
 }
