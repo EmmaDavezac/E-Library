@@ -161,25 +161,21 @@ namespace Dominio
         {
             int scoring = usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
-            {   if (scoring>=10)
+            {   
                     scoring -= 10;
             }
-            else
+          
+            if (Retrasado())
             {
-                if (Retrasado())
-                {
-                    TimeSpan difFechas = Convert.ToDateTime(FechaDevolucion) - Convert.ToDateTime(FechaLimite);
-                    int dias = difFechas.Days;
-                    if (scoring > 2 * dias)
-                        scoring -= 2 * dias;
-                    else scoring = 0;
-                }
-                else if (EstadoDevolucion == EstadoEjemplar.Bueno)
-                {
-                    scoring += 5;
-                }
+                TimeSpan difFechas = Convert.ToDateTime(FechaDevolucion) - Convert.ToDateTime(FechaLimite);
+                int dias = difFechas.Days;
+                scoring -= 2 * dias;
             }
-           
+             
+           if (EstadoDevolucion == EstadoEjemplar.Bueno && !Retrasado())
+            {
+                scoring += 5;
+            }
             return scoring;
         }
         /// <summary>
