@@ -5,7 +5,9 @@ namespace Dominio.Tests
 {
     [TestClass]
     public class UsuarioAdministradorTests
-    {
+    {   /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo VerificarContraseña siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void VerificarContraseña_CaminoExitoso_Test1()
         {

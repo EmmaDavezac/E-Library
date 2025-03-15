@@ -6,6 +6,7 @@ namespace Dominio
      ///Resumen: Esta clase tiene como objetivo representar en el modelo un ejemplar de un libro registrado, almacenando sus atributos y comportamiento.
      ///</summary>
     public class Ejemplar
+
     {   ///<summary>
         ///Resumen: Clave que nos permite diferenciar entre si los ejemplares.
         ///</summary>
@@ -13,18 +14,22 @@ namespace Dominio
         [ForeignKey("idLibro")]//Es la clave foranea del objeto que nos permite relacionar tablas entre si
         virtual public Libro Libro { get; set; }
         public int idLibro { get; set; }
+
         ///<summary>
         ///Resumen: Propiedad que nos permite saber si el ejemplar se encuentra disponible para prestamo.
         ///</summary>
         public bool Disponible { get; set; }
+
         /// <summary>
         /// Resumen: Propiedad que nos permite saber el estado del ejemplar (bueno o malo), solo se puede prestar si esta en buen estado
         /// </summary>
         public EstadoEjemplar Estado { get; set; }
+
         /// <summary>
         /// Resumen: Lista de prestamos que se ha hecho del ejemplar
         /// </summary>
         public virtual List<Prestamo> Prestamos { get; set; }
+
         /// <summary>
         /// Resumen: Propiedad que nos permite saber si el ejemplar se encuentra dado de baja
         /// </summary>
@@ -54,10 +59,11 @@ namespace Dominio
         {
             return Libro.Titulo;
         }
+       
         /// <summary>
         /// Resumen: Este metodo nos permite obtener el ISBN del libro al que pertenece el ejemplar
         /// </summary>
-        /// <returns></returns>
+        /// <returns>ISBN del libro</returns>
         public string ObtenerISBNLibro()
         {
             return Libro.ISBN;

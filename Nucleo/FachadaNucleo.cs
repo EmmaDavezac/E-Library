@@ -12,30 +12,50 @@ using DAL.EntityFramework;
 namespace Nucleo
 
 {
-      
     /// <summary>
     ///  Fachada del programa
     /// </summary>
     /// <remarks> Resumen: Representa la fachada del programa, nos permite acceder a todas las funciones del programa sin dar a conocer como funcionan por dentro</remarks>
     public class FachadaNucleo
-    {   
-        
+    {   ///<summary>
+        ///Resumen: Esta variable nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros.
+        ///</summary>  
         private IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
+        /// <summary>
+        /// Resumen: Esta variable nos permite notificar a los usuarios con prestamos retrasados o proximos a vencer.
+        /// </summary>
         private INotificadorUsuario NotificadorUsuarios = new NotificadorOutlook();
+        /// <summary>
+        /// Resumen: Esta variable nos permite registrar logs en la bitacora.
+        /// </summary>
         private Bitacora.ImplementacionBitacora bitacora = new Bitacora.ImplementacionBitacora();
 
-        private IUnitOfWork GetUnitOfWork()//implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener alguna de las implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
+        /// </summary>
+        /// <returns></returns>
+        private IUnitOfWork GetUnitOfWork()
         {
             return new UnitOfWorkMSSQL(new AdministradorDePrestamosDbContext());//implementacion por defecto,implementacion en una base de datos relacional en un servidor local de MSQLSERVER
         }
 
-        public FachadaNucleo()//Constructor de la clase
+        /// <summary>
+        /// Resumen: Constructor de la clase
+        /// </summary>
+        public FachadaNucleo()
         {
         }
 
-        //
-        // Resumen:
-        //     Permite registrar un nuevo usuario simple, y devuelve el valor true si la operacion es exitosa y false si fue erronea
+        /// <summary>
+        /// Permite registrar un nuevo usuario simple en la base de datos.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del nuevo usuario simple</param>
+        /// <param name="nombre">Nombre o nombres del nuevo usuario</param>
+        /// <param name="apellido">Apellido o apellidos del nuevo usuario</param>
+        /// <param name="fechaNacimiento">Fecha de nacimiento del nuevo usuario</param>
+        /// <param name="mail">Email del nuevo usuario</param>
+        /// <param name="telefono">Telefono del nuevo usuario</param>
+        /// <returns> true si la operacion es exitosa y false si fue erronea</returns>
         public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
@@ -60,9 +80,13 @@ namespace Nucleo
             }
         }
 
-
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener un usuario simple de la base de datos a partir del nombreUsuario del usuario.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del usuario deseado</param>
+        /// <returns>Un usuario simple</returns>
         public UsuarioSimple ObtenerUsuario(string pNombreUsuario)
-        //Nos permite obtener un usuario simple de la base de datos a partir del nombreUsuario del usuario
+        
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -83,9 +107,17 @@ namespace Nucleo
                 return null;//Devolvemos el usuario
             }
         }
-
+        
+        /// <summary>
+        /// Resumen: Permite actualizar la informacion de un usuario simple.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario</param>
+        /// <param name="nombre">Nombre o nombres del usuario</param>
+        /// <param name="apellido">Apellido o apellidos del usuario</param>
+        /// <param name="pFechaNacimiento">Fecha de nacimiento del usuario</param>
+        /// <param name="mail">Email del usuario</param>
+        /// <param name="telefono">Telefono del usuario</param>
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
-        //Permite actualizar la informacion de un usuario simple
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -110,9 +142,20 @@ namespace Nucleo
 
             }
         }
-
+        
+        /// <summary>
+        /// Resumen: Permite registrar un nuevo usuario administrador en la base de datos.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del nuevo administrador</param>
+        /// <param name="nombre">Nombre o nombre del nuevo usuario administrador</param>
+        /// <param name="apellido">Apellido o apellidos del usuario administrador</param>
+        /// <param name="fechaNacimiento">Fecha de nacimiento del administrador</param>
+        /// <param name="mail">Email del administrador</param>
+        /// <param name="contraseña">Constraseña del administrador</param>
+        /// <param name="telefono">Telefono del administrador</param>
+        /// <returns>True si el registro es exitoso, en caso contrario False.</returns>
         public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
-        //Permite registrar un nuevo usuario administrador
+       
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -137,9 +180,12 @@ namespace Nucleo
             }
         }
 
-
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario administrador.
+        /// </summary>
+        /// <param name="pNombreAdministrador">Nombre de usuario del administrador que se desea obtener</param>
+        /// <returns>Un UsuarioAdministrador o null</returns>
         public UsuarioAdministrador ObtenerAdministrador(string pNombreAdministrador)
-        //Nos permite obtener un usuario administrador de la base de datos a partir del nombreUsuario del usuario
         {
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
@@ -162,8 +208,16 @@ namespace Nucleo
             return administrador;//Devolvemos el administrador
         }
 
+        /// <summary>
+        /// Resumen: Permite actualizar la informacion de un usuario administrador.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del administrador</param>
+        /// <param name="nombre">Nombre o nombres del administrador</param>
+        /// <param name="apellido">Apellido o apellidos del administrador</param>
+        /// <param name="pFechaNacimiento">Fecha de nacimiento del administrador</param>
+        /// <param name="mail">Email del administrador</param>
+        /// <param name="telefono">Telefono del administrador</param>
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
-        //Permite actualizar la informacion de un usuario administrador
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -186,9 +240,13 @@ namespace Nucleo
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
-
+        
+        /// <summary>
+        /// Resumen: Este metodo permite actualizar la contraseña de un administrador
+        /// </summary>
+        /// <param name="pNombreAdministrador"></param>
+        /// <param name="contraseña"></param>
         public void ActualizarContraseñaAdministrador(string pNombreAdministrador, string contraseña)
-        //Permite actualizar la contraseña de un administrador
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -207,9 +265,17 @@ namespace Nucleo
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
-
+       
+        /// <summary>
+        /// Resumen: Este metodo nos permite registrar un nuevo libro en la base de datos.
+        /// </summary>
+        /// <param name="unISBN">ISBN del libro</param>
+        /// <param name="titulo">Titulo del libro</param>
+        /// <param name="autor">Autor del libro</param>
+        /// <param name="añoPublicacion">Año de publicacion del libro</param>
+        /// <param name="pCantidadEjempalares">Cantidad de ejemplares del libro</param>
+        /// <returns>True si el registro fue exitoso, False en caso contrario</returns>
         public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
-        //Permite registrar un nuevo libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -260,8 +326,13 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return resultado;
         }
+       
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener un libro de la base de datos a partir del id del mismo .
+        /// </summary>
+        /// <param name="id">ID del libro</param>
+        /// <returns>Libro o null</returns>
         public Libro ObtenerLibro(int id)
-        //Permite obtener un libro de la base de datos a partir del id del mismo 
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -283,8 +354,12 @@ namespace Nucleo
             return libro;//Devolvemos el libro
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista de ejemplares en buen estado de un libro.
+        /// </summary>
+        /// <param name="id">ID del libro</param>
+        /// <returns> Lista de ejemplares en buen estado del libro</returns>
         public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
-        //devuelve la lista de ejemplares en buen estado de un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -304,8 +379,12 @@ namespace Nucleo
             return lista;//Devolvemos la lista
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite añadir mas ejemplares a un libro.
+        /// </summary>
+        /// <param name="pIdLibro">ID del libro al cual agregar ejemplares</param>
+        /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
         public void AñadirEjemplares(int pIdLibro, int pCantidad)
-        //Permite añadir mas ejemplares a un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -329,8 +408,13 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite eliminar ejemplares de un libro.
+        /// </summary>
+        /// <param name="pIdLibro">ID del libro al cual agregar ejemplares</param>
+        /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
         public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
-        //Permite disminuir la cantidad de ejemplares de un libro
+
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -352,8 +436,11 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de baja un libro.
+        /// </summary>
+        /// <param name="pIdLibro">Id del libro</param>
         public void DarDeBajaUnLibro(int pIdLibro)
-        //Permite dar de baja un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -375,8 +462,11 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de alta un libro previamente dado de baja.
+        /// </summary>
+        /// <param name="pIdLibro">Id del libro</param>
         public void DarDeAltaUnLibro(int pIdLibro)
-        //Permite dar de alta un libro que ha sido dado de baja 
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -397,8 +487,12 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista de ejemplares disponibles de un libro.
+        /// </summary>
+        /// <param name="id">ID del libro</param>
+        /// <returns>Lista de ejemplares disponibles de un libro</returns>
         public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
-        //Permite obtener la lista de ejemplares disponibles de un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -420,8 +514,12 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista total de ejemplares de un libro.
+        /// </summary>
+        /// <param name="id">ID del libro</param>
+        /// <returns>Lista total de ejemplares de un libro</returns>
         public List<Ejemplar> ObtenerEjemplaresTotales(int id)
-        //Permite obtener la lista total de ejemplares  de un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -442,8 +540,13 @@ namespace Nucleo
             return lista;//Devolvemos la lista
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite registrar un nuevo prestamo.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del usuario que solicita el prestamo</param>
+        /// <param name="idEjemplar">ID del ejemplar del libro que se va a prestar </param>
+        /// <param name="idLibro">ID del libro que se va a prestar</param>
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
-        //Permite registrar un nuevo prestamo
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -464,8 +567,13 @@ namespace Nucleo
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
+
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener un prestamo de la base de datos a partir del id del prestamo.
+        /// </summary>
+        /// <param name="id">ID del prestamo</param>
+        /// <returns>Prestamo o null</returns>
         public Prestamo ObtenerPrestamo(int id)
-        //Permite obtener un prestamo de la base de datos a partir del id del prestamo
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -485,8 +593,15 @@ namespace Nucleo
             return prestamo;//Devolvemos el prestamo
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite actualizar la informacion de un libro.
+        /// </summary>
+        /// <param name="id">ID del libro</param>
+        /// <param name="unISBN">ISBN del libro</param>
+        /// <param name="titulo">Titulo del libro</param>
+        /// <param name="autor">Autor del libro</param>
+        /// <param name="añoPublicacion">Año de publicacion del libro</param>
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
-        //Permite actualizar la informacion de un libro
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -508,8 +623,12 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener el Usuario de un Prestamo a partir del ID del Prestamo.
+        /// </summary>
+        /// <param name="id">ID del prestamo</param>
+        /// <returns>UsuarioSimple o null</returns>
         public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
-        //Permite obtener el usuario de un prestamo a patir del id del prestamo
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -529,8 +648,12 @@ namespace Nucleo
             return usuario;//Devolvemos el usuario
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite registrar la devolucion de un Prestamo.
+        /// </summary>
+        /// <param name="idPrestamo">ID del Prestamo</param>
+        /// <param name="estado">Estado de devolucion del ejemplar</param>
         public void RegistrarDevolucion(int idPrestamo, string estado)
-        //Permite registrar la devolucion de un prestamo
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -554,8 +677,13 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite modificar las fechas de realizacion y limite de un prestamo(funcion solo para versiones de prueba)
+        /// </summary>
+        /// <param name="pIdPrestamo">ID del Prestamo</param>
+        /// <param name="pFechaPrestamo">Fecha en que se realizo el Prestamo</param>
+        /// <param name="pFechaLimite">Fecha limite de devolucion del Prestamo</param>
         public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
-        //permite modificar las fechas de realizacion y limite de un prestamo(funcion solo para versiones de prueba)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -575,14 +703,22 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite verificar que la combinacion NombreUsuario-Contraseña sea correcta.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del Administrador</param>
+        /// <param name="contraseña">Contraseña del administrador</param>
+        /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
-        //permite verificar que la combinacion NombreUsuario-Contraseña sea correcta
         {
             return ObtenerAdministrador(pNombreUsuario).VerificarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista total de usuarios simples.
+        /// </summary>
+        /// <returns>Lista total de usuarios simples</returns>
         public IEnumerable<UsuarioSimple> ObtenerUsuarios()
-        //permite obtener la lista total de usuarios simples
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -601,8 +737,11 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista total de usuarios adminitradores.
+        /// </summary>
+        /// <returns>Lista total de usuarios adminitradores</returns>
         public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
-        //permite obtener la lista total de usuarios adminitradores
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -620,8 +759,11 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista total de libros.
+        /// </summary>
+        /// <returns>Lista total de libros</returns>
         public IEnumerable<Libro> ObtenerLibros()
-        //permite obtener la lista total de libros
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -639,8 +781,11 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista total de prestamos.
+        /// </summary>
+        /// <returns>Lista total de prestamos</returns>
         public IEnumerable<Prestamo> ObtenerPrestamos()
-        //permite obtener la lista total de prestamos
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -658,14 +803,20 @@ namespace Nucleo
             return lista;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener el ID del ultimo libro registrado.
+        /// </summary>
+        /// <returns>ID del ultimo libro registrado</returns>
         public int ObtenerUltimoIdLibro()
-        //devuelve el id del ultimo plibro registrado
         {
             return ObtenerLibros().Last().Id;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista de prestamos proximos a vencer.
+        /// </summary>
+        /// <returns>Lista de prestamos proximos a vencer</returns>
         public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
-        //Devuelve la lista de prestamos proximos a vencer
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;
@@ -687,8 +838,11 @@ namespace Nucleo
             return lista;//Devuelve la lista            
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite obtener la lista de prestamos retrasados.
+        /// </summary>
+        /// <returns>Lista de prestamos retrasados</returns>
         public List<Prestamo> ObtenerListadePrestamosRetrasados()
-        //Devuelve la lista de prestamos retasados
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -709,12 +863,20 @@ namespace Nucleo
             return lista;//Devuelve la lista 
         }
 
-        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)//realiza un busqueda en la api de libros y devuelve una lista de libros
+        /// <summary>
+        /// Resumen: Este metodo nos permite realizar un busqueda en la api de libros.
+        /// </summary>
+        /// <param name="unaCadena">Libro buscado</param>
+        /// <returns>devuelve una lista de libros que coinciden con la cadena buscada</returns>
+        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         {
             return ServicioAPILibros.ListarPorCoincidecia(unaCadena);
         }
 
-        public void NotificarPrestamosProximosAVencer()//notifica a todos los usuarios con prestamos proximos a vencer
+        /// <summary>
+        /// Resumen: Este metodo nos permite notificar a los usuarios con prestamos proximos a vencer.
+        /// </summary>
+        public void NotificarPrestamosProximosAVencer()
         {
             void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
             {
@@ -728,7 +890,10 @@ namespace Nucleo
             }
         }
 
-        public void NotificarPrestamosRetrasados()//notifica a todos los usuarios con prestamos retrasados
+        /// <summary>
+        /// Resumen: Este metodo nos permite notificar a los usuarios con prestamos retrasados.
+        /// </summary>
+        public void NotificarPrestamosRetrasados()
         {
             void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
             {
@@ -742,8 +907,10 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite notificar a los usuarios con prestamos retrasados o proximos a vencer.Siempre que la hora sea entre las 9 y 10 am
+        /// </summary>
         public void NotificarUsuarios()
-        //notifica a todos los usuarios con prestamos retrasados o proximos a vencer en el caso de que la hora este entre las 9 y 10 am
         {
             if (DateTime.Now.Hour == 9)
             {
@@ -752,6 +919,11 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de baja un usuario.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del usuario a dar de baja</param>
+        /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
         public bool DarDeBajaUsuario(string pNombreUsuario)
         //pemite dar de baja un usuario simple
         {
@@ -781,8 +953,12 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de baja un administrador.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del administrador a dar de baja</param>
+        /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
         public bool DarDeBajaAdministrador(string pNombreUsuario)
-        //Permite dar de baja un usuario administrador
         {
             if (pNombreUsuario == "admin")//Verifica si el administrador que quiere darse de baja no es el admin principal
             {
@@ -812,8 +988,11 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de alta un usuario simple previamente dado de baja.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del UsuarioSimple a dar de alta</param>
         public void DarDeAltaUsuario(string pNombreUsuario)
-        //Permite dar de alta un usuario simple dado de baja
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
@@ -834,8 +1013,11 @@ namespace Nucleo
             }
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de alta un administrador previamente dado de baja.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del Administrador a dar de alta</param>
         public void DarDeAltaAdministrador(string pNombreUsuario)
-        //Permite dar de alta un administrador dado de baja
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log

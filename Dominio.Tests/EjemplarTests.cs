@@ -5,7 +5,10 @@ namespace Dominio.Tests
 {
     [TestClass]
     public class EjemplarTests
-    {
+    {   
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoExitoso_Test1()
         {
@@ -19,6 +22,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("a", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoExitoso_Test2()
         {
@@ -32,6 +39,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("!", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoExitoso_Test3()
         {
@@ -45,6 +56,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("hola", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoFallido_Test1()
         {
@@ -58,6 +73,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreNotEqual("", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoFallido_Test2()
         {
@@ -71,6 +90,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreNotEqual(2, resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerTituloLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerTituloLibro_CaminoFallido_Test3()
         {
@@ -84,6 +107,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreNotEqual("!", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerAutorLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoExitoso_Test1()
         {
@@ -97,6 +124,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("1", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerISBNLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoExitoso_Test2()
         {
@@ -109,6 +140,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("a12", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerISBNLibro siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoExitoso_Test3()
         {
@@ -121,6 +156,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual("#$", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerISBNLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoFallido_Test1()
         {
@@ -133,6 +172,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreNotEqual(1, resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerISBNLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoFallido_Test2()
         {
@@ -145,6 +188,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreNotEqual("231", resultado);
         }
+
+        /// <summary>
+        /// Resumen: Prueba unitaria que valida el metodo ObtenerISBNLibro siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ObtenerISBNLibro_CaminoFallido_Test3()
         {

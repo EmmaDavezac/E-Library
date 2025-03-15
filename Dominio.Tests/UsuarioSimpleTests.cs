@@ -2,10 +2,14 @@
 using System;
 
 namespace Dominio.Tests
-{
+{   /// <summary>
+    /// Pruebas unitarias de la clase UsuarioSimple
+    /// </summary>
     [TestClass]
     public class UsuarioSimpleTests
-    {
+    {   /// <summary>
+        /// Resumen:Prueba unitaria que valida el metodo ValidarBaja siguiendo un camino exitoso
+        /// </summary>
         [TestMethod]
         public void ValidarBaja_CaminoExitoso_Test1()
         {
@@ -18,6 +22,10 @@ namespace Dominio.Tests
             //Assert
             Assert.AreEqual(true, resultado);
         }
+
+        /// <summary>
+        /// Resumen:Prueba unitaria que valida el metodo ValidarBaja siguiendo un camino fallido
+        /// </summary>
         [TestMethod]
         public void ValidarBaja_CaminoFallido_Test1()
         {
