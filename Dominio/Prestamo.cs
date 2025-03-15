@@ -56,7 +56,7 @@ namespace Dominio
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns>Fecha limite del prestamo</returns>
-        private DateTime CalcularFechaLimite(UsuarioSimple usuario)
+        public DateTime CalcularFechaLimite(UsuarioSimple usuario)
         {
             int scoring = usuario.Scoring;
 
