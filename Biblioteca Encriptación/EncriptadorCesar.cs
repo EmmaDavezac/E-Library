@@ -13,14 +13,14 @@ namespace BibliotecaEncriptacion
         /// <summary>
         /// Resumen:Cantidad de desplazamientos de un caracter en nuestro abecesario.
         /// </summary>
-        private int desplazamiento=5;
+        private int Cdesplazamiento=5;
 
         /// <summary>
         /// Resumen:Es nuestro abecedario de cifrado/descifrado
         /// </summary>
         private static readonly string abc = "abcdefghijklmñnopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890_-+,#$%&/()=¿?¡!,.;:{}[]|";
 
-        
+
         /// <summary>
         /// Resumen: Este metodo nos permite obtener la posición de un caracter en el abecedario.
         /// </summary>
@@ -35,8 +35,9 @@ namespace BibliotecaEncriptacion
                     return i;
                 }
             }
-            return -1;
+            return -1; // Si el carácter no está en el abecedario, retornamos -1
         }
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite encriptar una cadena.
@@ -45,32 +46,23 @@ namespace BibliotecaEncriptacion
         /// <returns>Cadena encriptada</returns>
         public string Encriptar(string pCadena)
         {
-            String cifrado = "";
-            if (desplazamiento > 0 && desplazamiento < abc.Length)
+            int desplazamiento = Cdesplazamiento;
+            StringBuilder mensajeCifrado = new StringBuilder();
+            foreach (char c in pCadena)
             {
-                //recorre caracter a caracter el mensaje a cifrar
-                for (int i = 0; i < pCadena.Length; i++)
+                if (char.IsLetter(c))
                 {
-                    int posCaracter = GetPosABC(pCadena[i]);
-                    if (posCaracter != -1) //el caracter existe en la variable abc
-                    {
-                        int pos = posCaracter + desplazamiento;
-                        while (pos >= abc.Length)
-                        {
-                            pos = pos - abc.Length;
-                        }
-                        //concatena al mensaje cifrado
-                        cifrado += abc[pos];
-                    }
-                    else//si no existe el caracter no se cifra
-                    {
-                        cifrado += pCadena[i];
-                    }
+                    char letraCifrada = (char)((c + desplazamiento - (char.IsLower(c) ? 'a' : 'A')) % 26 + (char.IsLower(c) ? 'a' : 'A'));
+                    mensajeCifrado.Append(letraCifrada);
                 }
-
+                else
+                {
+                    mensajeCifrado.Append(c); // Si no es una letra, no se modifica
+                }
             }
-            return cifrado;
+            return mensajeCifrado.ToString();
         }
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite desencriptar una cadena.
@@ -79,30 +71,23 @@ namespace BibliotecaEncriptacion
         /// <returns>Cadena desencriptada</returns>
         public string Desencriptar(string pCadena)
         {
-            String cifrado = "";
-            if (desplazamiento > 0 && desplazamiento < abc.Length)
+            int desplazamiento = -Cdesplazamiento;
+            StringBuilder mensajeCifrado = new StringBuilder();
+            foreach (char c in pCadena)
             {
-                for (int i = 0; i < pCadena.Length; i++)
+                if (char.IsLetter(c))
                 {
-                    int posCaracter = GetPosABC(pCadena[i]);
-                    if (posCaracter != -1) //el caracter existe en la variable abc
-                    {
-                        int pos = posCaracter - desplazamiento;
-                        while (pos < 0)
-                        {
-                            pos = pos + abc.Length;
-                        }
-                        cifrado += abc[pos];
-                    }
-                    else
-                    {
-                        cifrado += pCadena[i];
-                    }
+                    char letraCifrada = (char)((c + desplazamiento - (char.IsLower(c) ? 'a' : 'A')) % 26 + (char.IsLower(c) ? 'a' : 'A'));
+                    mensajeCifrado.Append(letraCifrada);
                 }
-
+                else
+                {
+                    mensajeCifrado.Append(c); // Si no es una letra, no se modifica
+                }
             }
-            return cifrado;
+            return mensajeCifrado.ToString();
         }
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite comprarar una cadena encriptada con su supuesta desencriptacion, sin revelar la verdadera desencriptacion.
@@ -112,7 +97,11 @@ namespace BibliotecaEncriptacion
         /// <returns>True si las cadenas coinciden, False en caso contrario</returns>
         public bool Validar(string pCadena, string pCadenaEncriptada)
         {
-            return (Desencriptar(pCadenaEncriptada) == pCadena); 
+            //return true;
+            Console.WriteLine("cadena:"+ pCadena);
+            Console.WriteLine("cadena encriptada:" + Encriptar(pCadena));
+            Console.WriteLine("cadena encriptada (pass):"+ pCadenaEncriptada);
+            return (Desencriptar(pCadenaEncriptada) == pCadena);
         }
     }
     

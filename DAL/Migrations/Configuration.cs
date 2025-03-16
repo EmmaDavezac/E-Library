@@ -26,7 +26,8 @@ namespace DAL.Migrations
             /// criptador para proteger la contraseña del administrador.
             /// </summary>
             IEncriptador encriptador = new EncriptadorCesar();
-            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador("admin", "admin", new DateTime(1900, 1, 1), "admin@gmail.com", encriptador.Encriptar("admin"), "34421234", "admin"));
+            string pass = encriptador.Encriptar("admin");
+            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador("admin", "admin", new DateTime(1900, 1, 1), "admin@gmail.com", pass, "34421234", "admin"));
         }
     }
    
