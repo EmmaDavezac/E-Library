@@ -1,22 +1,32 @@
 ![images](https://github.com/user-attachments/assets/7823e8f6-52b1-4650-8759-976bb9dfb61c)
-
+# Ingenieria en Sistemas de Informacion
 # Proyecto Final de Taller de Programación
 #Sistema de gestión y administración de biblioteca.
 
-Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de la cátedra Taller de Programación. Se trata de un sistema que permite al adminitrador de una biblioteca:
+Este proyecto fue realizado con el objetivo de solucionar la problematica inicial planteada en el proyecto final de la cátedra de tercer año *Taller de Programación* dictada por el Ing. Enzo Tanga. 
+Se trata de un sistema transaccional que permite a los adminitradores de una biblioteca entre otras cosas:
 
-- ABM de clientes(usuario simple)
-- ABM de libros.
-- ABM de administradores
-- ABM de préstamos.
-- Control del estado de los préstamos.
-- Sistema de puntos para los clientes.
+- Gestión de clientes (usuario simple)
+- Gestión de libros.
+- Gestión de ejemplares.
+- Gestión de administradores 
+- Gestión de préstamos.
+- Gestión avanzada del estado de los préstamos.
+- Sistema de puntaje para los clientes.
+- Obtención de informacin de libros desde la API de Open Library.
+- Notificacion de clientes acerca de retraso de entrega y prestamos proximos a vencer.
+
 
 ## Como configurar este proyecto en local:
-
-- Para correrlo debe estar configurado el inicio a traves de la carpeta llamada UtilidadesPresentacion. 
-- También debe tener SQL Server instalado, el proyecto se encargará de crear automáticamente la base de datos necesaria para que este funcione.
-- El administrador principal tiene como credenciales, nombre: admin, contraseña: admin, se recomienda modificarlo una ves iniciada sesion por primera ves.
+- Clonar este repositorio con Visual Studio
+- Para correrlo debe estar configurado como proyecto de inicio el llamado Presentacion.
+- Se debe tener SQL Server localmente instalado, el proyecto se encargará de crear automáticamente la base de datos necesaria para que este funcione.
+- Compilar el proyecto.
+- Iniciar sesion. El administrador principal tiene como credenciales por defecto,
+  - ***NombreUsuario***: "admin"
+  - ***Contraseña***: "admin"
+  - Se recomienda modificar las credeciales una vez iniciada sesión por primera vez para mayor seguridad.
+-Luego de compilado el proyecto el ejecutable del programa junto a los demas archivos necesarios para la ejecución estaran en la carpeta donde se clono el repositorio dentro de Programa/bin/debug, el ejecutable principal se llama "Programa.exe".
 
 ## Tecnologías utilizadas
 - **Lenguaje**:  C#.
@@ -24,10 +34,10 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 - **ORM**:  Entity Framework code first.
 - **Maquetado**:  WinForms.
 - **Librerias utilizadas**:
-  - ***Quartz*** :
-  - ***Log4Net** :
+  - ***Quartz*** :Libreria de trabajo asincrono.
+  - ***Log4Net** :Libreria de logs.
 - **APIs utilizadas**:
-  - ***OpenLibrary***:  
+  - ***OpenLibrary***: Libreria de informacion de libros. 
   
 
 ## Grupo de trabajo
@@ -37,7 +47,7 @@ El grupo de trabajo se compone de los siguientes integrantes:
 - **Rodriguez Franco**  
 - **Nicolas Villanueva**
 
-##Requerimientos no funcionales
+## Requerimientos no funcionales
 - La aplicación deberá ser robusta ante cualquier tipo de errores.
 - La aplicación deberá ser fácil de usar e intuitiva.
 - La interfaz del usuario deberá ser consistente y no deberá tener errores de interacción ni de visualización de información.
