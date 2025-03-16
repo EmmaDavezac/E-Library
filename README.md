@@ -25,6 +25,8 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 - **Librerias utilizadas**:
   - ***Quartz*** :
   - ***Log4Net** :
+- **APIs utilizadas**:
+  - ***OpenLibrary***:  
   
 
 ## Grupo de trabajo
