@@ -42,9 +42,9 @@ Se trata de un sistema transaccional que permite a los adminitradores de una bib
 
 ## Grupo de trabajo
 El grupo de trabajo se compone de los siguientes integrantes: 
-- **Acevedo Facundo** 
-- **Davezac Emmanuel** 
-- **Rodriguez Franco**  
+- **Emmanuel Davezac**
+- **Facundo Acevedo** 
+- **Franco Rodriguez**  
 - **Nicolas Villanueva**
 
 ## Requerimientos no funcionales
