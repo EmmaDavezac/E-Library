@@ -28,8 +28,12 @@ namespace Programa
             buttonAceptar.Enabled = true;//se habilita el boton aceptar
         }
 
+        /// <summary>
+        /// Resumen: Este metodo se ejecuta cuando se presiona el boton button2, en el caso de que se hayan ingresado los datos y sean correctos, se actualizara la contraseña del administrador
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
-        //se ejecutara cuando se presione el boton button2, en el caso de que se hayan ingresado los datos y sean correctos, se actualizara la contraseña del administrador
         {
             try
             {

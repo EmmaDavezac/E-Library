@@ -70,6 +70,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Biblioteca Encriptación\BibliotecaEncriptacion.csproj">
+      <Project>{5629c1be-fb83-46bd-9a68-082fa619584f}</Project>
+      <Name>BibliotecaEncriptacion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
       <Name>BibliotecaBitacora</Name>

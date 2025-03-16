@@ -9,6 +9,7 @@ using Bitacora;//Libreria que nos permite registrar logs en la bitacora
 using DAL.EntityFramework;
 
 
+
 namespace Nucleo
 
 {
@@ -28,7 +29,10 @@ namespace Nucleo
         /// <summary>
         /// Resumen: Esta variable nos permite registrar logs en la bitacora.
         /// </summary>
-        private Bitacora.ImplementacionBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new ImplementacionBitacora();
+
+        
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite obtener alguna de las implementaciones posibles para las base de datos, interactua con la interfaz IUnitOfWork, esta abtraccion nos permite poder trabajar con distintas implementaciones
@@ -255,7 +259,7 @@ namespace Nucleo
                 msg = "Contraseña del administrador " + pNombreAdministrador + " actualizada con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).Pass = contraseña;//Modificamos la contraseña actual por la que pasamos como parametro
+                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).ActualizarPassword(contraseña);//Modificamos la contraseña actual por la que pasamos como parametro
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -710,7 +714,7 @@ namespace Nucleo
         /// <param name="contraseña">Contraseña del administrador</param>
         /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
         public bool VerficarContraseña(string pNombreUsuario, string contraseña)
-        {
+        {   
             return ObtenerAdministrador(pNombreUsuario).VerificarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
         }
 

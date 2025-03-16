@@ -26,9 +26,12 @@ namespace Programa
 
 
 
-
+        /// <summary>
+        /// Resumen: Este metodo se ejecuta cuando se presiona el boton iniciar sesion, este metodo valida que los datos ingresados sean correctos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void botonIniciarSesion_Click(object sender, EventArgs e)
-        //se ejecuta cuando se presiona el boton iniciar sesion, este metodo valida que los datos ingresados sean correctos
         {
             try
             {

@@ -50,7 +50,6 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(224, 22);
             this.textBoxNombreUsuario.TabIndex = 0;
-            this.textBoxNombreUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxUsuario_TextChanged);
             // 
             // textBoxContraseña
@@ -61,7 +60,6 @@ namespace Programa
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.Size = new System.Drawing.Size(224, 22);
             this.textBoxContraseña.TabIndex = 4;
-            this.textBoxContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxContraseña.UseSystemPasswordChar = true;
             this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxContraseña_TextChanged);
             // 
@@ -72,7 +70,7 @@ namespace Programa
             this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelIdAdministrador.Location = new System.Drawing.Point(286, 292);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
-            this.labelIdAdministrador.Size = new System.Drawing.Size(126, 16);
+            this.labelIdAdministrador.Size = new System.Drawing.Size(125, 16);
             this.labelIdAdministrador.TabIndex = 5;
             this.labelIdAdministrador.Text = "Nombre de Usuario";
             this.labelIdAdministrador.Click += new System.EventHandler(this.label1_Click);
@@ -84,7 +82,7 @@ namespace Programa
             this.labelConstraseña.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelConstraseña.Location = new System.Drawing.Point(286, 358);
             this.labelConstraseña.Name = "labelConstraseña";
-            this.labelConstraseña.Size = new System.Drawing.Size(77, 16);
+            this.labelConstraseña.Size = new System.Drawing.Size(76, 16);
             this.labelConstraseña.TabIndex = 6;
             this.labelConstraseña.Text = "Contraseña";
             this.labelConstraseña.Click += new System.EventHandler(this.label1_Click_1);

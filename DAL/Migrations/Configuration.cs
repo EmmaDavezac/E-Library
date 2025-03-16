@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
+using BibliotecaEncriptacion;
+
 
 namespace DAL.Migrations
 {   ///<summary>
@@ -20,16 +22,12 @@ namespace DAL.Migrations
         /// <param name="context"></param>
         protected override void Seed(DAL.EntityFramework.AdministradorDePrestamosDbContext context)
         {
-            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador()
-            {
-                nombreUsuario = "admin",
-                Pass = "admin",
-                Nombre = "admin",
-                Apellido = "admin",
-                Mail = "admin@gmail.com",
-                Telefono = "34421234",
-                FechaNacimiento = new DateTime(1900, 1, 1),
-            }); 
+            /// <summary>º
+            /// criptador para proteger la contraseña del administrador.
+            /// </summary>
+            IEncriptador encriptador = new EncriptadorCesar();
+            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador("admin", "admin", new DateTime(1900, 1, 1), "admin@gmail.com", encriptador.Encriptar("admin"), "34421234", "admin"));
         }
     }
+   
 }
