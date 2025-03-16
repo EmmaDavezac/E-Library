@@ -1,4 +1,6 @@
-# Proyecto Final de Taller de Programación - Sistema de gestión y administración de una biblioteca.
+![images](https://github.com/user-attachments/assets/7823e8f6-52b1-4650-8759-976bb9dfb61c)
+
+# Proyecto Final de Taller de Programación - Sistema de gestión y administración de biblioteca.
 
 Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de la cátedra Taller de Programación. Se trata de un sistema que permite al adminitrador de una biblioteca:
 
