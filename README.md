@@ -22,9 +22,9 @@ Este proyecto fue realizado con el objetivo de cumplir con el proyecto final de 
 - **Base de datos**:  MSSQL server.
 - **ORM**:  Entity Framework code first.
 - **Maquetado**:  WinForms.
-- **Librerias utilizadas**
-- ***Quartz***:
-- ***Log4Net**:
+- **Librerias utilizadas**:
+  - ***Quartz*** :
+  - ***Log4Net** :
   
 
 ## Grupo de trabajo
