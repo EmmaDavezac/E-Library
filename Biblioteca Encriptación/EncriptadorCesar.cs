@@ -97,11 +97,8 @@ namespace BibliotecaEncriptacion
         /// <returns>True si las cadenas coinciden, False en caso contrario</returns>
         public bool Validar(string pCadena, string pCadenaEncriptada)
         {
-            //return true;
-            Console.WriteLine("cadena:"+ pCadena);
-            Console.WriteLine("cadena encriptada:" + Encriptar(pCadena));
-            Console.WriteLine("cadena encriptada (pass):"+ pCadenaEncriptada);
-            return (Desencriptar(pCadenaEncriptada) == pCadena);
+ 
+            return pCadenaEncriptada == Encriptar(pCadena);
         }
     }
     
