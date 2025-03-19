@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Nucleo;
-using UtilidadesPresentacion;
 using Bitacora;
 
 namespace Programa
@@ -12,7 +11,7 @@ namespace Programa
         FachadaNucleo interfazNucleo = new FachadaNucleo();
         private string nombreUsuario { get; set; }
 
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public ActualizarUsuario(string pNombreUsuario)
         {

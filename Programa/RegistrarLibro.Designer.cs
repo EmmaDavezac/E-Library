@@ -47,7 +47,7 @@ namespace Programa
             this.labelResultados = new System.Windows.Forms.Label();
             this.textBoxISBN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonAñadirLibro = new System.Windows.Forms.Button();
+            this.botonAñadirLibro = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonBorrarDatos = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,7 +69,6 @@ namespace Programa
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.buttonActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
@@ -215,12 +214,12 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(683, 526);
+            this.botonVolver.Location = new System.Drawing.Point(589, 526);
             this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 13;
-            this.botonVolver.Text = "Volver";
+            this.botonVolver.Text = "Cancelar";
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
@@ -251,22 +250,22 @@ namespace Programa
             this.label5.Text = "ISBN:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // buttonAñadirLibro
+            // botonAñadirLibro
             // 
-            this.buttonAñadirLibro.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonAñadirLibro.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonAñadirLibro.FlatAppearance.BorderSize = 0;
-            this.buttonAñadirLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAñadirLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAñadirLibro.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAñadirLibro.Location = new System.Drawing.Point(338, 490);
-            this.buttonAñadirLibro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonAñadirLibro.Name = "buttonAñadirLibro";
-            this.buttonAñadirLibro.Size = new System.Drawing.Size(89, 23);
-            this.buttonAñadirLibro.TabIndex = 12;
-            this.buttonAñadirLibro.Text = "AñadirLibro";
-            this.buttonAñadirLibro.UseVisualStyleBackColor = false;
-            this.buttonAñadirLibro.Click += new System.EventHandler(this.buttonAñadirLibro_Click);
+            this.botonAñadirLibro.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonAñadirLibro.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonAñadirLibro.FlatAppearance.BorderSize = 0;
+            this.botonAñadirLibro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonAñadirLibro.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonAñadirLibro.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonAñadirLibro.Location = new System.Drawing.Point(683, 526);
+            this.botonAñadirLibro.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonAñadirLibro.Name = "botonAñadirLibro";
+            this.botonAñadirLibro.Size = new System.Drawing.Size(89, 23);
+            this.botonAñadirLibro.TabIndex = 12;
+            this.botonAñadirLibro.Text = "Guardar";
+            this.botonAñadirLibro.UseVisualStyleBackColor = false;
+            this.botonAñadirLibro.Click += new System.EventHandler(this.buttonAñadirLibro_Click);
             // 
             // label4
             // 
@@ -285,9 +284,9 @@ namespace Programa
             this.buttonBorrarDatos.FlatAppearance.BorderSize = 0;
             this.buttonBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBorrarDatos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBorrarDatos.Location = new System.Drawing.Point(255, 490);
+            this.buttonBorrarDatos.Location = new System.Drawing.Point(260, 490);
             this.buttonBorrarDatos.Name = "buttonBorrarDatos";
-            this.buttonBorrarDatos.Size = new System.Drawing.Size(78, 23);
+            this.buttonBorrarDatos.Size = new System.Drawing.Size(72, 20);
             this.buttonBorrarDatos.TabIndex = 21;
             this.buttonBorrarDatos.Text = "Borrar datos";
             this.buttonBorrarDatos.UseVisualStyleBackColor = false;
@@ -395,11 +394,11 @@ namespace Programa
             // labelCantidadEjemplares
             // 
             this.labelCantidadEjemplares.AutoSize = true;
-            this.labelCantidadEjemplares.Location = new System.Drawing.Point(432, 495);
+            this.labelCantidadEjemplares.Location = new System.Drawing.Point(355, 493);
             this.labelCantidadEjemplares.Name = "labelCantidadEjemplares";
-            this.labelCantidadEjemplares.Size = new System.Drawing.Size(52, 13);
+            this.labelCantidadEjemplares.Size = new System.Drawing.Size(120, 13);
             this.labelCantidadEjemplares.TabIndex = 32;
-            this.labelCantidadEjemplares.Text = "Cantidad:";
+            this.labelCantidadEjemplares.Text = "Cantidad de ejemplares:";
             // 
             // textBoxCantidadEjemplares
             // 
@@ -437,12 +436,12 @@ namespace Programa
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label7.Location = new System.Drawing.Point(12, 44);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 15);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 5;
             this.label7.Text = "E-Librery";
             // 
@@ -492,23 +491,6 @@ namespace Programa
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // buttonActualizar
-            // 
-            this.buttonActualizar.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonActualizar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonActualizar.FlatAppearance.BorderSize = 0;
-            this.buttonActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonActualizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonActualizar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonActualizar.Location = new System.Drawing.Point(338, 490);
-            this.buttonActualizar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.buttonActualizar.Name = "buttonActualizar";
-            this.buttonActualizar.Size = new System.Drawing.Size(89, 23);
-            this.buttonActualizar.TabIndex = 73;
-            this.buttonActualizar.Text = "Actualizar";
-            this.buttonActualizar.UseVisualStyleBackColor = false;
-            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click);
-            // 
             // RegistrarLibro
             // 
             this.AcceptButton = this.buttonBuscar;
@@ -516,7 +498,6 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.buttonActualizar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.textBoxCantidadEjemplares);
             this.Controls.Add(this.labelCantidadEjemplares);
@@ -534,7 +515,7 @@ namespace Programa
             this.Controls.Add(this.label5);
             this.Controls.Add(this.labelResultados);
             this.Controls.Add(this.botonVolver);
-            this.Controls.Add(this.buttonAñadirLibro);
+            this.Controls.Add(this.botonAñadirLibro);
             this.Controls.Add(this.labelIngreseTitulo);
             this.Controls.Add(this.textBoxAñoPublicacion);
             this.Controls.Add(this.textBoxAutor);
@@ -586,7 +567,7 @@ namespace Programa
         private System.Windows.Forms.Label labelResultados;
         private System.Windows.Forms.TextBox textBoxISBN;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button buttonAñadirLibro;
+        private System.Windows.Forms.Button botonAñadirLibro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonBorrarDatos;
         private System.Windows.Forms.Label label6;
@@ -612,6 +593,5 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Button buttonActualizar;
     }
 }

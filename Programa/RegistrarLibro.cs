@@ -3,7 +3,6 @@ using Nucleo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using UtilidadesPresentacion;
 using Bitacora;
 
 
@@ -14,7 +13,7 @@ namespace Programa
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
         
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
@@ -310,13 +309,13 @@ namespace Programa
             {
                 if (this.Owner.Name == "MenuPrincipal")
             {
-                buttonAñadirLibro.Visible = true;
+                botonAñadirLibro.Visible = true;
                 buttonActualizar.Visible = false;
             }
             else if (this.Owner.Name == "ActualizarLibro")
             {
                 buttonActualizar.Visible = true;
-                buttonAñadirLibro.Visible = false;
+                botonAñadirLibro.Visible = false;
                 textBoxCantidadEjemplares.Visible = false;
                 labelCantidadEjemplares.Visible = false;
             }

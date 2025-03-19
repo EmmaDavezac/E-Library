@@ -2,7 +2,6 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using UtilidadesPresentacion;
 using Bitacora;
 
 namespace Programa
@@ -14,7 +13,7 @@ namespace Programa
 
         private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public RegistrarUsuario(string pNombreUsuario)//Constructor de la clase 
         {

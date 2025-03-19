@@ -112,12 +112,12 @@ namespace Programa
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label5.Location = new System.Drawing.Point(12, 44);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 15);
+            this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "E-Librery";
             // 
@@ -402,7 +402,7 @@ namespace Programa
             this.FechaNacimiento,
             this.Mail,
             this.Telefono});
-            this.dataGridViewUsuarios.Location = new System.Drawing.Point(-2, 336);
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(12, 336);
             this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             this.dataGridViewUsuarios.Size = new System.Drawing.Size(593, 177);
             this.dataGridViewUsuarios.TabIndex = 98;
@@ -458,7 +458,7 @@ namespace Programa
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 99;
-            this.botonVolver.Text = "Volver";
+            this.botonVolver.Text = "Cancelar";
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
@@ -475,7 +475,7 @@ namespace Programa
             this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
             this.buttonRegistrarPrestamo.Size = new System.Drawing.Size(103, 23);
             this.buttonRegistrarPrestamo.TabIndex = 100;
-            this.buttonRegistrarPrestamo.Text = "RegistrarPrestamo";
+            this.buttonRegistrarPrestamo.Text = "Guardar";
             this.buttonRegistrarPrestamo.UseVisualStyleBackColor = false;
             this.buttonRegistrarPrestamo.Click += new System.EventHandler(this.buttonRegistrarPrestamo_Click);
             // 

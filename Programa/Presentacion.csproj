@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="Presentacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UtilidadesPresentacion.cs" />
     <EmbeddedResource Include="ActualizarAdministrador.resx">
       <DependentUpon>ActualizarAdministrador.cs</DependentUpon>
     </EmbeddedResource>

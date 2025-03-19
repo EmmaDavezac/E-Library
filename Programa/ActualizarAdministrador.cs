@@ -2,7 +2,6 @@ using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using UtilidadesPresentacion;
 using Bitacora;
 
 namespace Programa
@@ -13,7 +12,7 @@ namespace Programa
     {
         FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
         public string contraseñaNueva;//Variable para guardar la contraseña nueva
-        private BibliotecaUtilidadesPresentacion utilidades = new BibliotecaUtilidadesPresentacion();
+        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string nombreUsuario { get; set; }
         /// <summary>
