@@ -15,8 +15,8 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             NombreYApellido = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre + " " + interfazNucleo.ObtenerAdministrador(nombreUsuario).Apellido;
-            labelNombreUsuario.Text = "Nombre de Usuario: " + nombreUsuario;
-            labelNombreYApellido.Text = "Nombre: " + NombreYApellido;
+            labelNombreUsuario.Text =  nombreUsuario;
+            labelbienvenida.Text = "Bienvenido, " + NombreYApellido;
         }
 
         private void Menu2_Load(object sender, EventArgs e)//se ejecuta cuando se crea formulario
@@ -171,6 +171,11 @@ namespace Programa
         }
 
         private void labelId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

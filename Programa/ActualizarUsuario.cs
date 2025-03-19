@@ -17,7 +17,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)
@@ -45,23 +45,23 @@ namespace Programa
                                     {
                                         interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
-                                        MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                        MessageBox.Show("Usuario ha sido dado de baja y guardado correctamente: ", "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
                                     else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
                                     {
                                         interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                        MessageBox.Show("Usuario ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                        MessageBox.Show("Usuario ha sido dado de baja y guardado correctamente", "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
                                     else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
                                     {
                                         interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                        MessageBox.Show("Usuario ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                        MessageBox.Show("La información ha sido guardada correctamente.", "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
                                     else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
                                     {
                                         interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                         interfazNucleo.DarDeAltaUsuario(textBoxNombreUsuario.Text);
-                                        MessageBox.Show("Usuario ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                        MessageBox.Show("Usuario ha sido dado de alta y guardado correctamente" , "Operacion Exitosa", MessageBoxButtons.OK);
                                     }
                                     this.Hide();
                                     ((GestionarUsuarios)Owner).ObtenerUsuarios();

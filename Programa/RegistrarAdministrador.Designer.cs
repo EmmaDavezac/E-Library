@@ -54,6 +54,7 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.buttonMostrar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -264,11 +265,11 @@ namespace Programa
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "E-Librery";
+            this.label3.Text = "E-Library";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
             this.pictureBox2.Location = new System.Drawing.Point(16, 3);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -292,8 +293,8 @@ namespace Programa
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
@@ -305,7 +306,7 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
             this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
@@ -328,12 +329,23 @@ namespace Programa
             this.buttonMostrar.UseVisualStyleBackColor = false;
             this.buttonMostrar.Click += new System.EventHandler(this.buttonMostrar_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(13, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(138, 13);
+            this.label8.TabIndex = 74;
+            this.label8.Text = "Registrar Administrador";
+            // 
             // RegistrarAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 560);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonMostrar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
@@ -360,7 +372,7 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 599);
             this.Name = "RegistrarAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registrar Administrador";
+            this.Text = "E-Library";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrarAdministrador_FormClosed);
             this.Load += new System.EventHandler(this.AgregarAdministrador_Load);
             this.panel3.ResumeLayout(false);
@@ -401,5 +413,6 @@ namespace Programa
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Button buttonMostrar;
+        private System.Windows.Forms.Label label8;
     }
 }

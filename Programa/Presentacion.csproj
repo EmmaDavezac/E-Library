@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{85BB462E-BECF-472A-BA60-FDBEA8C7F89B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Programa</RootNamespace>
+    <RootNamespace>Presentacion</RootNamespace>
     <AssemblyName>Programa</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -105,12 +105,6 @@
     <Compile Include="DevolucionPrestamo.Designer.cs">
       <DependentUpon>DevolucionPrestamo.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditarPrestamo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditarPrestamo.Designer.cs">
-      <DependentUpon>EditarPrestamo.cs</DependentUpon>
-    </Compile>
     <Compile Include="GestionarLibros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,9 +191,6 @@
     <EmbeddedResource Include="DevolucionPrestamo.resx">
       <DependentUpon>DevolucionPrestamo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditarPrestamo.resx">
-      <DependentUpon>EditarPrestamo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GestionarLibros.resx">
       <DependentUpon>GestionarLibros.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,10 +261,6 @@
     <ProjectReference Include="..\Nucleo\Nucleo.csproj">
       <Project>{42580751-3ea3-4055-99f8-a2350fc23d8a}</Project>
       <Name>Nucleo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UtilidadesPresentacion\BibliotecaUtilidadesPresentacion.csproj">
-      <Project>{85d69dcd-0dc9-4b30-8ebd-7aa2a8bb7f4a}</Project>
-      <Name>BibliotecaUtilidadesPresentacion</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

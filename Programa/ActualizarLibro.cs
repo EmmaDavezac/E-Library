@@ -19,7 +19,7 @@ namespace Programa
         {
             InitializeComponent();
             NombreUsuario = nombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
+            labelNombreUsuario.Text = NombreUsuario;
             idLibro = pIdLibro;
             sumatoriaDeEjemplares = 0;//Inicializamos en 0.
         }

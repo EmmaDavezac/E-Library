@@ -38,6 +38,7 @@ namespace Programa
             this.labelErro = new System.Windows.Forms.Label();
             this.buttonMostrarContraseñaVieja = new System.Windows.Forms.Button();
             this.buttonMostrarContraseñaNueva = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +52,7 @@ namespace Programa
             // 
             // textBoxContraseñaAntigua
             // 
-            this.textBoxContraseñaAntigua.Location = new System.Drawing.Point(175, 94);
+            this.textBoxContraseñaAntigua.Location = new System.Drawing.Point(175, 93);
             this.textBoxContraseñaAntigua.Name = "textBoxContraseñaAntigua";
             this.textBoxContraseñaAntigua.Size = new System.Drawing.Size(247, 20);
             this.textBoxContraseñaAntigua.TabIndex = 1;
@@ -61,7 +62,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 135);
+            this.label2.Location = new System.Drawing.Point(30, 137);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 13);
             this.label2.TabIndex = 2;
@@ -69,7 +70,7 @@ namespace Programa
             // 
             // textBoxContraseñaNueva
             // 
-            this.textBoxContraseñaNueva.Location = new System.Drawing.Point(175, 132);
+            this.textBoxContraseñaNueva.Location = new System.Drawing.Point(175, 133);
             this.textBoxContraseñaNueva.Name = "textBoxContraseñaNueva";
             this.textBoxContraseñaNueva.Size = new System.Drawing.Size(247, 20);
             this.textBoxContraseñaNueva.TabIndex = 3;
@@ -80,7 +81,7 @@ namespace Programa
             // 
             this.buttonVolver.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonVolver.Location = new System.Drawing.Point(404, 257);
+            this.buttonVolver.Location = new System.Drawing.Point(430, 256);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 4;
@@ -92,11 +93,11 @@ namespace Programa
             // 
             this.buttonAceptar.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAceptar.Location = new System.Drawing.Point(485, 257);
+            this.buttonAceptar.Location = new System.Drawing.Point(511, 256);
             this.buttonAceptar.Name = "buttonAceptar";
             this.buttonAceptar.Size = new System.Drawing.Size(75, 23);
             this.buttonAceptar.TabIndex = 5;
-            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.Text = "Guardar";
             this.buttonAceptar.UseVisualStyleBackColor = false;
             this.buttonAceptar.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -113,7 +114,7 @@ namespace Programa
             // 
             this.buttonMostrarContraseñaVieja.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonMostrarContraseñaVieja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonMostrarContraseñaVieja.Location = new System.Drawing.Point(439, 92);
+            this.buttonMostrarContraseñaVieja.Location = new System.Drawing.Point(419, 92);
             this.buttonMostrarContraseñaVieja.Name = "buttonMostrarContraseñaVieja";
             this.buttonMostrarContraseñaVieja.Size = new System.Drawing.Size(75, 23);
             this.buttonMostrarContraseñaVieja.TabIndex = 7;
@@ -125,7 +126,7 @@ namespace Programa
             // 
             this.buttonMostrarContraseñaNueva.BackColor = System.Drawing.SystemColors.Highlight;
             this.buttonMostrarContraseñaNueva.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonMostrarContraseñaNueva.Location = new System.Drawing.Point(439, 129);
+            this.buttonMostrarContraseñaNueva.Location = new System.Drawing.Point(419, 132);
             this.buttonMostrarContraseñaNueva.Name = "buttonMostrarContraseñaNueva";
             this.buttonMostrarContraseñaNueva.Size = new System.Drawing.Size(75, 23);
             this.buttonMostrarContraseñaNueva.TabIndex = 8;
@@ -133,12 +134,23 @@ namespace Programa
             this.buttonMostrarContraseñaNueva.UseVisualStyleBackColor = false;
             this.buttonMostrarContraseñaNueva.Click += new System.EventHandler(this.buttonMostrarContraseñaNueva_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(210, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Actualizar contraseña Administrador";
+            // 
             // ModificarContraseña
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(604, 291);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonMostrarContraseñaNueva);
             this.Controls.Add(this.buttonMostrarContraseñaVieja);
             this.Controls.Add(this.labelErro);
@@ -148,9 +160,12 @@ namespace Programa
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxContraseñaAntigua);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ModificarContraseña";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Modificar Contraseña";
+            this.Text = "E-Library";
             this.Load += new System.EventHandler(this.ModificarContraseña_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,5 +183,6 @@ namespace Programa
         private System.Windows.Forms.Label labelErro;
         private System.Windows.Forms.Button buttonMostrarContraseñaVieja;
         private System.Windows.Forms.Button buttonMostrarContraseñaNueva;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -23,7 +23,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
         /// <summary>
         /// Resumen: Este metodo se encarga de volver a la ventana anterior.

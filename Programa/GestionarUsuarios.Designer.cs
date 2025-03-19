@@ -31,21 +31,12 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelError = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.dataGridViewUsuarios = new System.Windows.Forms.DataGridView();
-            this.labelErro = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
-            this.labelTitulo = new System.Windows.Forms.Label();
             this.Edit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Scoring = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +46,15 @@ namespace Programa
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Baja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelErro = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
+            this.labelTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -93,25 +93,25 @@ namespace Programa
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(173, 127);
+            this.label1.Location = new System.Drawing.Point(24, 122);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(155, 13);
             this.label1.TabIndex = 33;
-            this.label1.Text = "NombreUsuario";
+            this.label1.Text = "Buscar por Nombre de Usuario:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBoxNombreUsuario
             // 
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(259, 127);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(182, 119);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(300, 20);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(579, 20);
             this.textBoxNombreUsuario.TabIndex = 34;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
             // dataGridViewUsuarios
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewUsuarios.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -130,111 +130,6 @@ namespace Programa
             this.dataGridViewUsuarios.Size = new System.Drawing.Size(787, 362);
             this.dataGridViewUsuarios.TabIndex = 40;
             this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
-            // 
-            // labelErro
-            // 
-            this.labelErro.AutoSize = true;
-            this.labelErro.ForeColor = System.Drawing.Color.Red;
-            this.labelErro.Location = new System.Drawing.Point(137, 134);
-            this.labelErro.Name = "labelErro";
-            this.labelErro.Size = new System.Drawing.Size(0, 13);
-            this.labelErro.TabIndex = 42;
-            this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 60);
-            this.panel3.TabIndex = 70;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 60);
-            this.panel4.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(12, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "E-Librery";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel5.Controls.Add(this.pictureBox4);
-            this.panel5.Controls.Add(this.labelNombreUsuario);
-            this.panel5.Location = new System.Drawing.Point(566, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(207, 60);
-            this.panel5.TabIndex = 9;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
-            // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.AutoSize = true;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
-            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
-            this.labelNombreUsuario.TabIndex = 0;
-            this.labelNombreUsuario.Text = "Nombre Apellido";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelTitulo
-            // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(24, 99);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(155, 13);
-            this.labelTitulo.TabIndex = 73;
-            this.labelTitulo.Text = "Listar y gestionar usuarios";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
             // 
             // Edit
             // 
@@ -295,6 +190,111 @@ namespace Programa
             this.Baja.ReadOnly = true;
             this.Baja.Width = 50;
             // 
+            // labelErro
+            // 
+            this.labelErro.AutoSize = true;
+            this.labelErro.ForeColor = System.Drawing.Color.Red;
+            this.labelErro.Location = new System.Drawing.Point(137, 134);
+            this.labelErro.Name = "labelErro";
+            this.labelErro.Size = new System.Drawing.Size(0, 13);
+            this.labelErro.TabIndex = 42;
+            this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(784, 60);
+            this.panel3.TabIndex = 70;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label2.Location = new System.Drawing.Point(12, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "E-Library";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel5.Controls.Add(this.pictureBox4);
+            this.panel5.Controls.Add(this.labelNombreUsuario);
+            this.panel5.Location = new System.Drawing.Point(566, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(207, 60);
+            this.panel5.TabIndex = 9;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.AutoSize = true;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.TabIndex = 0;
+            this.labelNombreUsuario.Text = "Nombre Apellido";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTitulo
+            // 
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.ForeColor = System.Drawing.Color.Black;
+            this.labelTitulo.Location = new System.Drawing.Point(24, 99);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(115, 13);
+            this.labelTitulo.TabIndex = 73;
+            this.labelTitulo.Text = "Gestor de Usuarios";
+            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            // 
             // GestionarUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,7 +316,7 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "GestionarUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestionar Usuarios";
+            this.Text = "E-Library";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultarUsuario_FormClosed);
             this.Load += new System.EventHandler(this.ConsultarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuarios)).EndInit();

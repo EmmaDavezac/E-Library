@@ -10,11 +10,7 @@ namespace Bitacora
     /// Resumen: Esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo utilizando la libreria log4net.
     /// </summary>
     public class ImplementacionBitacoraConLog4Net : IBitacora//
-    {   /// <summary>
-        /// Resumen: Establece la direccion relativa del los archivos de la bitacora
-        /// </summary>
-        private string Path = "Logs";
-
+    {  
         /// <summary>
         /// Contructor de la clase
         /// </summary>

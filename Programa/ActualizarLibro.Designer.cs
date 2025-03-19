@@ -63,6 +63,9 @@ namespace Programa
             this.labelCantidadActual = new System.Windows.Forms.Label();
             this.labelErrorEliminarEjemplares = new System.Windows.Forms.Label();
             this.labelErrorAñadirEjemplares = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -72,7 +75,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(286, 217);
+            this.textBoxISBN.Location = new System.Drawing.Point(268, 246);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(300, 20);
             this.textBoxISBN.TabIndex = 38;
@@ -81,7 +84,7 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(161, 224);
+            this.label5.Location = new System.Drawing.Point(143, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 37;
@@ -124,7 +127,7 @@ namespace Programa
             // 
             // textBoxAñoPublicacion
             // 
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(286, 191);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(268, 220);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(300, 20);
             this.textBoxAñoPublicacion.TabIndex = 31;
@@ -132,7 +135,7 @@ namespace Programa
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(286, 165);
+            this.textBoxAutor.Location = new System.Drawing.Point(268, 194);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(300, 20);
             this.textBoxAutor.TabIndex = 30;
@@ -140,7 +143,7 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(286, 139);
+            this.textBoxTitulo.Location = new System.Drawing.Point(268, 168);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(300, 20);
             this.textBoxTitulo.TabIndex = 29;
@@ -149,7 +152,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(161, 168);
+            this.label2.Location = new System.Drawing.Point(143, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 27;
@@ -158,7 +161,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(161, 142);
+            this.label1.Location = new System.Drawing.Point(143, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 26;
@@ -167,7 +170,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(161, 198);
+            this.label3.Location = new System.Drawing.Point(143, 227);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 28;
@@ -176,7 +179,7 @@ namespace Programa
             // labelError
             // 
             this.labelError.AutoSize = true;
-            this.labelError.Location = new System.Drawing.Point(137, 240);
+            this.labelError.Location = new System.Drawing.Point(119, 237);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 45;
@@ -188,9 +191,9 @@ namespace Programa
             this.buttonDeshacerCambios.FlatAppearance.BorderSize = 0;
             this.buttonDeshacerCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeshacerCambios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonDeshacerCambios.Location = new System.Drawing.Point(350, 243);
+            this.buttonDeshacerCambios.Location = new System.Drawing.Point(268, 272);
             this.buttonDeshacerCambios.Name = "buttonDeshacerCambios";
-            this.buttonDeshacerCambios.Size = new System.Drawing.Size(107, 23);
+            this.buttonDeshacerCambios.Size = new System.Drawing.Size(105, 23);
             this.buttonDeshacerCambios.TabIndex = 46;
             this.buttonDeshacerCambios.Text = "Deshacer cambios";
             this.buttonDeshacerCambios.UseVisualStyleBackColor = false;
@@ -225,18 +228,18 @@ namespace Programa
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label7.Location = new System.Drawing.Point(12, 44);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 15);
+            this.label7.Size = new System.Drawing.Size(57, 13);
             this.label7.TabIndex = 5;
-            this.label7.Text = "E-Librery";
+            this.label7.Text = "E-Library";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
             this.pictureBox2.Location = new System.Drawing.Point(16, 3);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -259,8 +262,8 @@ namespace Programa
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
@@ -272,7 +275,7 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
             this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
@@ -284,7 +287,7 @@ namespace Programa
             // 
             this.labelResultados.AutoSize = true;
             this.labelResultados.ForeColor = System.Drawing.Color.Red;
-            this.labelResultados.Location = new System.Drawing.Point(31, 282);
+            this.labelResultados.Location = new System.Drawing.Point(13, 279);
             this.labelResultados.Name = "labelResultados";
             this.labelResultados.Size = new System.Drawing.Size(0, 13);
             this.labelResultados.TabIndex = 84;
@@ -295,11 +298,11 @@ namespace Programa
             this.buttonBusquedaAvanzada.FlatAppearance.BorderSize = 0;
             this.buttonBusquedaAvanzada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBusquedaAvanzada.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBusquedaAvanzada.Location = new System.Drawing.Point(463, 243);
+            this.buttonBusquedaAvanzada.Location = new System.Drawing.Point(574, 274);
             this.buttonBusquedaAvanzada.Name = "buttonBusquedaAvanzada";
-            this.buttonBusquedaAvanzada.Size = new System.Drawing.Size(123, 23);
+            this.buttonBusquedaAvanzada.Size = new System.Drawing.Size(162, 23);
             this.buttonBusquedaAvanzada.TabIndex = 87;
-            this.buttonBusquedaAvanzada.Text = "Busqueda avanzada";
+            this.buttonBusquedaAvanzada.Text = "Buscar Información";
             this.buttonBusquedaAvanzada.UseVisualStyleBackColor = false;
             this.buttonBusquedaAvanzada.Click += new System.EventHandler(this.buttonBusquedaAvanzada_Click);
             // 
@@ -307,18 +310,18 @@ namespace Programa
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 95);
+            this.label4.Location = new System.Drawing.Point(13, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.Size = new System.Drawing.Size(185, 13);
             this.label4.TabIndex = 88;
-            this.label4.Text = "Modificar datos:";
+            this.label4.Text = "Actualizar información del Libro";
             this.label4.Click += new System.EventHandler(this.label4_Click_1);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(30, 312);
+            this.label8.Location = new System.Drawing.Point(12, 309);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(171, 13);
             this.label8.TabIndex = 89;
@@ -331,26 +334,26 @@ namespace Programa
             this.buttonAñadirEjemplares.FlatAppearance.BorderSize = 0;
             this.buttonAñadirEjemplares.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAñadirEjemplares.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonAñadirEjemplares.Location = new System.Drawing.Point(236, 384);
+            this.buttonAñadirEjemplares.Location = new System.Drawing.Point(317, 400);
             this.buttonAñadirEjemplares.Name = "buttonAñadirEjemplares";
             this.buttonAñadirEjemplares.Size = new System.Drawing.Size(107, 23);
             this.buttonAñadirEjemplares.TabIndex = 90;
-            this.buttonAñadirEjemplares.Text = "Añadir Ejemplares";
+            this.buttonAñadirEjemplares.Text = "Añadir";
             this.buttonAñadirEjemplares.UseVisualStyleBackColor = false;
             this.buttonAñadirEjemplares.Click += new System.EventHandler(this.buttonAñadirEjemplares_Click);
             // 
             // textBoxAñadirEjemplares
             // 
-            this.textBoxAñadirEjemplares.Location = new System.Drawing.Point(236, 358);
+            this.textBoxAñadirEjemplares.Location = new System.Drawing.Point(317, 374);
             this.textBoxAñadirEjemplares.Name = "textBoxAñadirEjemplares";
-            this.textBoxAñadirEjemplares.Size = new System.Drawing.Size(117, 20);
+            this.textBoxAñadirEjemplares.Size = new System.Drawing.Size(107, 20);
             this.textBoxAñadirEjemplares.TabIndex = 91;
             this.textBoxAñadirEjemplares.TextChanged += new System.EventHandler(this.textBoxAñadirEjemplares_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(62, 361);
+            this.label9.Location = new System.Drawing.Point(143, 377);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(168, 13);
             this.label9.TabIndex = 92;
@@ -359,7 +362,7 @@ namespace Programa
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(369, 361);
+            this.label10.Location = new System.Drawing.Point(480, 380);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(168, 13);
             this.label10.TabIndex = 95;
@@ -367,9 +370,9 @@ namespace Programa
             // 
             // textBoxEliminarEjemplares
             // 
-            this.textBoxEliminarEjemplares.Location = new System.Drawing.Point(543, 358);
+            this.textBoxEliminarEjemplares.Location = new System.Drawing.Point(654, 377);
             this.textBoxEliminarEjemplares.Name = "textBoxEliminarEjemplares";
-            this.textBoxEliminarEjemplares.Size = new System.Drawing.Size(117, 20);
+            this.textBoxEliminarEjemplares.Size = new System.Drawing.Size(107, 20);
             this.textBoxEliminarEjemplares.TabIndex = 94;
             this.textBoxEliminarEjemplares.TextChanged += new System.EventHandler(this.textBoxEliminarEjemplares_TextChanged);
             // 
@@ -379,11 +382,11 @@ namespace Programa
             this.buttonEliminarEjemplares.FlatAppearance.BorderSize = 0;
             this.buttonEliminarEjemplares.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminarEjemplares.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonEliminarEjemplares.Location = new System.Drawing.Point(543, 384);
+            this.buttonEliminarEjemplares.Location = new System.Drawing.Point(654, 403);
             this.buttonEliminarEjemplares.Name = "buttonEliminarEjemplares";
             this.buttonEliminarEjemplares.Size = new System.Drawing.Size(107, 23);
             this.buttonEliminarEjemplares.TabIndex = 93;
-            this.buttonEliminarEjemplares.Text = "Eliminar Ejemplares";
+            this.buttonEliminarEjemplares.Text = "Eliminar";
             this.buttonEliminarEjemplares.UseVisualStyleBackColor = false;
             this.buttonEliminarEjemplares.Click += new System.EventHandler(this.buttonEliminarEjemplares_Click);
             // 
@@ -391,7 +394,7 @@ namespace Programa
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(31, 448);
+            this.label11.Location = new System.Drawing.Point(13, 445);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(119, 13);
             this.label11.TabIndex = 96;
@@ -401,7 +404,7 @@ namespace Programa
             // checkBoxBaja
             // 
             this.checkBoxBaja.AutoSize = true;
-            this.checkBoxBaja.Location = new System.Drawing.Point(154, 448);
+            this.checkBoxBaja.Location = new System.Drawing.Point(143, 461);
             this.checkBoxBaja.Name = "checkBoxBaja";
             this.checkBoxBaja.Size = new System.Drawing.Size(47, 17);
             this.checkBoxBaja.TabIndex = 97;
@@ -412,7 +415,7 @@ namespace Programa
             // labelCantidadActual
             // 
             this.labelCantidadActual.AutoSize = true;
-            this.labelCantidadActual.Location = new System.Drawing.Point(207, 312);
+            this.labelCantidadActual.Location = new System.Drawing.Point(189, 309);
             this.labelCantidadActual.Name = "labelCantidadActual";
             this.labelCantidadActual.Size = new System.Drawing.Size(85, 13);
             this.labelCantidadActual.TabIndex = 98;
@@ -423,7 +426,7 @@ namespace Programa
             // 
             this.labelErrorEliminarEjemplares.AutoSize = true;
             this.labelErrorEliminarEjemplares.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorEliminarEjemplares.Location = new System.Drawing.Point(540, 342);
+            this.labelErrorEliminarEjemplares.Location = new System.Drawing.Point(651, 361);
             this.labelErrorEliminarEjemplares.Name = "labelErrorEliminarEjemplares";
             this.labelErrorEliminarEjemplares.Size = new System.Drawing.Size(28, 13);
             this.labelErrorEliminarEjemplares.TabIndex = 99;
@@ -434,12 +437,41 @@ namespace Programa
             // 
             this.labelErrorAñadirEjemplares.AutoSize = true;
             this.labelErrorAñadirEjemplares.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorAñadirEjemplares.Location = new System.Drawing.Point(233, 342);
+            this.labelErrorAñadirEjemplares.Location = new System.Drawing.Point(314, 358);
             this.labelErrorAñadirEjemplares.Name = "labelErrorAñadirEjemplares";
             this.labelErrorAñadirEjemplares.Size = new System.Drawing.Size(28, 13);
             this.labelErrorAñadirEjemplares.TabIndex = 100;
             this.labelErrorAñadirEjemplares.Text = "error";
             this.labelErrorAñadirEjemplares.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(143, 345);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(112, 13);
+            this.label6.TabIndex = 101;
+            this.label6.Text = "Añadir Ejemplares:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(480, 348);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(120, 13);
+            this.label12.TabIndex = 102;
+            this.label12.Text = "Eliminar Ejemplares:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(571, 258);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(165, 13);
+            this.label13.TabIndex = 103;
+            this.label13.Text = "¿No conoces los datos del Libro?";
             // 
             // ActualizarLibro
             // 
@@ -447,6 +479,9 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.labelErrorAñadirEjemplares);
             this.Controls.Add(this.labelErrorEliminarEjemplares);
             this.Controls.Add(this.labelCantidadActual);
@@ -482,7 +517,7 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ActualizarLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Actualizar Libro";
+            this.Text = "E-Library";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarLibro_FormClosed);
             this.Load += new System.EventHandler(this.ActualizarLibro_Load);
             this.panel3.ResumeLayout(false);
@@ -534,5 +569,8 @@ namespace Programa
         private System.Windows.Forms.Label labelCantidadActual;
         private System.Windows.Forms.Label labelErrorEliminarEjemplares;
         private System.Windows.Forms.Label labelErrorAñadirEjemplares;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

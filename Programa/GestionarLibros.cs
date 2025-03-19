@@ -18,7 +18,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text =  nombreUsuario;
         }
 
         private void GestionarLibros_Load(object sender, EventArgs e)//carga la tabla de libros cuando se crea el formulario
@@ -145,6 +145,16 @@ namespace Programa
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

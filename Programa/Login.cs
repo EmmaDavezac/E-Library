@@ -130,5 +130,10 @@ namespace Programa
                 timer1.Stop();
             }
         }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
     }
 }

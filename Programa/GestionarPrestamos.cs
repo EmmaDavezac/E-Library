@@ -19,7 +19,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
 
         private void GestionarPrestamos_Load(object sender, EventArgs e)
@@ -128,19 +128,11 @@ namespace Programa
                         string scoring = Convert.ToString(usuarioSimple.Scoring);
 
                         int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString());
-                        DevolucionPrestamo ventana = new DevolucionPrestamo();
+                        DevolucionPrestamo ventana = new DevolucionPrestamo(nombreUsuario);
                         ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
                         ventana.ShowDialog(this);
                     }
-                    else if (cell.Value.ToString() == "Edit")//Si se presiona la celda con el texto Devolucion, se abre una nueva ventana para editar las fechas de un libro(solo para probar el programa)
-                    {
-                        int idPrestamo = Convert.ToInt32(dataGridViewPrestamos.CurrentRow.Cells[1].Value.ToString());
-                        string fechaPrestamo = dataGridViewPrestamos.CurrentRow.Cells[5].Value.ToString();
-                        string fechaLimite = dataGridViewPrestamos.CurrentRow.Cells[6].Value.ToString();
-                        EditarPrestamo ventana = new EditarPrestamo();
-                        ventana.InicialiarEditarPrestamo(idPrestamo, fechaPrestamo, fechaLimite);
-                        ventana.ShowDialog(this);
-                    }
+                   
                 }
             }
             catch (Exception ex)
@@ -369,6 +361,11 @@ namespace Programa
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
+        }
+
+        private void labelTitulo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

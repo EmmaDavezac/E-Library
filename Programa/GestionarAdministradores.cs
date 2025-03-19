@@ -19,7 +19,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text =  nombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)

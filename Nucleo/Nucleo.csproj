@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\Mapeador.cs" />
+    <Compile Include="DTOs\UsuarioSimpleDTO.cs" />
     <Compile Include="FachadaNucleo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

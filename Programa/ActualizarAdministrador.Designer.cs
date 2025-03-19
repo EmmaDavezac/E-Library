@@ -68,7 +68,7 @@ namespace Programa
             // 
             this.textBoxNombreUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBoxNombreUsuario.Enabled = false;
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(272, 163);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(238, 159);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(300, 20);
             this.textBoxNombreUsuario.TabIndex = 1;
@@ -77,18 +77,18 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 167);
+            this.label1.Location = new System.Drawing.Point(128, 163);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 49;
-            this.label1.Text = "NombreUsuario";
+            this.label1.Text = "Nombre de Usuario";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(269, 366);
+            this.labelError.Location = new System.Drawing.Point(235, 362);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 48;
@@ -96,7 +96,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(162, 296);
+            this.label4.Location = new System.Drawing.Point(128, 292);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 46;
@@ -105,16 +105,16 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(162, 248);
+            this.label3.Location = new System.Drawing.Point(128, 244);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 45;
-            this.label3.Text = "FechaNacimiento";
+            this.label3.Text = "Fecha de Nacimiento";
             // 
             // labelApellido
             // 
             this.labelApellido.AutoSize = true;
-            this.labelApellido.Location = new System.Drawing.Point(162, 222);
+            this.labelApellido.Location = new System.Drawing.Point(128, 218);
             this.labelApellido.Name = "labelApellido";
             this.labelApellido.Size = new System.Drawing.Size(44, 13);
             this.labelApellido.TabIndex = 44;
@@ -123,7 +123,7 @@ namespace Programa
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(162, 196);
+            this.labelNombre.Location = new System.Drawing.Point(128, 192);
             this.labelNombre.Name = "labelNombre";
             this.labelNombre.Size = new System.Drawing.Size(44, 13);
             this.labelNombre.TabIndex = 43;
@@ -132,7 +132,7 @@ namespace Programa
             // textBoxMail
             // 
             this.textBoxMail.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxMail.Location = new System.Drawing.Point(272, 293);
+            this.textBoxMail.Location = new System.Drawing.Point(238, 289);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(300, 20);
             this.textBoxMail.TabIndex = 6;
@@ -141,7 +141,7 @@ namespace Programa
             // textBoxApellido
             // 
             this.textBoxApellido.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxApellido.Location = new System.Drawing.Point(272, 215);
+            this.textBoxApellido.Location = new System.Drawing.Point(238, 211);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(300, 20);
             this.textBoxApellido.TabIndex = 5;
@@ -150,7 +150,7 @@ namespace Programa
             // textBoxNombre
             // 
             this.textBoxNombre.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxNombre.Location = new System.Drawing.Point(272, 189);
+            this.textBoxNombre.Location = new System.Drawing.Point(238, 185);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(300, 20);
             this.textBoxNombre.TabIndex = 4;
@@ -191,7 +191,7 @@ namespace Programa
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label2.Location = new System.Drawing.Point(162, 274);
+            this.label2.Location = new System.Drawing.Point(128, 270);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 56;
@@ -200,7 +200,7 @@ namespace Programa
             // textBoxTelefono
             // 
             this.textBoxTelefono.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxTelefono.Location = new System.Drawing.Point(272, 267);
+            this.textBoxTelefono.Location = new System.Drawing.Point(238, 263);
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(300, 20);
             this.textBoxTelefono.TabIndex = 55;
@@ -214,19 +214,19 @@ namespace Programa
             this.buttonModificarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificarContraseña.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonModificarContraseña.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonModificarContraseña.Location = new System.Drawing.Point(163, 340);
+            this.buttonModificarContraseña.Location = new System.Drawing.Point(396, 315);
             this.buttonModificarContraseña.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonModificarContraseña.Name = "buttonModificarContraseña";
             this.buttonModificarContraseña.Size = new System.Drawing.Size(142, 23);
             this.buttonModificarContraseña.TabIndex = 57;
-            this.buttonModificarContraseña.Text = "Modificar Contraseña";
+            this.buttonModificarContraseña.Text = "Actualizar Contraseña";
             this.buttonModificarContraseña.UseVisualStyleBackColor = false;
             this.buttonModificarContraseña.Click += new System.EventHandler(this.buttonModificarContraseña_Click);
             // 
             // dateTimePickerFechaNacimiento
             // 
             this.dateTimePickerFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(272, 242);
+            this.dateTimePickerFechaNacimiento.Location = new System.Drawing.Point(238, 238);
             this.dateTimePickerFechaNacimiento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerFechaNacimiento.Name = "dateTimePickerFechaNacimiento";
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(300, 20);
@@ -262,18 +262,18 @@ namespace Programa
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label5.Location = new System.Drawing.Point(12, 44);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 15);
+            this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "E-Librery";
+            this.label5.Text = "E-Library";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
             this.pictureBox2.Location = new System.Drawing.Point(16, 3);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -296,8 +296,8 @@ namespace Programa
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
@@ -309,7 +309,7 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
             this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
@@ -321,7 +321,7 @@ namespace Programa
             // 
             this.checkBoxBaja.AutoSize = true;
             this.checkBoxBaja.ForeColor = System.Drawing.Color.Black;
-            this.checkBoxBaja.Location = new System.Drawing.Point(182, 407);
+            this.checkBoxBaja.Location = new System.Drawing.Point(125, 429);
             this.checkBoxBaja.Name = "checkBoxBaja";
             this.checkBoxBaja.Size = new System.Drawing.Size(47, 17);
             this.checkBoxBaja.TabIndex = 102;
@@ -334,11 +334,11 @@ namespace Programa
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(47, 116);
+            this.label6.Location = new System.Drawing.Point(13, 112);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 13);
+            this.label6.Size = new System.Drawing.Size(233, 13);
             this.label6.TabIndex = 101;
-            this.label6.Text = "Modificar datos del administrador:";
+            this.label6.Text = "Actualizar información del Administrador";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label11
@@ -346,7 +346,7 @@ namespace Programa
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(47, 407);
+            this.label11.Location = new System.Drawing.Point(13, 403);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(136, 13);
             this.label11.TabIndex = 100;
@@ -386,7 +386,7 @@ namespace Programa
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ActualizarAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Actualizar Administrador";
+            this.Text = "E-Library";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ActualizarAdministrador_FormClosed);
             this.Load += new System.EventHandler(this.ActualizarAdministrador_Load);
             this.panel3.ResumeLayout(false);

@@ -75,6 +75,7 @@ namespace Programa
             this.buttonRegistrarPrestamo = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxIdLibro = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -119,11 +120,11 @@ namespace Programa
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "E-Librery";
+            this.label5.Text = "E-Library";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Programa.Properties.Resources.libro_abierto;
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
             this.pictureBox2.Location = new System.Drawing.Point(16, 3);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
@@ -146,8 +147,8 @@ namespace Programa
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Programa.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 12);
+            this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 40);
@@ -159,7 +160,7 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 16);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
             this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
             this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
@@ -172,11 +173,11 @@ namespace Programa
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(27, 72);
+            this.labelTitulo.Location = new System.Drawing.Point(28, 96);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(112, 13);
+            this.labelTitulo.Size = new System.Drawing.Size(116, 13);
             this.labelTitulo.TabIndex = 78;
-            this.labelTitulo.Text = "Seleccion del libro";
+            this.labelTitulo.Text = "Seleccione el Libro";
             this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
             // 
             // dataGridViewLibros
@@ -193,9 +194,9 @@ namespace Programa
             this.AñoPublicacion,
             this.CantidadDisponible,
             this.Cantidad});
-            this.dataGridViewLibros.Location = new System.Drawing.Point(-2, 116);
+            this.dataGridViewLibros.Location = new System.Drawing.Point(-1, 140);
             this.dataGridViewLibros.Name = "dataGridViewLibros";
-            this.dataGridViewLibros.Size = new System.Drawing.Size(591, 168);
+            this.dataGridViewLibros.Size = new System.Drawing.Size(591, 158);
             this.dataGridViewLibros.TabIndex = 79;
             this.dataGridViewLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
             this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
@@ -247,16 +248,16 @@ namespace Programa
             // 
             // textBoxTituloOISBNLibro
             // 
-            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(218, 90);
+            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(219, 114);
             this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
-            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(300, 20);
+            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(371, 20);
             this.textBoxTituloOISBNLibro.TabIndex = 81;
             this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNLibro_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 93);
+            this.label1.Location = new System.Drawing.Point(51, 117);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 13);
             this.label1.TabIndex = 80;
@@ -265,21 +266,21 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(639, 211);
+            this.textBoxISBN.Location = new System.Drawing.Point(641, 228);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(134, 20);
             this.textBoxISBN.TabIndex = 82;
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(639, 173);
+            this.textBoxTitulo.Location = new System.Drawing.Point(641, 190);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(134, 20);
             this.textBoxTitulo.TabIndex = 82;
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(639, 251);
+            this.textBoxAutor.Location = new System.Drawing.Point(641, 268);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(134, 20);
             this.textBoxAutor.TabIndex = 83;
@@ -287,7 +288,7 @@ namespace Programa
             // TituloLabel
             // 
             this.TituloLabel.AutoSize = true;
-            this.TituloLabel.Location = new System.Drawing.Point(598, 176);
+            this.TituloLabel.Location = new System.Drawing.Point(599, 177);
             this.TituloLabel.Name = "TituloLabel";
             this.TituloLabel.Size = new System.Drawing.Size(36, 13);
             this.TituloLabel.TabIndex = 85;
@@ -296,7 +297,7 @@ namespace Programa
             // ISBNLabel
             // 
             this.ISBNLabel.AutoSize = true;
-            this.ISBNLabel.Location = new System.Drawing.Point(598, 214);
+            this.ISBNLabel.Location = new System.Drawing.Point(600, 215);
             this.ISBNLabel.Name = "ISBNLabel";
             this.ISBNLabel.Size = new System.Drawing.Size(35, 13);
             this.ISBNLabel.TabIndex = 86;
@@ -305,7 +306,7 @@ namespace Programa
             // AutorLabel
             // 
             this.AutorLabel.AutoSize = true;
-            this.AutorLabel.Location = new System.Drawing.Point(598, 254);
+            this.AutorLabel.Location = new System.Drawing.Point(600, 255);
             this.AutorLabel.Name = "AutorLabel";
             this.AutorLabel.Size = new System.Drawing.Size(35, 13);
             this.AutorLabel.TabIndex = 87;
@@ -316,16 +317,16 @@ namespace Programa
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(27, 290);
+            this.label2.Location = new System.Drawing.Point(28, 314);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 13);
+            this.label2.Size = new System.Drawing.Size(135, 13);
             this.label2.TabIndex = 88;
-            this.label2.Text = "Seleccione el usuario:";
+            this.label2.Text = "Seleccione el Usuario:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(595, 367);
+            this.label3.Location = new System.Drawing.Point(597, 361);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 95;
@@ -334,7 +335,7 @@ namespace Programa
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(597, 445);
+            this.label4.Location = new System.Drawing.Point(599, 439);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 94;
@@ -344,7 +345,7 @@ namespace Programa
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(597, 406);
+            this.label6.Location = new System.Drawing.Point(599, 400);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 93;
@@ -352,14 +353,14 @@ namespace Programa
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(638, 461);
+            this.textBoxApellido.Location = new System.Drawing.Point(640, 455);
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(134, 20);
             this.textBoxApellido.TabIndex = 92;
             // 
             // textBoxNomUsuario
             // 
-            this.textBoxNomUsuario.Location = new System.Drawing.Point(639, 383);
+            this.textBoxNomUsuario.Location = new System.Drawing.Point(641, 377);
             this.textBoxNomUsuario.Name = "textBoxNomUsuario";
             this.textBoxNomUsuario.Size = new System.Drawing.Size(134, 20);
             this.textBoxNomUsuario.TabIndex = 90;
@@ -367,27 +368,27 @@ namespace Programa
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(638, 422);
+            this.textBoxNombre.Location = new System.Drawing.Point(640, 416);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(134, 20);
             this.textBoxNombre.TabIndex = 91;
             // 
             // textBoxNombreUsuario
             // 
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(218, 310);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(219, 334);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(300, 20);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(371, 20);
             this.textBoxNombreUsuario.TabIndex = 97;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 313);
+            this.label7.Location = new System.Drawing.Point(51, 337);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 13);
+            this.label7.Size = new System.Drawing.Size(155, 13);
             this.label7.TabIndex = 96;
-            this.label7.Text = "Buscar por nombre de usuario:";
+            this.label7.Text = "Buscar por Nombre de Usuario:";
             // 
             // dataGridViewUsuarios
             // 
@@ -402,9 +403,9 @@ namespace Programa
             this.FechaNacimiento,
             this.Mail,
             this.Telefono});
-            this.dataGridViewUsuarios.Location = new System.Drawing.Point(12, 336);
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(13, 360);
             this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
-            this.dataGridViewUsuarios.Size = new System.Drawing.Size(593, 177);
+            this.dataGridViewUsuarios.Size = new System.Drawing.Size(577, 160);
             this.dataGridViewUsuarios.TabIndex = 98;
             this.dataGridViewUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
             this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
@@ -482,7 +483,7 @@ namespace Programa
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(597, 141);
+            this.label8.Location = new System.Drawing.Point(600, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(19, 13);
             this.label8.TabIndex = 102;
@@ -490,10 +491,21 @@ namespace Programa
             // 
             // textBoxIdLibro
             // 
-            this.textBoxIdLibro.Location = new System.Drawing.Point(638, 138);
+            this.textBoxIdLibro.Location = new System.Drawing.Point(640, 155);
             this.textBoxIdLibro.Name = "textBoxIdLibro";
             this.textBoxIdLibro.Size = new System.Drawing.Size(134, 20);
             this.textBoxIdLibro.TabIndex = 101;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(12, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(114, 13);
+            this.label9.TabIndex = 103;
+            this.label9.Text = "Registrar Prestamo";
             // 
             // RegistrarPrestamo
             // 
@@ -501,6 +513,7 @@ namespace Programa
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxIdLibro);
             this.Controls.Add(this.buttonRegistrarPrestamo);
@@ -529,7 +542,7 @@ namespace Programa
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RegistrarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Registrar Prestamo";
+            this.Text = "E-Library";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistrarPrestamo_FormClosed);
             this.Load += new System.EventHandler(this.RegistrarPrestamo_Load);
             this.panel3.ResumeLayout(false);
@@ -592,5 +605,6 @@ namespace Programa
         private System.Windows.Forms.Button buttonRegistrarPrestamo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxIdLibro;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -15,12 +15,16 @@ namespace Programa
         private int idPrestamo;
         private bool modificado;
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
-        public DevolucionPrestamo()//contructor de la clase
+        private string nombreUsuario;
+        public DevolucionPrestamo(string pNombreUsuario)//contructor de la clase
         {
             scoringPorFecha = 0;
             scoringDevolucion = 0;
             modificado = false;
             InitializeComponent();
+            nombreUsuario = pNombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
+            this.nombreUsuario = nombreUsuario;
         }
 
         private void label5_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text =nombreUsuario;
         }
 
 
