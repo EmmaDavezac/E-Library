@@ -24,7 +24,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = nombreUsuario;
-            this.nombreUsuario = nombreUsuario;
+          
         }
 
         private void label5_Click(object sender, EventArgs e)

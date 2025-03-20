@@ -23,7 +23,7 @@ namespace Dominio
         /// </summary>
         /// <param name="contraseña">Contraseña a verificar</param>
         /// <returns></returns>
-        public bool VerificarContraseña(string contraseña)
+        public bool ValidarContraseña(string contraseña)
         {
             
             return encriptador.Validar(contraseña, this.Pass);

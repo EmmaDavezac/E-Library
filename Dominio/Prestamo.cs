@@ -47,18 +47,15 @@ namespace Dominio
         /// Resumen: Instancia del ejemplar relacionado al prestamo.
         /// </summary>
         public virtual Ejemplar Ejemplar { get; set; }
-        /// <summary>
-        /// Resumen: Identificador del libro.
-        /// </summary>
-        public int IdLibro { get; set; }
+    
         /// <summary>
         /// Resumen Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns>Fecha limite del prestamo</returns>
-        public DateTime CalcularFechaLimite(UsuarioSimple usuario)
+        public DateTime CalcularFechaLimite()
         {
-            int scoring = usuario.Scoring;
+            int scoring = Usuario.Scoring;
 
             if (scoring >= 0)
             {
@@ -77,16 +74,16 @@ namespace Dominio
         /// <param name="usuario">Usuario que solicita el prestamo</param>
         /// <param name="ejemplar">Ejemplar que se presta</param>   
         /// <param name="libro">Libro que se presta</param>
-        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar, Libro libro)
+        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar)
         {
             FechaPrestamo = DateTime.Now.ToShortDateString();
-            FechaLimite = CalcularFechaLimite(usuario).ToShortDateString();
+            FechaLimite = CalcularFechaLimite().ToShortDateString();
             nombreUsuario = usuario.nombreUsuario;
             Usuario = usuario;
             idEjemplar = ejemplar.Id;
             Ejemplar = ejemplar;
             EstadoPrestamo = EstadoPrestamo.Normal;
-            IdLibro = libro.Id;
+          
         }
         /// <summary>
         /// Resumen: Constructor de la clase
@@ -157,9 +154,9 @@ namespace Dominio
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
-        public int CalcularScoring(UsuarioSimple usuario)
+        public int CalcularScoring()
         {
-            int scoring = usuario.Scoring;
+            int scoring = this.Usuario.Scoring;
             if (EstadoDevolucion == EstadoEjemplar.Malo)
             {   
                     scoring -= 10;
@@ -202,7 +199,7 @@ namespace Dominio
                 Ejemplar.Baja = false;
             }
             FechaDevolucion = DateTime.Now.Date.ToString();
-            Usuario.Scoring = CalcularScoring(Usuario);
+            Usuario.Scoring = CalcularScoring();
         }
     }
 }

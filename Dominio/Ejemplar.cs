@@ -28,7 +28,7 @@ namespace Dominio
         /// <summary>
         /// Resumen: Lista de prestamos que se ha hecho del ejemplar
         /// </summary>
-        public virtual List<Prestamo> Prestamos { get; set; }
+        //public virtual List<Prestamo> Prestamos { get; set; }
 
         /// <summary>
         /// Resumen: Propiedad que nos permite saber si el ejemplar se encuentra dado de baja
@@ -51,22 +51,6 @@ namespace Dominio
             Libro = unLibro;//Relacionamos el ejemplar con el libro al que pertenece
             Baja = false;//Un ejemplar recien creado no se encuentra dado de baja
         }
-        /// <summary>
-        /// Resumen: Este metodo nos permite obtener el titulo del libro al que pertenece el ejemplar
-        /// </summary>
-        /// <returns>Titulo del libro al que pertenece el ejemplar</returns>
-        public string ObtenerTituloLibro()
-        {
-            return Libro.Titulo;
-        }
-       
-        /// <summary>
-        /// Resumen: Este metodo nos permite obtener el ISBN del libro al que pertenece el ejemplar
-        /// </summary>
-        /// <returns>ISBN del libro</returns>
-        public string ObtenerISBNLibro()
-        {
-            return Libro.ISBN;
-        }
+
     }
 }

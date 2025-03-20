@@ -245,7 +245,7 @@ namespace Programa
                                     if (!string.IsNullOrEmpty(textBoxISBN.Text))
                                     {
                                         int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-                                        interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar, Convert.ToInt32(textBoxIdLibro.Text));
+                                        interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar);
                                         string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerPrestamos().Last().Id).FechaLimite).Date.ToShortDateString();
                                         ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
                                         MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);

@@ -550,24 +550,28 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del usuario que solicita el prestamo</param>
         /// <param name="idEjemplar">ID del ejemplar del libro que se va a prestar </param>
         /// <param name="idLibro">ID del libro que se va a prestar</param>
-        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar, int idLibro)
+        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Prestamo registrado con exito (idLibro: " + idLibro + "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") obtenida con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    Prestamo prestamo = new Prestamo(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario), unitOfWork.RepositorioEjemplares.Get(idEjemplar), unitOfWork.RepositorioLibros.Get(idLibro));//Instancia de un prestamo con los valores que pasamos como parametro
+                {   Ejemplar ejemplar = unitOfWork.RepositorioEjemplares.Get(idEjemplar);
+                    UsuarioSimple usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
+                    Prestamo prestamo = new Prestamo(usuario,ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
                     unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;//El ejemplar del prestamo pasa a estar no diponible
                     unitOfWork.RepositorioPrestamos.Add(prestamo);//Añadimos el pretamo a la base de datos
+                    msg = "Prestamo registrado con exito (idLibro: " + ejemplar.idLibro+ "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") obtenida con exito.";
+
                     unitOfWork.Complete();//Guardamos los cambios
+
                 }
+
             }
             catch (Exception ex)
             {
-                msg = "Error al registrar el Prestamo  (idLibro: " + idLibro + "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") ." + ex.Message + ex.StackTrace;
+                msg = "Error al registrar el Prestamo  (Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") ." + ex.Message + ex.StackTrace;
             }
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
@@ -627,31 +631,7 @@ namespace Nucleo
             }
         }
 
-        /// <summary>
-        /// Resumen: Este metodo nos permite obtener el Usuario de un Prestamo a partir del ID del Prestamo.
-        /// </summary>
-        /// <param name="id">ID del prestamo</param>
-        /// <returns>UsuarioSimple o null</returns>
-        public UsuarioSimple ObtenerUsuarioDePrestamo(int id)
-        {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            UsuarioSimple usuario = new UsuarioSimple();//Instanciamos un objeto del tipo UsuariosSimple que luego sera devuelto por el metodo
-            try
-            {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    usuario = unitOfWork.RepositorioPrestamos.Get(id).Usuario;//Obtenemos el usuario y se lo asignamos a la variable creada anteriormente
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = "Error, el usuario del prestamo (Id Prestamo: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-            }
-            return usuario;//Devolvemos el usuario
-        }
-
+       
         /// <summary>
         /// Resumen: Este metodo nos permite registrar la devolucion de un Prestamo.
         /// </summary>
@@ -681,31 +661,7 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
-        /// <summary>
-        /// Resumen: Este metodo nos permite modificar las fechas de realizacion y limite de un prestamo(funcion solo para versiones de prueba)
-        /// </summary>
-        /// <param name="pIdPrestamo">ID del Prestamo</param>
-        /// <param name="pFechaPrestamo">Fecha en que se realizo el Prestamo</param>
-        /// <param name="pFechaLimite">Fecha limite de devolucion del Prestamo</param>
-        public void ModificarFechasPrestamo(int pIdPrestamo, string pFechaPrestamo, string pFechaLimite)
-        {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            try
-            {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())
-                {
-                    unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaPrestamo = pFechaPrestamo;
-                    unitOfWork.RepositorioPrestamos.Get(pIdPrestamo).FechaLimite = pFechaLimite;
-                    unitOfWork.Complete();
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = "Error al modificar las fechas  del prestamo (Id Prestamo: " + pIdPrestamo + " Fecha prestamo: " + pFechaPrestamo + " Fecha Limite: " + pFechaLimite + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-            }
-        }
+      
 
         /// <summary>
         /// Resumen: Este metodo nos permite verificar que la combinacion NombreUsuario-Contraseña sea correcta.
@@ -713,9 +669,9 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del Administrador</param>
         /// <param name="contraseña">Contraseña del administrador</param>
         /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
-        public bool VerficarContraseña(string pNombreUsuario, string contraseña)
+        public bool ValidarContraseña(string pNombreUsuario, string contraseña)
         {   
-            return ObtenerAdministrador(pNombreUsuario).VerificarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
+            return ObtenerAdministrador(pNombreUsuario).ValidarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
         }
 
         /// <summary>
@@ -888,9 +844,9 @@ namespace Nucleo
             }
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
-                UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                Libro libro = ObtenerLibro(item.IdLibro);
-                NotificarProximoAVencer(usuario.nombreUsuario, libro.Titulo, item.FechaLimite);
+                string nombreUsuario = item.Usuario.nombreUsuario;
+                string titulo = ObtenerLibro(item.Ejemplar.idLibro).Titulo;
+                NotificarProximoAVencer(nombreUsuario, titulo, item.FechaLimite);
             }
         }
 
@@ -905,9 +861,9 @@ namespace Nucleo
             }
             foreach (var item in ObtenerListadePrestamosRetrasados())
             {
-                UsuarioSimple usuario = ObtenerUsuarioDePrestamo(item.Id);
-                Libro libro = ObtenerLibro(item.IdLibro);
-                NotificarRetraso(usuario.nombreUsuario, libro.Titulo, item.FechaLimite);
+                string nombreUsuario = item.nombreUsuario;
+                string titulo = ObtenerLibro(item.Ejemplar.idLibro).Titulo;
+                NotificarRetraso(nombreUsuario, titulo, item.FechaLimite);
             }
         }
 

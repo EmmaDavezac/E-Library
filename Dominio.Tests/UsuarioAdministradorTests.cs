@@ -15,7 +15,7 @@ namespace Dominio.Tests
             UsuarioAdministrador unAdmin = new UsuarioAdministrador("", "", new DateTime(2000, 2, 2), "", "abc123","","");
             string pass = "abc123";
             //Act
-            bool resultado = unAdmin.VerificarContraseña(pass);
+            bool resultado = unAdmin.ValidarContraseña(pass);
 
             //Assert
             Assert.AreEqual(true, resultado);

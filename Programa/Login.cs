@@ -44,7 +44,7 @@ namespace Programa
                     {
                         if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)//verificamos que el usuario no este dado de baja
                         {
-                            if (textBoxContraseña.Text != null && interfazNucleo.VerficarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
+                            if (textBoxContraseña.Text != null && interfazNucleo.ValidarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
                             //verificamos que la contraseña ingresada corresponda con la del usuario ingresado
                             {
                                 MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);//creamos una instancia de menuprincipal
