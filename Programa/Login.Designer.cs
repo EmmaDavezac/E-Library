@@ -99,7 +99,7 @@ namespace Programa
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonIniciarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonIniciarSesion.Location = new System.Drawing.Point(289, 440);
+            this.botonIniciarSesion.Location = new System.Drawing.Point(289, 461);
             this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonIniciarSesion.Name = "botonIniciarSesion";
             this.botonIniciarSesion.Size = new System.Drawing.Size(208, 30);
@@ -113,7 +113,7 @@ namespace Programa
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Black;
-            this.labelError.Location = new System.Drawing.Point(286, 440);
+            this.labelError.Location = new System.Drawing.Point(286, 431);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 16);
             this.labelError.TabIndex = 33;
