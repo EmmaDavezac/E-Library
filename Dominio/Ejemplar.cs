@@ -11,8 +11,6 @@ namespace Dominio
         ///Resumen: Clave que nos permite diferenciar entre si los ejemplares.
         ///</summary>
         public int Id { get; set; }
-        [ForeignKey("idLibro")]//Es la clave foranea del objeto que nos permite relacionar tablas entre si
-        virtual public Libro Libro { get; set; }
         public int idLibro { get; set; }
 
         ///<summary>

@@ -9,7 +9,7 @@ namespace DAL.EntityFramework
         /// <summary>
         /// Resumen: Constructor de la clase.
         /// </summary>
-        /// <param name="pDbContext">Contexto de la base de datos</param>
+        /// <param name="pDbContext"></param>
         public RepositorioAdministradores(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
         }
