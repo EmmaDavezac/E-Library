@@ -48,8 +48,8 @@ namespace Dominio
         {
             Estado = EstadoEjemplar.Bueno;//El estado original de un ejemplar es buen estado
             Disponible = true;//Originalmente un ejemplar se encuentra disponible hasta que se preste
-            Libro = unLibro;//Relacionamos el ejemplar con el libro al que pertenece
             Baja = false;//Un ejemplar recien creado no se encuentra dado de baja
+            idLibro = unLibro.Id;
         }
 
     }

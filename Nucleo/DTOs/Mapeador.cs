@@ -20,7 +20,34 @@ namespace Nucleo.DTOs
             return usuarioSimpleDTO;
         }
 
-     }
+        /// <summary>
+        /// Resumen: Este metodo nos permite mapear un usuario administrador a un usuario administrador DTO.
+        /// </summary>
+        /// <param name="usuarioAdministrador"></param>
+        /// <returns></returns>
+        public UsuarioAdministradorDTO Mapear(UsuarioAdministrador usuarioAdministrador)
+        {
+            UsuarioAdministradorDTO usuarioAdministradorDTO = new UsuarioAdministradorDTO(usuarioAdministrador.Nombre, usuarioAdministrador.Apellido, usuarioAdministrador.FechaNacimiento, usuarioAdministrador.Mail, usuarioAdministrador.Telefono, usuarioAdministrador.nombreUsuario);
+            return usuarioAdministradorDTO;
+        }
+
+        public LibroDTO Mapear(Libro libro)
+        {
+            LibroDTO libroDTO = new LibroDTO(libro.Id,libro.ISBN,libro.Titulo,libro.Autor,libro.AñoPublicacion);
+            return libroDTO;
+        }
+
+        public EjemplarDTO Mapear(Ejemplar ejemplar)
+        {   string estado= "";
+            if (ejemplar.Estado==EstadoEjemplar.Bueno)
+                estado= "Bueno";
+            else 
+                estado= "Malo";
+            EjemplarDTO ejemplarDTO = new EjemplarDTO(ejemplar.Id, ejemplar.idLibro, estado,ejemplar.Disponible,ejemplar.Baja);
+            return ejemplarDTO;
+        }
+
+    }
 
 
 }

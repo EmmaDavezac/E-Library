@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices.WindowsRuntime;
-using BibliotecaEncriptacion;
 
 namespace Dominio
 {   ///<summary>
@@ -8,10 +7,7 @@ namespace Dominio
     ///</summary>
     public class UsuarioAdministrador : Usuario
     {
-        /// <summary>
-        /// Resumen: Encriptador que nos permite encriptar y desencriptar la contraseña del administrador.
-        /// </summary>
-        private IEncriptador encriptador = new EncriptadorCesar();
+        
 
         ///<summary>
         ///Resumen: Contraseña para acceder al programa.
@@ -23,11 +19,7 @@ namespace Dominio
         /// </summary>
         /// <param name="contraseña">Contraseña a verificar</param>
         /// <returns></returns>
-        public bool ValidarContraseña(string contraseña)
-        {
-            
-            return encriptador.Validar(contraseña, this.Pass);
-        }
+      
        
         /// <summary>
         /// Resumen: Constructor de la clase que inicializa los atributos de la clase
@@ -41,7 +33,7 @@ namespace Dominio
         /// <param name="pNombreUsuario">Nombre de usuario</param>
         public UsuarioAdministrador(string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono, string pNombreUsuario) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario)//Constructor de la clase que hace uso del contructor de la clase padre
         {   
-            Pass = encriptador.Encriptar(contraseña);
+            Pass = contraseña;
         }
         /// <summary>
         /// Resumen: Metodo que nos permite actualizar la contraseña del administrador

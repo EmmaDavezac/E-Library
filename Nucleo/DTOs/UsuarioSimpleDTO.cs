@@ -1,9 +1,5 @@
-﻿using Dominio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+
 
 namespace Nucleo.DTOs
 {   ///<summary>
@@ -11,6 +7,7 @@ namespace Nucleo.DTOs
     ///</summary>
     public class UsuarioSimpleDTO : UsuarioDTO
     {
+
         /// <summary>
         /// Resumen: Propiedad que nos permite acceder al scoring del usuario.
         /// </summary>

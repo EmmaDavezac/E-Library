@@ -7,6 +7,7 @@ using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de li
 using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
 using Bitacora;//Libreria que nos permite registrar logs en la bitacora
 using DAL.EntityFramework;
+using BibliotecaEncriptacion;
 
 
 
@@ -30,8 +31,12 @@ namespace Nucleo
         /// Resumen: Esta variable nos permite registrar logs en la bitacora.
         /// </summary>
         private IBitacora bitacora = new ImplementacionBitacora();
+        /// <summary>
+        /// Resumen: Encriptador que nos permite encriptar y desencriptar la contraseña del administrador.
+        /// </summary>
+        private IEncriptador encriptador = new EncriptadorCesar();
 
-        
+
 
 
         /// <summary>
@@ -163,7 +168,7 @@ namespace Nucleo
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, contraseña, telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
+            UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, encriptador.Encriptar(contraseña), telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
             try
             {
                 msg = "Administrador " + pNombreUsuario + " registrado con exito.";
@@ -259,7 +264,7 @@ namespace Nucleo
                 msg = "Contraseña del administrador " + pNombreAdministrador + " actualizada con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).ActualizarPassword(contraseña);//Modificamos la contraseña actual por la que pasamos como parametro
+                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).ActualizarPassword(encriptador.Encriptar(contraseña));//Modificamos la contraseña actual por la que pasamos como parametro
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -661,7 +666,7 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
-      
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite verificar que la combinacion NombreUsuario-Contraseña sea correcta.
@@ -670,8 +675,9 @@ namespace Nucleo
         /// <param name="contraseña">Contraseña del administrador</param>
         /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
         public bool ValidarContraseña(string pNombreUsuario, string contraseña)
-        {   
-            return ObtenerAdministrador(pNombreUsuario).ValidarContraseña(contraseña);//Obtiene el administrador y llama a su metodo VerificarContraseña con la contraseña pasada como paramtetro para verificar que el usuario y contraseña son correctos para iniciar sesion
+        {
+            UsuarioAdministrador administrador = ObtenerAdministrador(pNombreUsuario);
+            return encriptador.Validar(contraseña, administrador.Pass);
         }
 
         /// <summary>
