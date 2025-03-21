@@ -47,7 +47,34 @@ namespace Nucleo.DTOs
             return ejemplarDTO;
         }
 
-    }
+        public PrestamoDTO Mapear(Prestamo prestamo)
+        {   string estadoPrestamo="";
+            switch (prestamo.EstadoPrestamo)
+            {   
+                case EstadoPrestamo.Normal:
+                    estadoPrestamo = "Normal";
+                    break;
+                case EstadoPrestamo.ProximoAVencer:
+                    estadoPrestamo = "Proximo a vencer";
+                    break;
+                case EstadoPrestamo.Retrasado:estadoPrestamo = "Retrasado";
+                    break;
+                  
+            }
+            string estadoDevolucion="";
+            switch (prestamo.EstadoDevolucion)
+            {
+                case EstadoEjemplar.Bueno:
+                    estadoDevolucion = "Bueno";
+                    break;
+                case EstadoEjemplar.Malo:
+                    estadoDevolucion = "Malo";
+                    break;
+            }
+            PrestamoDTO prestamoDTO = new PrestamoDTO(prestamo.nombreUsuario,prestamo.idEjemplar,prestamo.FechaPrestamo,prestamo.FechaLimite,prestamo.FechaDevolucion,estadoPrestamo,estadoDevolucion);
+            return prestamoDTO;
 
+        }
+    }
 
 }

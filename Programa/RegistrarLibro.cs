@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -57,7 +57,7 @@ namespace Programa
             {
                 int resultado = 0;
                 dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
-                List<Libro> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
+                List<LibroDTO> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
                 foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
                 {
                     int n = dataGridViewTituloYAutor.Rows.Add();

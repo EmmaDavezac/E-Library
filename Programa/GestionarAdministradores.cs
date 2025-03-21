@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -115,7 +115,7 @@ namespace Programa
         {
             try
             {
-                IEnumerable<UsuarioAdministrador> administradores = interfazNucleo.ObtenerAdministradores();
+                IEnumerable<UsuarioAdministradorDTO> administradores = interfazNucleo.ObtenerAdministradores();
             dataGridViewAdministradores.Rows.Clear();
             foreach (var item in administradores)
             {

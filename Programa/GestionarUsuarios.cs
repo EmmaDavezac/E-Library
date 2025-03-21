@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using Bitacora;
 
 namespace Programa
@@ -117,7 +117,7 @@ namespace Programa
         {
             try
             {
-                IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
+                IEnumerable<UsuarioSimpleDTO> usuarios = interfazNucleo.ObtenerUsuarios();//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
             dataGridViewUsuarios.Rows.Clear();//limpiamos el contenido de la tabla
             foreach (var item in usuarios)//recorremos cada item de la lista y lo agregamos a la tabla
             {

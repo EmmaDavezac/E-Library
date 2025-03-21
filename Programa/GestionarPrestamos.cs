@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -58,27 +58,28 @@ namespace Programa
         {
             try
             {
-                IEnumerable<Prestamo> prestamos = interfazNucleo.ObtenerPrestamos();//Obtenemos la lista de prestamos
+                IEnumerable<PrestamoDTO> prestamos = interfazNucleo.ObtenerPrestamos();//Obtenemos la lista de prestamos
                 dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
                 foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
                 {
-
+                    EjemplarDTO ejemplar= interfazNucleo.ObtenerEjemplar(item.idEjemplar);
+                    LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.idLibro);
                     int n = dataGridViewPrestamos.Rows.Add();
                     dataGridViewPrestamos.Rows[n].Cells[1].Value = item.Id;
                     dataGridViewPrestamos.Rows[n].Cells[2].Value = item.nombreUsuario;
-                    dataGridViewPrestamos.Rows[n].Cells[3].Value = interfazNucleo.ObtenerLibro(item.Ejemplar.idLibro).Titulo;
-                    dataGridViewPrestamos.Rows[n].Cells[4].Value = interfazNucleo.ObtenerLibro(item.Ejemplar.idLibro).ISBN;
+                    dataGridViewPrestamos.Rows[n].Cells[3].Value = libro.Titulo;
+                    dataGridViewPrestamos.Rows[n].Cells[4].Value = libro.ISBN;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.FechaPrestamo;
                     dataGridViewPrestamos.Rows[n].Cells[6].Value = item.FechaLimite;
                     if (item.FechaDevolucion == null)
                     {
-                        dataGridViewPrestamos.Rows[n].Cells[7].Value = item.ActualizarEstado().ToString();
+                        dataGridViewPrestamos.Rows[n].Cells[7].Value = item.EstadoPrestamo;
                         if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
                         {
                             dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
                             dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
                         }
-                        else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "ProximoAVencer")
+                        else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Proximo a vencer")
                         {
                             dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
                             dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
@@ -117,10 +118,11 @@ namespace Programa
                     string estadoPrestamo = ((DataGridViewCell)dataGridViewPrestamos.Rows[e.RowIndex].Cells[7]).Value.ToString();
                     if (cell.Value.ToString() == "Devolucion" && estadoPrestamo != "Devuelto")//Si se presiona la celda con el texto Devolucion, se verifica que el prestamo no se haya devuelto y luego se abre una nueva ventana para registrar la devolucion del prestamo
                     {
-                        Prestamo prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
-                        Libro libro = interfazNucleo.ObtenerLibro(prestamo.Ejemplar.idLibro);
+                        PrestamoDTO prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
+                        EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(prestamo.idEjemplar);
+                        LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.idLibro);
                         string usuario = dataGridViewPrestamos.Rows[e.RowIndex].Cells[2].Value.ToString();
-                        UsuarioSimple usuarioSimple = interfazNucleo.ObtenerUsuario(usuario);
+                        UsuarioSimpleDTO usuarioSimple = interfazNucleo.ObtenerUsuario(usuario);
                         string titulo = libro.Titulo;
                         string autor = libro.Autor;
                         string fechaVencimiento = dataGridViewPrestamos.Rows[e.RowIndex].Cells[6].Value.ToString();

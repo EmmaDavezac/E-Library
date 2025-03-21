@@ -8,6 +8,7 @@ using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con p
 using Bitacora;//Libreria que nos permite registrar logs en la bitacora
 using DAL.EntityFramework;
 using BibliotecaEncriptacion;
+using Nucleo.DTOs;
 
 
 
@@ -19,7 +20,8 @@ namespace Nucleo
     /// </summary>
     /// <remarks> Resumen: Representa la fachada del programa, nos permite acceder a todas las funciones del programa sin dar a conocer como funcionan por dentro</remarks>
     public class FachadaNucleo
-    {   ///<summary>
+    {  
+        ///<summary>
         ///Resumen: Esta variable nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros.
         ///</summary>  
         private IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
@@ -35,7 +37,8 @@ namespace Nucleo
         /// Resumen: Encriptador que nos permite encriptar y desencriptar la contraseña del administrador.
         /// </summary>
         private IEncriptador encriptador = new EncriptadorCesar();
-
+        private Mapeador mapeador = new Mapeador();
+        
 
 
 
@@ -94,7 +97,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="pNombreUsuario">Nombre de usuario del usuario deseado</param>
         /// <returns>Un usuario simple</returns>
-        public UsuarioSimple ObtenerUsuario(string pNombreUsuario)
+        public UsuarioSimpleDTO ObtenerUsuario(string pNombreUsuario)
         
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
@@ -102,10 +105,10 @@ namespace Nucleo
             try
             {
 
-                UsuarioSimple usuario;//Creamos una variable de tipo usuario que sera devuelta por el metodo
+                UsuarioSimpleDTO usuario;//Creamos una variable de tipo usuario que sera devuelta por el metodo
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);//Asignamos al usuario el valor obtenido por el get a la base de datos
+                    usuario = mapeador.Mapear(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario));//Asignamos al usuario el valor obtenido por el get a la base de datos
                 }
                 return usuario;//Devolvemos el usuario
             }
@@ -194,9 +197,9 @@ namespace Nucleo
         /// </summary>
         /// <param name="pNombreAdministrador">Nombre de usuario del administrador que se desea obtener</param>
         /// <returns>Un UsuarioAdministrador o null</returns>
-        public UsuarioAdministrador ObtenerAdministrador(string pNombreAdministrador)
+        public UsuarioAdministradorDTO ObtenerAdministrador(string pNombreAdministrador)
         {
-            UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
+            UsuarioAdministradorDTO administrador = new UsuarioAdministradorDTO();//Instanciamos un administrador para que luego sea devuelto como resultado
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
@@ -204,7 +207,7 @@ namespace Nucleo
 
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    administrador = unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador);//Asignamos a la variable administrado instanciada el valor que nos devuelve el get.
+                    administrador = mapeador.Mapear(unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador));//Asignamos a la variable administrado instanciada el valor que nos devuelve el get.
                 }
 
             }
@@ -341,16 +344,16 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Libro o null</returns>
-        public Libro ObtenerLibro(int id)
+        public LibroDTO ObtenerLibro(int id)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            Libro libro = new Libro();//Instanciamos un libro que sera devuelto por el metodo
+            LibroDTO libro = new LibroDTO();//Instanciamos un libro que sera devuelto por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    libro = unitOfWork.RepositorioLibros.Get(id);//Obtenemos el libro a travez del metodo get con la id pasada por parametro y se lo asignamos a la variable creada.
+                    libro = mapeador.Mapear(unitOfWork.RepositorioLibros.Get(id));
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -364,20 +367,49 @@ namespace Nucleo
         }
 
         /// <summary>
+        /// Resumen: Este metodo nos permite obtener un ejemplar de libro de la base de datos .
+        /// </summary>
+        /// <param name="id">id del ejemplar</param>
+        /// <returns>EjemplarDTO</returns>
+        public EjemplarDTO  ObtenerEjemplar(int id)
+        {
+            EjemplarDTO ejemplarDTO = new EjemplarDTO();
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
+            string msg;
+            try
+            {
+                using (IUnitOfWork unitOfWork = GetUnitOfWork())
+                {
+                    Ejemplar ejemplar = unitOfWork.RepositorioEjemplares.Get(id);
+                    ejemplarDTO = new Mapeador().Mapear(ejemplar);
+                }
+            }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener el ejemplar (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
+                oLog.RegistrarLog(msg);
+            }
+            return ejemplarDTO;
+        }
+
+        /// <summary>
         /// Resumen: Este metodo nos permite obtener la lista de ejemplares en buen estado de un libro.
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns> Lista de ejemplares en buen estado del libro</returns>
-        public List<Ejemplar> ObtenerEjemplaresEnBuenEstadoLibro(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresEnBuenEstadoLibro(int id)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<Ejemplar> lista = new List<Ejemplar>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
+            List<EjemplarDTO> lista = new List<EjemplarDTO>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado();//Asignamos a la lista creada, la lista que nos devuelve el metodo que EjemplaresEnBuenEstado que posee el libro, cuya id es id.
+                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado())
+                    {
+                        lista.Add(mapeador.Mapear(item));
+                    }
                 }
             }
             catch (Exception ex)
@@ -501,17 +533,20 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista de ejemplares disponibles de un libro</returns>
-        public List<Ejemplar> ObtenerEjemplaresDisponibles(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresDisponibles(int id)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
+            List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
 
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresDisponible del libro
+                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles())
+                    {
+                        lista.Add(mapeador.Mapear(item));
+                    }
                     return lista;//Devolvemos la lista
                 }
             }
@@ -528,16 +563,19 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista total de ejemplares de un libro</returns>
-        public List<Ejemplar> ObtenerEjemplaresTotales(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresTotales(int id)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<Ejemplar> lista = new List<Ejemplar>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
+            List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    lista = unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales();//Asignamos a la lista, los valores que devuelve la lista del metodo EjemplaresTotales del libro
+                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales())
+                    {
+                        lista.Add(mapeador.Mapear(item));
+                    }
 
                 }
             }
@@ -586,16 +624,16 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del prestamo</param>
         /// <returns>Prestamo o null</returns>
-        public Prestamo ObtenerPrestamo(int id)
+        public PrestamoDTO ObtenerPrestamo(int id)
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            Prestamo prestamo = new Prestamo();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
+            PrestamoDTO prestamo = new PrestamoDTO();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    prestamo = unitOfWork.RepositorioPrestamos.Get(id);//Obtenemos el prestamo y lo asignamos a la variable prestamo creada
+                    prestamo = mapeador.Mapear(unitOfWork.RepositorioPrestamos.Get(id));//Obtenemos el prestamo y lo asignamos a la variable prestamo creada
                 }
             }
             catch (Exception ex)
@@ -635,7 +673,6 @@ namespace Nucleo
                 oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             }
         }
-
        
         /// <summary>
         /// Resumen: Este metodo nos permite registrar la devolucion de un Prestamo.
@@ -666,8 +703,6 @@ namespace Nucleo
             oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
-
-
         /// <summary>
         /// Resumen: Este metodo nos permite verificar que la combinacion NombreUsuario-Contraseña sea correcta.
         /// </summary>
@@ -675,8 +710,24 @@ namespace Nucleo
         /// <param name="contraseña">Contraseña del administrador</param>
         /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
         public bool ValidarContraseña(string pNombreUsuario, string contraseña)
-        {
-            UsuarioAdministrador administrador = ObtenerAdministrador(pNombreUsuario);
+        {   
+            UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
+            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
+            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            try
+            {
+                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                {
+                    administrador = unitOfWork.RepositorioAdministradores.Get(pNombreUsuario);//Asignamos a la variable administrado instanciada el valor que nos devuelve el get.
+                }
+            }
+            catch (Exception ex)
+            {
+                msg = "Error al obtener el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
+                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+
+            }
+
             return encriptador.Validar(contraseña, administrador.Pass);
         }
 
@@ -684,14 +735,18 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista total de usuarios simples.
         /// </summary>
         /// <returns>Lista total de usuarios simples</returns>
-        public IEnumerable<UsuarioSimple> ObtenerUsuarios()
+        public IEnumerable<UsuarioSimpleDTO> ObtenerUsuarios()
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            IEnumerable<UsuarioSimple> lista;
+            List<UsuarioSimpleDTO> lista=new List<UsuarioSimpleDTO>();
             try
             {
-                lista = GetUnitOfWork().RepositorioUsuarios.GetAll();
+                foreach (var item in GetUnitOfWork().RepositorioUsuarios.GetAll())
+                {
+                    lista.Add(mapeador.Mapear(item));
+                }
+
             }//Obtiene todos los usuarios simples con el metodo getall del repositorio
             catch (Exception ex)
             {
@@ -707,14 +762,17 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista total de usuarios adminitradores.
         /// </summary>
         /// <returns>Lista total de usuarios adminitradores</returns>
-        public IEnumerable<UsuarioAdministrador> ObtenerAdministradores()
+        public IEnumerable<UsuarioAdministradorDTO> ObtenerAdministradores()
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            IEnumerable<UsuarioAdministrador> lista;
+            List<UsuarioAdministradorDTO> lista=new List<UsuarioAdministradorDTO>();
             try
             {
-                lista = GetUnitOfWork().RepositorioAdministradores.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+                foreach (var item in GetUnitOfWork().RepositorioAdministradores.GetAll())
+                {
+                    lista.Add(mapeador.Mapear(item));
+                }
             }
             catch (Exception ex)
             {
@@ -729,14 +787,17 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista total de libros.
         /// </summary>
         /// <returns>Lista total de libros</returns>
-        public IEnumerable<Libro> ObtenerLibros()
+        public IEnumerable<LibroDTO> ObtenerLibros()
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            IEnumerable<Libro> lista;
+            List<LibroDTO> lista=new List<LibroDTO>();
             try
             {
-                lista = GetUnitOfWork().RepositorioLibros.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+                foreach (var item in GetUnitOfWork().RepositorioLibros.GetAll())
+                {
+                    lista.Add(mapeador.Mapear(item));
+                }
             }
             catch (Exception ex)
             {
@@ -751,14 +812,16 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista total de prestamos.
         /// </summary>
         /// <returns>Lista total de prestamos</returns>
-        public IEnumerable<Prestamo> ObtenerPrestamos()
+        public IEnumerable<PrestamoDTO> ObtenerPrestamos()
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            IEnumerable<Prestamo> lista;
+            List<PrestamoDTO> lista=new List<PrestamoDTO>();
             try
-            {
-                lista = GetUnitOfWork().RepositorioPrestamos.GetAll();//Obtiene todos los usuarios administradores con el metodo getall del repositorio
+            { foreach (var item in GetUnitOfWork().RepositorioPrestamos.GetAll())
+                {
+                    lista.Add(mapeador.Mapear(item));
+                }
             }
             catch (Exception ex)
             {
@@ -782,16 +845,19 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista de prestamos proximos a vencer.
         /// </summary>
         /// <returns>Lista de prestamos proximos a vencer</returns>
-        public List<Prestamo> ObtenerListadePrestamosProximosAVencerse()
+        public List<PrestamoDTO> ObtenerListadePrestamosProximosAVencerse()
         {
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;
-            List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
+            List<PrestamoDTO> lista = new List<PrestamoDTO>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())
                 {
-                    lista = unitOfWork.RepositorioPrestamos.GetAllProximosAVencerse();
+                    foreach (var item in unitOfWork.RepositorioPrestamos.GetAllProximosAVencerse())
+                    {
+                        lista.Add(mapeador.Mapear(item));
+                    }
                 }
                 msg = "La lista de prestamos proximos a vencerse ha sido obtenida correctamente.";
             }
@@ -808,16 +874,20 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite obtener la lista de prestamos retrasados.
         /// </summary>
         /// <returns>Lista de prestamos retrasados</returns>
-        public List<Prestamo> ObtenerListadePrestamosRetrasados()
+        public List<PrestamoDTO> ObtenerListadePrestamosRetrasados()
         {
+
             Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<Prestamo> lista = new List<Prestamo>();//Instancia de una lista de prestamos que sera devuelta por el metodo
+            List<PrestamoDTO> lista = new List<PrestamoDTO>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())
                 {
-                    lista = unitOfWork.RepositorioPrestamos.GetAllRetrasados();
+                    foreach (var item in unitOfWork.RepositorioPrestamos.GetAllRetrasados())
+                    {
+                        lista.Add(mapeador.Mapear(item));
+                    }
                 }
                 msg = "La lista de prestamos retrasados ha sido obtenida correctamente.";
             }
@@ -834,9 +904,14 @@ namespace Nucleo
         /// </summary>
         /// <param name="unaCadena">Libro buscado</param>
         /// <returns>devuelve una lista de libros que coinciden con la cadena buscada</returns>
-        public List<Libro> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
+        public List<LibroDTO> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
         {
-            return ServicioAPILibros.ListarPorCoincidecia(unaCadena);
+            List<LibroDTO> lista = new List<LibroDTO>();
+            foreach (var item in ServicioAPILibros.ListarPorCoincidecia(unaCadena))
+            {
+                lista.Add(mapeador.Mapear(item));
+            }
+            return lista;
         }
 
         /// <summary>
@@ -844,15 +919,14 @@ namespace Nucleo
         /// </summary>
         public void NotificarPrestamosProximosAVencer()
         {
-            void NotificarProximoAVencer(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta proximo a vencer
-            {
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
-            }
             foreach (var item in ObtenerListadePrestamosProximosAVencerse())
             {
-                string nombreUsuario = item.Usuario.nombreUsuario;
-                string titulo = ObtenerLibro(item.Ejemplar.idLibro).Titulo;
-                NotificarProximoAVencer(nombreUsuario, titulo, item.FechaLimite);
+                string nombreUsuario = item.nombreUsuario;
+                EjemplarDTO ejemplar=ObtenerEjemplar(item.idEjemplar);
+                UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
+                string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
+                bitacora.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite));
+
             }
         }
 
@@ -861,15 +935,14 @@ namespace Nucleo
         /// </summary>
         public void NotificarPrestamosRetrasados()
         {
-            void NotificarRetraso(string pNombreUsuario, string titulo, string fechaLimite)//notifica a un usuario que su prestamo esta retrasado
-            {
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarRetraso(ObtenerUsuario(pNombreUsuario), titulo, fechaLimite));
-            }
             foreach (var item in ObtenerListadePrestamosRetrasados())
             {
                 string nombreUsuario = item.nombreUsuario;
-                string titulo = ObtenerLibro(item.Ejemplar.idLibro).Titulo;
-                NotificarRetraso(nombreUsuario, titulo, item.FechaLimite);
+                EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
+                UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
+                string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
+                bitacora.RegistrarLog(NotificadorUsuarios.NotificarRetraso(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite));
+
             }
         }
 

@@ -31,7 +31,6 @@ namespace Programa
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -91,7 +90,6 @@ namespace Programa
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -100,23 +98,10 @@ namespace Programa
             this.panel4.Size = new System.Drawing.Size(62, 46);
             this.panel4.TabIndex = 10;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label3.Location = new System.Drawing.Point(9, 34);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "E-Library";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 31);
@@ -560,7 +545,6 @@ namespace Programa
             this.Load += new System.EventHandler(this.Menu2_Load);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -604,7 +588,6 @@ namespace Programa
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label labelNombreUsuario;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel submenuPrestamos;
         private System.Windows.Forms.Button button23;

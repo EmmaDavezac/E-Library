@@ -47,7 +47,7 @@ namespace Nucleo.DTOs
         /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
-        public PrestamoDTO(string pNombreUsuario, int PIdEjemplar,string fechaPrestamo,string fechaLimite,string estadoPrestamo,string estadoDevolucion)
+        public PrestamoDTO(string pNombreUsuario, int PIdEjemplar,string fechaPrestamo,string fechaLimite,string fechaDevolucion, string estadoPrestamo,string estadoDevolucion)
         {
             FechaPrestamo = fechaPrestamo;
             FechaLimite = fechaLimite;
@@ -55,6 +55,7 @@ namespace Nucleo.DTOs
             idEjemplar = PIdEjemplar;
             EstadoPrestamo = estadoPrestamo;
             EstadoDevolucion = estadoDevolucion;
+            FechaDevolucion = fechaDevolucion;
         }
         /// <summary>
         /// Resumen: Constructor de la clase

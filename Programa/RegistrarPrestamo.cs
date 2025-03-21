@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -77,12 +77,10 @@ namespace Programa
 
         private void labelTitulo_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)//permite buscar un libro por nombreUsuario, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
@@ -102,7 +100,6 @@ namespace Programa
                         {
                             dataGridViewUsuarios.Rows[i].Visible = true;
                         }
-                    
                 }
             }
             }
@@ -144,7 +141,7 @@ namespace Programa
         {
             try
             {
-                IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();
+                IEnumerable<LibroDTO> libros = interfazNucleo.ObtenerLibros();
             dataGridViewLibros.Rows.Clear();
             foreach (var item in libros)
             {
@@ -178,7 +175,7 @@ namespace Programa
         {
             try
             {
-                IEnumerable<UsuarioSimple> usuarios = interfazNucleo.ObtenerUsuarios();
+                IEnumerable<UsuarioSimpleDTO> usuarios = interfazNucleo.ObtenerUsuarios();
             dataGridViewUsuarios.Rows.Clear();
             foreach (var item in usuarios)
             {

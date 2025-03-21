@@ -1,5 +1,4 @@
-﻿using Dominio;
-
+﻿
 namespace NotificacionAUsuario
 {   ///<summary>
     ///Resumen: Esta interfaz nos permite notificar a un usuario.
@@ -13,7 +12,7 @@ namespace NotificacionAUsuario
         /// <param name="titulo">Titulo del libro</param>
         /// <param name="fechaLimite">Fecha limite de devolucion</param>
         /// <returns>Cadena de confirmacion de exito o de error</returns>
-        string NotificarProximoAVencer(UsuarioSimple usuario,string titulo,string fechaLimite);
+        string NotificarProximoAVencer(string nombreUsuario, string nombre, string apellido, string email, string titulo, string fechaLimite);
         /// <summary>
         /// Resumen: Este metodo notifica a un usuario que posee un prestamo retrasado.
         /// </summary>
@@ -21,6 +20,6 @@ namespace NotificacionAUsuario
         /// <param name="titulo">Titulo del libro</param>
         /// <param name="fechaLimite">Fecha limite de devolucion</param>
         /// <returns>Cadena de confirmacion de exito o de error</returns>
-        string NotificarRetraso(UsuarioSimple usuario, string titulo, string fechaLimite);
+        string NotificarRetraso(string nombreUsuario, string nombre, string apellido, string email, string titulo, string fechaLimite);
     }
 }

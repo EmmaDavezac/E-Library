@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -100,7 +100,7 @@ namespace Programa
         {
             try
             {
-                IEnumerable<Libro> libros = interfazNucleo.ObtenerLibros();//Obtenemos la lista de libros
+                IEnumerable<LibroDTO> libros = interfazNucleo.ObtenerLibros();//Obtenemos la lista de libros
                 dataGridViewLibros.Rows.Clear();//Eliminamos todo el contenido de la tabla
                 foreach (var item in libros)//Recorremos lcada elemento de la lista de libros y lo agregamos a la tabla
                 {

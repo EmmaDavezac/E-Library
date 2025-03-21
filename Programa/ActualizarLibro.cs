@@ -1,5 +1,5 @@
-using Dominio;
 using Nucleo;
+using Nucleo.DTOs;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -39,7 +39,7 @@ namespace Programa
         {
             try
             {
-            Libro libro = interfazNucleo.ObtenerLibro(Convert.ToInt32(idLibro));
+            LibroDTO libro = interfazNucleo.ObtenerLibro(Convert.ToInt32(idLibro));
             textBoxTitulo.Text = libro.Titulo;
             textBoxAutor.Text = libro.Autor;
             textBoxAñoPublicacion.Text = libro.AñoPublicacion;
