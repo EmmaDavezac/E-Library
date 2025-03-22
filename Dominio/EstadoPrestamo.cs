@@ -4,6 +4,6 @@
     ///</summary>
     public enum EstadoPrestamo
     {
-        Normal, ProximoAVencer, Retrasado //posibles estados de un prestamo
+        Normal, ProximoAVencer, Retrasado,Devuelto //posibles estados de un prestamo
     }
 }

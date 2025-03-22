@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Bitacora;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Sql;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,8 @@ namespace Programa
     /// </summary>
     public class UtilidadesPresentacion
     {
+        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+
         /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
@@ -24,37 +28,46 @@ namespace Programa
         /// <param name="pLista">string que contiene los isbn de un libro</param>
         public List<string> TransformarISBNsALista(string pLista)
         {
-            string palabra = "";
-            int contador = 0;
-            List<string> resultadoIntermedio = new List<string>();
-            List<string> resultado = new List<string>();
-            for (int i = 0; i < pLista.Length; i++)
+            try
             {
-                if (pLista.Substring(i, 1) == "[" || pLista.Substring(i, 1) == "," || pLista.Substring(i, 1) == "]")
+                string palabra = "";
+                int contador = 0;
+                List<string> resultadoIntermedio = new List<string>();
+                List<string> resultado = new List<string>();
+                for (int i = 0; i < pLista.Length; i++)
                 {
+                    if (pLista.Substring(i, 1) == "[" || pLista.Substring(i, 1) == "," || pLista.Substring(i, 1) == "]")
+                    {
+                    }
+                    if (pLista.Substring(i, 1) == '"'.ToString())
+                    {
+                        contador = 1;
+                    }
+                    if (pLista.Substring(i, 1) == '"'.ToString() && contador == 1)
+                    {
+                        contador = 0;
+                        resultadoIntermedio.Add(palabra);
+                        palabra = "";
+                    }
+                    else
+                    {
+                        palabra = palabra + pLista.Substring(i, 1);
+                    }
                 }
-                if (pLista.Substring(i, 1) == '"'.ToString())
+                for (int i = 1; i < resultadoIntermedio.Count; i += 2)
                 {
-                    contador = 1;
+                    resultado.Add(resultadoIntermedio[i]);
                 }
-                if (pLista.Substring(i, 1) == '"'.ToString() && contador == 1)
-                {
-                    contador = 0;
-                    resultadoIntermedio.Add(palabra);
-                    palabra = "";
-                }
-                else
-                {
-                    palabra = palabra + pLista.Substring(i, 1);
-                }
+                HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
+                List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+                return listWithoutDuplicates;
             }
-            for (int i = 1; i < resultadoIntermedio.Count; i += 2)
+            catch (Exception ex)
             {
-                resultado.Add(resultadoIntermedio[i]);
+                string msg = "Error en TransformarISBNsALista: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);    
+                throw new Exception(msg);
             }
-            HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
-            List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
-            return listWithoutDuplicates;
         }
 
         /// <summary>
@@ -65,13 +78,24 @@ namespace Programa
         public string SacarAutorDeLaLista(string pLista)
 
         {
-            if (pLista == "desconocido" || pLista == "Unknown")
+            try
             {
-                return "Desconocido";
+
+                if (pLista == "desconocido" || pLista == "Unknown")
+                {
+                    return "Desconocido";
+                }
+                else
+                {
+                    return TransformarISBNsALista(pLista).First();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return TransformarISBNsALista(pLista).First();
+
+                string msg = "Error en SacarAutorDeLaLista: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);
+                throw new Exception(msg);
             }
         }
 
@@ -82,24 +106,34 @@ namespace Programa
         /// <returns></returns>
         public List<string> TransformarAñosALista(string pLista)
         {
-            string palabra = "";
-            pLista = pLista.Remove(0, 1);
-            List<string> resultado = new List<string>();
-            for (int i = 0; i < pLista.Length; i++)
+            try
             {
-                if (pLista.Substring(i, 1) == ','.ToString() || pLista.Substring(i, 1) == "]")
+                string palabra = "";
+                pLista = pLista.Remove(0, 1);
+                List<string> resultado = new List<string>();
+                for (int i = 0; i < pLista.Length; i++)
                 {
-                    resultado.Add(palabra.Remove(1, 3));
-                    palabra = "";
+                    if (pLista.Substring(i, 1) == ','.ToString() || pLista.Substring(i, 1) == "]")
+                    {
+                        resultado.Add(palabra.Remove(1, 3));
+                        palabra = "";
+                    }
+                    else
+                    {
+                        palabra = palabra + pLista.Substring(i, 1);
+                    }
                 }
-                else
-                {
-                    palabra = palabra + pLista.Substring(i, 1);
-                }
+                HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
+                List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
+                return listWithoutDuplicates.OrderBy(x => x).ToList();
             }
-            HashSet<string> hashWithoutDuplicates = new HashSet<string>(resultado);
-            List<string> listWithoutDuplicates = hashWithoutDuplicates.ToList();
-            return listWithoutDuplicates.OrderBy(x => x).ToList();
+            catch (Exception ex)
+            {
+
+                string msg = "Error en SacarAutorDeLaLista: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);
+                throw new Exception(msg);
+            }
         }
         /// <summary>
         /// Resumen: Este metodo indica si una cadena tiene el formato de email valido
@@ -113,9 +147,13 @@ namespace Programa
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
             }
-            catch
+            catch (Exception ex)
             {
+                string msg = "Error en SacarAutorDeLaLista: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);
                 return false;
+                throw new Exception(msg);
+                
             }
         }
 

@@ -71,7 +71,7 @@ namespace Nucleo.DTOs
                     estadoDevolucion = "Malo";
                     break;
             }
-            PrestamoDTO prestamoDTO = new PrestamoDTO(prestamo.nombreUsuario,prestamo.idEjemplar,prestamo.FechaPrestamo,prestamo.FechaLimite,prestamo.FechaDevolucion,estadoPrestamo,estadoDevolucion);
+            PrestamoDTO prestamoDTO = new PrestamoDTO(prestamo.nombreUsuario,prestamo.idEjemplar,prestamo.FechaPrestamo,prestamo.FechaLimite,estadoPrestamo,estadoDevolucion);
             return prestamoDTO;
 
         }

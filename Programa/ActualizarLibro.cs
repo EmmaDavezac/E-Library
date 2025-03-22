@@ -4,6 +4,8 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Bitacora;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Programa
 {
@@ -24,10 +26,78 @@ namespace Programa
             sumatoriaDeEjemplares = 0;//Inicializamos en 0.
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void ActualizarLibro_Load(object sender, EventArgs e)
+        //carga la tabla de usuarios al iniciar
         {
-
+            try
+            {
+                ObtenerEjemplares();
+            }
+            catch (Exception ex)
+            {
+                string texto = "ActualizarLibro_Load: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
+            }
         }
+
+        public void ObtenerEjemplares()//Este metodo carga la lista de ejemplares en la tabla
+        {
+            try
+            {
+                IEnumerable<EjemplarDTO> ejemplares= interfazNucleo.ObtenerEjemplaresLibro(idLibro) ;//se le solicita la lista de usuarios al Nucleo del programa y se la almacena
+                dataGridView1.Rows.Clear();//limpiamos el contenido de la tabla
+                foreach (var item in ejemplares)//recorremos cada item de la lista y lo agregamos a la tabla
+                {
+                    int n = dataGridView1.Rows.Add();
+                    dataGridView1.Rows[n].Cells[1].Value = item.Id;
+                    if (item.Disponible)
+                    {
+                        dataGridView1.Rows[n].Cells[2].Value = "Disponible";
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[n].Cells[2].Value = "Prestado";
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                string texto = "Error ObtenerEjemplares: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//este metodo se ejecuta cuando se hace click a una celda de la tabla
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+
+                    DataGridViewCell cell = (DataGridViewCell)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    if (cell.Value.ToString() == "Eliminar")//si le presiona la celda de la fila con el texto edit, se abre una ventana para modificar la informacion de ese usuario
+                    {
+                        DialogResult dialogResult = MessageBox.Show("¿Estas seguro que deseas eliminar el ejemplar?", "Eliminar Ejemplar", MessageBoxButtons.YesNo);//Mensaje de confirmacion para eliminar el ejemplar
+                        if (dialogResult == DialogResult.Yes)//Si se confirma la eliminacion se procede a eliminar el ejemplar
+                        {
+                            interfazNucleo.DarDeBajaEjemplar(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value));
+                            ObtenerEjemplares();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string texto = "Error dataGridView1_CellContentClick: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error");
+            }
+        }
+
 
         private void botonVolver_Click(object sender, EventArgs e)
         {
@@ -51,7 +121,8 @@ namespace Programa
             {
                 string texto= "Error buttonDeshacerCambios_Click: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
+
             }
         }
 
@@ -158,25 +229,9 @@ namespace Programa
                 }
         }
 
-        private void textBoxBuscar_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void ActualizarLibro_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void labelNombreUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void ActualizarLibro_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
@@ -212,10 +267,7 @@ namespace Programa
             textBoxTitulo.Text = pTitulo;
         }
 
-        private void textBoxCantEjemplares_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void label8_Click(object sender, EventArgs e)
         {
@@ -240,7 +292,7 @@ namespace Programa
             textBoxISBN.Text = pISBN;
             textBoxAutor.Text = pAutor;
             textBoxAñoPublicacion.Text = pAñoPublicacion;
-            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count().ToString();//Para mostrar la cantidad actual cuenta la cantidad de ejemplares que estan diponibles.(Aquellos en un prestamo no pueden ser eliminados)
+            labelCantidadActual.Text = "Cantidad Actual: " + interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count().ToString();//Para mostrar la cantidad actual cuenta la cantidad de ejemplares que estan diponibles.(Aquellos en un prestamo no pueden ser eliminados)
             if (pBaja == "True")//Si esta dado de baja se tilda el checkbox
             {
                 checkBoxBaja.Checked = true;
@@ -261,7 +313,7 @@ namespace Programa
                 if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))//Si el textbox relacionado a añadir ejemplares no esta vacio entonces:
             {
                 sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);//Agrega a la sumatoria la cantidad cargada.
-                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
+                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
                 textBoxAñadirEjemplares.Text = "";
             }
             else
@@ -278,47 +330,14 @@ namespace Programa
                 }
         }
 
-        private void buttonEliminarEjemplares_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(textBoxEliminarEjemplares.Text))
-            {
-                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares >= Convert.ToInt32(textBoxEliminarEjemplares.Text))//Si la cantidad de ejemplares a eliminar es menor o igual ala cantidad actual entonces hace lo siguiente:
-                {
-                    sumatoriaDeEjemplares = sumatoriaDeEjemplares - Convert.ToInt32(textBoxEliminarEjemplares.Text);//Se resta a la sumatoria la cantidad a eliminar.
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
-                    textBoxEliminarEjemplares.Text = "";
-                }
-                else
-                {
-                    sumatoriaDeEjemplares = -interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count();//En caso contrario asigna a la sumatoria el valor negativo maximo posible que es la cantidad disponible de ejemplares (No puede ser un numero negativo menor a este).
-                    MessageBox.Show("El valor ingresado es mayor a la cantidad total actual, se establecera el valor cero por defecto.");//Mensaje informativo para el administrador.
-                    labelCantidadActual.Text = "Cantidad Actual: 0";//Se le da el valor 0 a la cantidad actual (Por defecto).
-                    textBoxEliminarEjemplares.Text = "";
-                }
-            }
-            else
-            {
-                labelErrorEliminarEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
-                labelErrorEliminarEjemplares.Visible = true;
-            }
-            }
-            catch (Exception ex)
-                {
-                string texto= "Error buttonEliminarEjemplares_Click: "+ ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
-                }
-        }
-
+       
         private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 if (checkBoxBaja.Checked == true)//Si el checkbox esta tildado entonces hace lo siguiente:
             {
-                if (interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != interfazNucleo.ObtenerEjemplaresTotales(idLibro).Count() && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0 && interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count() != 0)//En el caso en que la cantidad disponible sea menor a la cantidad total, no puede darse de baja ya que esto nos quiere decir que hay un prestamo activo.
+                if (interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count() != interfazNucleo.ObtenerEjemplaresLibro(idLibro).Count() && interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count() != 0 && interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count() != 0)//En el caso en que la cantidad disponible sea menor a la cantidad total, no puede darse de baja ya que esto nos quiere decir que hay un prestamo activo.
                 {
                     checkBoxBaja.Checked = false;
                     MessageBox.Show("El libro Id:" + idLibro + " no puede darse de baja ya que tiene prestamos pendientes!, intentelo mas tarde");//Mensaje informativo para el administrador.
@@ -331,10 +350,8 @@ namespace Programa
                     textBoxAutor.Enabled = false;
                     textBoxAñoPublicacion.Enabled = false;
                     textBoxAñadirEjemplares.Enabled = false;
-                    textBoxEliminarEjemplares.Enabled = false;
                     buttonAñadirEjemplares.Enabled = false;
                     buttonDeshacerCambios.Enabled = false;
-                    buttonEliminarEjemplares.Enabled = false;
                     buttonBusquedaAvanzada.Enabled = false;
                     labelCantidadActual.Text = "Cantidad Actual: 0";//Coloca la cantidad actual en 0.
                 }
@@ -349,12 +366,10 @@ namespace Programa
                     textBoxAutor.Enabled = true;
                     textBoxAñoPublicacion.Enabled = true;
                     textBoxAñadirEjemplares.Enabled = true;
-                    textBoxEliminarEjemplares.Enabled = true;
                     buttonAñadirEjemplares.Enabled = true;
                     buttonDeshacerCambios.Enabled = true;
-                    buttonEliminarEjemplares.Enabled = true;
                     buttonBusquedaAvanzada.Enabled = true;
-                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponibles(idLibro).Count());
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count());
                 }
             }
             }
@@ -366,10 +381,7 @@ namespace Programa
                 }
         }
 
-        private void textBoxEliminarEjemplares_TextChanged(object sender, EventArgs e)
-        {
-            labelErrorEliminarEjemplares.Visible = false;
-        }
+      
 
         private void textBoxAñadirEjemplares_TextChanged(object sender, EventArgs e)
         {

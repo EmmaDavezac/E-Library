@@ -297,7 +297,6 @@ namespace Nucleo
             bool resultado = true;
             try
             {
-                msg = "Libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) registrado con exito.";
                 Libro libro = new Libro(unISBN, titulo, autor, añoPublicacion);//Instanciamos un libro con los parametros pasados al metodo.
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
@@ -338,7 +337,6 @@ namespace Nucleo
 
                 msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-
                 throw new Exception(msg);
             }
         }
@@ -396,33 +394,7 @@ namespace Nucleo
             return ejemplarDTO;
         }
 
-        /// <summary>
-        /// Resumen: Este metodo nos permite obtener la lista de ejemplares en buen estado de un libro.
-        /// </summary>
-        /// <param name="id">ID del libro</param>
-        /// <returns> Lista de ejemplares en buen estado del libro</returns>
-        public List<EjemplarDTO> ObtenerEjemplaresEnBuenEstadoLibro(int id)
-        {
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<EjemplarDTO> lista = new List<EjemplarDTO>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
-            try
-            {
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresEnBuenEstado())
-                    {
-                        lista.Add(mapeador.Mapear(item));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = "Error al obtener lista de ejemplares en buen estado del libro (id libro: " + id + ")" + ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                throw new Exception(msg);
-            }
-            return lista;//Devolvemos la lista
-        }
+  
 
         /// <summary>
         /// Resumen: Este metodo nos permite añadir mas ejemplares a un libro.
@@ -486,6 +458,7 @@ namespace Nucleo
             }
         }
 
+ 
         /// <summary>
         /// Resumen: Este metodo nos permite dar de alta un libro previamente dado de baja.
         /// </summary>
@@ -507,7 +480,6 @@ namespace Nucleo
 
                 msg = "Error al dar de alta el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-
                 throw new Exception(msg);
             }
         }
@@ -517,7 +489,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista de ejemplares disponibles de un libro</returns>
-        public List<EjemplarDTO> ObtenerEjemplaresDisponibles(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresDisponiblesLibro(int id)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
@@ -548,7 +520,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista total de ejemplares de un libro</returns>
-        public List<EjemplarDTO> ObtenerEjemplaresTotales(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresLibro(int id)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
@@ -560,7 +532,6 @@ namespace Nucleo
                     {
                         lista.Add(mapeador.Mapear(item));
                     }
-
                 }
                 return lista;//Devolvemos la lista
             }
@@ -591,13 +562,8 @@ namespace Nucleo
                     Prestamo prestamo = new Prestamo(usuario,ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
                     unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;//El ejemplar del prestamo pasa a estar no diponible
                     unitOfWork.RepositorioPrestamos.Add(prestamo);//Añadimos el pretamo a la base de datos
-                    msg = "Prestamo registrado con exito (idLibro: " + ejemplar.idLibro+ "Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") obtenida con exito.";
-
                     unitOfWork.Complete();//Guardamos los cambios
-
-                }
-                
-
+                }         
             }
             catch (Exception ex)
             {
@@ -902,9 +868,9 @@ namespace Nucleo
             }
             catch (Exception ex)
             {
+                bitacora.RegistrarLog("Error al listar libros de la API por coincidencia. " + ex.Message + ex.StackTrace);
                 throw new Exception("Error al listar libros de la API por coincidencia. " + ex.Message + ex.StackTrace);
             }   
-          
         }
 
         /// <summary>
@@ -921,7 +887,6 @@ namespace Nucleo
                     UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
                     string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
                     NotificadorUsuarios.NotificarProximoAVencer(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
-
                 }
             }
             catch (Exception ex)
@@ -943,7 +908,6 @@ namespace Nucleo
                     UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
                     string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
                     NotificadorUsuarios.NotificarRetraso(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
-
                 }
             }
             catch (Exception ex)
@@ -992,9 +956,6 @@ namespace Nucleo
                         unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;//Da de baja al usuario
                     }
                     unitOfWork.Complete();
-                    
-                   
-                    
                 }
             }
             catch (Exception ex)
@@ -1002,7 +963,6 @@ namespace Nucleo
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 throw new Exception(msg);
-
             }
         }
 
@@ -1013,12 +973,6 @@ namespace Nucleo
         /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
         public void DarDeBajaAdministrador(string pNombreUsuario)
         {
-            if (pNombreUsuario == "admin")//Verifica si el administrador que quiere darse de baja no es el admin principal
-            {
-                
-            }
-            else
-            {
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
                 {
@@ -1027,8 +981,6 @@ namespace Nucleo
                         unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
                         unitOfWork.Complete();//Guardamos los cambios
                     }
-                   
-                   
                 }
                 catch (Exception ex)
                 {
@@ -1037,7 +989,6 @@ namespace Nucleo
                     throw new Exception(msg);
 
                 }
-            }
         }
 
         /// <summary>
@@ -1056,15 +1007,12 @@ namespace Nucleo
                         unitOfWork.RepositorioEjemplares.Get(idEjemplar).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
                         unitOfWork.Complete();//Guardamos los cambios
                     }
-                  
-
             }
                 catch (Exception ex)
                 {   
                     msg = "Error, el ejemplar " + idEjemplar + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
                     bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                    Exception exception = new Exception(msg);
-                    throw exception;
+                    throw new Exception(msg);
             }
         }
 

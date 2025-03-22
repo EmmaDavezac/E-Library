@@ -30,10 +30,6 @@ namespace Programa
         private void InitializeComponent()
         {
             this.dataGridViewTituloYAutor = new System.Windows.Forms.DataGridView();
-            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBuscar = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,12 +61,16 @@ namespace Programa
             this.buttonActualizar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
@@ -97,34 +97,6 @@ namespace Programa
             this.dataGridViewTituloYAutor.TabIndex = 0;
             this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Titulo
-            // 
-            this.Titulo.HeaderText = "Titulo";
-            this.Titulo.Name = "Titulo";
-            this.Titulo.ReadOnly = true;
-            this.Titulo.Width = 160;
-            // 
-            // Autor
-            // 
-            this.Autor.HeaderText = "Autor";
-            this.Autor.Name = "Autor";
-            this.Autor.ReadOnly = true;
-            this.Autor.Width = 160;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "añoPublicacion";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "isbn";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
             // 
             // textBoxBuscar
             // 
@@ -418,13 +390,14 @@ namespace Programa
             this.buttonActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonActualizar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonActualizar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonActualizar.Location = new System.Drawing.Point(683, 526);
+            this.buttonActualizar.Location = new System.Drawing.Point(683, 500);
             this.buttonActualizar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonActualizar.Name = "buttonActualizar";
             this.buttonActualizar.Size = new System.Drawing.Size(89, 23);
             this.buttonActualizar.TabIndex = 72;
             this.buttonActualizar.Text = "Guardar";
             this.buttonActualizar.UseVisualStyleBackColor = false;
+            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click_1);
             // 
             // label8
             // 
@@ -447,18 +420,6 @@ namespace Programa
             this.panel5.Size = new System.Drawing.Size(207, 60);
             this.panel5.TabIndex = 9;
             // 
-            // labelNombreUsuario
-            // 
-            this.labelNombreUsuario.AutoSize = true;
-            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
-            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
-            this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
-            this.labelNombreUsuario.TabIndex = 0;
-            this.labelNombreUsuario.Text = "Nombre Apellido";
-            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
@@ -471,6 +432,18 @@ namespace Programa
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
             // 
+            // labelNombreUsuario
+            // 
+            this.labelNombreUsuario.AutoSize = true;
+            this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Name = "labelNombreUsuario";
+            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.TabIndex = 0;
+            this.labelNombreUsuario.Text = "Nombre Apellido";
+            this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label7);
@@ -481,17 +454,6 @@ namespace Programa
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(82, 60);
             this.panel4.TabIndex = 10;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
             // 
             // label7
             // 
@@ -506,6 +468,17 @@ namespace Programa
             this.label7.TabIndex = 5;
             this.label7.Text = "E-Library";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -518,6 +491,32 @@ namespace Programa
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(784, 60);
             this.panel3.TabIndex = 71;
+            // 
+            // Titulo
+            // 
+            this.Titulo.HeaderText = "Titulo";
+            this.Titulo.Name = "Titulo";
+            this.Titulo.ReadOnly = true;
+            this.Titulo.Width = 160;
+            // 
+            // Autor
+            // 
+            this.Autor.HeaderText = "Autor";
+            this.Autor.Name = "Autor";
+            this.Autor.ReadOnly = true;
+            this.Autor.Width = 160;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "añoPublicacion";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "isbn";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // RegistrarLibro
             // 
@@ -612,10 +611,6 @@ namespace Programa
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Label labelCantidadEjemplares;
         private System.Windows.Forms.TextBox textBoxCantidadEjemplares;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button buttonActualizar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel5;
@@ -625,5 +620,9 @@ namespace Programa
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

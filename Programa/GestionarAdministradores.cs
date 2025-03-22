@@ -22,10 +22,6 @@ namespace Programa
             labelNombreUsuario.Text =  nombreUsuario;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         private void textBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
         {
             try
@@ -65,10 +61,6 @@ namespace Programa
             this.Owner.Show();//Se muestra el formulario padre
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         
 
@@ -77,15 +69,7 @@ namespace Programa
             ObtenerAdministradores();
         }
 
-        private void textBoxApellido_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridViewAdministradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -142,19 +126,7 @@ namespace Programa
             }
         }
 
-        private void buttonRefrescar_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton buttonRefrescar
-        {   try
-                {
-                ObtenerAdministradores();//Se actualiza la tabla deadministradores 
-                }
-            catch (Exception ex)
-                {
-                    string texto= "Error buttonRefrescar_Click: "+ ex.Message + ex.StackTrace;
-                    bitacora.RegistrarLog(texto);
-                    MessageBox.Show(texto, "Ha ocurrido un error");
-                } 
-        }
-
+   
         private void labelErro_Click(object sender, EventArgs e)
         {
 

@@ -24,25 +24,35 @@ namespace Programa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se pselecciona un libro  de la tabla de libros
         {
-            if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)//se verifica que la fila seleccionada no este vacia
+            try
             {
-                dataGridViewAños.Rows.Clear();//se eliminan las filas de la tabla de años
-                dataGridViewISBN.Rows.Clear();//se eliminan las filas de la tabla de ISBNs
-                textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
-                textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
-                buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                List<string> isbns = utilidades.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
-                foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
+                if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)//se verifica que la fila seleccionada no este vacia
                 {
-                    int n = dataGridViewISBN.Rows.Add();
-                    dataGridViewISBN.Rows[n].Cells[0].Value = item;
+                    dataGridViewAños.Rows.Clear();//se eliminan las filas de la tabla de años
+                    dataGridViewISBN.Rows.Clear();//se eliminan las filas de la tabla de ISBNs
+                    textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
+                    textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
+                    buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
+                    List<string> isbns = utilidades.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
+                    foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
+                    {
+                        int n = dataGridViewISBN.Rows.Add();
+                        dataGridViewISBN.Rows[n].Cells[0].Value = item;
+                    }
+                    List<string> años = utilidades.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
+                    foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
+                    {
+                        int n = dataGridViewAños.Rows.Add();
+                        dataGridViewAños.Rows[n].Cells[0].Value = item;
+                    }
                 }
-                List<string> años = utilidades.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
-                foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
-                {
-                    int n = dataGridViewAños.Rows.Add();
-                    dataGridViewAños.Rows[n].Cells[0].Value = item;
-                }
+            }
+            catch (Exception ex)
+            {
+                string texto = "dataGridView1_CellContentClick: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
+
             }
         }
 
@@ -53,33 +63,44 @@ namespace Programa
 
         private void button1_Click(object sender, EventArgs e)//este men todo se ejecutara cuando se presione button1, nos permite hacer una consulta a open library y obtener una lista de libros
         {
-            if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")//se verifica que el cuadro de busqueda no este vacio
+            try
             {
-                int resultado = 0;
-                dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
-                List<LibroDTO> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
-                foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
-                {
-                    int n = dataGridViewTituloYAutor.Rows.Add();
-                    dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
-                    dataGridViewTituloYAutor.Rows[n].Cells[1].Value = utilidades.SacarAutorDeLaLista(item.Autor);
-                    dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
-                    dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
-                    resultado += 1;
-                }
 
-                if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
+                if (textBoxBuscar.Text != null && textBoxBuscar.Text != "")//se verifica que el cuadro de busqueda no este vacio
+                {
+                    int resultado = 0;
+                    dataGridViewTituloYAutor.Rows.Clear();//se limpia la tabla de libros
+                    List<LibroDTO> resultados = interfazNucleo.ListarLibrosDeAPIPorCoincidencia(textBoxBuscar.Text);//se realiza la consulta a Open Library y se almacena la lista de libros
+                    foreach (var item in resultados)//se carga cada uno de los resultados en la tabla de libros
+                    {
+                        int n = dataGridViewTituloYAutor.Rows.Add();
+                        dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
+                        dataGridViewTituloYAutor.Rows[n].Cells[1].Value = utilidades.SacarAutorDeLaLista(item.Autor);
+                        dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
+                        dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
+                        resultado += 1;
+                    }
+
+                    if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
+                    else
+                    {
+                        labelResultados.Text = "";
+                    }
+                }
                 else
                 {
-                    labelResultados.Text = "";
-                }  
+                    labelResultados.Text = "No ingreso un termino de busqueda";
+                }
+                textBoxBuscar.Focus(); //enfocamos el cuadro de busqueda
+                buttonBuscar.Enabled = false; //se desabilita el boton buscar
             }
-            else
+            catch (Exception ex)
             {
-                labelResultados.Text = "No ingreso un termino de busqueda";
+
+                string texto = "Error button1_click: " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(texto);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
-            textBoxBuscar.Focus(); //enfocamos el cuadro de busqueda
-            buttonBuscar.Enabled = false; //se desabilita el boton buscar
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)//activa el boton buscar cuando se modifica el texto de textBox1
@@ -116,7 +137,7 @@ namespace Programa
             {
                 string texto= "Error buttonAñadirLibro_Click: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -210,7 +231,7 @@ namespace Programa
             {
                 string texto= "Error dataGridViewISBN_CellContentClick: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -231,7 +252,7 @@ namespace Programa
             {
                 string texto= "Error dataGridViewAños_CellContentClick: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto,"Ha ocurrido un error");
+                MessageBox.Show(texto,"Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -258,7 +279,7 @@ namespace Programa
             {
                 string texto= "Error textBoxSeleccionarISBN_TextChanged: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -285,7 +306,7 @@ namespace Programa
             {
                 string texto= "Error textBoxSelccionarAño_TextChanged: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
             }
         }
 
@@ -315,7 +336,7 @@ namespace Programa
             {
                 string texto= "Error VerificarVentanaPadre: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
             }
         }
 
@@ -335,10 +356,10 @@ namespace Programa
             {
                 string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
             }
         }
-        private void buttonActualizar_Click(object sender, EventArgs e)
+        private void buttonActualizar_Click_1(object sender, EventArgs e)
             //se ejecuta cuando se presiona el boton actualizar
         {
             try
@@ -347,7 +368,7 @@ namespace Programa
                     {
 
                         ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
-                        MessageBox.Show("Libro registrado con exito" );
+                        MessageBox.Show("Informacion actualizadacon exito" );
                         this.Hide();
                         this.Owner.Show();
                     }
@@ -359,16 +380,19 @@ namespace Programa
                 }
             catch (Exception ex)
             {
-                string texto= "Error buttonActualizar_Click: "+ ex.Message + ex.StackTrace;
+                string texto= "Error buttonActualizar_Click1: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
+
+      
 
         private void textBoxCantidadEjemplares_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+   
     }
 }

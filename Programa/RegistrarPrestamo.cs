@@ -35,7 +35,7 @@ namespace Programa
             {
                 string texto= "Error RegistrarPrestamo_Load: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
             }
         }
 
@@ -107,7 +107,7 @@ namespace Programa
             {
                 string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
             }
         }
 
@@ -133,7 +133,7 @@ namespace Programa
             {
                 string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -153,8 +153,8 @@ namespace Programa
                     dataGridViewLibros.Rows[n].Cells[2].Value = item.Titulo;
                     dataGridViewLibros.Rows[n].Cells[3].Value = item.Autor;
                     dataGridViewLibros.Rows[n].Cells[4].Value = item.AñoPublicacion;
-                    dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponibles(item.Id).Count().ToString();
-                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresTotales(item.Id).Count().ToString();
+                    dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(item.Id).Count().ToString();
+                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresLibro(item.Id).Count().ToString();
                     if (dataGridViewLibros.Rows[n].Cells[5].Value.ToString() == "0")
                     {
                         dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
@@ -167,7 +167,7 @@ namespace Programa
             {
                 string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -195,7 +195,7 @@ namespace Programa
             {
                 string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -214,7 +214,7 @@ namespace Programa
             {
                 string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -241,7 +241,7 @@ namespace Programa
                                 {
                                     if (!string.IsNullOrEmpty(textBoxISBN.Text))
                                     {
-                                        int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponibles(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
+                                        int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
                                         interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar);
                                         string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerPrestamos().Last().Id).FechaLimite).Date.ToShortDateString();
                                         ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
@@ -287,7 +287,7 @@ namespace Programa
             {
                 string texto= "Error buttonRegistrarPrestamo_Click: "+ ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 

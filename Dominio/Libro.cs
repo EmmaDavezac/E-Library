@@ -81,25 +81,9 @@ namespace Dominio
             return ejemplaresDisponibles;//Verifica si el ejemplar cumple las condiciones de no encontrarse prestado y estar en buen estado
         }
 
+    
         /// <summary>
-        /// Resumen: Este metodo nos permite obtener la lista de ejemplares del libro en buen estado.
-        /// </summary>
-        /// <returns>Ejemplares del libro en buen estado</returns>
-        public List<Ejemplar> EjemplaresEnBuenEstado()
-        {
-            List<Ejemplar> ejemplaresEnBuenEstado = new List<Ejemplar>();
-            foreach (var item in this.Ejemplares)
-            {
-                if (item.Estado == EstadoEjemplar.Bueno)
-                {
-                    ejemplaresEnBuenEstado.Add(item);
-                }
-            }
-            return ejemplaresEnBuenEstado;
-        }
-
-        /// <summary>
-        /// Resumen: Este metodo nos permite aobtener la lista total de ejemplares del libro.
+        /// Resumen: Este metodo nos permite aobtener la lista total de ejemplares del libro no dados de baja y en buen estado.
         /// </summary>
         /// <returns>Lista total de ejemplares del libro</returns>
         public List<Ejemplar> EjemplaresTotales()

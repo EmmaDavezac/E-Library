@@ -116,10 +116,6 @@ namespace Programa
             timer1.Start();//inicia el timer
         }
 
-        private void buttonCerrar_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton cerrar
-        {
-            Application.Exit();//cierra el programa
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         //accion que ejecuta el timmer, animacion de cuando se abre la ventana

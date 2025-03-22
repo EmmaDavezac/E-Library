@@ -13,10 +13,11 @@ namespace ServiciosAPILibros
     ///Resumen: Esta clase nos permite realizar una busqueda en la API de OpenLibrary y obtener una lista de libros que coincidan con el termino de busqueda.
     ///</summary>
     public class APIOpenLibrary : IServicioAPILibros
+
     {   ///<summary>
         ///Resumen: Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
         ///</summary>
-        private string TratarCadenaBusqueda(string ca)
+        public string TratarCadenaBusqueda(string ca)
         {
             string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
             string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos la cadena vacia
@@ -98,6 +99,7 @@ namespace ServiciosAPILibros
                 }
                 msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+cadena+")" +ex.Message+ex.StackTrace+ ex.Response;
                 oLog.RegistrarLog(msg);
+                throw new Exception(msg);
             }
             return lista;
         }

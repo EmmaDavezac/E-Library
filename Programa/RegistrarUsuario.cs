@@ -19,7 +19,6 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            
             labelNombreUsuario.Text =nombreUsuario;
         }
 
@@ -133,9 +132,9 @@ namespace Programa
             }
             catch (Exception ex)
             {
-                string texto= "Error buttonAñadirUsuario_Click: "+ ex.Message + ex.StackTrace;
+                string texto = "Error buttonAñadirUsuario_Click: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error");
+                MessageBox.Show( "Ha ocurrido un error:  " + ex.Message + ex.StackTrace);
             }
         }
 

@@ -67,15 +67,6 @@ namespace Programa
             this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void ConsultarUsuario_Load(object sender, EventArgs e)
@@ -93,25 +84,9 @@ namespace Programa
             }
         }
 
-        private void textBoxApellido_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
+      
 
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         public void ObtenerUsuarios()//Este metodo carga la lista de usuario en la tabla
         {
@@ -184,15 +159,7 @@ namespace Programa
 
         }
 
-        private void labelNombreUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usuarioSimpleBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void labelTitulo_Click(object sender, EventArgs e)
         {

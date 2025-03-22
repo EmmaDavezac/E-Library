@@ -15,6 +15,7 @@ namespace Programa
         private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         private string nombreUsuario { get; set; }
+
         /// <summary>
         /// Resumen: Constructor de la clase.
         /// </summary>
@@ -25,6 +26,7 @@ namespace Programa
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = nombreUsuario;
         }
+      
         /// <summary>
         /// Resumen: Este metodo se encarga de volver a la ventana anterior.
         /// </summary>
@@ -35,6 +37,7 @@ namespace Programa
             this.Hide();
             this.Owner.Show();
         }
+        
         /// <summary>
         /// Resumen: Este metodo se encarga de guardar los datos del administrador en la base de datos.
         /// </summary>
@@ -139,8 +142,7 @@ namespace Programa
         {
         string texto= "Error al actualizar el usuario: "+ ex.Message + ex.StackTrace;
         bitacora.RegistrarLog(texto);
-        MessageBox.Show(texto, "Ha ocurrido un error");
-         
+        MessageBox.Show(texto, "Ha ocurrido un error."+ ex.Message +ex.StackTrace);
         }
         }
 
@@ -158,10 +160,6 @@ namespace Programa
             buttonGuardar.Enabled = true;
         }
 
-        private void textBoxFecha_TextChanged(object sender, EventArgs e)
-        {
-            buttonGuardar.Enabled = true;
-        }
 
         private void textBoxTelefono_TextChanged(object sender, EventArgs e)
         {
@@ -194,6 +192,7 @@ namespace Programa
         {
             buttonGuardar.Enabled = true;
         }
+       
         /// <summary>
         /// Resumen: Este metodo se encarga de cargar los datos del administrador en la ventana.
         /// </summary>
@@ -222,6 +221,7 @@ namespace Programa
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
+       
         /// <summary>
         /// Resumen: Este metodo se encarga de modificar la contraseña del administrador.
         /// </summary>
@@ -241,6 +241,7 @@ namespace Programa
                 MessageBox.Show(texto, "Ha ocurrido un error");
                 }
         }
+        
         /// <summary>
         /// Resumen: Este metodo se encarga de cargar la contraseña nueva del administrador.
         /// </summary>
@@ -254,6 +255,7 @@ namespace Programa
         {
             buttonGuardar.Enabled = true;
         }
+
         /// <summary>
         /// Resumen: Este metodo se encarga de dar de baja o alta a un administrador.
         /// </summary>

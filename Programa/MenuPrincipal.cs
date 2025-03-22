@@ -170,11 +170,6 @@ namespace Programa
             ventana.Show();
         }
 
-        private void labelId_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label4_Click(object sender, EventArgs e)
         {
 

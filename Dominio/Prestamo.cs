@@ -21,10 +21,7 @@ namespace Dominio
         /// <summary>
         /// resumen: Fecha en la que se devolvio el prestamo (si fue devuelto).
         /// </summary>
-        public string FechaDevolucion { get; set; }
-        /// <summary>   
-        /// Resumen: Estado del ejemplar(Normal,Proximo a vencer,Retrasado)
-        /// </summary>
+      
         public EstadoPrestamo EstadoPrestamo { get; set; }
         /// <summary>
         /// Resumen: Estado de devolucion del ejemplar( Bueno,Malo)
@@ -120,7 +117,7 @@ namespace Dominio
         {
             if ((DateTime.Now.Date >= Convert.ToDateTime(FechaLimite).Date))
             {
-                if (string.IsNullOrEmpty(FechaDevolucion) || (Convert.ToDateTime(FechaDevolucion).Date >= Convert.ToDateTime(FechaLimite).Date))
+                if (EstadoPrestamo!=EstadoPrestamo.Devuelto)
                 { return true; }
                 else return false;
                 }
@@ -135,7 +132,7 @@ namespace Dominio
             int cantDiasParaConsiderarseProximo = 3;
             if (!this.Retrasado())
             {
-                if (string.IsNullOrEmpty(FechaDevolucion))
+                if (EstadoPrestamo != EstadoPrestamo.Devuelto)
                 {
                     TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
                     int dias = diferenciaEntreFechas.Days;
@@ -164,7 +161,7 @@ namespace Dominio
           
             if (Retrasado())
             {
-                TimeSpan difFechas = Convert.ToDateTime(FechaDevolucion) - Convert.ToDateTime(FechaLimite);
+                TimeSpan difFechas = DateTime.Now- Convert.ToDateTime(FechaLimite);
                 int dias = difFechas.Days;
                 scoring -= 2 * dias;
             }
@@ -198,7 +195,7 @@ namespace Dominio
                 Ejemplar.Estado = estadoDevolucion;
                 Ejemplar.Baja = false;
             }
-            FechaDevolucion = DateTime.Now.Date.ToString();
+            EstadoPrestamo = EstadoPrestamo.Devuelto;
             Usuario.Scoring = CalcularScoring();
         }
     }

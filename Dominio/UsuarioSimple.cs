@@ -48,7 +48,7 @@ namespace Dominio
             {
                 foreach (var item in Prestamos)
                 {
-                    if (item.FechaDevolucion == null)
+                    if (item.EstadoPrestamo == EstadoPrestamo.Devuelto)
                     {
                         resultado = false;
                     }

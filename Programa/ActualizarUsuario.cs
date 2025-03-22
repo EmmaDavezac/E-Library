@@ -20,10 +20,6 @@ namespace Programa
             labelNombreUsuario.Text = nombreUsuario;
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)
-        {
-            buttonGuardar.Enabled = true;
-        }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
@@ -145,10 +141,6 @@ namespace Programa
             buttonGuardar.Enabled = true;
         }
 
-        private void textBoxFecha_TextChanged(object sender, EventArgs e)
-        {
-            buttonGuardar.Enabled = true;
-        }
 
         private void textBoxTelefono_TextChanged(object sender, EventArgs e)
         {
@@ -170,7 +162,6 @@ namespace Programa
             try
             {
             var usuario = interfazNucleo.ObtenerUsuario(pNombreUsuario);
-            //VaciarCampos();
             textBoxNombreUsuario.Text = usuario.nombreUsuario;
             textBoxNombre.Text = usuario.Nombre;
             textBoxApellido.Text = usuario.Apellido;
@@ -190,10 +181,6 @@ namespace Programa
                 }
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void botonVolver_Click_1(object sender, EventArgs e)
         {
