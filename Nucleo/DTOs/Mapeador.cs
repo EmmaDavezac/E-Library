@@ -38,7 +38,7 @@ namespace Nucleo.DTOs
         }
 
         public EjemplarDTO Mapear(Ejemplar ejemplar)
-        {   string estado= "";
+        {   string estado;
             if (ejemplar.Estado==EstadoEjemplar.Bueno)
                 estado= "Bueno";
             else 

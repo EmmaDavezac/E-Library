@@ -96,19 +96,11 @@ namespace Programa
                                             if (!string.IsNullOrEmpty(textBoxContraseña.Text) && textBoxContraseña.Text.Length >= 4)
                                             //se verifica que se haya ingresado la contraseña y tenga el formato correcto
                                             {
-                                                bool resultado = interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
-                                                //se intenta registrar el nuevo administrador y notifica en pantalla si la operacion fue exitosa o no
-                                                if (resultado == true)
-                                                {
+                                               interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
                                                     MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-
                                                     this.Hide();//se oculta la ventana actual
                                                     this.Owner.Show();// se vuelve a la ventana padre
-                                                }
-                                                else
-                                                {
-                                                    MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
-                                                }
+                                               
 
                                             }
                                             else

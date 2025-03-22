@@ -212,19 +212,14 @@ namespace Programa
             {
                 if (checkBoxBaja.Checked == true)
             {
-                if (interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text) == false)
-                {
-                    checkBoxBaja.Checked = false;
-                    MessageBox.Show("El Usuario " + textBoxNombreUsuario.Text + " no puede darse de baja ya que tiene prestamos pendientes!, intentelo mas tarde");
-                }
-                else
-                {
+                    interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
+                 
                     textBoxNombre.Enabled = false;
                     textBoxApellido.Enabled = false;
                     dateTimePickerFechaNacimiento.Enabled = false;
                     textBoxTelefono.Enabled = false;
                     textBoxMail.Enabled = false;
-                }
+                
             }
 
             else if (checkBoxBaja.Checked == false)

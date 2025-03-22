@@ -115,27 +115,7 @@ namespace Dominio
             return ejemplaresTotales;
         }
         
-        /// <summary>
-        /// Resumen: Este metodo nos permite eliminar ejemplares del libro.
-        /// </summary>
-        public void EliminarEjemplares(int pCantidad)
-        {
-            int e = 0;
-            foreach (var item in Ejemplares)
-            {
-                if (e >= pCantidad)
-                {
-                    break;
-                }
-                if (item.Estado != EstadoEjemplar.Malo)
-                {
-                    item.Estado = EstadoEjemplar.Malo;
-                    item.Disponible = false;
-                    item.Baja = true;
-                    e = e + 1;
-                }
-            }
-        }
+  
         
         /// <summary>
         /// Resumen: Este metodo nos permite dar de baja un libro.

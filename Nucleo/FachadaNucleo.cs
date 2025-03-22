@@ -9,6 +9,8 @@ using Bitacora;//Libreria que nos permite registrar logs en la bitacora
 using DAL.EntityFramework;
 using BibliotecaEncriptacion;
 using Nucleo.DTOs;
+using System.Web.UI.WebControls;
+using System.Collections;
 
 
 
@@ -68,11 +70,10 @@ namespace Nucleo
         /// <param name="mail">Email del nuevo usuario</param>
         /// <param name="telefono">Telefono del nuevo usuario</param>
         /// <returns> true si la operacion es exitosa y false si fue erronea</returns>
-        public bool AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
+        public void AñadirUsuario(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono)
         {
             UsuarioSimple usuario = new UsuarioSimple(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario);//Instanciamos un usuario con los datos pasados por parametro
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             try
             {
                 msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
@@ -81,14 +82,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Add(usuario);//Añado el usuario a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return true;
+                
             }
             catch (Exception ex)
             {
                 msg = "Error al registrar usuario (" + nombre + "-" + apellido + ")" + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg) ;
             }
         }
 
@@ -98,14 +98,14 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del usuario deseado</param>
         /// <returns>Un usuario simple</returns>
         public UsuarioSimpleDTO ObtenerUsuario(string pNombreUsuario)
-        
+
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            UsuarioSimpleDTO usuario = null;//Creamos una variable de tipo usuario que sera devuelta por el metodo
             try
             {
 
-                UsuarioSimpleDTO usuario;//Creamos una variable de tipo usuario que sera devuelta por el metodo
+
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     usuario = mapeador.Mapear(unitOfWork.RepositorioUsuarios.Get(pNombreUsuario));//Asignamos al usuario el valor obtenido por el get a la base de datos
@@ -115,10 +115,13 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el usuario (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return null;//Devolvemos el usuario
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                return usuario;//Devolvemos el usuario
+                throw new Exception(msg);
             }
         }
+
+           
         
         /// <summary>
         /// Resumen: Permite actualizar la informacion de un usuario simple.
@@ -131,7 +134,6 @@ namespace Nucleo
         /// <param name="telefono">Telefono del usuario</param>
         public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -145,12 +147,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                
             }
             catch (Exception ex)
             {
                 msg = "Error al actualizar el usuario (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
 
             }
         }
@@ -166,10 +169,9 @@ namespace Nucleo
         /// <param name="contraseña">Constraseña del administrador</param>
         /// <param name="telefono">Telefono del administrador</param>
         /// <returns>True si el registro es exitoso, en caso contrario False.</returns>
-        public bool AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
+        public void AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
        
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, encriptador.Encriptar(contraseña), telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
             try
@@ -180,14 +182,13 @@ namespace Nucleo
                     unitOfWork.RepositorioAdministradores.Add(usuario);//Añadimos el administrador a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return true;//Indicamos con true que se pudo añadir correctamente
+               
             }
             catch (Exception ex)
             {
                 msg = "Error al Registrar el administrador (" + pNombreUsuario + ") " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;//Indicamos con false que no se pudo añadir correctamente
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
 
             }
         }
@@ -200,7 +201,6 @@ namespace Nucleo
         public UsuarioAdministradorDTO ObtenerAdministrador(string pNombreAdministrador)
         {
             UsuarioAdministradorDTO administrador = new UsuarioAdministradorDTO();//Instanciamos un administrador para que luego sea devuelto como resultado
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -214,7 +214,8 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el administrador (" + pNombreAdministrador + " ) " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
 
             }
             return administrador;//Devolvemos el administrador
@@ -231,7 +232,6 @@ namespace Nucleo
         /// <param name="telefono">Telefono del administrador</param>
         public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -249,8 +249,10 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al actualizar el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
+
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
         
         /// <summary>
@@ -260,7 +262,6 @@ namespace Nucleo
         /// <param name="contraseña"></param>
         public void ActualizarContraseñaAdministrador(string pNombreAdministrador, string contraseña)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -274,8 +275,11 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al actualizar la contraseña del administrador (" + pNombreAdministrador + " ) " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
+               
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+     
         }
        
         /// <summary>
@@ -287,9 +291,8 @@ namespace Nucleo
         /// <param name="añoPublicacion">Año de publicacion del libro</param>
         /// <param name="pCantidadEjempalares">Cantidad de ejemplares del libro</param>
         /// <returns>True si el registro fue exitoso, False en caso contrario</returns>
-        public bool AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado = true;
             try
@@ -334,9 +337,10 @@ namespace Nucleo
             {
 
                 msg = "Error al registrar el libro ( Titulo: " + titulo + " Autor: " + autor + " ISBN:" + unISBN + " ) ." + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-            return resultado;
         }
        
         /// <summary>
@@ -346,7 +350,6 @@ namespace Nucleo
         /// <returns>Libro o null</returns>
         public LibroDTO ObtenerLibro(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             LibroDTO libro = new LibroDTO();//Instanciamos un libro que sera devuelto por el metodo
             try
@@ -360,7 +363,8 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el libro (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
 
             return libro;//Devolvemos el libro
@@ -374,7 +378,6 @@ namespace Nucleo
         public EjemplarDTO  ObtenerEjemplar(int id)
         {
             EjemplarDTO ejemplarDTO = new EjemplarDTO();
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;
             try
             {
@@ -387,7 +390,8 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el ejemplar (Id: " + id + " ) ." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);
+                bitacora.RegistrarLog(msg);
+                throw new Exception(msg);
             }
             return ejemplarDTO;
         }
@@ -399,7 +403,6 @@ namespace Nucleo
         /// <returns> Lista de ejemplares en buen estado del libro</returns>
         public List<EjemplarDTO> ObtenerEjemplaresEnBuenEstadoLibro(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>(); //Creamos un listado que contenga objetos del tipo Ejemplar para ser devuelto por el metodo
             try
@@ -415,7 +418,8 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener lista de ejemplares en buen estado del libro (id libro: " + id + ")" + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
             return lista;//Devolvemos la lista
         }
@@ -427,7 +431,6 @@ namespace Nucleo
         /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
         public void AñadirEjemplares(int pIdLibro, int pCantidad)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -445,8 +448,10 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al Añadir ejemplares a libro (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ")." + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
+
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
         /// <summary>
@@ -454,28 +459,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="pIdLibro">ID del libro al cual agregar ejemplares</param>
         /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
-        public void EliminarEjemplaresDeUnLibro(int pIdLibro, int pCantidad)
-
-        {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
-            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            try
-            {
-                msg = ("Ejemplares del libro eliminados con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
-                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    unitOfWork.RepositorioLibros.Get(pIdLibro).EliminarEjemplares(pCantidad);//Eliminamos la cantidad ejemplares pasados por parametro del libro.
-                    unitOfWork.Complete();//guardamos los cambios
-                }
-            }
-
-            catch (Exception ex)
-            {
-                msg = "Error al eliminar ejemplares del libro (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ")." + ex.Message + ex.StackTrace;
-
-            }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-        }
+        
 
         /// <summary>
         /// Resumen: Este metodo nos permite dar de baja un libro.
@@ -483,7 +467,6 @@ namespace Nucleo
         /// <param name="pIdLibro">Id del libro</param>
         public void DarDeBajaUnLibro(int pIdLibro)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -497,10 +480,10 @@ namespace Nucleo
             }
             catch (Exception ex)
             {
-
                 msg = "Error al dar de baja el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
         /// <summary>
@@ -509,7 +492,6 @@ namespace Nucleo
         /// <param name="pIdLibro">Id del libro</param>
         public void DarDeAltaUnLibro(int pIdLibro)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -524,8 +506,10 @@ namespace Nucleo
             {
 
                 msg = "Error al dar de alta el libro (Id: " + pIdLibro + ")." + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
         /// <summary>
@@ -535,7 +519,6 @@ namespace Nucleo
         /// <returns>Lista de ejemplares disponibles de un libro</returns>
         public List<EjemplarDTO> ObtenerEjemplaresDisponibles(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -553,9 +536,11 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                return lista;
+                throw new Exception(msg);
             }
-            return lista;
+            
         }
 
         /// <summary>
@@ -565,7 +550,6 @@ namespace Nucleo
         /// <returns>Lista total de ejemplares de un libro</returns>
         public List<EjemplarDTO> ObtenerEjemplaresTotales(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
             try
@@ -578,13 +562,16 @@ namespace Nucleo
                     }
 
                 }
+                return lista;//Devolvemos la lista
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista total de ejemplares del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                return lista;
+                throw new Exception(msg);
             }
-            return lista;//Devolvemos la lista
+          
         }
 
         /// <summary>
@@ -595,7 +582,6 @@ namespace Nucleo
         /// <param name="idLibro">ID del libro que se va a prestar</param>
         public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -610,13 +596,15 @@ namespace Nucleo
                     unitOfWork.Complete();//Guardamos los cambios
 
                 }
+                
 
             }
             catch (Exception ex)
             {
                 msg = "Error al registrar el Prestamo  (Id Ejemplar: " + idEjemplar + " Usuario: " + pNombreUsuario + ") ." + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
         /// <summary>
@@ -626,7 +614,6 @@ namespace Nucleo
         /// <returns>Prestamo o null</returns>
         public PrestamoDTO ObtenerPrestamo(int id)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             PrestamoDTO prestamo = new PrestamoDTO();//Instanciamos un objeto del tipo prestamo que luego sera devuelto por el metodo
             try
@@ -635,13 +622,16 @@ namespace Nucleo
                 {
                     prestamo = mapeador.Mapear(unitOfWork.RepositorioPrestamos.Get(id));//Obtenemos el prestamo y lo asignamos a la variable prestamo creada
                 }
+                return prestamo;
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener el prestamo (Id: " + id + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                return prestamo;
+                throw new Exception(msg);
+               
             }
-            return prestamo;//Devolvemos el prestamo
         }
 
         /// <summary>
@@ -654,7 +644,6 @@ namespace Nucleo
         /// <param name="añoPublicacion">Año de publicacion del libro</param>
         public void ActualizarLibro(int id, string unISBN, string titulo, string autor, string añoPublicacion)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -670,7 +659,9 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al actualizar el libro (Id: " + id + "titulo: " + titulo + "autor: " + autor + ")." + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
+
             }
         }
        
@@ -681,7 +672,6 @@ namespace Nucleo
         /// <param name="estado">Estado de devolucion del ejemplar</param>
         public void RegistrarDevolucion(int idPrestamo, string estado)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -699,8 +689,9 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al registrar la devolucion del prestamo (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")" + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
         }
 
         /// <summary>
@@ -712,7 +703,6 @@ namespace Nucleo
         public bool ValidarContraseña(string pNombreUsuario, string contraseña)
         {   
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -724,7 +714,8 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error al obtener el administrador (" + pNombreUsuario + " ) " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
 
             }
 
@@ -737,7 +728,6 @@ namespace Nucleo
         /// <returns>Lista total de usuarios simples</returns>
         public IEnumerable<UsuarioSimpleDTO> ObtenerUsuarios()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<UsuarioSimpleDTO> lista=new List<UsuarioSimpleDTO>();
             try
@@ -752,7 +742,8 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de usuarios." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
 
             return lista;
@@ -764,7 +755,6 @@ namespace Nucleo
         /// <returns>Lista total de usuarios adminitradores</returns>
         public IEnumerable<UsuarioAdministradorDTO> ObtenerAdministradores()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<UsuarioAdministradorDTO> lista=new List<UsuarioAdministradorDTO>();
             try
@@ -773,12 +763,14 @@ namespace Nucleo
                 {
                     lista.Add(mapeador.Mapear(item));
                 }
+
             }
             catch (Exception ex)
             {
                 msg = "Error al obtener la lista de administradores." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception (msg);
             }
             return lista;
         }
@@ -789,7 +781,6 @@ namespace Nucleo
         /// <returns>Lista total de libros</returns>
         public IEnumerable<LibroDTO> ObtenerLibros()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<LibroDTO> lista=new List<LibroDTO>();
             try
@@ -803,7 +794,8 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de libros." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
             return lista;
         }
@@ -814,7 +806,6 @@ namespace Nucleo
         /// <returns>Lista total de prestamos</returns>
         public IEnumerable<PrestamoDTO> ObtenerPrestamos()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<PrestamoDTO> lista=new List<PrestamoDTO>();
             try
@@ -827,19 +818,13 @@ namespace Nucleo
             {
                 msg = "Error al obtener la lista de prestamos." + ex.Message + ex.StackTrace; ;
                 lista = null;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
             return lista;
         }
 
-        /// <summary>
-        /// Resumen: Este metodo nos permite obtener el ID del ultimo libro registrado.
-        /// </summary>
-        /// <returns>ID del ultimo libro registrado</returns>
-        public int ObtenerUltimoIdLibro()
-        {
-            return ObtenerLibros().Last().Id;
-        }
+      
 
         /// <summary>
         /// Resumen: Este metodo nos permite obtener la lista de prestamos proximos a vencer.
@@ -847,7 +832,6 @@ namespace Nucleo
         /// <returns>Lista de prestamos proximos a vencer</returns>
         public List<PrestamoDTO> ObtenerListadePrestamosProximosAVencerse()
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();
             string msg;
             List<PrestamoDTO> lista = new List<PrestamoDTO>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -864,9 +848,9 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error, la lista de prestamos proximos a vencerse no pudo obtenerse." + ex.Message + ex.StackTrace;
-
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return lista;//Devuelve la lista            
         }
 
@@ -877,7 +861,6 @@ namespace Nucleo
         public List<PrestamoDTO> ObtenerListadePrestamosRetrasados()
         {
 
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<PrestamoDTO> lista = new List<PrestamoDTO>();//Instancia de una lista de prestamos que sera devuelta por el metodo
             try
@@ -894,8 +877,10 @@ namespace Nucleo
             catch (Exception ex)
             {
                 msg = "Error, la lista de prestamos retrasados no pudo obtenerse. " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+
+                throw new Exception(msg);
             }
-            oLog.RegistrarLog(msg);//Añadimos el mensaje al log
             return lista;//Devuelve la lista 
         }
 
@@ -905,13 +890,21 @@ namespace Nucleo
         /// <param name="unaCadena">Libro buscado</param>
         /// <returns>devuelve una lista de libros que coinciden con la cadena buscada</returns>
         public List<LibroDTO> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
-        {
-            List<LibroDTO> lista = new List<LibroDTO>();
-            foreach (var item in ServicioAPILibros.ListarPorCoincidecia(unaCadena))
+        { 
+            try
             {
-                lista.Add(mapeador.Mapear(item));
+                List<LibroDTO> lista = new List<LibroDTO>();
+                foreach (var item in ServicioAPILibros.ListarPorCoincidecia(unaCadena))
+                {
+                    lista.Add(mapeador.Mapear(item));
+                }
+                return lista;
             }
-            return lista;
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar libros de la API por coincidencia. " + ex.Message + ex.StackTrace);
+            }   
+          
         }
 
         /// <summary>
@@ -919,14 +912,21 @@ namespace Nucleo
         /// </summary>
         public void NotificarPrestamosProximosAVencer()
         {
-            foreach (var item in ObtenerListadePrestamosProximosAVencerse())
+            try
             {
-                string nombreUsuario = item.nombreUsuario;
-                EjemplarDTO ejemplar=ObtenerEjemplar(item.idEjemplar);
-                UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
-                string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarProximoAVencer(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite));
+                foreach (var item in ObtenerListadePrestamosProximosAVencerse())
+                {
+                    string nombreUsuario = item.nombreUsuario;
+                    EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
+                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
+                    string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
+                    NotificadorUsuarios.NotificarProximoAVencer(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
 
+                }
+            }
+            catch (Exception ex)
+            {bitacora.RegistrarLog("Error al notificar prestamos proximos a vencer. " + ex.Message + ex.StackTrace);
+                throw new Exception("Error al notificar prestamos proximos a vencer. " + ex.Message + ex.StackTrace);
             }
         }
 
@@ -934,15 +934,21 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite notificar a los usuarios con prestamos retrasados.
         /// </summary>
         public void NotificarPrestamosRetrasados()
-        {
-            foreach (var item in ObtenerListadePrestamosRetrasados())
+        { try
             {
-                string nombreUsuario = item.nombreUsuario;
-                EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
-                UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
-                string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
-                bitacora.RegistrarLog(NotificadorUsuarios.NotificarRetraso(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite));
+                foreach (var item in ObtenerListadePrestamosRetrasados())
+                {
+                    string nombreUsuario = item.nombreUsuario;
+                    EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
+                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
+                    string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
+                    NotificadorUsuarios.NotificarRetraso(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
 
+                }
+            }
+            catch (Exception ex)
+            {   bitacora.RegistrarLog("Error al notificar prestamos retrasados. " + ex.Message + ex.StackTrace);
+                throw new Exception("Error al notificar prestamos retrasados. " + ex.Message + ex.StackTrace);
             }
         }
 
@@ -951,10 +957,18 @@ namespace Nucleo
         /// </summary>
         public void NotificarUsuarios()
         {
-            if (DateTime.Now.Hour == 9)
+            try
             {
-                NotificarPrestamosRetrasados();
-                NotificarPrestamosProximosAVencer();
+                if (DateTime.Now.Hour == 9)
+                {
+                    NotificarPrestamosRetrasados();
+                    NotificarPrestamosProximosAVencer();
+                }
+            }
+            catch (Exception ex)
+            {   bitacora.RegistrarLog("Error al notificar usuarios. " + ex.Message + ex.StackTrace);
+                throw new Exception("Error al notificar usuarios. " + ex.Message + ex.StackTrace);
+
             }
         }
 
@@ -963,10 +977,9 @@ namespace Nucleo
         /// </summary>
         /// <param name="pNombreUsuario">Nombre de usuario del usuario a dar de baja</param>
         /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
-        public bool DarDeBajaUsuario(string pNombreUsuario)
+        public void DarDeBajaUsuario(string pNombreUsuario)
         //pemite dar de baja un usuario simple
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado;//Booleano que se devolvera como resultado
             try
@@ -979,16 +992,17 @@ namespace Nucleo
                         unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;//Da de baja al usuario
                     }
                     unitOfWork.Complete();
-                    msg = "El usuario " + pNombreUsuario + "ha sido dado de baja exitosamente. ";
-                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return resultado;//Devuelve el resultado
+                    
+                   
+                    
                 }
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                return false;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
+
             }
         }
 
@@ -997,15 +1011,14 @@ namespace Nucleo
         /// </summary>
         /// <param name="pNombreUsuario">Nombre de usuario del administrador a dar de baja</param>
         /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
-        public bool DarDeBajaAdministrador(string pNombreUsuario)
+        public void DarDeBajaAdministrador(string pNombreUsuario)
         {
             if (pNombreUsuario == "admin")//Verifica si el administrador que quiere darse de baja no es el admin principal
             {
-                return false;
+                
             }
             else
             {
-                Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
                 string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
                 try
                 {
@@ -1014,18 +1027,47 @@ namespace Nucleo
                         unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
                         unitOfWork.Complete();//Guardamos los cambios
                     }
-                    msg = "El administrador " + pNombreUsuario + " ha sido dado de baja correctamente. ";
-                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return true;
+                   
+                   
                 }
                 catch (Exception ex)
                 {
                     msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                    oLog.RegistrarLog(msg);//Añadimos el mensaje al log
-                    return false;
+                    bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                    throw new Exception(msg);
+
                 }
             }
         }
+
+        /// <summary>
+        /// Resumen: Este metodo nos permite dar de baja un administrador.
+        /// </summary>
+        /// <param name="pNombreUsuario">Nombre de usuario del administrador a dar de baja</param>
+        /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
+        public void DarDeBajaEjemplar(int idEjemplar)
+        {
+            
+                string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+                try
+                {
+                    using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
+                    {
+                        unitOfWork.RepositorioEjemplares.Get(idEjemplar).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
+                        unitOfWork.Complete();//Guardamos los cambios
+                    }
+                  
+
+            }
+                catch (Exception ex)
+                {   
+                    msg = "Error, el ejemplar " + idEjemplar + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
+                    bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                    Exception exception = new Exception(msg);
+                    throw exception;
+            }
+        }
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite dar de alta un usuario simple previamente dado de baja.
@@ -1033,7 +1075,6 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del UsuarioSimple a dar de alta</param>
         public void DarDeAltaUsuario(string pNombreUsuario)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -1042,13 +1083,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;//Obtiene el usuario y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                msg = "El usuario " + pNombreUsuario + " ha sido dado de alta correctamente";
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+              
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);   
             }
         }
 
@@ -1058,7 +1099,6 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del Administrador a dar de alta</param>
         public void DarDeAltaAdministrador(string pNombreUsuario)
         {
-            Bitacora.ImplementacionBitacora oLog = new Bitacora.ImplementacionBitacora();//Instancia de un objeto ArchivoLog para guardar mensajes en el log
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
@@ -1067,13 +1107,13 @@ namespace Nucleo
                     unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;//Obtiene el administrador y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                msg = "El administrador" + pNombreUsuario + " ha sido dado de alta correctamente. ";
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                
             }
             catch (Exception ex)
             {
                 msg = "Error, el administrador" + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
-                oLog.RegistrarLog(msg);//Añadimos el mensaje al log
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
         }
     }

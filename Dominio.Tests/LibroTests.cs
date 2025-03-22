@@ -109,7 +109,7 @@ namespace Dominio.Tests
             unLibro.Ejemplares = new List<Ejemplar>() { ejemplar1, ejemplar2 };
 
             //Act
-            unLibro.EliminarEjemplares(1);
+            unLibro.EliminarEjemplar(1);
 
             //Assert
             Assert.AreEqual(original.Count, unLibro.EjemplaresDisponibles().Count);

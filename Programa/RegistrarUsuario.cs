@@ -65,17 +65,12 @@ namespace Programa
                                 {
                                     if (!string.IsNullOrEmpty(textBoxTelefono.Text) && textBoxTelefono.Text.All(Char.IsDigit) && textBoxTelefono.Text.Length >= 8 && textBoxTelefono.Text.Length <= 11)//se verifica que el telefono se haya ingresado correctamente (formato)
                                     {
-                                        bool resultado = interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);//se añade el usuario a la base de datos
-                                        if (resultado == true)//verificamos si la operacion fue exitosa y mostramos un mensaje en pantalla
-                                        {
+                                        interfazNucleo.AñadirUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxTelefono.Text);//se añade el usuario a la base de datos
+                                        
                                             MessageBox.Show("Usuario guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
                                             this.Hide();
                                             this.Owner.Show();
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("El usuario: " + textBoxNombreUsuario.Text + " ya se encuentra registrado, pruebe con otro nombre de usuario", "Error", MessageBoxButtons.OK);
-                                        }
+                                      
 
                                     }
                                     else

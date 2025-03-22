@@ -265,19 +265,15 @@ namespace Programa
             {
                 if (checkBoxBaja.Checked == true)//Si esta checkeado se fija que el administrador pueda darse de baja
             {
-                if (interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text) == false)//Si devuelve falso quiere decir que se trata del adminsitrador principal por lo tanto no puede darse de baja.
-                {
-                    checkBoxBaja.Checked = false;
-                    MessageBox.Show("No puede darse de baja al administrador principal!");
-                }
-                else//Caso contrario procede bloquear las opciones que brinda la ventana
-                {
+                    interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text);//Si devuelve falso quiere decir que se trata del adminsitrador principal por lo tanto no puede darse de baja.
+                
+                
                     textBoxNombre.Enabled = false;
                     textBoxApellido.Enabled = false;
                     dateTimePickerFechaNacimiento.Enabled = false;
                     textBoxTelefono.Enabled = false;
                     textBoxMail.Enabled = false;
-                }           
+                           
             }
 
             else if (checkBoxBaja.Checked == false)//En el caso de que no este checekado permite utilizar las opciones de la ventana.

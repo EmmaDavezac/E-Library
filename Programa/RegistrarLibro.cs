@@ -98,21 +98,12 @@ namespace Programa
         {
            try
            {
-                bool resultado;
             if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
             //se verifica que se haya ingresado toda la informacion necesaria
             {
-                resultado = interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
-                //se registra el libro en la base de datos
-                if (resultado == true)
-                {
-                    MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());//se muestra el mensaje en pantalla
-                }
-                else 
-                {
-                    MessageBox.Show("El libro: " + textBoxTitulo.Text + " .ISBN: " + textBoxISBN.Text + " ya esta registrado");//se muestra el mensaje en pantalla
-                }
-
+              interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
+                
+                    MessageBox.Show("Libro registrado con exito! " );//se muestra el mensaje en pantalla
             }
             else
             {
@@ -356,7 +347,7 @@ namespace Programa
                     {
 
                         ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
-                        MessageBox.Show("Libro registrado con exito, el Id del libro es: " + new FachadaNucleo().ObtenerUltimoIdLibro());
+                        MessageBox.Show("Libro registrado con exito" );
                         this.Hide();
                         this.Owner.Show();
                     }

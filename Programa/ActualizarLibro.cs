@@ -103,10 +103,6 @@ namespace Programa
                 {
                     interfazNucleo.DarDeAltaUnLibro(idLibro);//Da de alta al libro.
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
-                    if (sumatoriaDeEjemplares < 0)//Si el valor de la sumatoria de ejemplares da negativo elimina los ejemplares tomando su valor absoluto.
-                    {
-                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
-                    }
                     if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
@@ -124,11 +120,8 @@ namespace Programa
                 if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))//Verifica que ningun campo este vacio.
                 {
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
-                    if (sumatoriaDeEjemplares < 0)//Si el valor de la sumatoria de ejemplares da negativo elimina los ejemplares tomando su valor absoluto.
-                    {
-                        interfazNucleo.EliminarEjemplaresDeUnLibro(idLibro, Math.Abs(sumatoriaDeEjemplares));
-                    }
-                    else if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
+                    
+                     if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
                     {
                         interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
                     }
