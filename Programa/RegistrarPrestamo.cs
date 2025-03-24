@@ -224,10 +224,9 @@ namespace Programa
         }
 
         /// <summary>
-        /// Resumen Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
+        /// Resumen:Calcula la fecha limite de devolucion de un prestamo en funcion del scoring del usuario que solicita el prestamo
         /// </summary>
-        /// <param name="usuario"></param>
-        /// <returns>Fecha limite del prestamo</returns>
+        /// <returns></returns>
         public DateTime CalcularFechaLimite()
         {
             UsuarioSimpleDTO usuario = interfazNucleo.ObtenerUsuario(textBoxNomUsuario.Text);
