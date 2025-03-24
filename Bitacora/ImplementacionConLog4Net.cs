@@ -1,16 +1,11 @@
-﻿using System;
-using System.IO;
-using log4net;
-
-
-namespace Bitacora
+﻿namespace Bitacora
 {
 
     /// <summary>
     /// Resumen: Esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo utilizando la libreria log4net.
     /// </summary>
     public class ImplementacionBitacoraConLog4Net : IBitacora//
-    {  
+    {
         /// <summary>
         /// Contructor de la clase
         /// </summary>
@@ -30,6 +25,6 @@ namespace Bitacora
 
         }
 
-     
+
     }
 }

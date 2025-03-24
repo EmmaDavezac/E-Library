@@ -4,8 +4,8 @@ namespace Dominio
 {   ///<summary>
     ///Resumen: Esta clase nos permite definir un libro.
     ///</summary>
-    public class Libro 
-    {   
+    public class Libro
+    {
         ///<summary>
         ///Resumen: Clave primaria que nos permite diferenciar los libros entre si.
         ///</summary>
@@ -14,17 +14,17 @@ namespace Dominio
         /// Resumen: Codigo ISBN del libro (en el caso de que lo tenga).
         /// </summary>
         public string ISBN { get; set; }
-       
+
         /// <summary>
         /// Resumen: Titulo del libro.
         /// </summary>
         public string Titulo { get; set; }
-        
+
         /// <summary>
         /// Resumen: Nombre del autor del libro.
         /// </summary>
         public string Autor { get; set; }
-        
+
         /// <summary>
         /// Resumen: Año de publicacion del libro.
         /// </summary>
@@ -64,12 +64,12 @@ namespace Dominio
             Ejemplares = new List<Ejemplar>();
         }
 
-       
 
-    
-    
-  
-        
+
+
+
+
+
         /// <summary>
         /// Resumen: Este metodo nos permite dar de baja un libro.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Dominio
                     {
                         item.Disponible = false;
                         item.Baja = true;
-                    }              
+                    }
                 }
             }
         }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Dominio
 {   ///<summary>
     ///Resumen: Esta clase nos permite definir un usuario.A partir de esta heredan las clases UsuarioSimple y UsuarioAdministrador
-    public class Usuario 
+    public class Usuario
     {   ///<summary>
         ///Resumen: Nombre o nombres del usuario
         ///</summary>

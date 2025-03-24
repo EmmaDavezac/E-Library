@@ -1,8 +1,8 @@
+using Bitacora;
 using Nucleo;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -25,7 +25,7 @@ namespace Programa
 
         }
 
-       
+
 
 
 
@@ -92,11 +92,11 @@ namespace Programa
                                             if (!string.IsNullOrEmpty(textBoxContraseña.Text) && textBoxContraseña.Text.Length >= 4)
                                             //se verifica que se haya ingresado la contraseña y tenga el formato correcto
                                             {
-                                               interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
-                                                    MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
-                                                    this.Hide();//se oculta la ventana actual
-                                                    this.Owner.Show();// se vuelve a la ventana padre
-                                               
+                                                interfazNucleo.AñadirAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value, textBoxMail.Text, textBoxContraseña.Text, textBoxTelefono.Text);
+                                                MessageBox.Show("Usuario administrador guardado, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);
+                                                this.Hide();//se oculta la ventana actual
+                                                this.Owner.Show();// se vuelve a la ventana padre
+
 
                                             }
                                             else

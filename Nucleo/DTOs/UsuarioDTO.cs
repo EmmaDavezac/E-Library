@@ -26,7 +26,7 @@ namespace Nucleo.DTOs
         /// <summary>
         /// Resumen: Nombre de usuario, nos permite diferenciar a los usuarios.
         /// </summary>
-      
+
         public string nombreUsuario { get; set; }
         /// <summary>
         /// Resumen: Campo para dar una baja logica al usuario

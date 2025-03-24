@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Bitacora;
+using Dominio;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,6 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
-using Bitacora;
 
 namespace ServiciosAPILibros
 {   ///<summary>
@@ -35,11 +35,11 @@ namespace ServiciosAPILibros
         /// <param name="cadena"></param>
         /// <returns></returns>
         public List<Libro> ListarPorCoincidecia(string cadena)
-        {  
+        {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
             List<Libro> lista = new List<Libro>();//Creamos una lista de libro
-            string terminoDeBusqueda=TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
-            var mUrl = "http://openlibrary.org/search.json?q=" +terminoDeBusqueda ;
+            string terminoDeBusqueda = TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
+            var mUrl = "http://openlibrary.org/search.json?q=" + terminoDeBusqueda;
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
             IBitacora oLog = new ImplementacionBitacora();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
@@ -97,12 +97,12 @@ namespace ServiciosAPILibros
                     String mErrorText = mReader.ReadToEnd();
                     System.Console.WriteLine("Error: {0}", mErrorText);
                 }
-                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: "+terminoDeBusqueda+" cadena: "+cadena+")" +ex.Message+ex.StackTrace+ ex.Response;
+                msg = "Error al intentar conectarse con la api OpenLibrary. Se intento traer un listado por coincidencia. (termino de busqueda: " + terminoDeBusqueda + " cadena: " + cadena + ")" + ex.Message + ex.StackTrace + ex.Response;
                 oLog.RegistrarLog(msg);
                 throw new Exception(msg);
             }
             return lista;
         }
-        
+
     }
 }

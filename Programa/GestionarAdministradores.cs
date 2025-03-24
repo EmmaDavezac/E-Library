@@ -1,10 +1,10 @@
+using Bitacora;
 using Nucleo;
 using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -19,7 +19,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text =  nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
 
         private void textBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
@@ -27,23 +27,23 @@ namespace Programa
             try
             {
                 if (textBoxNombreUsuario.Text != null)//Se verifica que el textbox tenga algun texto para ejecutar la busqueda
-            {
-                for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)//Recorremos todos los elementos de la tabla dataGridViewAdministradores
                 {
-                    if (dataGridViewAdministradores.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
+                    for (int i = 0; i < dataGridViewAdministradores.Rows.Count - 1; i++)//Recorremos todos los elementos de la tabla dataGridViewAdministradores
                     {
-                        dataGridViewAdministradores.Rows[i].Visible = false;//Si el termino de busqueda eno es subcadena del nombre de usuario del elemento, se oculta el elemento en la tabla
-                    }
-                    else
-                    {
-                        dataGridViewAdministradores.Rows[i].Visible = true;//Si el termino de busqueda es subcadena del nombre de usuario del elemento, se muestra el elemento en la tabla
+                        if (dataGridViewAdministradores.Rows[i].Cells[1].Value.ToString().Contains(textBoxNombreUsuario.Text.ToString()) == false)
+                        {
+                            dataGridViewAdministradores.Rows[i].Visible = false;//Si el termino de busqueda eno es subcadena del nombre de usuario del elemento, se oculta el elemento en la tabla
+                        }
+                        else
+                        {
+                            dataGridViewAdministradores.Rows[i].Visible = true;//Si el termino de busqueda es subcadena del nombre de usuario del elemento, se muestra el elemento en la tabla
+                        }
                     }
                 }
             }
-            }
             catch (Exception ex)
             {
-                string texto= "Error textBoxId_TextChanged: "+ ex.Message + ex.StackTrace;
+                string texto = "Error textBoxId_TextChanged: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -62,7 +62,7 @@ namespace Programa
         }
 
 
-        
+
 
         private void ConsultarAdministrador_Load(object sender, EventArgs e)
         {
@@ -76,20 +76,20 @@ namespace Programa
             try
             {
                 if (e.RowIndex >= 0)
-            {
-                DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (cell.Value.ToString() == "Edit")
                 {
-                    ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
-                    ventana.CargarAdministradorExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridViewAdministradores.Rows[e.RowIndex].Cells[7].Value.ToString());
-                    this.Hide();
-                    ventana.Show(this);
+                    DataGridViewCell cell = (DataGridViewCell)dataGridViewAdministradores.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    if (cell.Value.ToString() == "Edit")
+                    {
+                        ActualizarAdministrador ventana = new ActualizarAdministrador(nombreUsuario);
+                        ventana.CargarAdministradorExistente(dataGridViewAdministradores.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridViewAdministradores.Rows[e.RowIndex].Cells[7].Value.ToString());
+                        this.Hide();
+                        ventana.Show(this);
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
-                string texto= "Error dataGridViewAdministradores_CellContentClick: "+ ex.Message + ex.StackTrace;
+                string texto = "Error dataGridViewAdministradores_CellContentClick: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -100,33 +100,33 @@ namespace Programa
             try
             {
                 IEnumerable<UsuarioAdministradorDTO> administradores = interfazNucleo.ObtenerAdministradores();
-            dataGridViewAdministradores.Rows.Clear();
-            foreach (var item in administradores)
-            {
-                int n = dataGridViewAdministradores.Rows.Add();
-                dataGridViewAdministradores.Rows[n].Cells[1].Value = item.nombreUsuario;
-                dataGridViewAdministradores.Rows[n].Cells[2].Value = item.Nombre;
-                dataGridViewAdministradores.Rows[n].Cells[3].Value = item.Apellido;
-                dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
-                dataGridViewAdministradores.Rows[n].Cells[5].Value = item.Mail;
-                dataGridViewAdministradores.Rows[n].Cells[6].Value = item.Telefono;
-                dataGridViewAdministradores.Rows[n].Cells[7].Value = item.Baja.ToString();
-                if (item.Baja == true)
+                dataGridViewAdministradores.Rows.Clear();
+                foreach (var item in administradores)
                 {
-                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
-                    dataGridViewAdministradores.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                    int n = dataGridViewAdministradores.Rows.Add();
+                    dataGridViewAdministradores.Rows[n].Cells[1].Value = item.nombreUsuario;
+                    dataGridViewAdministradores.Rows[n].Cells[2].Value = item.Nombre;
+                    dataGridViewAdministradores.Rows[n].Cells[3].Value = item.Apellido;
+                    dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
+                    dataGridViewAdministradores.Rows[n].Cells[5].Value = item.Mail;
+                    dataGridViewAdministradores.Rows[n].Cells[6].Value = item.Telefono;
+                    dataGridViewAdministradores.Rows[n].Cells[7].Value = item.Baja.ToString();
+                    if (item.Baja == true)
+                    {
+                        dataGridViewAdministradores.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
+                        dataGridViewAdministradores.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
-                string texto= "Error ObtenerAdministradores: "+ ex.Message + ex.StackTrace;
+                string texto = "Error ObtenerAdministradores: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
-   
+
         private void labelErro_Click(object sender, EventArgs e)
         {
 

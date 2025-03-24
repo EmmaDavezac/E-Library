@@ -4,7 +4,6 @@ using Quartz.Impl;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nucleo;
 
 
 namespace Programa
@@ -38,7 +37,7 @@ namespace Programa
             Application.SetCompatibleTextRenderingDefault(false);
             Login ventana = new Login();//Creamos una instancia del formulario login, lel cual va a ser el formulario inicial
             Application.Run(ventana);//asignamos a la aplicacion el formulario inicial y la ejecutamos
-            
+
         }
 
     }

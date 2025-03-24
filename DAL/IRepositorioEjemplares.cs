@@ -12,7 +12,7 @@ namespace DAL
         /// Resumen: Este metodo obtiene todos los ejemplares disponibles de un libro
         /// </summary>
         /// <returns></returns>
-        IEnumerable<Ejemplar> GetEjemplaresDisponiblesLibro( int idLibro);
+        IEnumerable<Ejemplar> GetEjemplaresDisponiblesLibro(int idLibro);
 
         /// <summary>
         /// Resumen: Este metodo obtiene todos los ejemplares de un libro

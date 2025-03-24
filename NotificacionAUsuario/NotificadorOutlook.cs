@@ -10,14 +10,14 @@ namespace NotificacionAUsuario
         const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
         const string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
 
-        public string NotificarProximoAVencer(string nombreUsuario,string nombre,string apellido,string email, string titulo, string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
+        public string NotificarProximoAVencer(string nombreUsuario, string nombre, string apellido, string email, string titulo, string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
             const string encabezado = "Aviso de prestamo de material proximo a vencer";
             string body = @"<style>
                             h1{color: black;}
                             p{color: black;}
                             </style>
-                            <h1>" + encabezado + "</h1>  <h2>Estimado " + nombre + " " + apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro "+titulo+"  renueve el prestamo antes del "+fechaLimite+ " para evitar penalizaciones.</h2> <br><p>Atte Gestor de prestamos</p>";
+                            <h1>" + encabezado + "</h1>  <h2>Estimado " + nombre + " " + apellido + " , de acuerdo a nuestro registro usted tiene material con el periodo de prestamo proximo a finalizar.<br>Por favor devuelva el libro " + titulo + "  renueve el prestamo antes del " + fechaLimite + " para evitar penalizaciones.</h2> <br><p>Atte Gestor de prestamos</p>";
             string asunto = "Informe de prestamo proximo a vencer";
             string msge = "Error al enviar este correo. Por favor verifique los datos o intente más tarde (Usuario: " + nombreUsuario + ").";//mensaje en el caso de que falle el envio
             try

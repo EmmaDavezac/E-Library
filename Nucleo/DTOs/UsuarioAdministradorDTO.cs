@@ -5,7 +5,7 @@ namespace Nucleo.DTOs
 {
     public class UsuarioAdministradorDTO : UsuarioDTO
     {
-    
+
         /// <summary>
         /// Resumen: Constructor de la clase que inicializa los atributos de la clase
         /// </summary>

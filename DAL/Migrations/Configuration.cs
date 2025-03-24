@@ -1,6 +1,6 @@
-﻿using System;
+﻿using BibliotecaEncriptacion;
+using System;
 using System.Data.Entity.Migrations;
-using BibliotecaEncriptacion;
 
 
 namespace DAL.Migrations
@@ -27,8 +27,8 @@ namespace DAL.Migrations
             /// </summary>
             IEncriptador encriptador = new EncriptadorCesar();
 
-            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador("admin", "admin", new DateTime(1900, 1, 1), "admin@gmail.com",encriptador.Encriptar("admin"), "34421234", "admin"));
+            context.Administradores.AddOrUpdate(x => x.nombreUsuario, new Dominio.UsuarioAdministrador("admin", "admin", new DateTime(1900, 1, 1), "admin@gmail.com", encriptador.Encriptar("admin"), "34421234", "admin"));
         }
     }
-   
+
 }

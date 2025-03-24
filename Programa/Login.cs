@@ -1,6 +1,6 @@
+using Bitacora;
 using System;
 using System.Windows.Forms;
-using Bitacora;
 namespace Programa
 {
     public partial class Login : Form
@@ -36,34 +36,34 @@ namespace Programa
             try
             {
                 if (!string.IsNullOrEmpty(textBoxNombreUsuario.Text))//verifica que se haya ingresado el nombre de usuario
-            {
-                if (!string.IsNullOrEmpty(textBoxContraseña.Text))//verifica que se haya ingresado la contraseña
                 {
-                    
-                    if (new Nucleo.FachadaNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)//verificamos que el usuario exista
+                    if (!string.IsNullOrEmpty(textBoxContraseña.Text))//verifica que se haya ingresado la contraseña
                     {
-                        if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)//verificamos que el usuario no este dado de baja
+
+                        if (new Nucleo.FachadaNucleo().ObtenerAdministrador(textBoxNombreUsuario.Text) != null)//verificamos que el usuario exista
                         {
-                            if (textBoxContraseña.Text != null && interfazNucleo.ValidarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
-                            //verificamos que la contraseña ingresada corresponda con la del usuario ingresado
+                            if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false)//verificamos que el usuario no este dado de baja
                             {
-                                MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);//creamos una instancia de menuprincipal
-                                ventanaMenu.Show();//abrimos el formulario
-                                bitacora.RegistrarLog("Sesion iniciada (Usuario: "+textBoxNombreUsuario.Text+")");//registramos el inicio de sesion en la bitacora
-                                this.Hide();//ocultamos esta ventana
+                                if (textBoxContraseña.Text != null && interfazNucleo.ValidarContraseña(textBoxNombreUsuario.Text, textBoxContraseña.Text))
+                                //verificamos que la contraseña ingresada corresponda con la del usuario ingresado
+                                {
+                                    MenuPrincipal ventanaMenu = new MenuPrincipal(textBoxNombreUsuario.Text);//creamos una instancia de menuprincipal
+                                    ventanaMenu.Show();//abrimos el formulario
+                                    bitacora.RegistrarLog("Sesion iniciada (Usuario: " + textBoxNombreUsuario.Text + ")");//registramos el inicio de sesion en la bitacora
+                                    this.Hide();//ocultamos esta ventana
+                                }
+                                else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
                             }
-                            else { labelError.Text = "Error, la contraseña ingresada es incorrecta "; botonIniciarSesion.Enabled = false; textBoxContraseña.Focus(); }
+                            else
+                            {
+                                labelError.Text = "Error, el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus();
+                            }
                         }
-                        else
-                        {
-                            labelError.Text = "Error, el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus();
-                        }
+                        else { labelError.Text = "Error, el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
                     }
-                    else { labelError.Text = "Error, el usuario no existe"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
+                    else { labelError.Text = "Error, no ha ingresado contraseña"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
                 }
-                else { labelError.Text = "Error, no ha ingresado contraseña"; botonIniciarSesion.Enabled = false; textBoxContraseña.Clear(); textBoxContraseña.Focus(); }
-            }
-            else { labelError.Text = "Error, no ha ingresado el nombre de usuario"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
+                else { labelError.Text = "Error, no ha ingresado el nombre de usuario"; botonIniciarSesion.Enabled = false; textBoxNombreUsuario.Focus(); }
 
 
 
@@ -71,7 +71,7 @@ namespace Programa
             }
             catch (Exception ex)
             {
-                string texto= "Error botonIniciarSesion_Click: "+ ex.Message + ex.StackTrace;
+                string texto = "Error botonIniciarSesion_Click: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -107,7 +107,7 @@ namespace Programa
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)//se ejecuta cuando se cierra el formulario
-        {   
+        {
             Application.Exit();//Cierra el programa
         }
 

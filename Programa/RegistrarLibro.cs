@@ -1,9 +1,9 @@
+using Bitacora;
 using Nucleo;
 using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Bitacora;
 
 
 namespace Programa
@@ -12,7 +12,7 @@ namespace Programa
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        
+
         private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
         private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
@@ -33,8 +33,8 @@ namespace Programa
                     textBoxAñoPublicacion.Text = dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString();
 
                     buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                    
-                   
+
+
                 }
             }
             catch (Exception ex)
@@ -70,7 +70,8 @@ namespace Programa
                         resultado += 1;
                     }
 
-                    if (resultado == 0) {
+                    if (resultado == 0)
+                    {
                         MessageBox.Show("No se encontraron resultados");
                     }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
                     else
@@ -106,27 +107,27 @@ namespace Programa
         }
 
         private void buttonAñadirLibro_Click(object sender, EventArgs e)
-            //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
+        //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
         {
-           try
-           {
-            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) )
-            //se verifica que se haya ingresado toda la informacion necesaria
+            try
             {
-              interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
-                
-                    MessageBox.Show("Libro registrado con exito! " );//se muestra el mensaje en pantalla
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
+                //se verifica que se haya ingresado toda la informacion necesaria
+                {
+                    interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
+
+                    MessageBox.Show("Libro registrado con exito! ");//se muestra el mensaje en pantalla
+                }
+                else
+                {
+                    MessageBox.Show("Debe completar la informacion");//se muestra el mensaje en pantalla
+                    textBoxTitulo.Focus();
+                    //se  enfoca el cuadro de texto del titulo
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe completar la informacion");//se muestra el mensaje en pantalla
-                textBoxTitulo.Focus();
-                //se  enfoca el cuadro de texto del titulo
-            }
-           }
-           catch (Exception ex)
-            {
-                string texto= "Error buttonAñadirLibro_Click: "+ ex.Message + ex.StackTrace;
+                string texto = "Error buttonAñadirLibro_Click: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -165,14 +166,14 @@ namespace Programa
         }
 
         private void buttonBorrarDatos_Click(object sender, EventArgs e)
-            //borra el contenido de los textbox con la informacion del libro a registrar cuando se presiona el boton  borrar datos
+        //borra el contenido de los textbox con la informacion del libro a registrar cuando se presiona el boton  borrar datos
         {
             textBoxAutor.Clear();
             textBoxAñoPublicacion.Clear();
             textBoxISBN.Clear();
             textBoxTitulo.Clear();
             //borra los datos de los textboxs
-            
+
         }
 
         private void labelIngreseISBN_Click(object sender, EventArgs e)
@@ -205,9 +206,9 @@ namespace Programa
 
         }
 
-       
 
-       
+
+
 
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
@@ -220,78 +221,78 @@ namespace Programa
             try
             {
                 if (this.Owner.Name == "MenuPrincipal")
-            {
-                botonAñadirLibro.Visible = true;
-                buttonActualizar.Visible = false;
-            }
-            else if (this.Owner.Name == "ActualizarLibro")
-            {
-                buttonActualizar.Visible = true;
-                botonAñadirLibro.Visible = false;
-                
-            }
+                {
+                    botonAñadirLibro.Visible = true;
+                    buttonActualizar.Visible = false;
+                }
+                else if (this.Owner.Name == "ActualizarLibro")
+                {
+                    buttonActualizar.Visible = true;
+                    botonAñadirLibro.Visible = false;
+
+                }
             }
             catch (Exception ex)
             {
-                string texto= "Error VerificarVentanaPadre: "+ ex.Message + ex.StackTrace;
+                string texto = "Error VerificarVentanaPadre: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
         public void InicializarLibro(int idLibro)//carga los textbox con los datos del libro pasado como parametro
         {
-           try
-           {
-            var libro = interfazNucleo.ObtenerLibro(idLibro);
-            textBoxAutor.Text = libro.Autor;
-            textBoxAñoPublicacion.Text = libro.AñoPublicacion;
-            textBoxISBN.Text = libro.ISBN;
-            textBoxTitulo.Text = libro.Titulo;
-            textBoxBuscar.Text = libro.Titulo;
-            button1_Click(this, null);
-           }
-           catch (Exception ex)
+            try
             {
-                string texto= "Error InicializarLibro: "+ ex.Message + ex.StackTrace;
+                var libro = interfazNucleo.ObtenerLibro(idLibro);
+                textBoxAutor.Text = libro.Autor;
+                textBoxAñoPublicacion.Text = libro.AñoPublicacion;
+                textBoxISBN.Text = libro.ISBN;
+                textBoxTitulo.Text = libro.Titulo;
+                textBoxBuscar.Text = libro.Titulo;
+                button1_Click(this, null);
+            }
+            catch (Exception ex)
+            {
+                string texto = "Error InicializarLibro: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
         private void buttonActualizar_Click_1(object sender, EventArgs e)
-            //se ejecuta cuando se presiona el boton actualizar
+        //se ejecuta cuando se presiona el boton actualizar
         {
             try
+            {
+                if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
                 {
-                    if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text))
-                    {
 
-                        ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
-                        MessageBox.Show("Informacion actualizadacon exito" );
-                        this.Hide();
-                        this.Owner.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debe completar la informacion");
-                        textBoxTitulo.Focus();
-                    }
+                    ((ActualizarLibro)this.Owner).CargarDatosDeBusquedaAvanzada(textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, textBoxISBN.Text);
+                    MessageBox.Show("Informacion actualizadacon exito");
+                    this.Hide();
+                    this.Owner.Show();
                 }
+                else
+                {
+                    MessageBox.Show("Debe completar la informacion");
+                    textBoxTitulo.Focus();
+                }
+            }
             catch (Exception ex)
             {
-                string texto= "Error buttonActualizar_Click1: "+ ex.Message + ex.StackTrace;
+                string texto = "Error buttonActualizar_Click1: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }
 
-      
+
 
         private void textBoxCantidadEjemplares_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-   
+
     }
 }

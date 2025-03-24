@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BibliotecaEncriptacion
 {
-    public class EncriptadorAES: IEncriptador
+    public class EncriptadorAES : IEncriptador
     {
         /// <summary>
         /// Resumen: Este metodo nos permite encriptar una cadena.
@@ -75,8 +75,8 @@ namespace BibliotecaEncriptacion
         /// <returns>True si las cadenas coinciden, False en caso contrario</returns>
         public bool Validar(string pCadena, string pCadenaEncriptada)
         {
-            return (Desencriptar(pCadenaEncriptada) == pCadena); 
+            return (Desencriptar(pCadenaEncriptada) == pCadena);
         }
     }
-    
+
 }

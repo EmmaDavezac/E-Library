@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BibliotecaEncriptacion
+﻿namespace BibliotecaEncriptacion
 {   ///<summary>
     ///Resumen: Esta interfaz nos permite definir los metodos necesarios para encriptar y desencriptar una cadena.
     ///</summary>
     public interface IEncriptador
-    {   
+    {
         ///<summary>
         ///Resumen: Este metodo nos permite encriptar una cadena.
         ///</summary>

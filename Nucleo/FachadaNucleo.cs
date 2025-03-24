@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la base de datos, brindandonos control sobre la misma
-using Dominio;//Liberia que contiene las clases de dominio  
-using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
-using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
+﻿using BibliotecaEncriptacion;
 using Bitacora;//Libreria que nos permite registrar logs en la bitacora
+using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la base de datos, brindandonos control sobre la misma
 using DAL.EntityFramework;
-using BibliotecaEncriptacion;
+using Dominio;//Liberia que contiene las clases de dominio  
+using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
 using Nucleo.DTOs;
-using System.Web.UI.WebControls;
-using System.Collections;
+using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
+using System;
+using System.Collections.Generic;
 
 
 
@@ -22,7 +19,7 @@ namespace Nucleo
     /// </summary>
     /// <remarks> Resumen: Representa la fachada del programa, nos permite acceder a todas las funciones del programa sin dar a conocer como funcionan por dentro</remarks>
     public class FachadaNucleo
-    {  
+    {
         ///<summary>
         ///Resumen: Esta variable nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros.
         ///</summary>  
@@ -40,7 +37,7 @@ namespace Nucleo
         /// </summary>
         private IEncriptador encriptador = new EncriptadorCesar();
         private Mapeador mapeador = new Mapeador();
-        
+
 
 
 
@@ -82,13 +79,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Add(usuario);//Añado el usuario a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                
+
             }
             catch (Exception ex)
             {
                 msg = "Error al registrar usuario (" + nombre + "-" + apellido + ")" + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                throw new Exception(msg) ;
+                throw new Exception(msg);
             }
         }
 
@@ -121,8 +118,8 @@ namespace Nucleo
             }
         }
 
-           
-        
+
+
         /// <summary>
         /// Resumen: Permite actualizar la informacion de un usuario simple.
         /// </summary>
@@ -147,7 +144,7 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -157,7 +154,7 @@ namespace Nucleo
 
             }
         }
-        
+
         /// <summary>
         /// Resumen: Permite registrar un nuevo usuario administrador en la base de datos.
         /// </summary>
@@ -170,7 +167,7 @@ namespace Nucleo
         /// <param name="telefono">Telefono del administrador</param>
         /// <returns>True si el registro es exitoso, en caso contrario False.</returns>
         public void AñadirAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime fechaNacimiento, string mail, string contraseña, string telefono)
-       
+
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, encriptador.Encriptar(contraseña), telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
@@ -182,7 +179,7 @@ namespace Nucleo
                     unitOfWork.RepositorioAdministradores.Add(usuario);//Añadimos el administrador a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -254,7 +251,7 @@ namespace Nucleo
 
             }
         }
-        
+
         /// <summary>
         /// Resumen: Este metodo permite actualizar la contraseña de un administrador
         /// </summary>
@@ -277,11 +274,11 @@ namespace Nucleo
                 msg = "Error al actualizar la contraseña del administrador (" + pNombreAdministrador + " ) " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 throw new Exception(msg);
-               
+
             }
-     
+
         }
-       
+
         /// <summary>
         /// Resumen: Este metodo nos permite registrar un nuevo libro en la base de datos.
         /// </summary>
@@ -322,8 +319,8 @@ namespace Nucleo
                     if (resultado == true)
                     {
                         unitOfWork.RepositorioLibros.Add(libro);//Añadimos el libro a la base de datos
-                      //  this.AñadirEjemplares(unitOfWork.RepositorioLibros.GetAll().Last().Id,pCantidadEjempalares);
-                       
+                                                                //  this.AñadirEjemplares(unitOfWork.RepositorioLibros.GetAll().Last().Id,pCantidadEjempalares);
+
                         unitOfWork.Complete();//Guardamos los cambios
                     }
                 }
@@ -337,7 +334,7 @@ namespace Nucleo
                 throw new Exception(msg);
             }
         }
-       
+
         /// <summary>
         /// Resumen: Este metodo nos permite obtener un libro de la base de datos a partir del id del mismo .
         /// </summary>
@@ -370,7 +367,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">id del ejemplar</param>
         /// <returns>EjemplarDTO</returns>
-        public EjemplarDTO  ObtenerEjemplar(int id)
+        public EjemplarDTO ObtenerEjemplar(int id)
         {
             EjemplarDTO ejemplarDTO = new EjemplarDTO();
             string msg;
@@ -391,7 +388,7 @@ namespace Nucleo
             return ejemplarDTO;
         }
 
-  
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite añadir mas ejemplares a un libro.
@@ -428,7 +425,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="pIdLibro">ID del libro al cual agregar ejemplares</param>
         /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
-        
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite dar de baja un libro.
@@ -455,7 +452,7 @@ namespace Nucleo
             }
         }
 
- 
+
         /// <summary>
         /// Resumen: Este metodo nos permite dar de alta un libro previamente dado de baja.
         /// </summary>
@@ -509,7 +506,7 @@ namespace Nucleo
                 return lista;
                 throw new Exception(msg);
             }
-            
+
         }
 
         /// <summary>
@@ -525,7 +522,7 @@ namespace Nucleo
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    foreach (var item in unitOfWork.RepositorioEjemplares.GetEjemplaresLibro(idLibro ))
+                    foreach (var item in unitOfWork.RepositorioEjemplares.GetEjemplaresLibro(idLibro))
                     {
                         lista.Add(mapeador.Mapear(item));
                     }
@@ -539,7 +536,7 @@ namespace Nucleo
                 return lista;
                 throw new Exception(msg);
             }
-          
+
         }
 
         /// <summary>
@@ -548,19 +545,20 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del usuario que solicita el prestamo</param>
         /// <param name="idEjemplar">ID del ejemplar del libro que se va a prestar </param>
         /// <param name="idLibro">ID del libro que se va a prestar</param>
-        public void RegistrarPrestamo(string pNombreUsuario,DateTime fechaLimite, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario, DateTime fechaLimite, int idEjemplar)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {   Ejemplar ejemplar = unitOfWork.RepositorioEjemplares.Get(idEjemplar);
+                {
+                    Ejemplar ejemplar = unitOfWork.RepositorioEjemplares.Get(idEjemplar);
                     UsuarioSimple usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
-                    Prestamo prestamo = new Prestamo(usuario,fechaLimite,ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
+                    Prestamo prestamo = new Prestamo(usuario, fechaLimite, ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
                     unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;//El ejemplar del prestamo pasa a estar no diponible
                     unitOfWork.RepositorioPrestamos.Add(prestamo);//Añadimos el pretamo a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
-                }         
+                }
             }
             catch (Exception ex)
             {
@@ -593,7 +591,7 @@ namespace Nucleo
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 return prestamo;
                 throw new Exception(msg);
-               
+
             }
         }
 
@@ -627,7 +625,7 @@ namespace Nucleo
 
             }
         }
-       
+
         /// <summary>
         /// Resumen: Este metodo nos permite registrar la devolucion de un Prestamo.
         /// </summary>
@@ -646,7 +644,7 @@ namespace Nucleo
                         unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno);//Obtenemos el prestamo por idPrestamo, y llamamos a su metodo registrar debolucion pasandole un EstadoEjemplar bueno
                     }
                     else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);//Obtenemos el prestamo por idPrestamo, y llamamos a su metodo registrar debolucion pasandole un EstadoEjemplar malo
-                    
+
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -665,7 +663,7 @@ namespace Nucleo
         /// <param name="contraseña">Contraseña del administrador</param>
         /// <returns>True si la combinacion es correcta, False en caso contrario</returns>
         public bool ValidarContraseña(string pNombreUsuario, string contraseña)
-        {   
+        {
             UsuarioAdministrador administrador = new UsuarioAdministrador();//Instanciamos un administrador para que luego sea devuelto como resultado
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
@@ -693,7 +691,7 @@ namespace Nucleo
         public IEnumerable<UsuarioSimpleDTO> ObtenerUsuarios()
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<UsuarioSimpleDTO> lista=new List<UsuarioSimpleDTO>();
+            List<UsuarioSimpleDTO> lista = new List<UsuarioSimpleDTO>();
             try
             {
                 foreach (var item in GetUnitOfWork().RepositorioUsuarios.GetAll())
@@ -720,7 +718,7 @@ namespace Nucleo
         public IEnumerable<UsuarioAdministradorDTO> ObtenerAdministradores()
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<UsuarioAdministradorDTO> lista=new List<UsuarioAdministradorDTO>();
+            List<UsuarioAdministradorDTO> lista = new List<UsuarioAdministradorDTO>();
             try
             {
                 foreach (var item in GetUnitOfWork().RepositorioAdministradores.GetAll())
@@ -734,7 +732,7 @@ namespace Nucleo
                 msg = "Error al obtener la lista de administradores." + ex.Message + ex.StackTrace; ;
                 lista = null;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                throw new Exception (msg);
+                throw new Exception(msg);
             }
             return lista;
         }
@@ -746,7 +744,7 @@ namespace Nucleo
         public IEnumerable<LibroDTO> ObtenerLibros()
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<LibroDTO> lista=new List<LibroDTO>();
+            List<LibroDTO> lista = new List<LibroDTO>();
             try
             {
                 foreach (var item in GetUnitOfWork().RepositorioLibros.GetAll())
@@ -771,9 +769,10 @@ namespace Nucleo
         public IEnumerable<PrestamoDTO> ObtenerPrestamos()
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-            List<PrestamoDTO> lista=new List<PrestamoDTO>();
+            List<PrestamoDTO> lista = new List<PrestamoDTO>();
             try
-            { foreach (var item in GetUnitOfWork().RepositorioPrestamos.GetAll())
+            {
+                foreach (var item in GetUnitOfWork().RepositorioPrestamos.GetAll())
                 {
                     lista.Add(mapeador.Mapear(item));
                 }
@@ -788,7 +787,7 @@ namespace Nucleo
             return lista;
         }
 
-      
+
 
         /// <summary>
         /// Resumen: Este metodo nos permite obtener la lista de prestamos proximos a vencer.
@@ -854,7 +853,7 @@ namespace Nucleo
         /// <param name="unaCadena">Libro buscado</param>
         /// <returns>devuelve una lista de libros que coinciden con la cadena buscada</returns>
         public List<LibroDTO> ListarLibrosDeAPIPorCoincidencia(string unaCadena)
-        { 
+        {
             try
             {
                 List<LibroDTO> lista = new List<LibroDTO>();
@@ -868,7 +867,7 @@ namespace Nucleo
             {
                 bitacora.RegistrarLog("Error al listar libros de la API por coincidencia. " + ex.Message + ex.StackTrace);
                 throw new Exception("Error al listar libros de la API por coincidencia. " + ex.Message + ex.StackTrace);
-            }   
+            }
         }
 
         /// <summary>
@@ -888,7 +887,8 @@ namespace Nucleo
                 }
             }
             catch (Exception ex)
-            {bitacora.RegistrarLog("Error al notificar prestamos proximos a vencer. " + ex.Message + ex.StackTrace);
+            {
+                bitacora.RegistrarLog("Error al notificar prestamos proximos a vencer. " + ex.Message + ex.StackTrace);
                 throw new Exception("Error al notificar prestamos proximos a vencer. " + ex.Message + ex.StackTrace);
             }
         }
@@ -897,7 +897,8 @@ namespace Nucleo
         /// Resumen: Este metodo nos permite notificar a los usuarios con prestamos retrasados.
         /// </summary>
         public void NotificarPrestamosRetrasados()
-        { try
+        {
+            try
             {
                 foreach (var item in ObtenerListadePrestamosRetrasados())
                 {
@@ -909,7 +910,8 @@ namespace Nucleo
                 }
             }
             catch (Exception ex)
-            {   bitacora.RegistrarLog("Error al notificar prestamos retrasados. " + ex.Message + ex.StackTrace);
+            {
+                bitacora.RegistrarLog("Error al notificar prestamos retrasados. " + ex.Message + ex.StackTrace);
                 throw new Exception("Error al notificar prestamos retrasados. " + ex.Message + ex.StackTrace);
             }
         }
@@ -928,7 +930,8 @@ namespace Nucleo
                 }
             }
             catch (Exception ex)
-            {   bitacora.RegistrarLog("Error al notificar usuarios. " + ex.Message + ex.StackTrace);
+            {
+                bitacora.RegistrarLog("Error al notificar usuarios. " + ex.Message + ex.StackTrace);
                 throw new Exception("Error al notificar usuarios. " + ex.Message + ex.StackTrace);
 
             }
@@ -971,22 +974,22 @@ namespace Nucleo
         /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
         public void DarDeBajaAdministrador(string pNombreUsuario)
         {
-                string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-                try
+            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            try
+            {
+                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                    {
-                        unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
-                        unitOfWork.Complete();//Guardamos los cambios
-                    }
+                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
+                    unitOfWork.Complete();//Guardamos los cambios
                 }
-                catch (Exception ex)
-                {
-                    msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                    bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                    throw new Exception(msg);
+            }
+            catch (Exception ex)
+            {
+                msg = "Error, el administrador " + pNombreUsuario + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
 
-                }
+            }
         }
 
         /// <summary>
@@ -996,21 +999,21 @@ namespace Nucleo
         /// <returns>True si la operacion fue exitosa, False en caso contrario</returns>
         public void DarDeBajaEjemplar(int idEjemplar)
         {
-            
-                string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
-                try
+
+            string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
+            try
+            {
+                using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                    {
-                        unitOfWork.RepositorioEjemplares.Get(idEjemplar).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
-                        unitOfWork.Complete();//Guardamos los cambios
-                    }
+                    unitOfWork.RepositorioEjemplares.Get(idEjemplar).Baja = true;//Obtiene el administrador y coloca en su atributo baja el valor true
+                    unitOfWork.Complete();//Guardamos los cambios
+                }
             }
-                catch (Exception ex)
-                {   
-                    msg = "Error, el ejemplar " + idEjemplar + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
-                    bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                    throw new Exception(msg);
+            catch (Exception ex)
+            {
+                msg = "Error, el ejemplar " + idEjemplar + " no ha podido darse de baja. " + ex.Message + ex.StackTrace;
+                bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
+                throw new Exception(msg);
             }
         }
 
@@ -1029,13 +1032,13 @@ namespace Nucleo
                     unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = false;//Obtiene el usuario y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-              
+
             }
             catch (Exception ex)
             {
                 msg = "Error, el usuario " + pNombreUsuario + " no ha podido darse de alta. " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
-                throw new Exception(msg);   
+                throw new Exception(msg);
             }
         }
 
@@ -1053,7 +1056,7 @@ namespace Nucleo
                     unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Baja = false;//Obtiene el administrador y coloca en su atributo baja el valor false
                     unitOfWork.Complete();//Guardamos los cambios
                 }
-                
+
             }
             catch (Exception ex)
             {

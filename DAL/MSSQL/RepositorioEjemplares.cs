@@ -19,13 +19,13 @@ namespace DAL.EntityFramework
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Ejemplar> GetEjemplaresDisponiblesLibro(int idLibro)
-        { return this.GetAll().Where(x=>x.Disponible&&x.Estado==EstadoEjemplar.Bueno&&!x.Baja && x.idLibro == idLibro); }
+        { return this.GetAll().Where(x => x.Disponible && x.Estado == EstadoEjemplar.Bueno && !x.Baja && x.idLibro == idLibro); }
 
         /// <summary>
         /// Resumen: Este metodo obtiene todos los ejemplares de un libro
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Ejemplar> GetEjemplaresLibro(int idLibro)
-        { return this.GetAll().Where(x => x.Disponible && x.Estado == EstadoEjemplar.Bueno && !x.Baja&&x.idLibro==idLibro); }
+        { return this.GetAll().Where(x => x.Disponible && x.Estado == EstadoEjemplar.Bueno && !x.Baja && x.idLibro == idLibro); }
     }
 }

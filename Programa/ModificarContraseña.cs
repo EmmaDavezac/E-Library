@@ -1,7 +1,7 @@
+using Bitacora;
 using Nucleo;
 using System;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -38,42 +38,42 @@ namespace Programa
             try
             {
                 if (textBoxContraseñaAntigua.Text != null)//se verifica que se haya ingresado la contraseña antigua
-            {
-                if (textBoxContraseñaNueva.Text != null&&textBoxContraseñaNueva.Text.Length>=4)
-                // se verifica que se haya ingresado la contraseña nueva y que cumpla con la longitud minima
                 {
-                    if (interfazNucleo.ValidarContraseña(nombreUsuario, textBoxContraseñaAntigua.Text))//se verifica que la contraseña antigua sea correcta
+                    if (textBoxContraseñaNueva.Text != null && textBoxContraseñaNueva.Text.Length >= 4)
+                    // se verifica que se haya ingresado la contraseña nueva y que cumpla con la longitud minima
                     {
-                        MessageBox.Show("La contraseña a sido modificada, guarde los cambios de la ventana anterior para que esto tenga efecto", "Message", MessageBoxButtons.OK);
-                        contraseñaNueva = textBoxContraseñaNueva.Text;
-                        this.Close();
-                        ((ActualizarAdministrador)this.Owner).CargarContraseña(contraseñaNueva);
+                        if (interfazNucleo.ValidarContraseña(nombreUsuario, textBoxContraseñaAntigua.Text))//se verifica que la contraseña antigua sea correcta
+                        {
+                            MessageBox.Show("La contraseña a sido modificada, guarde los cambios de la ventana anterior para que esto tenga efecto", "Message", MessageBoxButtons.OK);
+                            contraseñaNueva = textBoxContraseñaNueva.Text;
+                            this.Close();
+                            ((ActualizarAdministrador)this.Owner).CargarContraseña(contraseñaNueva);
+                        }
+                        else
+                        {
+                            this.labelErro.Text = "Error, la contraseña antigua es incorrecta";
+                            buttonAceptar.Enabled = false;
+                            textBoxContraseñaAntigua.Focus(); ;
+                        }
                     }
                     else
                     {
-                        this.labelErro.Text = "Error, la contraseña antigua es incorrecta";
+                        this.labelErro.Text = "Error, contraseña nueva demasiado corta";
                         buttonAceptar.Enabled = false;
-                        textBoxContraseñaAntigua.Focus(); ;
+                        textBoxContraseñaNueva.Focus(); ;
                     }
                 }
                 else
                 {
-                    this.labelErro.Text = "Error, contraseña nueva demasiado corta";
+                    this.labelErro.Text = "Error,contraseña antigua no ingresada";
                     buttonAceptar.Enabled = false;
-                    textBoxContraseñaNueva.Focus(); ;
+                    textBoxContraseñaAntigua.Focus(); ;
                 }
-            }
-            else
-            {
-                this.labelErro.Text = "Error,contraseña antigua no ingresada";
-                buttonAceptar.Enabled = false;
-                textBoxContraseñaAntigua.Focus(); ;
-            }
 
             }
             catch (Exception ex)
             {
-                string texto= "Error button2_Click (Actualizar contraseña): "+ ex.Message + ex.StackTrace;
+                string texto = "Error button2_Click (Actualizar contraseña): " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }

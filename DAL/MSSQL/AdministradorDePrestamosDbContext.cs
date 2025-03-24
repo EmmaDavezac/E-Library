@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
+﻿using Dominio;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Dominio;
 
 namespace DAL.EntityFramework
 {   /// <summary>
@@ -10,7 +10,7 @@ namespace DAL.EntityFramework
     {   /// <summary>
         /// Resumen: Cadena de conexion a la base de datos.
         ///</summary>
-        private static string[]  cadenasDeConexionMSSQLSERVER =new string[] {
+        private static string[] cadenasDeConexionMSSQLSERVER = new string[] {
                                                                                 "ConnectionSQLServerLocal",
                                                                                 "ConnectionSQLServerHosting"
                                                                             };
@@ -30,7 +30,7 @@ namespace DAL.EntityFramework
             if (!Database.Exists())
             {
                 Database
-                    .SetInitializer(new MigrateDatabaseToLatestVersion<AdministradorDePrestamosDbContext,DAL.Migrations.Configuration>());
+                    .SetInitializer(new MigrateDatabaseToLatestVersion<AdministradorDePrestamosDbContext, DAL.Migrations.Configuration>());
             }
         }
         /// <summary>
@@ -54,7 +54,7 @@ namespace DAL.EntityFramework
         /// Resumen: Propiedad que nos permite acceder a la tabla de Administradores.
         /// </summary>
         public IDbSet<UsuarioAdministrador> Administradores { get; set; }
-        
+
         protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

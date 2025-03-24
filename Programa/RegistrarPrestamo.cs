@@ -1,3 +1,4 @@
+using Bitacora;
 using Nucleo;
 using Nucleo.DTOs;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -19,7 +19,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            
+
             labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
         }
 
@@ -28,14 +28,14 @@ namespace Programa
         {
             try
             {
-             ObtenerLibros();//cargamos la lista de libros en la tabla de libros
-            ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples   
+                ObtenerLibros();//cargamos la lista de libros en la tabla de libros
+                ObtenerUsuarios();//cargamos la lista de usuarios simples en la tabla de usuarios simples   
             }
             catch (Exception ex)
             {
-                string texto= "Error RegistrarPrestamo_Load: "+ ex.Message + ex.StackTrace;
+                string texto = "Error RegistrarPrestamo_Load: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -49,27 +49,27 @@ namespace Programa
             try
             {
                 if (textBoxTituloOISBNLibro.Text != null)
-            {
-                for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                 {
-                    if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
+                    for (int i = 0; i < dataGridViewLibros.Rows.Count - 1; i++)
                     {
-                        dataGridViewLibros.Rows[i].Visible = true;
-                    }
-                    else if (dataGridViewLibros.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxTituloOISBNLibro.Text.ToString().ToLower()) == false)
-                    {
-                        dataGridViewLibros.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewLibros.Rows[i].Visible = true;
+                        if (dataGridViewLibros.Rows[i].Cells[1].Value.ToString().Contains(textBoxTituloOISBNLibro.Text.ToString()))
+                        {
+                            dataGridViewLibros.Rows[i].Visible = true;
+                        }
+                        else if (dataGridViewLibros.Rows[i].Cells[2].Value.ToString().ToLower().Contains(textBoxTituloOISBNLibro.Text.ToString().ToLower()) == false)
+                        {
+                            dataGridViewLibros.Rows[i].Visible = false;
+                        }
+                        else
+                        {
+                            dataGridViewLibros.Rows[i].Visible = true;
+                        }
                     }
                 }
             }
-            }
             catch (Exception ex)
             {
-                string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                string texto = "Error textBoxTituloOISBNLibro_TextChanged: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -88,10 +88,10 @@ namespace Programa
             try
             {
                 if (textBoxNombreUsuario.Text != null)
-            {
-                for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
                 {
-                    
+                    for (int i = 0; i < dataGridViewUsuarios.Rows.Count - 1; i++)
+                    {
+
                         if (dataGridViewUsuarios.Rows[i].Cells[0].Value.ToString().ToLower().Contains(textBoxNombreUsuario.Text.ToString().ToLower()) == false)
                         {
                             dataGridViewUsuarios.Rows[i].Visible = false;
@@ -100,14 +100,14 @@ namespace Programa
                         {
                             dataGridViewUsuarios.Rows[i].Visible = true;
                         }
+                    }
                 }
-            }
             }
             catch (Exception ex)
             {
-                string texto= "Error textBoxTituloOISBNLibro_TextChanged: "+ ex.Message + ex.StackTrace;
+                string texto = "Error textBoxTituloOISBNLibro_TextChanged: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
+                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
 
@@ -116,22 +116,22 @@ namespace Programa
             try
             {
                 if (e.RowIndex >= 0)
-            {
-                if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
                 {
-                    if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")//si el libro tiene ejemplares disponibles se muestra en pantalla los datos del libro
+                    if (dataGridViewLibros.CurrentRow.Cells[5].Value != null)
                     {
-                        textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
-                        textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
-                        textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
-                        textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
+                        if (dataGridViewLibros.CurrentRow.Cells[5].Value.ToString() != "0")//si el libro tiene ejemplares disponibles se muestra en pantalla los datos del libro
+                        {
+                            textBoxIdLibro.Text = dataGridViewLibros.CurrentRow.Cells[0].Value.ToString();
+                            textBoxTitulo.Text = dataGridViewLibros.CurrentRow.Cells[1].Value.ToString();
+                            textBoxISBN.Text = dataGridViewLibros.CurrentRow.Cells[2].Value.ToString();
+                            textBoxAutor.Text = dataGridViewLibros.CurrentRow.Cells[3].Value.ToString();
+                        }
                     }
                 }
             }
-            }
             catch (Exception ex)
             {
-                string texto= "Error dataGridViewLibros_CellContentClick: "+ ex.Message + ex.StackTrace;
+                string texto = "Error dataGridViewLibros_CellContentClick: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -142,30 +142,30 @@ namespace Programa
             try
             {
                 IEnumerable<LibroDTO> libros = interfazNucleo.ObtenerLibros();
-            dataGridViewLibros.Rows.Clear();
-            foreach (var item in libros)
-            {
-                if (item.Baja == false)
+                dataGridViewLibros.Rows.Clear();
+                foreach (var item in libros)
                 {
-                    int n = dataGridViewLibros.Rows.Add();
-                    dataGridViewLibros.Rows[n].Cells[0].Value = item.Id;
-                    dataGridViewLibros.Rows[n].Cells[1].Value = item.ISBN;
-                    dataGridViewLibros.Rows[n].Cells[2].Value = item.Titulo;
-                    dataGridViewLibros.Rows[n].Cells[3].Value = item.Autor;
-                    dataGridViewLibros.Rows[n].Cells[4].Value = item.AñoPublicacion;
-                    dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(item.Id).Count().ToString();
-                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresLibro(item.Id).Count().ToString();
-                    if (dataGridViewLibros.Rows[n].Cells[5].Value.ToString() == "0")
+                    if (item.Baja == false)
                     {
-                        dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                        int n = dataGridViewLibros.Rows.Add();
+                        dataGridViewLibros.Rows[n].Cells[0].Value = item.Id;
+                        dataGridViewLibros.Rows[n].Cells[1].Value = item.ISBN;
+                        dataGridViewLibros.Rows[n].Cells[2].Value = item.Titulo;
+                        dataGridViewLibros.Rows[n].Cells[3].Value = item.Autor;
+                        dataGridViewLibros.Rows[n].Cells[4].Value = item.AñoPublicacion;
+                        dataGridViewLibros.Rows[n].Cells[5].Value = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(item.Id).Count().ToString();
+                        dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresLibro(item.Id).Count().ToString();
+                        if (dataGridViewLibros.Rows[n].Cells[5].Value.ToString() == "0")
+                        {
+                            dataGridViewLibros.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                        }
                     }
-                }
 
-            }
+                }
             }
             catch (Exception ex)
             {
-                string texto= "Error ObtenerLibros: "+ ex.Message + ex.StackTrace;
+                string texto = "Error ObtenerLibros: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -176,24 +176,24 @@ namespace Programa
             try
             {
                 IEnumerable<UsuarioSimpleDTO> usuarios = interfazNucleo.ObtenerUsuarios();
-            dataGridViewUsuarios.Rows.Clear();
-            foreach (var item in usuarios)
-            {
-                if (item.Baja == false)
+                dataGridViewUsuarios.Rows.Clear();
+                foreach (var item in usuarios)
                 {
-                    int n = dataGridViewUsuarios.Rows.Add();
-                    dataGridViewUsuarios.Rows[n].Cells[0].Value = item.nombreUsuario;
-                    dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
-                    dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
-                    dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();
-                    dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Mail;
-                    dataGridViewUsuarios.Rows[n].Cells[5].Value = item.Telefono;
-                }      
-            }
+                    if (item.Baja == false)
+                    {
+                        int n = dataGridViewUsuarios.Rows.Add();
+                        dataGridViewUsuarios.Rows[n].Cells[0].Value = item.nombreUsuario;
+                        dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
+                        dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
+                        dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();
+                        dataGridViewUsuarios.Rows[n].Cells[4].Value = item.Mail;
+                        dataGridViewUsuarios.Rows[n].Cells[5].Value = item.Telefono;
+                    }
+                }
             }
             catch (Exception ex)
             {
-                string texto= "Error ObtenerUsuarios: "+ ex.Message + ex.StackTrace;
+                string texto = "Error ObtenerUsuarios: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -204,15 +204,15 @@ namespace Programa
             try
             {
                 if (dataGridViewUsuarios.CurrentRow.Cells[0].Value != null)
-            {
-                textBoxNomUsuario.Text = dataGridViewUsuarios.CurrentRow.Cells[0].Value.ToString();
-                textBoxNombre.Text = dataGridViewUsuarios.CurrentRow.Cells[1].Value.ToString();
-                textBoxApellido.Text = dataGridViewUsuarios.CurrentRow.Cells[2].Value.ToString();
-            }
+                {
+                    textBoxNomUsuario.Text = dataGridViewUsuarios.CurrentRow.Cells[0].Value.ToString();
+                    textBoxNombre.Text = dataGridViewUsuarios.CurrentRow.Cells[1].Value.ToString();
+                    textBoxApellido.Text = dataGridViewUsuarios.CurrentRow.Cells[2].Value.ToString();
+                }
             }
             catch (Exception ex)
             {
-                string texto= "Error dataGridViewUsuarios_CellContentClick: "+ ex.Message + ex.StackTrace;
+                string texto = "Error dataGridViewUsuarios_CellContentClick: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -249,33 +249,38 @@ namespace Programa
             try
             {
                 if (!string.IsNullOrEmpty(textBoxNomUsuario.Text))//Los primeros tres if verifican que el usuario este seleccionado
-            {
-                if (!string.IsNullOrEmpty(textBoxNombre.Text))
                 {
-                    if (!string.IsNullOrEmpty(textBoxApellido.Text))
+                    if (!string.IsNullOrEmpty(textBoxNombre.Text))
                     {
-                        if (!string.IsNullOrEmpty(textBoxIdLibro.Text))//Los ultimos if verifican que el libro este seleccionado
+                        if (!string.IsNullOrEmpty(textBoxApellido.Text))
                         {
-                            if (!string.IsNullOrEmpty(textBoxAutor.Text))
+                            if (!string.IsNullOrEmpty(textBoxIdLibro.Text))//Los ultimos if verifican que el libro este seleccionado
                             {
-                                if (!string.IsNullOrEmpty(textBoxTitulo.Text))
+                                if (!string.IsNullOrEmpty(textBoxAutor.Text))
                                 {
-                                    if (!string.IsNullOrEmpty(textBoxISBN.Text))
-                                    {   
+                                    if (!string.IsNullOrEmpty(textBoxTitulo.Text))
+                                    {
+                                        if (!string.IsNullOrEmpty(textBoxISBN.Text))
+                                        {
 
-                                        int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-                                            DateTime fechaLimite= CalcularFechaLimite();
+                                            int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
+                                            DateTime fechaLimite = CalcularFechaLimite();
                                             interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, fechaLimite, idEjemplar);
-                                      
-                                        MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: "+fechaLimite);
 
+                                            MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + fechaLimite);
+
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Seleccione un libro!");
+                                        }
                                     }
                                     else
                                     {
                                         MessageBox.Show("Seleccione un libro!");
                                     }
                                 }
-                                else 
+                                else
                                 {
                                     MessageBox.Show("Seleccione un libro!");
                                 }
@@ -287,7 +292,7 @@ namespace Programa
                         }
                         else
                         {
-                            MessageBox.Show("Seleccione un libro!");
+                            MessageBox.Show("Seleccione un usuario!");
                         }
                     }
                     else
@@ -300,14 +305,9 @@ namespace Programa
                     MessageBox.Show("Seleccione un usuario!");
                 }
             }
-            else
-            {
-                MessageBox.Show("Seleccione un usuario!");
-            }
-            }
             catch (Exception ex)
             {
-                string texto= "Error buttonRegistrarPrestamo_Click: "+ ex.Message + ex.StackTrace;
+                string texto = "Error buttonRegistrarPrestamo_Click: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
@@ -321,7 +321,7 @@ namespace Programa
 
         private void RegistrarPrestamo_FormClosed(object sender, FormClosedEventArgs e)//este evento se ejecutara cuando se cierre el formulario
         {
-           this.Hide();//la ventana se oculta
+            this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
     }

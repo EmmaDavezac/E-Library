@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace BibliotecaEncriptacion
 {
-    public class EncriptadorCesar: IEncriptador
+    public class EncriptadorCesar : IEncriptador
     {
         /// <summary>
         /// Resumen:Cantidad de desplazamientos de un caracter en nuestro abecesario.
         /// </summary>
-        private int Cdesplazamiento=5;
+        private int Cdesplazamiento = 5;
 
         /// <summary>
         /// Resumen:Es nuestro abecedario de cifrado/descifrado
@@ -97,9 +91,9 @@ namespace BibliotecaEncriptacion
         /// <returns>True si las cadenas coinciden, False en caso contrario</returns>
         public bool Validar(string pCadena, string pCadenaEncriptada)
         {
- 
+
             return pCadenaEncriptada == Encriptar(pCadena);
         }
     }
-    
+
 }

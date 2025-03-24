@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Quartz;
-using Quartz.Impl;
+﻿using Quartz;
 
 namespace BibliotecaTrabajoEnSegundoPlano
 {

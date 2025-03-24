@@ -1,10 +1,10 @@
+using Bitacora;
 using Nucleo;
 using Nucleo.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -135,7 +135,7 @@ namespace Programa
                         ventana.InicializarDevolucion(usuario, titulo, autor, fechaVencimiento, estado, scoring, idPrestamo);
                         ventana.ShowDialog(this);
                     }
-                   
+
                 }
             }
             catch (Exception ex)

@@ -31,7 +31,7 @@ namespace Nucleo.DTOs
         /// Resumen: Nombre del usuario que solicito el prestamo.
         /// </summary>
         public string nombreUsuario { get; set; }
-       
+
         /// <summary>
         /// Resumen: Clave foranea que nos permite relacionar el prestamo con un ejemplar.
         /// </summary>
@@ -47,8 +47,9 @@ namespace Nucleo.DTOs
         /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
-        public PrestamoDTO(int id,string pNombreUsuario, int PIdEjemplar,string fechaPrestamo,string fechaLimite, string estadoPrestamo,string estadoDevolucion)
-        {   Id = id;
+        public PrestamoDTO(int id, string pNombreUsuario, int PIdEjemplar, string fechaPrestamo, string fechaLimite, string estadoPrestamo, string estadoDevolucion)
+        {
+            Id = id;
             FechaPrestamo = fechaPrestamo;
             FechaLimite = fechaLimite;
             nombreUsuario = pNombreUsuario;
@@ -63,8 +64,8 @@ namespace Nucleo.DTOs
         {
 
         }
-   
-        
+
+
         /// <summary>
         /// Resumen: Este metodo nos permite saber si el prestamo se encuenta retrasado
         /// </summary>
@@ -102,8 +103,8 @@ namespace Nucleo.DTOs
             }
             else return false;
         }
-       
-       
-        
-}
+
+
+
+    }
 }

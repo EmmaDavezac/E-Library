@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Nucleo.DTOs
+﻿namespace Nucleo.DTOs
 {
     public class LibroDTO
     {
@@ -28,7 +26,7 @@ namespace Nucleo.DTOs
         /// </summary>
         public string AñoPublicacion { get; set; }
 
-        
+
         /// <summary>
         /// Resumen: Propiedad que nos permite saber si el libro esta dado de baja.
         /// </summary>
@@ -48,9 +46,9 @@ namespace Nucleo.DTOs
         /// <param name="titulo">Titulo del libro</param>
         /// <param name="autor">Autor del libro</param>
         /// <param name="añoPublicacion">Año de publicacion del libro</param>
-        public LibroDTO(int ID,string unISBN, string titulo, string autor, string añoPublicacion)
+        public LibroDTO(int ID, string unISBN, string titulo, string autor, string añoPublicacion)
         {
-            Id=ID;
+            Id = ID;
             ISBN = unISBN;
             Titulo = titulo;
             Autor = autor;
@@ -58,8 +56,8 @@ namespace Nucleo.DTOs
             Baja = false;
         }
 
-   
- 
+
+
 
     }
 }

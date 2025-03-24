@@ -15,7 +15,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             NombreYApellido = interfazNucleo.ObtenerAdministrador(nombreUsuario).Nombre + " " + interfazNucleo.ObtenerAdministrador(nombreUsuario).Apellido;
-            labelNombreUsuario.Text =  nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
             labelbienvenida.Text = "Bienvenido, " + NombreYApellido;
         }
 

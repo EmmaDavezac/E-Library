@@ -6,7 +6,7 @@ namespace DAL.EntityFramework
 {   ///<summary>
     ///Resumen: Esta clase nos permite definir un repositorio generico en MS SQL Server con el ORM Entity Framework.
     ///</summary>
-    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity>  where TEntity : class
+    public abstract class Repositorio<TEntity, TDbContext> : IRepositorio<TEntity> where TEntity : class
                                                                                     where TDbContext : DbContext
     {
         /// <summary>

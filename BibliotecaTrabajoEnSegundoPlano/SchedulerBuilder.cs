@@ -1,7 +1,7 @@
 ﻿
-using System.Threading.Tasks;
 using Quartz;
 using Quartz.Impl;
+using System.Threading.Tasks;
 
 namespace BibliotecaTrabajoEnSegundoPlano
 {   /// <summary>
@@ -17,7 +17,7 @@ namespace BibliotecaTrabajoEnSegundoPlano
         /// Resumen: Este metodo construye un planificador
         /// </summary>
         /// <param name="scheduler"></param>
-    
+
         public static Task build(IScheduler scheduler)
         {
 

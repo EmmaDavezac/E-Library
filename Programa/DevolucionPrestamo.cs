@@ -1,8 +1,8 @@
+using Bitacora;
 using Nucleo;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -10,7 +10,6 @@ namespace Programa
     {
         private int scoringActual;
         private int scoringPorFecha;
-        private int scoringDevolucion;
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
@@ -24,7 +23,7 @@ namespace Programa
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
             labelNombreUsuario.Text = nombreUsuario;
-          
+
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -45,48 +44,48 @@ namespace Programa
         public void InicializarDevolucion(string pNombreUsuario, string pTitulo, string pAutor, string pFechaVencimiento, string pEstado, string pScoringActual, int pIdPrestamo)
         //Incializa los datos  del formulario
         {
-           try
-           {
+            try
+            {
                 labelUsuario.Text = pNombreUsuario;
-            labelLibro.Text = pTitulo + " - " + pAutor;
-            if (pEstado == "Retrasado")
-            {
-                TimeSpan difFechas = Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(pFechaVencimiento);
-                int dias = difFechas.Days;
-                labelEstado.Text = pEstado;
-                labelEstado.ForeColor = Color.Red;
-                scoringPorFecha = -2 * dias;
+                labelLibro.Text = pTitulo + " - " + pAutor;
+                if (pEstado == "Retrasado")
+                {
+                    TimeSpan difFechas = Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(pFechaVencimiento);
+                    int dias = difFechas.Days;
+                    labelEstado.Text = pEstado;
+                    labelEstado.ForeColor = Color.Red;
+                    scoringPorFecha = -2 * dias;
+                }
+                else if (pEstado == "ProximoAVencer")
+                {
+                    labelEstado.Text = pEstado;
+                    labelEstado.ForeColor = Color.Orange;
+                    scoringPorFecha = 5;
+                }
+                else
+                {
+                    labelEstado.Text = pEstado;
+                    labelEstado.ForeColor = Color.Green;
+                    scoringPorFecha = 5;
+                }
+                labelFechaVencimiento.Text = pFechaVencimiento;
+                if (Convert.ToInt32(pScoringActual) >= 0)
+                {
+                    labelScoring.Text = pScoringActual;
+                    labelScoring.ForeColor = Color.Green;
+                }
+                else
+                {
+                    labelScoring.Text = pScoringActual;
+                    labelScoring.ForeColor = Color.Red;
+                }
+                scoringActual = Convert.ToInt32(pScoringActual);
+                dateTimePickerFechaDevolucion.Value = DateTime.Now;
+                idPrestamo = pIdPrestamo;
             }
-            else if (pEstado == "ProximoAVencer")
+            catch (Exception ex)
             {
-                labelEstado.Text = pEstado;
-                labelEstado.ForeColor = Color.Orange;
-                scoringPorFecha = 5;
-            }
-            else
-            {
-                labelEstado.Text = pEstado;
-                labelEstado.ForeColor = Color.Green;
-                scoringPorFecha = 5;
-            }
-            labelFechaVencimiento.Text = pFechaVencimiento;
-            if (Convert.ToInt32(pScoringActual) >= 0)
-            {
-                labelScoring.Text = pScoringActual;
-                labelScoring.ForeColor = Color.Green;
-            }
-            else
-            {
-                labelScoring.Text = pScoringActual;
-                labelScoring.ForeColor = Color.Red;
-            }
-            scoringActual = Convert.ToInt32(pScoringActual);
-            dateTimePickerFechaDevolucion.Value = DateTime.Now;
-            idPrestamo = pIdPrestamo;
-           }
-           catch (Exception ex)
-            {
-                string texto= "Error InicializarDevolucion: "+ ex.Message + ex.StackTrace;
+                string texto = "Error InicializarDevolucion: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -110,27 +109,27 @@ namespace Programa
         private void comboBoxEstadoEjemplar_SelectedIndexChanged(object sender, EventArgs e)
         //se ejecuta si se cambia el valor del combobox estado ejemplar
         {
-            
+
             try
             {
-             int scoringDevolucion=0;
-             modificado = true;
-            if (comboBoxEstadoEjemplar.SelectedIndex == 0)
-            {
-                scoringDevolucion = scoringActual + scoringPorFecha;
-            }
-            else if (comboBoxEstadoEjemplar.SelectedIndex == 1)
-            {
-                scoringDevolucion = scoringActual + scoringPorFecha - 10;
-            }
+                int scoringDevolucion = 0;
+                modificado = true;
+                if (comboBoxEstadoEjemplar.SelectedIndex == 0)
+                {
+                    scoringDevolucion = scoringActual + scoringPorFecha;
+                }
+                else if (comboBoxEstadoEjemplar.SelectedIndex == 1)
+                {
+                    scoringDevolucion = scoringActual + scoringPorFecha - 10;
+                }
                 if (scoringDevolucion < 0)
                     scoringDevolucion = 0;
-                labelScoringDevolucion.Text = scoringDevolucion.ToString() ;
+                labelScoringDevolucion.Text = scoringDevolucion.ToString();
                 labelScoringDevolucion.Visible = true;
             }
             catch (Exception ex)
             {
-                string texto= "Error comboBoxEstadoEjemplar_SelectedIndexChanged: "+ ex.Message + ex.StackTrace;
+                string texto = "Error comboBoxEstadoEjemplar_SelectedIndexChanged: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
@@ -143,10 +142,10 @@ namespace Programa
             {
                 if (modificado == true)
                 {
-                interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
-                MessageBox.Show("La devolucion se registro correctamente");
-                ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
-                this.Close();
+                    interfazNucleo.RegistrarDevolucion(idPrestamo, comboBoxEstadoEjemplar.Text);
+                    MessageBox.Show("La devolucion se registro correctamente");
+                    ((GestionarPrestamos)this.Owner).ObtenerPrestamos();
+                    this.Close();
                 }
                 else
                 {
@@ -155,7 +154,7 @@ namespace Programa
             }
             catch (Exception ex)
             {
-                string texto= "Error botonRegistrarDevolucion_Click: "+ ex.Message + ex.StackTrace;
+                string texto = "Error botonRegistrarDevolucion_Click: " + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }

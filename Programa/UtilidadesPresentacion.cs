@@ -1,10 +1,7 @@
 ﻿using Bitacora;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations.Sql;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Programa
 {
@@ -65,7 +62,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string msg = "Error en TransformarListaJSONALista: " + ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(msg);    
+                bitacora.RegistrarLog(msg);
                 throw new Exception(msg);
             }
         }
@@ -99,8 +96,8 @@ namespace Programa
             }
         }
 
-       
-       
+
+
         /// <summary>
         /// Resumen: Este metodo indica si una cadena tiene el formato de email valido
         /// </summary>
@@ -119,7 +116,7 @@ namespace Programa
                 bitacora.RegistrarLog(msg);
                 return false;
                 throw new Exception(msg);
-                
+
             }
         }
 

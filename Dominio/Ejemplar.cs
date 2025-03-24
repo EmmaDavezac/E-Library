@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Dominio
-    {///<summary>
-     ///Resumen: Esta clase tiene como objetivo representar en el modelo un ejemplar de un libro registrado, almacenando sus atributos y comportamiento.
-     ///</summary>
+﻿namespace Dominio
+{///<summary>
+ ///Resumen: Esta clase tiene como objetivo representar en el modelo un ejemplar de un libro registrado, almacenando sus atributos y comportamiento.
+ ///</summary>
     public class Ejemplar
 
     {   ///<summary>

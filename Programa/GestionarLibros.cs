@@ -1,3 +1,4 @@
+using Bitacora;
 using Nucleo;
 using Nucleo.DTOs;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Bitacora;
 
 namespace Programa
 {
@@ -18,7 +18,7 @@ namespace Programa
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text =  nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
 
         private void GestionarLibros_Load(object sender, EventArgs e)//carga la tabla de libros cuando se crea el formulario
@@ -91,7 +91,7 @@ namespace Programa
             catch (Exception ex)
             {
                 string texto = "Error textBoxTituloOISBNlibro_TextChanged: " + ex.Message + ex.StackTrace;
-               bitacora.RegistrarLog(texto);
+                bitacora.RegistrarLog(texto);
                 MessageBox.Show(texto, "Ha ocurrido un error");
             }
         }

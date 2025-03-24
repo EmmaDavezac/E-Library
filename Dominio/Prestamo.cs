@@ -21,7 +21,7 @@ namespace Dominio
         /// <summary>
         /// resumen: Fecha en la que se devolvio el prestamo (si fue devuelto).
         /// </summary>
-      
+
         public EstadoPrestamo EstadoPrestamo { get; set; }
         /// <summary>
         /// Resumen: Estado de devolucion del ejemplar( Bueno,Malo)
@@ -44,15 +44,15 @@ namespace Dominio
         /// Resumen: Instancia del ejemplar relacionado al prestamo.
         /// </summary>
         public virtual Ejemplar Ejemplar { get; set; }
-    
-  
+
+
         /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
         /// <param name="usuario">Usuario que solicita el prestamo</param>
         /// <param name="ejemplar">Ejemplar que se presta</param>   
         /// <param name="libro">Libro que se presta</param>
-        public Prestamo(UsuarioSimple usuario,DateTime fechaLimite, Ejemplar ejemplar)
+        public Prestamo(UsuarioSimple usuario, DateTime fechaLimite, Ejemplar ejemplar)
         {
             FechaPrestamo = DateTime.Now.ToShortDateString();
             FechaLimite = fechaLimite.ToShortDateString();
@@ -61,7 +61,7 @@ namespace Dominio
             idEjemplar = ejemplar.Id;
             Ejemplar = ejemplar;
             EstadoPrestamo = EstadoPrestamo.Normal;
-          
+
         }
         /// <summary>
         /// Resumen: Constructor de la clase
@@ -76,11 +76,11 @@ namespace Dominio
         /// <returns>Estado del prestamo</returns>
         public EstadoPrestamo ActualizarEstado()
         {
-            if (Retrasado() )
+            if (Retrasado())
             {
                 EstadoPrestamo = EstadoPrestamo.Retrasado;
             }
-            else if (ProximoAVencerse() )
+            else if (ProximoAVencerse())
             {
                 EstadoPrestamo = EstadoPrestamo.ProximoAVencer;
             }
@@ -98,10 +98,10 @@ namespace Dominio
         {
             if ((DateTime.Now.Date >= Convert.ToDateTime(FechaLimite).Date))
             {
-                if (EstadoPrestamo!=EstadoPrestamo.Devuelto)
+                if (EstadoPrestamo != EstadoPrestamo.Devuelto)
                 { return true; }
                 else return false;
-                }
+            }
             else return false;
         }
         /// <summary>
@@ -132,7 +132,7 @@ namespace Dominio
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
-      
+
         /// <summary>
         /// Resumen: Este metodo nos permite registrar la devolucion de un ejemplar
         /// </summary>
