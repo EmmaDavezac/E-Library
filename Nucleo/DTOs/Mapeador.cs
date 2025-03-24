@@ -57,9 +57,13 @@ namespace Nucleo.DTOs
                 case EstadoPrestamo.ProximoAVencer:
                     estadoPrestamo = "Proximo a vencer";
                     break;
-                case EstadoPrestamo.Retrasado:estadoPrestamo = "Retrasado";
+                case EstadoPrestamo.Retrasado:
+                    estadoPrestamo = "Retrasado";
                     break;
-                  
+                case EstadoPrestamo.Devuelto:
+                    estadoPrestamo = "Devuelto";
+                    break;
+
             }
             string estadoDevolucion="";
             switch (prestamo.EstadoDevolucion)
@@ -71,7 +75,7 @@ namespace Nucleo.DTOs
                     estadoDevolucion = "Malo";
                     break;
             }
-            PrestamoDTO prestamoDTO = new PrestamoDTO(prestamo.nombreUsuario,prestamo.idEjemplar,prestamo.FechaPrestamo,prestamo.FechaLimite,estadoPrestamo,estadoDevolucion);
+            PrestamoDTO prestamoDTO = new PrestamoDTO(prestamo.Id,prestamo.nombreUsuario,prestamo.idEjemplar,prestamo.FechaPrestamo,prestamo.FechaLimite,estadoPrestamo,estadoDevolucion);
             return prestamoDTO;
 
         }

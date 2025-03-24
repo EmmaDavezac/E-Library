@@ -62,10 +62,10 @@ namespace Programa
             this.labelErrorAñadirEjemplares = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Eiminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Disponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -414,7 +414,7 @@ namespace Programa
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -426,7 +426,7 @@ namespace Programa
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar,
+            this.Eiminar,
             this.ID,
             this.Disponible});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLight;
@@ -437,13 +437,25 @@ namespace Programa
             this.dataGridView1.TabStop = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Editar
+            // label6
             // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Editar.HeaderText = "Acciones";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(186, 459);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 105;
+            this.label6.Text = "Añadir";
+            // 
+            // Eiminar
+            // 
+            this.Eiminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Eiminar.HeaderText = "Acciones";
+            this.Eiminar.Name = "Eiminar";
+            this.Eiminar.ReadOnly = true;
+            this.Eiminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Eiminar.Text = "Eliminar";
+            this.Eiminar.UseColumnTextForLinkValue = true;
             // 
             // ID
             // 
@@ -459,17 +471,8 @@ namespace Programa
             this.Disponible.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Disponible.HeaderText = "Disponible";
             this.Disponible.Name = "Disponible";
+            this.Disponible.ReadOnly = true;
             this.Disponible.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(186, 459);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 105;
-            this.label6.Text = "Añadir";
             // 
             // ActualizarLibro
             // 
@@ -563,9 +566,9 @@ namespace Programa
         private System.Windows.Forms.Label labelErrorAñadirEjemplares;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewLinkColumn Editar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewLinkColumn Eiminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponible;
-        private System.Windows.Forms.Label label6;
     }
 }

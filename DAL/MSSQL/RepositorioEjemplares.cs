@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DAL.EntityFramework
 {   ///<summary>
@@ -12,5 +14,18 @@ namespace DAL.EntityFramework
         public RepositorioEjemplares(AdministradorDePrestamosDbContext pDbContext) : base(pDbContext)
         {
         }
+        /// <summary>
+        /// Resumen: Este metodo obtiene todos los ejemplares disponibles de un libro
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Ejemplar> GetEjemplaresDisponiblesLibro(int idLibro)
+        { return this.GetAll().Where(x=>x.Disponible&&x.Estado==EstadoEjemplar.Bueno&&!x.Baja && x.idLibro == idLibro); }
+
+        /// <summary>
+        /// Resumen: Este metodo obtiene todos los ejemplares de un libro
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Ejemplar> GetEjemplaresLibro(int idLibro)
+        { return this.GetAll().Where(x => x.Disponible && x.Estado == EstadoEjemplar.Bueno && !x.Baja&&x.idLibro==idLibro); }
     }
 }

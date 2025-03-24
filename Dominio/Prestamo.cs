@@ -45,36 +45,17 @@ namespace Dominio
         /// </summary>
         public virtual Ejemplar Ejemplar { get; set; }
     
-        /// <summary>
-        /// Resumen Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
-        /// </summary>
-        /// <param name="usuario"></param>
-        /// <returns>Fecha limite del prestamo</returns>
-        public DateTime CalcularFechaLimite()
-        {
-            int scoring = Usuario.Scoring;
-
-            if (scoring >= 0)
-            {
-                int aux = scoring / 5;
-                if (aux >= 10)
-                {
-                    return DateTime.Now.AddDays(15);
-                }
-                else return DateTime.Now.AddDays(5 + aux);
-            }
-            else return DateTime.Now.AddDays(5);
-        }
+  
         /// <summary>
         /// Resumen: Constructor de la clase
         /// </summary>
         /// <param name="usuario">Usuario que solicita el prestamo</param>
         /// <param name="ejemplar">Ejemplar que se presta</param>   
         /// <param name="libro">Libro que se presta</param>
-        public Prestamo(UsuarioSimple usuario, Ejemplar ejemplar)
+        public Prestamo(UsuarioSimple usuario,DateTime fechaLimite, Ejemplar ejemplar)
         {
             FechaPrestamo = DateTime.Now.ToShortDateString();
-            FechaLimite = CalcularFechaLimite().ToShortDateString();
+            FechaLimite = fechaLimite.ToShortDateString();
             nombreUsuario = usuario.nombreUsuario;
             Usuario = usuario;
             idEjemplar = ejemplar.Id;
@@ -151,31 +132,7 @@ namespace Dominio
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
-        public int CalcularScoring()
-        {
-            int scoring = this.Usuario.Scoring;
-            if (EstadoDevolucion == EstadoEjemplar.Malo)
-            {   
-                    scoring -= 10;
-            }
-          
-            if (Retrasado())
-            {
-                TimeSpan difFechas = DateTime.Now- Convert.ToDateTime(FechaLimite);
-                int dias = difFechas.Days;
-                scoring -= 2 * dias;
-            }
-             
-           if (EstadoDevolucion == EstadoEjemplar.Bueno && !Retrasado())
-            {
-                scoring += 5;
-            }
-            if (scoring<0)//Para que el scoring no sea negativo
-            {
-              scoring = 0;
-            }
-            return scoring;
-        }
+      
         /// <summary>
         /// Resumen: Este metodo nos permite registrar la devolucion de un ejemplar
         /// </summary>
@@ -183,6 +140,8 @@ namespace Dominio
         public void RegistrarDevolucion(EstadoEjemplar estadoDevolucion)
         {
             EstadoDevolucion = estadoDevolucion;
+            EstadoPrestamo = EstadoPrestamo.Devuelto;
+
             if (estadoDevolucion == EstadoEjemplar.Malo)
             {
                 Ejemplar.Disponible = false;
@@ -197,6 +156,31 @@ namespace Dominio
             }
             EstadoPrestamo = EstadoPrestamo.Devuelto;
             Usuario.Scoring = CalcularScoring();
+        }
+        public int CalcularScoring()
+        {
+            int scoring = this.Usuario.Scoring;
+            if (EstadoDevolucion == EstadoEjemplar.Malo)
+            {
+                scoring -= 10;
+            }
+
+            if (Retrasado())
+            {
+                TimeSpan difFechas = DateTime.Now - Convert.ToDateTime(FechaLimite);
+                int dias = difFechas.Days;
+                scoring -= 2 * dias;
+            }
+
+            if (EstadoDevolucion == EstadoEjemplar.Bueno && !Retrasado())
+            {
+                scoring += 5;
+            }
+            if (scoring < 0)//Para que el scoring no sea negativo
+            {
+                scoring = 0;
+            }
+            return scoring;
         }
     }
 }

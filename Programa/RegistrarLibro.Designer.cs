@@ -47,17 +47,7 @@ namespace Programa
             this.label4 = new System.Windows.Forms.Label();
             this.buttonBorrarDatos = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridViewISBN = new System.Windows.Forms.DataGridView();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewAños = new System.Windows.Forms.DataGridView();
-            this.AñoPublicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelSelccionarISBN = new System.Windows.Forms.Label();
-            this.textBoxSeleccionarISBN = new System.Windows.Forms.TextBox();
-            this.labelSeleccionarAño = new System.Windows.Forms.Label();
-            this.textBoxSelccionarAño = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
-            this.labelCantidadEjemplares = new System.Windows.Forms.Label();
-            this.textBoxCantidadEjemplares = new System.Windows.Forms.TextBox();
             this.buttonActualizar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -70,10 +60,7 @@ namespace Programa
             this.Titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Autor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel4.SuspendLayout();
@@ -88,12 +75,11 @@ namespace Programa
             this.dataGridViewTituloYAutor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Titulo,
             this.Autor,
-            this.Column1,
-            this.Column2});
+            this.Column1});
             this.dataGridViewTituloYAutor.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewTituloYAutor.Location = new System.Drawing.Point(2, 155);
             this.dataGridViewTituloYAutor.Name = "dataGridViewTituloYAutor";
-            this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(363, 182);
+            this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(468, 182);
             this.dataGridViewTituloYAutor.TabIndex = 0;
             this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -123,7 +109,7 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 385);
+            this.label1.Location = new System.Drawing.Point(495, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 3;
@@ -132,7 +118,7 @@ namespace Programa
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 408);
+            this.label2.Location = new System.Drawing.Point(495, 213);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 4;
@@ -141,7 +127,7 @@ namespace Programa
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 473);
+            this.label3.Location = new System.Drawing.Point(495, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 5;
@@ -150,21 +136,21 @@ namespace Programa
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(102, 382);
+            this.textBoxTitulo.Location = new System.Drawing.Point(498, 187);
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(263, 20);
             this.textBoxTitulo.TabIndex = 6;
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(102, 408);
+            this.textBoxAutor.Location = new System.Drawing.Point(498, 229);
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(263, 20);
             this.textBoxAutor.TabIndex = 7;
             // 
             // textBoxAñoPublicacion
             // 
-            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(102, 470);
+            this.textBoxAñoPublicacion.Location = new System.Drawing.Point(498, 311);
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(263, 20);
             this.textBoxAñoPublicacion.TabIndex = 8;
@@ -208,7 +194,7 @@ namespace Programa
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(102, 444);
+            this.textBoxISBN.Location = new System.Drawing.Point(498, 268);
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(263, 20);
             this.textBoxISBN.TabIndex = 16;
@@ -217,7 +203,7 @@ namespace Programa
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(57, 447);
+            this.label5.Location = new System.Drawing.Point(495, 252);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 15;
@@ -258,7 +244,7 @@ namespace Programa
             this.buttonBorrarDatos.FlatAppearance.BorderSize = 0;
             this.buttonBorrarDatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBorrarDatos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonBorrarDatos.Location = new System.Drawing.Point(102, 500);
+            this.buttonBorrarDatos.Location = new System.Drawing.Point(498, 341);
             this.buttonBorrarDatos.Name = "buttonBorrarDatos";
             this.buttonBorrarDatos.Size = new System.Drawing.Size(61, 20);
             this.buttonBorrarDatos.TabIndex = 21;
@@ -270,117 +256,21 @@ namespace Programa
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(24, 352);
+            this.label6.Location = new System.Drawing.Point(495, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(161, 13);
             this.label6.TabIndex = 23;
             this.label6.Text = "Cargar datos manualmente:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // dataGridViewISBN
-            // 
-            this.dataGridViewISBN.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewISBN.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewISBN.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ISBN});
-            this.dataGridViewISBN.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewISBN.Location = new System.Drawing.Point(371, 154);
-            this.dataGridViewISBN.Name = "dataGridViewISBN";
-            this.dataGridViewISBN.ReadOnly = true;
-            this.dataGridViewISBN.Size = new System.Drawing.Size(205, 183);
-            this.dataGridViewISBN.TabIndex = 24;
-            this.dataGridViewISBN.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
-            this.dataGridViewISBN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewISBN_CellContentClick);
-            // 
-            // ISBN
-            // 
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
-            this.ISBN.Width = 160;
-            // 
-            // dataGridViewAños
-            // 
-            this.dataGridViewAños.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewAños.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAños.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AñoPublicacion});
-            this.dataGridViewAños.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewAños.Location = new System.Drawing.Point(585, 154);
-            this.dataGridViewAños.Name = "dataGridViewAños";
-            this.dataGridViewAños.ReadOnly = true;
-            this.dataGridViewAños.Size = new System.Drawing.Size(188, 183);
-            this.dataGridViewAños.TabIndex = 25;
-            this.dataGridViewAños.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
-            this.dataGridViewAños.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAños_CellContentClick);
-            // 
-            // AñoPublicacion
-            // 
-            this.AñoPublicacion.HeaderText = "AñoPublicacion";
-            this.AñoPublicacion.Name = "AñoPublicacion";
-            this.AñoPublicacion.ReadOnly = true;
-            this.AñoPublicacion.Width = 160;
-            // 
-            // labelSelccionarISBN
-            // 
-            this.labelSelccionarISBN.AutoSize = true;
-            this.labelSelccionarISBN.Location = new System.Drawing.Point(382, 132);
-            this.labelSelccionarISBN.Name = "labelSelccionarISBN";
-            this.labelSelccionarISBN.Size = new System.Drawing.Size(88, 13);
-            this.labelSelccionarISBN.TabIndex = 27;
-            this.labelSelccionarISBN.Text = "Seleccione ISBN";
-            // 
-            // textBoxSeleccionarISBN
-            // 
-            this.textBoxSeleccionarISBN.Location = new System.Drawing.Point(476, 128);
-            this.textBoxSeleccionarISBN.Name = "textBoxSeleccionarISBN";
-            this.textBoxSeleccionarISBN.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSeleccionarISBN.TabIndex = 26;
-            this.textBoxSeleccionarISBN.TextChanged += new System.EventHandler(this.textBoxSeleccionarISBN_TextChanged);
-            // 
-            // labelSeleccionarAño
-            // 
-            this.labelSeleccionarAño.AutoSize = true;
-            this.labelSeleccionarAño.Location = new System.Drawing.Point(582, 132);
-            this.labelSeleccionarAño.Name = "labelSeleccionarAño";
-            this.labelSeleccionarAño.Size = new System.Drawing.Size(84, 13);
-            this.labelSeleccionarAño.TabIndex = 29;
-            this.labelSeleccionarAño.Text = "Seleccione año:";
-            this.labelSeleccionarAño.Click += new System.EventHandler(this.labelSeleccionarAño_Click);
-            // 
-            // textBoxSelccionarAño
-            // 
-            this.textBoxSelccionarAño.Location = new System.Drawing.Point(672, 128);
-            this.textBoxSelccionarAño.Name = "textBoxSelccionarAño";
-            this.textBoxSelccionarAño.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSelccionarAño.TabIndex = 28;
-            this.textBoxSelccionarAño.TextChanged += new System.EventHandler(this.textBoxSelccionarAño_TextChanged);
-            // 
             // labelError
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(76, 366);
+            this.labelError.Location = new System.Drawing.Point(495, 383);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(0, 13);
             this.labelError.TabIndex = 30;
-            // 
-            // labelCantidadEjemplares
-            // 
-            this.labelCantidadEjemplares.AutoSize = true;
-            this.labelCantidadEjemplares.Location = new System.Drawing.Point(197, 503);
-            this.labelCantidadEjemplares.Name = "labelCantidadEjemplares";
-            this.labelCantidadEjemplares.Size = new System.Drawing.Size(120, 13);
-            this.labelCantidadEjemplares.TabIndex = 32;
-            this.labelCantidadEjemplares.Text = "Cantidad de ejemplares:";
-            // 
-            // textBoxCantidadEjemplares
-            // 
-            this.textBoxCantidadEjemplares.Location = new System.Drawing.Point(323, 500);
-            this.textBoxCantidadEjemplares.Name = "textBoxCantidadEjemplares";
-            this.textBoxCantidadEjemplares.Size = new System.Drawing.Size(42, 20);
-            this.textBoxCantidadEjemplares.TabIndex = 33;
-            this.textBoxCantidadEjemplares.TextChanged += new System.EventHandler(this.textBoxCantidadEjemplares_TextChanged);
             // 
             // buttonActualizar
             // 
@@ -494,29 +384,27 @@ namespace Programa
             // 
             // Titulo
             // 
+            this.Titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Titulo.HeaderText = "Titulo";
             this.Titulo.Name = "Titulo";
             this.Titulo.ReadOnly = true;
-            this.Titulo.Width = 160;
+            this.Titulo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Autor
             // 
+            this.Autor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Autor.HeaderText = "Autor";
             this.Autor.Name = "Autor";
             this.Autor.ReadOnly = true;
-            this.Autor.Width = 160;
+            this.Autor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "añoPublicacion";
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Primer año publicacion";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "isbn";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // RegistrarLibro
             // 
@@ -528,15 +416,7 @@ namespace Programa
             this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonActualizar);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.textBoxCantidadEjemplares);
-            this.Controls.Add(this.labelCantidadEjemplares);
             this.Controls.Add(this.labelError);
-            this.Controls.Add(this.labelSeleccionarAño);
-            this.Controls.Add(this.textBoxSelccionarAño);
-            this.Controls.Add(this.labelSelccionarISBN);
-            this.Controls.Add(this.textBoxSeleccionarISBN);
-            this.Controls.Add(this.dataGridViewAños);
-            this.Controls.Add(this.dataGridViewISBN);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonBorrarDatos);
@@ -566,8 +446,6 @@ namespace Programa
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BuscarLibrosAPI_FormClosed);
             this.Load += new System.EventHandler(this.BuscarLibrosAPI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTituloYAutor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewISBN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAños)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -600,17 +478,7 @@ namespace Programa
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonBorrarDatos;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridViewISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.DataGridView dataGridViewAños;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AñoPublicacion;
-        private System.Windows.Forms.Label labelSelccionarISBN;
-        private System.Windows.Forms.TextBox textBoxSeleccionarISBN;
-        private System.Windows.Forms.Label labelSeleccionarAño;
-        private System.Windows.Forms.TextBox textBoxSelccionarAño;
         private System.Windows.Forms.Label labelError;
-        private System.Windows.Forms.Label labelCantidadEjemplares;
-        private System.Windows.Forms.TextBox textBoxCantidadEjemplares;
         private System.Windows.Forms.Button buttonActualizar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel5;
@@ -623,6 +491,5 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn Titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Autor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

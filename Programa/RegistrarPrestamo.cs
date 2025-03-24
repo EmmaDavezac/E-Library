@@ -223,6 +223,28 @@ namespace Programa
 
         }
 
+        /// <summary>
+        /// Resumen Este metodo nos permite calcular la fecha limite para un prestamo en funcion del Scoring del usuario que solicita el prestamo
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Fecha limite del prestamo</returns>
+        public DateTime CalcularFechaLimite()
+        {
+            UsuarioSimpleDTO usuario = interfazNucleo.ObtenerUsuario(textBoxNomUsuario.Text);
+            int scoring = usuario.Scoring;
+
+            if (scoring >= 0)
+            {
+                int aux = scoring / 5;
+                if (aux >= 10)
+                {
+                    return DateTime.Now.AddDays(15);
+                }
+                else return DateTime.Now.AddDays(5 + aux);
+            }
+            else return DateTime.Now.AddDays(5);
+        }
+
         private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
         {
             try
@@ -240,12 +262,13 @@ namespace Programa
                                 if (!string.IsNullOrEmpty(textBoxTitulo.Text))
                                 {
                                     if (!string.IsNullOrEmpty(textBoxISBN.Text))
-                                    {
+                                    {   
+
                                         int idEjemplar = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(Convert.ToInt32(textBoxIdLibro.Text.ToString())).First().Id;
-                                        interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, idEjemplar);
-                                        string FechaLimite = Convert.ToDateTime(new FachadaNucleo().ObtenerPrestamo(interfazNucleo.ObtenerPrestamos().Last().Id).FechaLimite).Date.ToShortDateString();
-                                        ObtenerLibros();//cargamos la lista de libros en la tabla de libros nuevamente para que se actualice
-                                        MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: " + FechaLimite);
+                                            DateTime fechaLimite= CalcularFechaLimite();
+                                            interfazNucleo.RegistrarPrestamo(textBoxNomUsuario.Text, fechaLimite, idEjemplar);
+                                      
+                                        MessageBox.Show("El prestamo ha sido registrado correctamente" + "\nFecha limite: "+fechaLimite);
 
                                     }
                                     else

@@ -28,23 +28,13 @@ namespace Programa
             {
                 if (e.RowIndex >= 0 && dataGridViewTituloYAutor.CurrentRow.Cells[0].Value != null)//se verifica que la fila seleccionada no este vacia
                 {
-                    dataGridViewAños.Rows.Clear();//se eliminan las filas de la tabla de años
-                    dataGridViewISBN.Rows.Clear();//se eliminan las filas de la tabla de ISBNs
                     textBoxTitulo.Text = dataGridViewTituloYAutor.CurrentRow.Cells[0].Value.ToString();//se muestra en pantalla el titulo del libro seleccionado
                     textBoxAutor.Text = dataGridViewTituloYAutor.CurrentRow.Cells[1].Value.ToString();//se muestra en pantalla el nombre del autor del libro seleccionado
+                    textBoxAñoPublicacion.Text = dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString();
+
                     buttonBorrarDatos.Enabled = true;//se activa el boton borrar datos
-                    List<string> isbns = utilidades.TransformarISBNsALista(dataGridViewTituloYAutor.CurrentRow.Cells[3].Value.ToString());
-                    foreach (var item in isbns)//se cargan los isbns del libro seleccionado en la tabla de isbns
-                    {
-                        int n = dataGridViewISBN.Rows.Add();
-                        dataGridViewISBN.Rows[n].Cells[0].Value = item;
-                    }
-                    List<string> años = utilidades.TransformarAñosALista(dataGridViewTituloYAutor.CurrentRow.Cells[2].Value.ToString());
-                    foreach (var item in años)//se cargan los años de publicacion del libro seleccionado en la tabla de años
-                    {
-                        int n = dataGridViewAños.Rows.Add();
-                        dataGridViewAños.Rows[n].Cells[0].Value = item;
-                    }
+                    
+                   
                 }
             }
             catch (Exception ex)
@@ -77,11 +67,12 @@ namespace Programa
                         dataGridViewTituloYAutor.Rows[n].Cells[0].Value = item.Titulo;
                         dataGridViewTituloYAutor.Rows[n].Cells[1].Value = utilidades.SacarAutorDeLaLista(item.Autor);
                         dataGridViewTituloYAutor.Rows[n].Cells[2].Value = item.AñoPublicacion;
-                        dataGridViewTituloYAutor.Rows[n].Cells[3].Value = item.ISBN;
                         resultado += 1;
                     }
 
-                    if (resultado == 0) { labelResultados.Text = "Error, no se encontraron resultados"; }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
+                    if (resultado == 0) {
+                        MessageBox.Show("No se encontraron resultados");
+                    }//en el caso de no encontrarse resultados , se muestra un mensaje en pantalla y se desabilita en boton buscar
                     else
                     {
                         labelResultados.Text = "";
@@ -89,7 +80,7 @@ namespace Programa
                 }
                 else
                 {
-                    labelResultados.Text = "No ingreso un termino de busqueda";
+                    MessageBox.Show("No ingresó un termino de busqueda");
                 }
                 textBoxBuscar.Focus(); //enfocamos el cuadro de busqueda
                 buttonBuscar.Enabled = false; //se desabilita el boton buscar
@@ -119,10 +110,10 @@ namespace Programa
         {
            try
            {
-            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) && !string.IsNullOrEmpty(textBoxCantidadEjemplares.Text))
+            if (!string.IsNullOrEmpty(textBoxTitulo.Text) && !string.IsNullOrEmpty(textBoxAutor.Text) && !string.IsNullOrEmpty(textBoxISBN.Text) && !string.IsNullOrEmpty(textBoxAñoPublicacion.Text) )
             //se verifica que se haya ingresado toda la informacion necesaria
             {
-              interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text, Convert.ToInt32(textBoxCantidadEjemplares.Text));
+              interfazNucleo.AñadirLibro(textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);
                 
                     MessageBox.Show("Libro registrado con exito! " );//se muestra el mensaje en pantalla
             }
@@ -214,101 +205,10 @@ namespace Programa
 
         }
 
-        private void dataGridViewISBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            //se ejecuta cuando se presiona una fila de la lista de ISBNs del libro, carga el ISBN  seleccionado en el textboxISBN
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-            {
-                if (dataGridViewISBN.CurrentRow.Cells[0].Value!=null)//Se verifica que la fila seleccionada no este vacia
-                {
-                    textBoxISBN.Text = dataGridViewISBN.CurrentRow.Cells[0].Value.ToString(); 
-                }
-            }
-            }
-            catch (Exception ex)
-            {
-                string texto= "Error dataGridViewISBN_CellContentClick: "+ ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
-            }
-        }
+       
 
-        private void dataGridViewAños_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            //se ejecuta cuando se presiona una fila de la lista de años de publicacion del libro, carga el año seleccionado en el textboxAñoPublicacion
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-            {
-                if (dataGridViewAños.CurrentRow.Cells[0].Value != null)
-                {
-                    textBoxAñoPublicacion.Text = dataGridViewAños.CurrentRow.Cells[0].Value.ToString();//Se verifica que la fila seleccionada no este vacia
-                }
-            }
-            }
-            catch (Exception ex)
-            {
-                string texto= "Error dataGridViewAños_CellContentClick: "+ ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto,"Ha ocurrido un error." + ex.Message + ex.StackTrace);
-            }
-        }
+       
 
-        private void textBoxSeleccionarISBN_TextChanged(object sender, EventArgs e)//nos permite buscar un isbn en la tabla de isbns del libro
-        {
-            try
-            {
-                if (textBoxSeleccionarISBN.Text != null)
-            {
-                for (int i = 0; i < dataGridViewISBN.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewISBN.Rows[i].Cells[0].Value.ToString().Contains(textBoxSeleccionarISBN.Text.ToString()) == false)
-                    {
-                        dataGridViewISBN.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewISBN.Rows[i].Visible = true;
-                    }
-                }
-            }
-            }
-            catch (Exception ex)
-            {
-                string texto= "Error textBoxSeleccionarISBN_TextChanged: "+ ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
-            }
-        }
-
-        private void textBoxSelccionarAño_TextChanged(object sender, EventArgs e)//nos permite buscar un año en la tabla de años de publicacion
-        {
-            try
-            {
-                if (textBoxSelccionarAño.Text != null)
-            {
-                for (int i = 0; i < dataGridViewAños.Rows.Count - 1; i++)
-                {
-                    if (dataGridViewAños.Rows[i].Cells[0].Value.ToString().Contains(textBoxSelccionarAño.Text.ToString()) == false)
-                    {
-                        dataGridViewAños.Rows[i].Visible = false;
-                    }
-                    else
-                    {
-                        dataGridViewAños.Rows[i].Visible = true;
-                    }
-                }
-            }
-            }
-            catch (Exception ex)
-            {
-                string texto= "Error textBoxSelccionarAño_TextChanged: "+ ex.Message + ex.StackTrace;
-                bitacora.RegistrarLog(texto);
-                MessageBox.Show(texto, "Ha ocurrido un error."+ex.Message+ex.StackTrace);
-            }
-        }
 
         private void labelSeleccionarAño_Click(object sender, EventArgs e)
         {
@@ -328,8 +228,7 @@ namespace Programa
             {
                 buttonActualizar.Visible = true;
                 botonAñadirLibro.Visible = false;
-                textBoxCantidadEjemplares.Visible = false;
-                labelCantidadEjemplares.Visible = false;
+                
             }
             }
             catch (Exception ex)

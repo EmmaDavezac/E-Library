@@ -86,6 +86,8 @@ namespace Programa
                         {
                             interfazNucleo.DarDeBajaEjemplar(Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value));
                             ObtenerEjemplares();
+                            labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresLibro(idLibro).Count());//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
+
                         }
                     }
                 }
@@ -174,10 +176,7 @@ namespace Programa
                 {
                     interfazNucleo.DarDeAltaUnLibro(idLibro);//Da de alta al libro.
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
-                    if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
-                    {
-                        interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
-                    }
+                   
                     MessageBox.Show("El libro Id:" + idLibro + " a sido dado de alta y se ha actualizado exitosamente!");//Mensaje informativo al administrador
                 }
                 else//En el caso que falte completar algun dato.
@@ -192,10 +191,7 @@ namespace Programa
                 {
                     interfazNucleo.ActualizarLibro(idLibro, textBoxISBN.Text, textBoxTitulo.Text, textBoxAutor.Text, textBoxAñoPublicacion.Text);//Actualiza el libro
                     
-                     if (sumatoriaDeEjemplares >= 0)//Si el valor de la sumatoria de ejemplares da positivo agrega los ejemplares.
-                    {
-                        interfazNucleo.AñadirEjemplares(idLibro, sumatoriaDeEjemplares);
-                    }
+                    
                     MessageBox.Show("El libro Id:" + idLibro + " se ha actualizado exitosamente!");//Mensaje informativo al administrador
                 }
                 else//En el caso que falte completar algun dato.
@@ -312,14 +308,17 @@ namespace Programa
             {
                 if (!string.IsNullOrEmpty(textBoxAñadirEjemplares.Text))//Si el textbox relacionado a añadir ejemplares no esta vacio entonces:
             {
-                sumatoriaDeEjemplares += Convert.ToInt32(textBoxAñadirEjemplares.Text);//Agrega a la sumatoria la cantidad cargada.
-                labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresDisponiblesLibro(idLibro).Count() + sumatoriaDeEjemplares);//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
+                        DialogResult dialogResult = MessageBox.Show("¿Estas seguro que deseas añadir "+ Convert.ToInt32(textBoxAñadirEjemplares.Text) + " ejemplares?", "Añadir Ejemplares", MessageBoxButtons.YesNo);//Mensaje de confirmacion para eliminar el ejemplar
+
+                    interfazNucleo.AñadirEjemplares(idLibro, Convert.ToInt32(textBoxAñadirEjemplares.Text));//Añade los ejemplares al libro.
+                    labelCantidadActual.Text = "Cantidad Actual: " + Convert.ToString(interfazNucleo.ObtenerEjemplaresLibro(idLibro).Count());//Actualiza la cantidad actual(Explicado en el metodo InicializarLibro)
                 textBoxAñadirEjemplares.Text = "";
+               
+                    ObtenerEjemplares();
             }
             else
             {
-                labelErrorAñadirEjemplares.Text = "Error,campo vacio";//Label informativo para el administrador.
-                labelErrorAñadirEjemplares.Visible = true;
+                MessageBox.Show("Error,campo cantidad vacio");//Label informativo para el administrador.
             }
             }
             catch (Exception ex)

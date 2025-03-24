@@ -71,9 +71,9 @@ namespace ServiciosAPILibros
                             autor = HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
                         }
                         else { autor = "desconocido"; }
-                        if (bResponseItem.publish_year != null)
+                        if (bResponseItem.first_publish_year != null)
                         {
-                            añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.publish_year.ToString());
+                            añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.first_publish_year.ToString());
                         }
                         else { añoPublicacion = "desconocido"; }
 

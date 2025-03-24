@@ -291,7 +291,7 @@ namespace Nucleo
         /// <param name="añoPublicacion">Año de publicacion del libro</param>
         /// <param name="pCantidadEjempalares">Cantidad de ejemplares del libro</param>
         /// <returns>True si el registro fue exitoso, False en caso contrario</returns>
-        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion, int pCantidadEjempalares)
+        public void AñadirLibro(string unISBN, string titulo, string autor, string añoPublicacion)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             bool resultado = true;
@@ -322,11 +322,8 @@ namespace Nucleo
                     if (resultado == true)
                     {
                         unitOfWork.RepositorioLibros.Add(libro);//Añadimos el libro a la base de datos
-                        for (int i = 0; i < pCantidadEjempalares; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
-                        {
-                            Ejemplar ejemplarNuevo = new Ejemplar(libro);//Instanciamos el nuevo ejemplar y le pasamos el objeto libro como parametro.
-                            unitOfWork.RepositorioEjemplares.Add(ejemplarNuevo);//Añadimos el ejemplar a la base de datos.
-                        }
+                      //  this.AñadirEjemplares(unitOfWork.RepositorioLibros.GetAll().Last().Id,pCantidadEjempalares);
+                       
                         unitOfWork.Complete();//Guardamos los cambios
                     }
                 }
@@ -489,7 +486,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista de ejemplares disponibles de un libro</returns>
-        public List<EjemplarDTO> ObtenerEjemplaresDisponiblesLibro(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresDisponiblesLibro(int idLibro)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
@@ -498,7 +495,7 @@ namespace Nucleo
 
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresDisponibles())
+                    foreach (var item in unitOfWork.RepositorioEjemplares.GetEjemplaresDisponiblesLibro(idLibro))
                     {
                         lista.Add(mapeador.Mapear(item));
                     }
@@ -507,7 +504,7 @@ namespace Nucleo
             }
             catch (Exception ex)
             {
-                msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+                msg = "Error al obtener la lista de ejemplares Disponibles del libro (id: " + idLibro + ")." + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 return lista;
                 throw new Exception(msg);
@@ -520,7 +517,7 @@ namespace Nucleo
         /// </summary>
         /// <param name="id">ID del libro</param>
         /// <returns>Lista total de ejemplares de un libro</returns>
-        public List<EjemplarDTO> ObtenerEjemplaresLibro(int id)
+        public List<EjemplarDTO> ObtenerEjemplaresLibro(int idLibro)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             List<EjemplarDTO> lista = new List<EjemplarDTO>();//Instanciamos una lista de ejemplares que sera devuelta por el metodo
@@ -528,7 +525,7 @@ namespace Nucleo
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    foreach (var item in unitOfWork.RepositorioLibros.Get(id).EjemplaresTotales())
+                    foreach (var item in unitOfWork.RepositorioEjemplares.GetEjemplaresLibro(idLibro ))
                     {
                         lista.Add(mapeador.Mapear(item));
                     }
@@ -537,7 +534,7 @@ namespace Nucleo
             }
             catch (Exception ex)
             {
-                msg = "Error al obtener la lista total de ejemplares del libro (id: " + id + ")." + ex.Message + ex.StackTrace;
+                msg = "Error al obtener la lista total de ejemplares del libro (id: " + idLibro + ")." + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 return lista;
                 throw new Exception(msg);
@@ -551,7 +548,7 @@ namespace Nucleo
         /// <param name="pNombreUsuario">Nombre de usuario del usuario que solicita el prestamo</param>
         /// <param name="idEjemplar">ID del ejemplar del libro que se va a prestar </param>
         /// <param name="idLibro">ID del libro que se va a prestar</param>
-        public void RegistrarPrestamo(string pNombreUsuario, int idEjemplar)
+        public void RegistrarPrestamo(string pNombreUsuario,DateTime fechaLimite, int idEjemplar)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
@@ -559,7 +556,7 @@ namespace Nucleo
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {   Ejemplar ejemplar = unitOfWork.RepositorioEjemplares.Get(idEjemplar);
                     UsuarioSimple usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
-                    Prestamo prestamo = new Prestamo(usuario,ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
+                    Prestamo prestamo = new Prestamo(usuario,fechaLimite,ejemplar);//Instancia de un prestamo con los valores que pasamos como parametro
                     unitOfWork.RepositorioEjemplares.Get(idEjemplar).Disponible = false;//El ejemplar del prestamo pasa a estar no diponible
                     unitOfWork.RepositorioPrestamos.Add(prestamo);//Añadimos el pretamo a la base de datos
                     unitOfWork.Complete();//Guardamos los cambios
@@ -649,6 +646,7 @@ namespace Nucleo
                         unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Bueno);//Obtenemos el prestamo por idPrestamo, y llamamos a su metodo registrar debolucion pasandole un EstadoEjemplar bueno
                     }
                     else unitOfWork.RepositorioPrestamos.Get(idPrestamo).RegistrarDevolucion(EstadoEjemplar.Malo);//Obtenemos el prestamo por idPrestamo, y llamamos a su metodo registrar debolucion pasandole un EstadoEjemplar malo
+                    
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }

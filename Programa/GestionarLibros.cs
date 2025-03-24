@@ -110,8 +110,8 @@ namespace Programa
                     dataGridViewLibros.Rows[n].Cells[3].Value = item.Titulo;
                     dataGridViewLibros.Rows[n].Cells[4].Value = item.Autor;
                     dataGridViewLibros.Rows[n].Cells[5].Value = item.AñoPublicacion;
-                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(item.Id).Count().ToString();
-                    dataGridViewLibros.Rows[n].Cells[7].Value = interfazNucleo.ObtenerEjemplaresLibro(item.Id).Count().ToString();
+                    dataGridViewLibros.Rows[n].Cells[6].Value = interfazNucleo.ObtenerEjemplaresDisponiblesLibro(item.Id).Count();
+                    dataGridViewLibros.Rows[n].Cells[7].Value = interfazNucleo.ObtenerEjemplaresLibro(item.Id).Count();
                     dataGridViewLibros.Rows[n].Cells[8].Value = item.Baja.ToString();
                     if (dataGridViewLibros.Rows[n].Cells[8].Value.ToString() == "True")
                     {

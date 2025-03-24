@@ -29,7 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,15 +38,6 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.dataGridViewPrestamos = new System.Windows.Forms.DataGridView();
-            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.textBoxUsuarioOTituloLibro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +47,14 @@ namespace Programa
             this.checkDevueltos = new System.Windows.Forms.CheckBox();
             this.labelNombreLista = new System.Windows.Forms.Label();
             this.labelFiltrar = new System.Windows.Forms.Label();
+            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -72,9 +71,9 @@ namespace Programa
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 60);
+            this.panel3.Size = new System.Drawing.Size(1045, 74);
             this.panel3.TabIndex = 72;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -84,9 +83,9 @@ namespace Programa
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.Size = new System.Drawing.Size(109, 74);
             this.panel4.TabIndex = 10;
             // 
             // label2
@@ -95,20 +94,19 @@ namespace Programa
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(12, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(16, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "E-Library";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(21, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 49);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -118,20 +116,20 @@ namespace Programa
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.labelNombreUsuario);
-            this.panel5.Location = new System.Drawing.Point(566, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Location = new System.Drawing.Point(755, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(207, 60);
+            this.panel5.Size = new System.Drawing.Size(276, 74);
             this.panel5.TabIndex = 9;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Location = new System.Drawing.Point(207, 12);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.Size = new System.Drawing.Size(53, 49);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
@@ -140,18 +138,18 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
-            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(11, 30);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 0, 7, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.Size = new System.Drawing.Size(109, 16);
             this.labelNombreUsuario.TabIndex = 0;
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dataGridViewPrestamos
             // 
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPrestamos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewPrestamos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPrestamos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -163,108 +161,44 @@ namespace Programa
             this.ISBNLibro,
             this.FechaRealizacion,
             this.FechaVencimiento,
-            this.EstadoPrestamo,
-            this.Editar});
-            this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 178);
+            this.EstadoPrestamo});
+            this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 219);
+            this.dataGridViewPrestamos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
-            this.dataGridViewPrestamos.Size = new System.Drawing.Size(784, 340);
+            this.dataGridViewPrestamos.RowHeadersWidth = 51;
+            this.dataGridViewPrestamos.Size = new System.Drawing.Size(1045, 418);
             this.dataGridViewPrestamos.TabIndex = 77;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
-            // 
-            // RegistrarDevolucion
-            // 
-            this.RegistrarDevolucion.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
-            this.RegistrarDevolucion.HeaderText = "RegistrarDevolucion";
-            this.RegistrarDevolucion.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.RegistrarDevolucion.Name = "RegistrarDevolucion";
-            this.RegistrarDevolucion.ReadOnly = true;
-            this.RegistrarDevolucion.Text = "Devolucion";
-            this.RegistrarDevolucion.TrackVisitedState = false;
-            this.RegistrarDevolucion.UseColumnTextForLinkValue = true;
-            this.RegistrarDevolucion.VisitedLinkColor = System.Drawing.Color.DodgerBlue;
-            this.RegistrarDevolucion.Width = 110;
-            // 
-            // IdPrestamo
-            // 
-            this.IdPrestamo.HeaderText = "IdPrestamo";
-            this.IdPrestamo.Name = "IdPrestamo";
-            this.IdPrestamo.ReadOnly = true;
-            this.IdPrestamo.Width = 75;
-            // 
-            // NombreUsuario
-            // 
-            this.NombreUsuario.HeaderText = "NombreUsuario";
-            this.NombreUsuario.Name = "NombreUsuario";
-            this.NombreUsuario.ReadOnly = true;
-            // 
-            // TituloLibro
-            // 
-            this.TituloLibro.HeaderText = "TituloLibro";
-            this.TituloLibro.Name = "TituloLibro";
-            this.TituloLibro.ReadOnly = true;
-            this.TituloLibro.Width = 140;
-            // 
-            // ISBNLibro
-            // 
-            this.ISBNLibro.HeaderText = "ISBNLibro";
-            this.ISBNLibro.Name = "ISBNLibro";
-            this.ISBNLibro.ReadOnly = true;
-            this.ISBNLibro.Width = 120;
-            // 
-            // FechaRealizacion
-            // 
-            this.FechaRealizacion.HeaderText = "FechaRealizacion";
-            this.FechaRealizacion.Name = "FechaRealizacion";
-            this.FechaRealizacion.ReadOnly = true;
-            // 
-            // FechaVencimiento
-            // 
-            this.FechaVencimiento.HeaderText = "FechaVencimiento";
-            this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.ReadOnly = true;
-            // 
-            // EstadoPrestamo
-            // 
-            this.EstadoPrestamo.HeaderText = "EstadoPrestamo";
-            this.EstadoPrestamo.Name = "EstadoPrestamo";
-            this.EstadoPrestamo.ReadOnly = true;
-            // 
-            // Editar
-            // 
-            this.Editar.ActiveLinkColor = System.Drawing.SystemColors.WindowText;
-            this.Editar.HeaderText = "Editar";
-            this.Editar.LinkColor = System.Drawing.SystemColors.WindowText;
-            this.Editar.Name = "Editar";
-            this.Editar.Text = "Edit";
-            this.Editar.UseColumnTextForLinkValue = true;
-            this.Editar.VisitedLinkColor = System.Drawing.SystemColors.WindowText;
             // 
             // labelTitulo
             // 
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(13, 72);
+            this.labelTitulo.Location = new System.Drawing.Point(17, 89);
+            this.labelTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(124, 13);
+            this.labelTitulo.Size = new System.Drawing.Size(161, 17);
             this.labelTitulo.TabIndex = 80;
             this.labelTitulo.Text = "Gestor de Prestamos";
             this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
             // 
             // textBoxUsuarioOTituloLibro
             // 
-            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(263, 95);
+            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(351, 117);
+            this.textBoxUsuarioOTituloLibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxUsuarioOTituloLibro.Name = "textBoxUsuarioOTituloLibro";
-            this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(498, 20);
+            this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(663, 22);
             this.textBoxUsuarioOTituloLibro.TabIndex = 79;
             this.textBoxUsuarioOTituloLibro.TextChanged += new System.EventHandler(this.textBoxUsuarioOTituloLibro_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 98);
+            this.label1.Location = new System.Drawing.Point(17, 121);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 13);
+            this.label1.Size = new System.Drawing.Size(291, 16);
             this.label1.TabIndex = 78;
             this.label1.Text = "Buscar por Nombre de usuario o Titulo del libro:";
             // 
@@ -276,10 +210,10 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(684, 526);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Location = new System.Drawing.Point(912, 647);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.Size = new System.Drawing.Size(119, 28);
             this.botonVolver.TabIndex = 81;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
@@ -290,9 +224,10 @@ namespace Programa
             this.checkBoxProximosAVencerse.AutoSize = true;
             this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
             this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(595, 125);
+            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(793, 154);
+            this.checkBoxProximosAVencerse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
-            this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(97, 20);
             this.checkBoxProximosAVencerse.TabIndex = 82;
             this.checkBoxProximosAVencerse.Text = "A vencerse";
             this.checkBoxProximosAVencerse.UseVisualStyleBackColor = false;
@@ -301,9 +236,10 @@ namespace Programa
             // checkBoxRestrasados
             // 
             this.checkBoxRestrasados.AutoSize = true;
-            this.checkBoxRestrasados.Location = new System.Drawing.Point(681, 125);
+            this.checkBoxRestrasados.Location = new System.Drawing.Point(908, 154);
+            this.checkBoxRestrasados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxRestrasados.Name = "checkBoxRestrasados";
-            this.checkBoxRestrasados.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxRestrasados.Size = new System.Drawing.Size(100, 20);
             this.checkBoxRestrasados.TabIndex = 83;
             this.checkBoxRestrasados.Text = "Retrasados";
             this.checkBoxRestrasados.UseVisualStyleBackColor = true;
@@ -312,9 +248,10 @@ namespace Programa
             // checkDevueltos
             // 
             this.checkDevueltos.AutoSize = true;
-            this.checkDevueltos.Location = new System.Drawing.Point(15, 155);
+            this.checkDevueltos.Location = new System.Drawing.Point(20, 191);
+            this.checkDevueltos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkDevueltos.Name = "checkDevueltos";
-            this.checkDevueltos.Size = new System.Drawing.Size(161, 17);
+            this.checkDevueltos.Size = new System.Drawing.Size(203, 20);
             this.checkDevueltos.TabIndex = 84;
             this.checkDevueltos.Text = "Mostrar prestamos devueltos";
             this.checkDevueltos.UseVisualStyleBackColor = true;
@@ -325,9 +262,10 @@ namespace Programa
             this.labelNombreLista.AutoSize = true;
             this.labelNombreLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNombreLista.ForeColor = System.Drawing.Color.Black;
-            this.labelNombreLista.Location = new System.Drawing.Point(13, 129);
+            this.labelNombreLista.Location = new System.Drawing.Point(17, 159);
+            this.labelNombreLista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNombreLista.Name = "labelNombreLista";
-            this.labelNombreLista.Size = new System.Drawing.Size(115, 13);
+            this.labelNombreLista.Size = new System.Drawing.Size(146, 17);
             this.labelNombreLista.TabIndex = 85;
             this.labelNombreLista.Text = "Prestamos Activos:";
             // 
@@ -336,18 +274,89 @@ namespace Programa
             this.labelFiltrar.AutoSize = true;
             this.labelFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.labelFiltrar.Location = new System.Drawing.Point(454, 126);
+            this.labelFiltrar.Location = new System.Drawing.Point(605, 155);
+            this.labelFiltrar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFiltrar.Name = "labelFiltrar";
-            this.labelFiltrar.Size = new System.Drawing.Size(126, 13);
+            this.labelFiltrar.Size = new System.Drawing.Size(165, 17);
             this.labelFiltrar.TabIndex = 86;
             this.labelFiltrar.Text = "Filtrar prestamos por:";
             // 
+            // RegistrarDevolucion
+            // 
+            this.RegistrarDevolucion.ActiveLinkColor = System.Drawing.SystemColors.ControlText;
+            this.RegistrarDevolucion.HeaderText = "RegistrarDevolucion";
+            this.RegistrarDevolucion.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.RegistrarDevolucion.MinimumWidth = 6;
+            this.RegistrarDevolucion.Name = "RegistrarDevolucion";
+            this.RegistrarDevolucion.ReadOnly = true;
+            this.RegistrarDevolucion.Text = "Devolucion";
+            this.RegistrarDevolucion.TrackVisitedState = false;
+            this.RegistrarDevolucion.UseColumnTextForLinkValue = true;
+            this.RegistrarDevolucion.VisitedLinkColor = System.Drawing.Color.DodgerBlue;
+            this.RegistrarDevolucion.Width = 110;
+            // 
+            // IdPrestamo
+            // 
+            this.IdPrestamo.HeaderText = "IdPrestamo";
+            this.IdPrestamo.MinimumWidth = 6;
+            this.IdPrestamo.Name = "IdPrestamo";
+            this.IdPrestamo.ReadOnly = true;
+            this.IdPrestamo.Width = 75;
+            // 
+            // NombreUsuario
+            // 
+            this.NombreUsuario.HeaderText = "NombreUsuario";
+            this.NombreUsuario.MinimumWidth = 6;
+            this.NombreUsuario.Name = "NombreUsuario";
+            this.NombreUsuario.ReadOnly = true;
+            this.NombreUsuario.Width = 125;
+            // 
+            // TituloLibro
+            // 
+            this.TituloLibro.HeaderText = "TituloLibro";
+            this.TituloLibro.MinimumWidth = 6;
+            this.TituloLibro.Name = "TituloLibro";
+            this.TituloLibro.ReadOnly = true;
+            this.TituloLibro.Width = 140;
+            // 
+            // ISBNLibro
+            // 
+            this.ISBNLibro.HeaderText = "ISBNLibro";
+            this.ISBNLibro.MinimumWidth = 6;
+            this.ISBNLibro.Name = "ISBNLibro";
+            this.ISBNLibro.ReadOnly = true;
+            this.ISBNLibro.Width = 120;
+            // 
+            // FechaRealizacion
+            // 
+            this.FechaRealizacion.HeaderText = "FechaRealizacion";
+            this.FechaRealizacion.MinimumWidth = 6;
+            this.FechaRealizacion.Name = "FechaRealizacion";
+            this.FechaRealizacion.ReadOnly = true;
+            this.FechaRealizacion.Width = 125;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.MinimumWidth = 6;
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.ReadOnly = true;
+            this.FechaVencimiento.Width = 125;
+            // 
+            // EstadoPrestamo
+            // 
+            this.EstadoPrestamo.HeaderText = "EstadoPrestamo";
+            this.EstadoPrestamo.MinimumWidth = 6;
+            this.EstadoPrestamo.Name = "EstadoPrestamo";
+            this.EstadoPrestamo.ReadOnly = true;
+            this.EstadoPrestamo.Width = 125;
+            // 
             // GestionarPrestamos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1045, 690);
             this.Controls.Add(this.labelFiltrar);
             this.Controls.Add(this.labelNombreLista);
             this.Controls.Add(this.checkDevueltos);
@@ -360,6 +369,7 @@ namespace Programa
             this.Controls.Add(this.dataGridViewPrestamos);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GestionarPrestamos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Library";
@@ -405,6 +415,5 @@ namespace Programa
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRealizacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoPrestamo;
-        private System.Windows.Forms.DataGridViewLinkColumn Editar;
     }
 }

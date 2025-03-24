@@ -62,7 +62,7 @@ namespace Programa
                 dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
                 foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
                 {
-                    EjemplarDTO ejemplar= interfazNucleo.ObtenerEjemplar(item.idEjemplar);
+                    EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(item.idEjemplar);
                     LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.idLibro);
                     int n = dataGridViewPrestamos.Rows.Add();
                     dataGridViewPrestamos.Rows[n].Cells[1].Value = item.Id;
@@ -71,30 +71,31 @@ namespace Programa
                     dataGridViewPrestamos.Rows[n].Cells[4].Value = libro.ISBN;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.FechaPrestamo;
                     dataGridViewPrestamos.Rows[n].Cells[6].Value = item.FechaLimite;
-                    if (item.FechaDevolucion == null)
+
+                    dataGridViewPrestamos.Rows[n].Cells[7].Value = item.EstadoPrestamo;
+                    if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
                     {
-                        dataGridViewPrestamos.Rows[n].Cells[7].Value = item.EstadoPrestamo;
-                        if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Retrasado")
-                        {
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
-                        }
-                        else if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Proximo a vencer")
-                        {
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
-                        }
-                        else
-                        {
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.YellowGreen;
-                            dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
-                        }
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Firebrick;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else
+                        if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Proximo a vencer")
+                    {
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.Yellow;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else
+                        if (dataGridViewPrestamos.Rows[n].Cells[7].Value.ToString() == "Normal")
+                    {
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.White;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
                     }
                     else
                     {
-                        dataGridViewPrestamos.Rows[n].Cells[7].Value = "Devuelto";
-
                         dataGridViewPrestamos.Rows[n].Visible = false;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.BackColor = Color.LightGray;
+                        dataGridViewPrestamos.Rows[n].DefaultCellStyle.ForeColor = Color.Black;
+
                     }
 
                 }

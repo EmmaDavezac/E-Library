@@ -110,21 +110,23 @@ namespace Programa
         private void comboBoxEstadoEjemplar_SelectedIndexChanged(object sender, EventArgs e)
         //se ejecuta si se cambia el valor del combobox estado ejemplar
         {
+            
             try
             {
-                modificado = true;
+             int scoringDevolucion=0;
+             modificado = true;
             if (comboBoxEstadoEjemplar.SelectedIndex == 0)
             {
                 scoringDevolucion = scoringActual + scoringPorFecha;
-                labelScoringDevolucion.Text = scoringDevolucion + "(" + scoringPorFecha + ")";
-                labelScoringDevolucion.Visible = true;
             }
             else if (comboBoxEstadoEjemplar.SelectedIndex == 1)
             {
                 scoringDevolucion = scoringActual + scoringPorFecha - 10;
-                labelScoringDevolucion.Text = scoringDevolucion + "(" + (scoringPorFecha - 10) + ")";
-                labelScoringDevolucion.Visible = true;
             }
+                if (scoringDevolucion < 0)
+                    scoringDevolucion = 0;
+                labelScoringDevolucion.Text = scoringDevolucion.ToString() ;
+                labelScoringDevolucion.Visible = true;
             }
             catch (Exception ex)
             {
