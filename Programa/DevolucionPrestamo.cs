@@ -18,7 +18,7 @@ namespace Programa
         public DevolucionPrestamo(string pNombreUsuario)//contructor de la clase
         {
             scoringPorFecha = 0;
-            scoringDevolucion = 0;
+            
             modificado = false;
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
