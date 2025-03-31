@@ -31,9 +31,10 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionarAdministradores));
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.labelError = new System.Windows.Forms.Label();
             this.botonVolver = new System.Windows.Forms.Button();
@@ -67,9 +68,10 @@ namespace Programa
             // textBoxNombreUsuario
             // 
             this.textBoxNombreUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(174, 125);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(232, 154);
+            this.textBoxNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(587, 20);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(781, 22);
             this.textBoxNombreUsuario.TabIndex = 51;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
             // 
@@ -77,9 +79,10 @@ namespace Programa
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(283, 279);
+            this.labelError.Location = new System.Drawing.Point(377, 343);
+            this.labelError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(0, 13);
+            this.labelError.Size = new System.Drawing.Size(0, 16);
             this.labelError.TabIndex = 49;
             // 
             // botonVolver
@@ -90,10 +93,10 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(684, 526);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonVolver.Location = new System.Drawing.Point(912, 647);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(89, 23);
+            this.botonVolver.Size = new System.Drawing.Size(119, 28);
             this.botonVolver.TabIndex = 40;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
@@ -103,17 +106,18 @@ namespace Programa
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label1.Location = new System.Drawing.Point(13, 128);
+            this.label1.Location = new System.Drawing.Point(17, 158);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 13);
+            this.label1.Size = new System.Drawing.Size(196, 16);
             this.label1.TabIndex = 50;
             this.label1.Text = "Buscar por Nombre de Usuario:";
             // 
             // dataGridViewAdministradores
             // 
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewAdministradores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewAdministradores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewAdministradores.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewAdministradores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewAdministradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -126,25 +130,28 @@ namespace Programa
             this.Mail,
             this.Telefono,
             this.Baja});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewAdministradores.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewAdministradores.Location = new System.Drawing.Point(15, 166);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewAdministradores.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewAdministradores.Location = new System.Drawing.Point(20, 204);
+            this.dataGridViewAdministradores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewAdministradores.Name = "dataGridViewAdministradores";
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewAdministradores.RowsDefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridViewAdministradores.Size = new System.Drawing.Size(742, 345);
+            this.dataGridViewAdministradores.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewAdministradores.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewAdministradores.Size = new System.Drawing.Size(989, 425);
             this.dataGridViewAdministradores.TabIndex = 54;
             this.dataGridViewAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdministradores_CellContentClick);
             // 
             // Editar
             // 
             this.Editar.HeaderText = "Editar";
+            this.Editar.MinimumWidth = 6;
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
             this.Editar.Text = "Edit";
@@ -154,42 +161,55 @@ namespace Programa
             // NombreUsuario
             // 
             this.NombreUsuario.HeaderText = "NombreUsuario";
+            this.NombreUsuario.MinimumWidth = 6;
             this.NombreUsuario.Name = "NombreUsuario";
             this.NombreUsuario.ReadOnly = true;
+            this.NombreUsuario.Width = 125;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 125;
             // 
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
+            this.Apellido.MinimumWidth = 6;
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
+            this.Apellido.Width = 125;
             // 
             // FechaNacimiento
             // 
             this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.MinimumWidth = 6;
             this.FechaNacimiento.Name = "FechaNacimiento";
             this.FechaNacimiento.ReadOnly = true;
+            this.FechaNacimiento.Width = 125;
             // 
             // Mail
             // 
             this.Mail.HeaderText = "Mail";
+            this.Mail.MinimumWidth = 6;
             this.Mail.Name = "Mail";
             this.Mail.ReadOnly = true;
+            this.Mail.Width = 125;
             // 
             // Telefono
             // 
             this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 6;
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 125;
             // 
             // Baja
             // 
             this.Baja.HeaderText = "Baja";
+            this.Baja.MinimumWidth = 6;
             this.Baja.Name = "Baja";
             this.Baja.ReadOnly = true;
             this.Baja.Width = 50;
@@ -198,9 +218,10 @@ namespace Programa
             // 
             this.labelErro.AutoSize = true;
             this.labelErro.ForeColor = System.Drawing.Color.Red;
-            this.labelErro.Location = new System.Drawing.Point(146, 150);
+            this.labelErro.Location = new System.Drawing.Point(195, 185);
+            this.labelErro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelErro.Name = "labelErro";
-            this.labelErro.Size = new System.Drawing.Size(0, 13);
+            this.labelErro.Size = new System.Drawing.Size(0, 16);
             this.labelErro.TabIndex = 56;
             this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
             // 
@@ -212,9 +233,9 @@ namespace Programa
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 60);
+            this.panel3.Size = new System.Drawing.Size(1043, 74);
             this.panel3.TabIndex = 71;
             // 
             // panel4
@@ -223,9 +244,9 @@ namespace Programa
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 60);
+            this.panel4.Size = new System.Drawing.Size(109, 74);
             this.panel4.TabIndex = 10;
             // 
             // label2
@@ -234,20 +255,19 @@ namespace Programa
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(12, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(16, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "E-Library";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox2.Location = new System.Drawing.Point(21, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 49);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -257,20 +277,20 @@ namespace Programa
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.labelNombreUsuario);
-            this.panel5.Location = new System.Drawing.Point(566, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel5.Location = new System.Drawing.Point(755, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(207, 60);
+            this.panel5.Size = new System.Drawing.Size(276, 74);
             this.panel5.TabIndex = 9;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox4.Location = new System.Drawing.Point(207, 12);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.Size = new System.Drawing.Size(53, 49);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
@@ -279,10 +299,10 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
-            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(11, 30);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 0, 7, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
+            this.labelNombreUsuario.Size = new System.Drawing.Size(109, 16);
             this.labelNombreUsuario.TabIndex = 0;
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,18 +312,19 @@ namespace Programa
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(13, 95);
+            this.labelTitulo.Location = new System.Drawing.Point(17, 117);
+            this.labelTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(155, 13);
+            this.labelTitulo.Size = new System.Drawing.Size(202, 17);
             this.labelTitulo.TabIndex = 72;
             this.labelTitulo.Text = "Gestor de Administradores";
             // 
             // GestionarAdministradores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1043, 681);
             this.Controls.Add(this.labelTitulo);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.labelErro);
@@ -314,10 +335,12 @@ namespace Programa
             this.Controls.Add(this.botonVolver);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MaximumSize = new System.Drawing.Size(1061, 728);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(1061, 728);
             this.Name = "GestionarAdministradores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Library";

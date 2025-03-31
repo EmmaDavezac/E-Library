@@ -30,6 +30,7 @@ namespace Programa
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionarPrestamos));
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,6 +39,14 @@ namespace Programa
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelNombreUsuario = new System.Windows.Forms.Label();
             this.dataGridViewPrestamos = new System.Windows.Forms.DataGridView();
+            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelTitulo = new System.Windows.Forms.Label();
             this.textBoxUsuarioOTituloLibro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,14 +56,6 @@ namespace Programa
             this.checkDevueltos = new System.Windows.Forms.CheckBox();
             this.labelNombreLista = new System.Windows.Forms.Label();
             this.labelFiltrar = new System.Windows.Forms.Label();
-            this.RegistrarDevolucion = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.IdPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TituloLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBNLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaRealizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -163,123 +164,12 @@ namespace Programa
             this.FechaVencimiento,
             this.EstadoPrestamo});
             this.dataGridViewPrestamos.Location = new System.Drawing.Point(0, 219);
-            this.dataGridViewPrestamos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewPrestamos.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewPrestamos.Name = "dataGridViewPrestamos";
             this.dataGridViewPrestamos.RowHeadersWidth = 51;
             this.dataGridViewPrestamos.Size = new System.Drawing.Size(1045, 418);
             this.dataGridViewPrestamos.TabIndex = 77;
             this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
-            // 
-            // labelTitulo
-            // 
-            this.labelTitulo.AutoSize = true;
-            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(17, 89);
-            this.labelTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(161, 17);
-            this.labelTitulo.TabIndex = 80;
-            this.labelTitulo.Text = "Gestor de Prestamos";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
-            // 
-            // textBoxUsuarioOTituloLibro
-            // 
-            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(351, 117);
-            this.textBoxUsuarioOTituloLibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBoxUsuarioOTituloLibro.Name = "textBoxUsuarioOTituloLibro";
-            this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(663, 22);
-            this.textBoxUsuarioOTituloLibro.TabIndex = 79;
-            this.textBoxUsuarioOTituloLibro.TextChanged += new System.EventHandler(this.textBoxUsuarioOTituloLibro_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 121);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(291, 16);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Buscar por Nombre de usuario o Titulo del libro:";
-            // 
-            // botonVolver
-            // 
-            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
-            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.botonVolver.FlatAppearance.BorderSize = 0;
-            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(912, 647);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(119, 28);
-            this.botonVolver.TabIndex = 81;
-            this.botonVolver.Text = "Volver";
-            this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
-            // 
-            // checkBoxProximosAVencerse
-            // 
-            this.checkBoxProximosAVencerse.AutoSize = true;
-            this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(793, 154);
-            this.checkBoxProximosAVencerse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
-            this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(97, 20);
-            this.checkBoxProximosAVencerse.TabIndex = 82;
-            this.checkBoxProximosAVencerse.Text = "A vencerse";
-            this.checkBoxProximosAVencerse.UseVisualStyleBackColor = false;
-            this.checkBoxProximosAVencerse.CheckedChanged += new System.EventHandler(this.checkBoxProximosAVencerse_CheckedChanged);
-            // 
-            // checkBoxRestrasados
-            // 
-            this.checkBoxRestrasados.AutoSize = true;
-            this.checkBoxRestrasados.Location = new System.Drawing.Point(908, 154);
-            this.checkBoxRestrasados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkBoxRestrasados.Name = "checkBoxRestrasados";
-            this.checkBoxRestrasados.Size = new System.Drawing.Size(100, 20);
-            this.checkBoxRestrasados.TabIndex = 83;
-            this.checkBoxRestrasados.Text = "Retrasados";
-            this.checkBoxRestrasados.UseVisualStyleBackColor = true;
-            this.checkBoxRestrasados.CheckedChanged += new System.EventHandler(this.checkBoxRestrasados_CheckedChanged);
-            // 
-            // checkDevueltos
-            // 
-            this.checkDevueltos.AutoSize = true;
-            this.checkDevueltos.Location = new System.Drawing.Point(20, 191);
-            this.checkDevueltos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.checkDevueltos.Name = "checkDevueltos";
-            this.checkDevueltos.Size = new System.Drawing.Size(203, 20);
-            this.checkDevueltos.TabIndex = 84;
-            this.checkDevueltos.Text = "Mostrar prestamos devueltos";
-            this.checkDevueltos.UseVisualStyleBackColor = true;
-            this.checkDevueltos.CheckedChanged += new System.EventHandler(this.checkDevueltos_CheckedChanged);
-            // 
-            // labelNombreLista
-            // 
-            this.labelNombreLista.AutoSize = true;
-            this.labelNombreLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNombreLista.ForeColor = System.Drawing.Color.Black;
-            this.labelNombreLista.Location = new System.Drawing.Point(17, 159);
-            this.labelNombreLista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelNombreLista.Name = "labelNombreLista";
-            this.labelNombreLista.Size = new System.Drawing.Size(146, 17);
-            this.labelNombreLista.TabIndex = 85;
-            this.labelNombreLista.Text = "Prestamos Activos:";
-            // 
-            // labelFiltrar
-            // 
-            this.labelFiltrar.AutoSize = true;
-            this.labelFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFiltrar.ForeColor = System.Drawing.Color.Black;
-            this.labelFiltrar.Location = new System.Drawing.Point(605, 155);
-            this.labelFiltrar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelFiltrar.Name = "labelFiltrar";
-            this.labelFiltrar.Size = new System.Drawing.Size(165, 17);
-            this.labelFiltrar.TabIndex = 86;
-            this.labelFiltrar.Text = "Filtrar prestamos por:";
             // 
             // RegistrarDevolucion
             // 
@@ -351,6 +241,117 @@ namespace Programa
             this.EstadoPrestamo.ReadOnly = true;
             this.EstadoPrestamo.Width = 125;
             // 
+            // labelTitulo
+            // 
+            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitulo.ForeColor = System.Drawing.Color.Black;
+            this.labelTitulo.Location = new System.Drawing.Point(17, 89);
+            this.labelTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitulo.Name = "labelTitulo";
+            this.labelTitulo.Size = new System.Drawing.Size(161, 17);
+            this.labelTitulo.TabIndex = 80;
+            this.labelTitulo.Text = "Gestor de Prestamos";
+            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            // 
+            // textBoxUsuarioOTituloLibro
+            // 
+            this.textBoxUsuarioOTituloLibro.Location = new System.Drawing.Point(351, 117);
+            this.textBoxUsuarioOTituloLibro.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxUsuarioOTituloLibro.Name = "textBoxUsuarioOTituloLibro";
+            this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(663, 22);
+            this.textBoxUsuarioOTituloLibro.TabIndex = 79;
+            this.textBoxUsuarioOTituloLibro.TextChanged += new System.EventHandler(this.textBoxUsuarioOTituloLibro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 121);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(291, 16);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Buscar por Nombre de usuario o Titulo del libro:";
+            // 
+            // botonVolver
+            // 
+            this.botonVolver.BackColor = System.Drawing.SystemColors.Highlight;
+            this.botonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.botonVolver.FlatAppearance.BorderSize = 0;
+            this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.botonVolver.Location = new System.Drawing.Point(912, 647);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.botonVolver.Name = "botonVolver";
+            this.botonVolver.Size = new System.Drawing.Size(119, 28);
+            this.botonVolver.TabIndex = 81;
+            this.botonVolver.Text = "Volver";
+            this.botonVolver.UseVisualStyleBackColor = false;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            // 
+            // checkBoxProximosAVencerse
+            // 
+            this.checkBoxProximosAVencerse.AutoSize = true;
+            this.checkBoxProximosAVencerse.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxProximosAVencerse.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBoxProximosAVencerse.Location = new System.Drawing.Point(793, 154);
+            this.checkBoxProximosAVencerse.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxProximosAVencerse.Name = "checkBoxProximosAVencerse";
+            this.checkBoxProximosAVencerse.Size = new System.Drawing.Size(97, 20);
+            this.checkBoxProximosAVencerse.TabIndex = 82;
+            this.checkBoxProximosAVencerse.Text = "A vencerse";
+            this.checkBoxProximosAVencerse.UseVisualStyleBackColor = false;
+            this.checkBoxProximosAVencerse.CheckedChanged += new System.EventHandler(this.checkBoxProximosAVencerse_CheckedChanged);
+            // 
+            // checkBoxRestrasados
+            // 
+            this.checkBoxRestrasados.AutoSize = true;
+            this.checkBoxRestrasados.Location = new System.Drawing.Point(908, 154);
+            this.checkBoxRestrasados.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxRestrasados.Name = "checkBoxRestrasados";
+            this.checkBoxRestrasados.Size = new System.Drawing.Size(100, 20);
+            this.checkBoxRestrasados.TabIndex = 83;
+            this.checkBoxRestrasados.Text = "Retrasados";
+            this.checkBoxRestrasados.UseVisualStyleBackColor = true;
+            this.checkBoxRestrasados.CheckedChanged += new System.EventHandler(this.checkBoxRestrasados_CheckedChanged);
+            // 
+            // checkDevueltos
+            // 
+            this.checkDevueltos.AutoSize = true;
+            this.checkDevueltos.Location = new System.Drawing.Point(20, 191);
+            this.checkDevueltos.Margin = new System.Windows.Forms.Padding(4);
+            this.checkDevueltos.Name = "checkDevueltos";
+            this.checkDevueltos.Size = new System.Drawing.Size(203, 20);
+            this.checkDevueltos.TabIndex = 84;
+            this.checkDevueltos.Text = "Mostrar prestamos devueltos";
+            this.checkDevueltos.UseVisualStyleBackColor = true;
+            this.checkDevueltos.CheckedChanged += new System.EventHandler(this.checkDevueltos_CheckedChanged);
+            // 
+            // labelNombreLista
+            // 
+            this.labelNombreLista.AutoSize = true;
+            this.labelNombreLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNombreLista.ForeColor = System.Drawing.Color.Black;
+            this.labelNombreLista.Location = new System.Drawing.Point(17, 159);
+            this.labelNombreLista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNombreLista.Name = "labelNombreLista";
+            this.labelNombreLista.Size = new System.Drawing.Size(146, 17);
+            this.labelNombreLista.TabIndex = 85;
+            this.labelNombreLista.Text = "Prestamos Activos:";
+            // 
+            // labelFiltrar
+            // 
+            this.labelFiltrar.AutoSize = true;
+            this.labelFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFiltrar.ForeColor = System.Drawing.Color.Black;
+            this.labelFiltrar.Location = new System.Drawing.Point(605, 155);
+            this.labelFiltrar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFiltrar.Name = "labelFiltrar";
+            this.labelFiltrar.Size = new System.Drawing.Size(165, 17);
+            this.labelFiltrar.TabIndex = 86;
+            this.labelFiltrar.Text = "Filtrar prestamos por:";
+            // 
             // GestionarPrestamos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -369,7 +370,8 @@ namespace Programa
             this.Controls.Add(this.dataGridViewPrestamos);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GestionarPrestamos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Library";

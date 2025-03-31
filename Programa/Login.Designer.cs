@@ -30,6 +30,7 @@ namespace Programa
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.textBoxNombreUsuario = new System.Windows.Forms.TextBox();
             this.textBoxContraseña = new System.Windows.Forms.TextBox();
             this.labelIdAdministrador = new System.Windows.Forms.Label();
@@ -48,9 +49,10 @@ namespace Programa
             // 
             this.textBoxNombreUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxNombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(289, 351);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(385, 432);
+            this.textBoxNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(208, 22);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(277, 26);
             this.textBoxNombreUsuario.TabIndex = 0;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxUsuario_TextChanged);
             // 
@@ -58,9 +60,10 @@ namespace Programa
             // 
             this.textBoxContraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxContraseña.Location = new System.Drawing.Point(289, 404);
+            this.textBoxContraseña.Location = new System.Drawing.Point(385, 497);
+            this.textBoxContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxContraseña.Name = "textBoxContraseña";
-            this.textBoxContraseña.Size = new System.Drawing.Size(150, 22);
+            this.textBoxContraseña.Size = new System.Drawing.Size(199, 26);
             this.textBoxContraseña.TabIndex = 4;
             this.textBoxContraseña.UseSystemPasswordChar = true;
             this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxContraseña_TextChanged);
@@ -70,9 +73,10 @@ namespace Programa
             this.labelIdAdministrador.AutoSize = true;
             this.labelIdAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIdAdministrador.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelIdAdministrador.Location = new System.Drawing.Point(286, 332);
+            this.labelIdAdministrador.Location = new System.Drawing.Point(381, 409);
+            this.labelIdAdministrador.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelIdAdministrador.Name = "labelIdAdministrador";
-            this.labelIdAdministrador.Size = new System.Drawing.Size(125, 16);
+            this.labelIdAdministrador.Size = new System.Drawing.Size(154, 20);
             this.labelIdAdministrador.TabIndex = 5;
             this.labelIdAdministrador.Text = "Nombre de Usuario";
             this.labelIdAdministrador.Click += new System.EventHandler(this.label1_Click);
@@ -82,9 +86,10 @@ namespace Programa
             this.labelConstraseña.AutoSize = true;
             this.labelConstraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConstraseña.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelConstraseña.Location = new System.Drawing.Point(286, 385);
+            this.labelConstraseña.Location = new System.Drawing.Point(381, 474);
+            this.labelConstraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelConstraseña.Name = "labelConstraseña";
-            this.labelConstraseña.Size = new System.Drawing.Size(76, 16);
+            this.labelConstraseña.Size = new System.Drawing.Size(95, 20);
             this.labelConstraseña.TabIndex = 6;
             this.labelConstraseña.Text = "Contraseña";
             this.labelConstraseña.Click += new System.EventHandler(this.label1_Click_1);
@@ -99,10 +104,10 @@ namespace Programa
             this.botonIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botonIniciarSesion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonIniciarSesion.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonIniciarSesion.Location = new System.Drawing.Point(289, 461);
-            this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.botonIniciarSesion.Location = new System.Drawing.Point(385, 567);
+            this.botonIniciarSesion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.botonIniciarSesion.Name = "botonIniciarSesion";
-            this.botonIniciarSesion.Size = new System.Drawing.Size(208, 30);
+            this.botonIniciarSesion.Size = new System.Drawing.Size(277, 37);
             this.botonIniciarSesion.TabIndex = 7;
             this.botonIniciarSesion.Text = "Iniciar Sesion";
             this.botonIniciarSesion.UseVisualStyleBackColor = false;
@@ -113,9 +118,10 @@ namespace Programa
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelError.ForeColor = System.Drawing.Color.Black;
-            this.labelError.Location = new System.Drawing.Point(286, 431);
+            this.labelError.Location = new System.Drawing.Point(381, 530);
+            this.labelError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(0, 16);
+            this.labelError.Size = new System.Drawing.Size(0, 20);
             this.labelError.TabIndex = 33;
             // 
             // buttonMostrar
@@ -125,9 +131,10 @@ namespace Programa
             this.buttonMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonMostrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonMostrar.Location = new System.Drawing.Point(445, 404);
+            this.buttonMostrar.Location = new System.Drawing.Point(593, 497);
+            this.buttonMostrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonMostrar.Name = "buttonMostrar";
-            this.buttonMostrar.Size = new System.Drawing.Size(52, 22);
+            this.buttonMostrar.Size = new System.Drawing.Size(69, 27);
             this.buttonMostrar.TabIndex = 34;
             this.buttonMostrar.Text = "Mostrar";
             this.buttonMostrar.UseVisualStyleBackColor = false;
@@ -142,9 +149,10 @@ namespace Programa
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = global::Presentacion.Properties.Resources.pngegg;
-            this.pictureBox1.Location = new System.Drawing.Point(307, 162);
+            this.pictureBox1.Location = new System.Drawing.Point(409, 199);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(169, 156);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
@@ -152,9 +160,10 @@ namespace Programa
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(286, 131);
+            this.label1.Location = new System.Drawing.Point(381, 161);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.Size = new System.Drawing.Size(138, 16);
             this.label1.TabIndex = 38;
             this.label1.Text = "Por favor inicie sesión";
             this.label1.Click += new System.EventHandler(this.label1_Click_2);
@@ -164,19 +173,20 @@ namespace Programa
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(279, 64);
+            this.label2.Location = new System.Drawing.Point(372, 79);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 55);
+            this.label2.Size = new System.Drawing.Size(281, 69);
             this.label2.TabIndex = 39;
             this.label2.Text = "E-Library";
             // 
             // Login
             // 
             this.AcceptButton = this.botonIniciarSesion;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(1043, 681);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -189,10 +199,12 @@ namespace Programa
             this.Controls.Add(this.textBoxNombreUsuario);
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MaximumSize = new System.Drawing.Size(1061, 728);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(1061, 728);
             this.Name = "Login";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

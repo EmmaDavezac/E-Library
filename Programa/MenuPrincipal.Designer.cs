@@ -29,6 +29,7 @@ namespace Programa
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -84,7 +85,7 @@ namespace Programa
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(784, 46);
+            this.panel3.Size = new System.Drawing.Size(782, 46);
             this.panel3.TabIndex = 1;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -115,7 +116,7 @@ namespace Programa
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.labelNombreUsuario);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(502, 0);
+            this.panel5.Location = new System.Drawing.Point(500, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(201, 46);
@@ -141,7 +142,7 @@ namespace Programa
             this.labelNombreUsuario.Location = new System.Drawing.Point(6, 17);
             this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 4, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(80, 13);
+            this.labelNombreUsuario.Size = new System.Drawing.Size(107, 17);
             this.labelNombreUsuario.TabIndex = 0;
             this.labelNombreUsuario.Text = "NombreUsuario";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,7 +152,7 @@ namespace Programa
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(703, 0);
+            this.panel2.Location = new System.Drawing.Point(701, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(81, 46);
@@ -177,7 +178,7 @@ namespace Programa
             this.label1.Location = new System.Drawing.Point(3, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(95, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Cerrar Sesion";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -198,7 +199,7 @@ namespace Programa
             this.panel1.Location = new System.Drawing.Point(0, 46);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 481);
+            this.panel1.Size = new System.Drawing.Size(195, 473);
             this.panel1.TabIndex = 2;
             // 
             // submenuPrestamos
@@ -490,7 +491,7 @@ namespace Programa
             this.label4.Location = new System.Drawing.Point(454, 248);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 24);
+            this.label4.Size = new System.Drawing.Size(119, 29);
             this.label4.TabIndex = 4;
             this.label4.Text = "E-Library";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -515,16 +516,16 @@ namespace Programa
             this.labelbienvenida.Location = new System.Drawing.Point(218, 92);
             this.labelbienvenida.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelbienvenida.Name = "labelbienvenida";
-            this.labelbienvenida.Size = new System.Drawing.Size(127, 24);
+            this.labelbienvenida.Size = new System.Drawing.Size(158, 29);
             this.labelbienvenida.TabIndex = 5;
             this.labelbienvenida.Text = "Bienvenido, ";
             // 
             // MenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(784, 527);
+            this.ClientSize = new System.Drawing.Size(782, 519);
             this.Controls.Add(this.labelbienvenida);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
@@ -533,6 +534,7 @@ namespace Programa
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.InfoText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 566);
