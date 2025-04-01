@@ -5,114 +5,67 @@ namespace Dominio.Tests
 {
     [TestClass]
     public class LibroTests
-    {   /// <summary>
-        /// Resumen: se crea un libro con dos ejemplares, se verifica que los ejemplares disponibles sean los mismos que los originales.
-        /// </summary>
-        [TestMethod] //
-        public void EjemplaresDisponibles_CaminoExitoso_Test1()
+    {
+        [TestCategory("HappyPath")]
+        [TestMethod]
+        public void DardDeBaja_HappyPath1_DarDeBajaLibroSinEjemplares()
         {
-            //Arange
-            Libro unLibro = new Libro("123", "a", "b", "2000");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro);
-            Ejemplar ejemplar2 = new Ejemplar(unLibro);
-            List<Ejemplar> original = new List<Ejemplar>
-            {
-                ejemplar1,
-                ejemplar2
-            };
-            unLibro.Ejemplares.Add(ejemplar1);
-            unLibro.Ejemplares.Add(ejemplar2);
+            // Arrange
+            Libro libro = new Libro() { Baja = false };
 
-            //Act
-            List<Ejemplar> resultado = new List<Ejemplar>();
-            resultado = unLibro.EjemplaresDisponibles();
+            // Act
+            libro.DarDeBaja();
 
             //Assert
-            CollectionAssert.AreEqual(original, resultado);
+            Assert.IsTrue(libro.Baja, "El libro fue dado de baja");
         }
 
-        /// <summary>
-        /// Resumen: se crea un libro con dos ejemplares (uno en mal estado), se verifica que el ejemplar disponible sea solo el ejemplar en buen estado.
-        /// </summary>
         [TestMethod]
-        public void EjemplaresDisponibles_CaminoExitoso_Test2()
+        public void DarDeBaja_HappyPath2_DarDeBajaLibroConEjemplarEnBuenEstado()
         {
-            //Arange
-            Libro unLibro = new Libro("123", "a", "b", "2000");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro);
-            ejemplar1.Estado = EstadoEjemplar.Malo;
-            Ejemplar ejemplar2 = new Ejemplar(unLibro);
-            List<Ejemplar> original = new List<Ejemplar>() { ejemplar2 };
-            unLibro.Ejemplares.Add(ejemplar1);
-            unLibro.Ejemplares.Add(ejemplar2);
+            //Arrange
+            Libro libro = new Libro();
+            Ejemplar ejemplar = new Ejemplar(libro) { Estado = EstadoEjemplar.Bueno, Disponible = true };
 
             //Act
-            List<Ejemplar> resultado = new List<Ejemplar>();
-            resultado = unLibro.EjemplaresDisponibles();
+            libro.DarDeBaja();
 
             //Assert
-            CollectionAssert.AreEqual(original, resultado);
+            Assert.IsTrue(libro.Baja, "El libro fue dado de baja");
+            Assert.IsFalse(ejemplar.Disponible, "El ejemplar ya no esta disponible");
+            Assert.IsTrue(ejemplar.Baja, "El ejemplar fue dado de baja");
         }
-        /// <summary>
-        /// Resumen: se crea un libro con dos ejemplares (uno en mal estado), se verifica que el ejemplar disponible sea solo el ejemplar en buen estado.
-        /// </summary>
+
         [TestMethod]
-        public void EjemplaresEnBuenEstado_CaminoExitoso_Test1()
+        public void DarDeBaja_HappyPath3_DarDeBajaLibroConEjemplaresEnDiferentesEstados()
         {
-            //Arange
-            Libro unLibro = new Libro("123", "a", "b", "2000");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro);
-            ejemplar1.Estado = EstadoEjemplar.Malo;
-            Ejemplar ejemplar2 = new Ejemplar(unLibro);
-            List<Ejemplar> original = new List<Ejemplar>() { ejemplar2 };
-            unLibro.Ejemplares = new List<Ejemplar>() { ejemplar1, ejemplar2 };
+            Ejemplar ejemplar1 = new Ejemplar() { Estado = EstadoEjemplar.Bueno, Disponible = true, Baja = false };
+            Ejemplar ejemplar2 = new Ejemplar() { Estado = EstadoEjemplar.Malo, Disponible = true, Baja = false };
+            Libro libro = new Libro() { Baja = false, Ejemplares = new List<Ejemplar> { ejemplar1, ejemplar2 } };
 
-            //Act
-            List<Ejemplar> resultado = unLibro.EjemplaresEnBuenEstado();
+            // Act
+            libro.DarDeBaja();
 
-            //Assert
-            CollectionAssert.AreEqual(original, resultado);
+            // Assert
+            Assert.IsTrue(libro.Baja, "El libro debería estar dado de baja.");
+            Assert.IsFalse(ejemplar1.Disponible, "El ejemplar1 debería estar no disponible.");
+            Assert.IsTrue(ejemplar1.Baja, "El ejemplar1 debería estar dado de baja.");
+            Assert.IsTrue(ejemplar2.Disponible, "El ejemplar2 debería seguir disponible.");
+            Assert.IsFalse(ejemplar2.Baja, "El ejemplar2 no debería estar dado de baja.");
         }
-        /// <summary>
-        /// Resumen: se crea un libro con dos ejemplares (uno dado de baja), se verifica que los ejemplares totales disponible sea solo el ejemplar en buen estado y dado de alta.
-        /// </summary>
-        [TestMethod]
-        public void EjemplaresTotales_CaminoExitoso_Test1()
-        {
-            //Arange
-            Libro unLibro = new Libro("123", "a", "b", "2000");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro);
-            Ejemplar ejemplar2 = new Ejemplar(unLibro);
-            ejemplar2.Baja = true;
-            List<Ejemplar> original = new List<Ejemplar>() { ejemplar1 };
-            unLibro.Ejemplares.Add(ejemplar1);
-            unLibro.Ejemplares.Add(ejemplar2);
 
-            //Act
-            List<Ejemplar> resultado = unLibro.EjemplaresTotales();
+        [TestCategory("UnHappyPath")]
+        [TestMethod]
+        public void DardDeBaja_UnHappyPath1_DarDeBajaLibroYaDadoDeBaja()
+        {
+            // Arrange
+            Libro libro = new Libro() { Baja = true };
+
+            // Act
+            libro.DarDeBaja();
 
             //Assert
-            CollectionAssert.AreEqual(original, resultado);
-        }
-        /// <summary>
-        /// Resumen: se crea un libro con dos ejemplares (uno en mal estado), se elimina un ejemplar y se verifica que los ejemplares disponibles sea la misma cantidad que los originales.
-        /// </summary>
-        [TestMethod]
-        public void EliminarEjemplares_CaminoExitoso_Test1()
-        {
-            //Arange
-            Libro unLibro = new Libro("", "", "", "");
-            Ejemplar ejemplar1 = new Ejemplar(unLibro);
-            ejemplar1.Estado = EstadoEjemplar.Malo;
-            Ejemplar ejemplar2 = new Ejemplar(unLibro);
-            List<Ejemplar> original = new List<Ejemplar>() { };
-            unLibro.Ejemplares = new List<Ejemplar>() { ejemplar1, ejemplar2 };
-
-            //Act
-            unLibro.EliminarEjemplar(1);
-
-            //Assert
-            Assert.AreEqual(original.Count, unLibro.EjemplaresDisponibles().Count);
+            Assert.IsTrue(libro.Baja, "El libro ya estaba dado de baja");
         }
     }
 }

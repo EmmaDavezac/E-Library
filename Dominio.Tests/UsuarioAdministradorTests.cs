@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿/*using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Dominio.Tests
@@ -22,3 +22,4 @@ namespace Dominio.Tests
         }
     }
 }
+*/

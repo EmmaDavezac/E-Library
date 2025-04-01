@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿/*using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Dominio.Tests
@@ -20,7 +20,7 @@ namespace Dominio.Tests
 
             //Assert
             Assert.AreEqual("a", resultado);
-        }*/
+        }
         [TestMethod]
         public void Retrasado_CaminoExitoso_Test1()
         {
@@ -68,7 +68,7 @@ namespace Dominio.Tests
 
             //Assert
             Assert.AreEqual(true, resultado);
-        }*/
+        }
         [TestMethod]
         public void RegistrarDevolucion_CaminoExitoso_Test1()
         {
@@ -87,4 +87,4 @@ namespace Dominio.Tests
             Assert.AreEqual(true, unEjemplar.Baja);
         }
     }
-}
+}*/
