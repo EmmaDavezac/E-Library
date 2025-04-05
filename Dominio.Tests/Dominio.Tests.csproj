@@ -52,7 +52,6 @@
     <Compile Include="LibroTests.cs" />
     <Compile Include="PrestamoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioAdministradorTests.cs" />
     <Compile Include="UsuarioSimpleTests.cs" />
   </ItemGroup>
   <ItemGroup>

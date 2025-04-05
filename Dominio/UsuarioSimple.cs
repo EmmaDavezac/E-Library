@@ -26,6 +26,7 @@ namespace Dominio
         public UsuarioSimple(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario)
         {
             Scoring = 0;
+            Prestamos = new List<Prestamo>();
         }
         /// <summary>
         /// Resumen: Constructor de la clase sin parametros.
@@ -40,15 +41,11 @@ namespace Dominio
         public bool ValidarBaja()
         {
             bool resultado = true;
-            if (Prestamos == null)
-            {
-                resultado = true;
-            }
-            else
+            if (Prestamos != null)
             {
                 foreach (var item in Prestamos)
                 {
-                    if (item.EstadoPrestamo == EstadoPrestamo.Devuelto)
+                    if (item.EstadoPrestamo != EstadoPrestamo.Devuelto)
                     {
                         resultado = false;
                     }

@@ -81,8 +81,6 @@ namespace Dominio
                 foreach (var item in Ejemplares)
                 {
                         item.Disponible = false;
-                        item.Baja = true;
-                    
                 }
             }
         }
@@ -100,7 +98,6 @@ namespace Dominio
                     if (item.Estado != EstadoEjemplar.Malo)
                     {
                         item.Disponible = true;
-                        item.Baja = false;
                     }
                 }
             }

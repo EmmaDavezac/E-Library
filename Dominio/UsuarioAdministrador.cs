@@ -34,14 +34,7 @@ namespace Dominio
         {
             Pass = contraseña;
         }
-        /// <summary>
-        /// Resumen: Metodo que nos permite actualizar la contraseña del administrador
-        /// </summary>
-        /// <param name="pPassword"></param>
-        public void ActualizarPassword(string pPassword)
-        {
-            Pass = pPassword;
-        }
+       
         /// <summary>
         /// Resumen: Constructor de la clase sin argumentos
         /// </summary>

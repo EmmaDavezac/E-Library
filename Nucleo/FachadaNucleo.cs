@@ -265,7 +265,7 @@ namespace Nucleo
                 msg = "Contraseña del administrador " + pNombreAdministrador + " actualizada con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).ActualizarPassword(encriptador.Encriptar(contraseña));//Modificamos la contraseña actual por la que pasamos como parametro
+                    unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).Pass=encriptador.Encriptar(contraseña);//Modificamos la contraseña actual por la que pasamos como parametro
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }

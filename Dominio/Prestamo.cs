@@ -18,10 +18,10 @@ namespace Dominio
         /// Resumen: Fecha en la que vence el presamo.
         /// </summary>
         public string FechaLimite { get; set; }//Fecha en la que vence el presamo
-        /// <summary>
-        /// resumen: Fecha en la que se devolvio el prestamo (si fue devuelto).
-        /// </summary>
 
+        /// <summary>
+        /// resumen: Estado del prestamo: normal, por vencer, retrasado o devuelto.
+        /// </summary>
         public EstadoPrestamo EstadoPrestamo { get; set; }
         /// <summary>
         /// Resumen: Estado de devolucion del ejemplar( Bueno,Malo)
@@ -71,34 +71,14 @@ namespace Dominio
 
         }
         /// <summary>
-        /// Resumen: Este metodo nos permite actualizar el estado del prestamo  del prestamo y devolverlo
-        /// </summary>
-        /// <returns>Estado del prestamo</returns>
-        public EstadoPrestamo ActualizarEstado()
-        {
-            if (Retrasado())
-            {
-                EstadoPrestamo = EstadoPrestamo.Retrasado;
-            }
-            else if (ProximoAVencerse())
-            {
-                EstadoPrestamo = EstadoPrestamo.ProximoAVencer;
-            }
-            else
-            {
-                EstadoPrestamo = EstadoPrestamo.Normal;
-            }
-            return EstadoPrestamo;
-        }
-        /// <summary>
         /// Resumen: Este metodo nos permite saber si el prestamo se encuenta retrasado
         /// </summary>
         /// <returns>True si el prestamo esta retrasado</returns>
         public bool Retrasado()
         {
-            if ((DateTime.Now.Date >= Convert.ToDateTime(FechaLimite).Date))
+            if ((DateTime.Now.Date > Convert.ToDateTime(FechaLimite).Date && FechaLimite!=null))
             {
-                if (EstadoPrestamo != EstadoPrestamo.Devuelto)
+                if (EstadoPrestamo != EstadoPrestamo.Devuelto )
                 { return true; }
                 else return false;
             }
@@ -111,21 +91,20 @@ namespace Dominio
         public bool ProximoAVencerse()
         {
             int cantDiasParaConsiderarseProximo = 3;
-            if (!this.Retrasado())
+            if (this.Retrasado()|| FechaLimite==null)
+            { return false; }
+            else
             {
-                if (EstadoPrestamo != EstadoPrestamo.Devuelto)
-                {
                     TimeSpan diferenciaEntreFechas = Convert.ToDateTime(FechaLimite) - DateTime.Now;
                     int dias = diferenciaEntreFechas.Days;
                     if (dias < cantDiasParaConsiderarseProximo)
                     {
                         return true;
                     }
-                    else return false;
-                }
-                else return false;
+                    else 
+                        return false;
             }
-            else return false;
+         
         }
         /// <summary>
         /// Resumen: Este metodo nos permite actualizar el scoring de un usuario luego de devuelto el ejemplar.
@@ -157,6 +136,7 @@ namespace Dominio
             EstadoPrestamo = EstadoPrestamo.Devuelto;
             Usuario.Scoring = CalcularScoring();
         }
+
         public int CalcularScoring()
         {
             int scoring = this.Usuario.Scoring;
