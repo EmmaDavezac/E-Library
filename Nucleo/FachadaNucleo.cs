@@ -420,12 +420,7 @@ namespace Nucleo
             }
         }
 
-        /// <summary>
-        /// Resumen: Este metodo nos permite eliminar ejemplares de un libro.
-        /// </summary>
-        /// <param name="pIdLibro">ID del libro al cual agregar ejemplares</param>
-        /// <param name="pCantidad">Cantidad de ejemplares a agregar</param>
-
+  
 
         /// <summary>
         /// Resumen: Este metodo nos permite dar de baja un libro.
