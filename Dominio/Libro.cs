@@ -80,11 +80,9 @@ namespace Dominio
                 Baja = true;
                 foreach (var item in Ejemplares)
                 {
-                    if (item.Estado != EstadoEjemplar.Malo)
-                    {
                         item.Disponible = false;
                         item.Baja = true;
-                    }
+                    
                 }
             }
         }
