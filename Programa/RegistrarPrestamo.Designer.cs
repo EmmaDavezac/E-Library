@@ -94,9 +94,9 @@ namespace Programa
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1045, 74);
+            this.panel3.Size = new System.Drawing.Size(784, 60);
             this.panel3.TabIndex = 72;
             // 
             // panel4
@@ -105,9 +105,9 @@ namespace Programa
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(109, 74);
+            this.panel4.Size = new System.Drawing.Size(82, 60);
             this.panel4.TabIndex = 10;
             // 
             // label5
@@ -116,19 +116,20 @@ namespace Programa
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label5.Location = new System.Drawing.Point(16, 54);
+            this.label5.Location = new System.Drawing.Point(12, 44);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 17);
+            this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "E-Library";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Presentacion.Properties.Resources.libro_abierto;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 4);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(53, 49);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
@@ -138,20 +139,20 @@ namespace Programa
             this.panel5.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Controls.Add(this.labelNombreUsuario);
-            this.panel5.Location = new System.Drawing.Point(755, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel5.Location = new System.Drawing.Point(566, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(276, 74);
+            this.panel5.Size = new System.Drawing.Size(207, 60);
             this.panel5.TabIndex = 9;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Presentacion.Properties.Resources.perfil_del_usuario;
-            this.pictureBox4.Location = new System.Drawing.Point(207, 12);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox4.Location = new System.Drawing.Point(155, 10);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(53, 49);
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 6;
             this.pictureBox4.TabStop = false;
@@ -160,10 +161,10 @@ namespace Programa
             // 
             this.labelNombreUsuario.AutoSize = true;
             this.labelNombreUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelNombreUsuario.Location = new System.Drawing.Point(11, 30);
-            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(3, 0, 7, 0);
+            this.labelNombreUsuario.Location = new System.Drawing.Point(8, 24);
+            this.labelNombreUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 5, 0);
             this.labelNombreUsuario.Name = "labelNombreUsuario";
-            this.labelNombreUsuario.Size = new System.Drawing.Size(109, 16);
+            this.labelNombreUsuario.Size = new System.Drawing.Size(84, 13);
             this.labelNombreUsuario.TabIndex = 0;
             this.labelNombreUsuario.Text = "Nombre Apellido";
             this.labelNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,10 +174,9 @@ namespace Programa
             this.labelTitulo.AutoSize = true;
             this.labelTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitulo.ForeColor = System.Drawing.Color.Black;
-            this.labelTitulo.Location = new System.Drawing.Point(37, 118);
-            this.labelTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTitulo.Location = new System.Drawing.Point(28, 96);
             this.labelTitulo.Name = "labelTitulo";
-            this.labelTitulo.Size = new System.Drawing.Size(147, 17);
+            this.labelTitulo.Size = new System.Drawing.Size(116, 13);
             this.labelTitulo.TabIndex = 78;
             this.labelTitulo.Text = "Seleccione el Libro";
             this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
@@ -195,11 +195,10 @@ namespace Programa
             this.AñoPublicacion,
             this.CantidadDisponible,
             this.Cantidad});
-            this.dataGridViewLibros.Location = new System.Drawing.Point(-1, 172);
-            this.dataGridViewLibros.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewLibros.Location = new System.Drawing.Point(-1, 140);
             this.dataGridViewLibros.Name = "dataGridViewLibros";
             this.dataGridViewLibros.RowHeadersWidth = 51;
-            this.dataGridViewLibros.Size = new System.Drawing.Size(788, 194);
+            this.dataGridViewLibros.Size = new System.Drawing.Size(591, 158);
             this.dataGridViewLibros.TabIndex = 79;
             this.dataGridViewLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
             this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
@@ -260,75 +259,70 @@ namespace Programa
             // 
             // textBoxTituloOISBNLibro
             // 
-            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(292, 140);
-            this.textBoxTituloOISBNLibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTituloOISBNLibro.Location = new System.Drawing.Point(219, 114);
             this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
-            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(493, 22);
+            this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(371, 20);
             this.textBoxTituloOISBNLibro.TabIndex = 81;
             this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNLibro_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 144);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(51, 117);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 16);
+            this.label1.Size = new System.Drawing.Size(162, 13);
             this.label1.TabIndex = 80;
             this.label1.Text = "Buscar por titulo o ISBN del libro:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBoxISBN
             // 
-            this.textBoxISBN.Location = new System.Drawing.Point(855, 281);
-            this.textBoxISBN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxISBN.Location = new System.Drawing.Point(641, 228);
             this.textBoxISBN.Name = "textBoxISBN";
-            this.textBoxISBN.Size = new System.Drawing.Size(177, 22);
+            this.textBoxISBN.ReadOnly = true;
+            this.textBoxISBN.Size = new System.Drawing.Size(134, 20);
             this.textBoxISBN.TabIndex = 82;
             // 
             // textBoxTitulo
             // 
-            this.textBoxTitulo.Location = new System.Drawing.Point(855, 234);
-            this.textBoxTitulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTitulo.Location = new System.Drawing.Point(641, 190);
             this.textBoxTitulo.Name = "textBoxTitulo";
-            this.textBoxTitulo.Size = new System.Drawing.Size(177, 22);
+            this.textBoxTitulo.ReadOnly = true;
+            this.textBoxTitulo.Size = new System.Drawing.Size(134, 20);
             this.textBoxTitulo.TabIndex = 82;
             // 
             // textBoxAutor
             // 
-            this.textBoxAutor.Location = new System.Drawing.Point(855, 330);
-            this.textBoxAutor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxAutor.Location = new System.Drawing.Point(641, 268);
             this.textBoxAutor.Name = "textBoxAutor";
-            this.textBoxAutor.Size = new System.Drawing.Size(177, 22);
+            this.textBoxAutor.ReadOnly = true;
+            this.textBoxAutor.Size = new System.Drawing.Size(134, 20);
             this.textBoxAutor.TabIndex = 83;
             // 
             // TituloLabel
             // 
             this.TituloLabel.AutoSize = true;
-            this.TituloLabel.Location = new System.Drawing.Point(799, 218);
-            this.TituloLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TituloLabel.Location = new System.Drawing.Point(599, 177);
             this.TituloLabel.Name = "TituloLabel";
-            this.TituloLabel.Size = new System.Drawing.Size(43, 16);
+            this.TituloLabel.Size = new System.Drawing.Size(36, 13);
             this.TituloLabel.TabIndex = 85;
             this.TituloLabel.Text = "Titulo:";
             // 
             // ISBNLabel
             // 
             this.ISBNLabel.AutoSize = true;
-            this.ISBNLabel.Location = new System.Drawing.Point(800, 265);
-            this.ISBNLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ISBNLabel.Location = new System.Drawing.Point(600, 215);
             this.ISBNLabel.Name = "ISBNLabel";
-            this.ISBNLabel.Size = new System.Drawing.Size(41, 16);
+            this.ISBNLabel.Size = new System.Drawing.Size(35, 13);
             this.ISBNLabel.TabIndex = 86;
             this.ISBNLabel.Text = "ISBN:";
             // 
             // AutorLabel
             // 
             this.AutorLabel.AutoSize = true;
-            this.AutorLabel.Location = new System.Drawing.Point(800, 314);
-            this.AutorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AutorLabel.Location = new System.Drawing.Point(600, 255);
             this.AutorLabel.Name = "AutorLabel";
-            this.AutorLabel.Size = new System.Drawing.Size(41, 16);
+            this.AutorLabel.Size = new System.Drawing.Size(35, 13);
             this.AutorLabel.TabIndex = 87;
             this.AutorLabel.Text = "Autor:";
             // 
@@ -337,30 +331,27 @@ namespace Programa
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(37, 386);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(28, 314);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 17);
+            this.label2.Size = new System.Drawing.Size(135, 13);
             this.label2.TabIndex = 88;
             this.label2.Text = "Seleccione el Usuario:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(796, 444);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(597, 361);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 16);
+            this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 95;
             this.label3.Text = "NombreUsuario:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(799, 540);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(599, 439);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 16);
+            this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 94;
             this.label4.Text = "Apellido:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
@@ -368,54 +359,51 @@ namespace Programa
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(799, 492);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(599, 400);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 16);
+            this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 93;
             this.label6.Text = "Nombre:";
             // 
             // textBoxApellido
             // 
-            this.textBoxApellido.Location = new System.Drawing.Point(853, 560);
-            this.textBoxApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxApellido.Location = new System.Drawing.Point(640, 455);
             this.textBoxApellido.Name = "textBoxApellido";
-            this.textBoxApellido.Size = new System.Drawing.Size(177, 22);
+            this.textBoxApellido.ReadOnly = true;
+            this.textBoxApellido.Size = new System.Drawing.Size(134, 20);
             this.textBoxApellido.TabIndex = 92;
             // 
             // textBoxNomUsuario
             // 
-            this.textBoxNomUsuario.Location = new System.Drawing.Point(855, 464);
-            this.textBoxNomUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNomUsuario.Location = new System.Drawing.Point(641, 377);
             this.textBoxNomUsuario.Name = "textBoxNomUsuario";
-            this.textBoxNomUsuario.Size = new System.Drawing.Size(177, 22);
+            this.textBoxNomUsuario.ReadOnly = true;
+            this.textBoxNomUsuario.Size = new System.Drawing.Size(134, 20);
             this.textBoxNomUsuario.TabIndex = 90;
             this.textBoxNomUsuario.TextChanged += new System.EventHandler(this.textBoxNomUsuario_TextChanged);
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(853, 512);
-            this.textBoxNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNombre.Location = new System.Drawing.Point(640, 416);
             this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(177, 22);
+            this.textBoxNombre.ReadOnly = true;
+            this.textBoxNombre.Size = new System.Drawing.Size(134, 20);
             this.textBoxNombre.TabIndex = 91;
             // 
             // textBoxNombreUsuario
             // 
-            this.textBoxNombreUsuario.Location = new System.Drawing.Point(292, 411);
-            this.textBoxNombreUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNombreUsuario.Location = new System.Drawing.Point(219, 334);
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
-            this.textBoxNombreUsuario.Size = new System.Drawing.Size(493, 22);
+            this.textBoxNombreUsuario.Size = new System.Drawing.Size(371, 20);
             this.textBoxNombreUsuario.TabIndex = 97;
             this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(68, 415);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(51, 337);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(196, 16);
+            this.label7.Size = new System.Drawing.Size(155, 13);
             this.label7.TabIndex = 96;
             this.label7.Text = "Buscar por Nombre de Usuario:";
             // 
@@ -432,11 +420,10 @@ namespace Programa
             this.FechaNacimiento,
             this.Mail,
             this.Telefono});
-            this.dataGridViewUsuarios.Location = new System.Drawing.Point(17, 443);
-            this.dataGridViewUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewUsuarios.Location = new System.Drawing.Point(13, 360);
             this.dataGridViewUsuarios.Name = "dataGridViewUsuarios";
             this.dataGridViewUsuarios.RowHeadersWidth = 51;
-            this.dataGridViewUsuarios.Size = new System.Drawing.Size(769, 197);
+            this.dataGridViewUsuarios.Size = new System.Drawing.Size(577, 160);
             this.dataGridViewUsuarios.TabIndex = 98;
             this.dataGridViewUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
             this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
@@ -497,10 +484,10 @@ namespace Programa
             this.botonVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.botonVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.botonVolver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.botonVolver.Location = new System.Drawing.Point(769, 647);
-            this.botonVolver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.botonVolver.Location = new System.Drawing.Point(577, 526);
+            this.botonVolver.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(119, 28);
+            this.botonVolver.Size = new System.Drawing.Size(89, 23);
             this.botonVolver.TabIndex = 99;
             this.botonVolver.Text = "Cancelar";
             this.botonVolver.UseVisualStyleBackColor = false;
@@ -514,10 +501,10 @@ namespace Programa
             this.buttonRegistrarPrestamo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegistrarPrestamo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonRegistrarPrestamo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonRegistrarPrestamo.Location = new System.Drawing.Point(893, 647);
-            this.buttonRegistrarPrestamo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonRegistrarPrestamo.Location = new System.Drawing.Point(670, 526);
+            this.buttonRegistrarPrestamo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.buttonRegistrarPrestamo.Name = "buttonRegistrarPrestamo";
-            this.buttonRegistrarPrestamo.Size = new System.Drawing.Size(137, 28);
+            this.buttonRegistrarPrestamo.Size = new System.Drawing.Size(103, 23);
             this.buttonRegistrarPrestamo.TabIndex = 100;
             this.buttonRegistrarPrestamo.Text = "Guardar";
             this.buttonRegistrarPrestamo.UseVisualStyleBackColor = false;
@@ -526,19 +513,18 @@ namespace Programa
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(800, 175);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(600, 142);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 16);
+            this.label8.Size = new System.Drawing.Size(19, 13);
             this.label8.TabIndex = 102;
             this.label8.Text = "Id:";
             // 
             // textBoxIdLibro
             // 
-            this.textBoxIdLibro.Location = new System.Drawing.Point(853, 191);
-            this.textBoxIdLibro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxIdLibro.Location = new System.Drawing.Point(640, 155);
             this.textBoxIdLibro.Name = "textBoxIdLibro";
-            this.textBoxIdLibro.Size = new System.Drawing.Size(177, 22);
+            this.textBoxIdLibro.ReadOnly = true;
+            this.textBoxIdLibro.Size = new System.Drawing.Size(134, 20);
             this.textBoxIdLibro.TabIndex = 101;
             // 
             // label9
@@ -546,19 +532,18 @@ namespace Programa
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(16, 89);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(12, 72);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(148, 17);
+            this.label9.Size = new System.Drawing.Size(114, 13);
             this.label9.TabIndex = 103;
             this.label9.Text = "Registrar Prestamo";
             // 
             // RegistrarPrestamo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1045, 690);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxIdLibro);
@@ -587,7 +572,6 @@ namespace Programa
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "RegistrarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Library";
