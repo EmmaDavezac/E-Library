@@ -43,6 +43,3 @@ Este proyecto fue realizado con el objetivo de solucionar la problematica inicia
 ## Grupo de trabajo
 El grupo de trabajo se compone de los siguientes integrantes: 
 - **Emmanuel Davezac**
-- **Facundo Acevedo** 
-- **Franco Rodriguez**  
-- **Nicolas Villanueva**
