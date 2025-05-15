@@ -34,7 +34,7 @@ namespace ServiciosAPILibros
         /// </summary>
         /// <param name="cadena"></param>
         /// <returns></returns>
-        public List<Libro> ListarPorCoincidecia(string cadena)
+        public List<Libro> ListarPorCoincidencia(string cadena)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
             List<Libro> lista = new List<Libro>();//Creamos una lista de libro

@@ -9,7 +9,7 @@ namespace ServiciosAPILibros
     {   ///<summary>
         ///Resumen: Metodo que nos permite obtener una lista de libros que coinciden con el termino buscado.
         ///</summary>
-        List<Libro> ListarPorCoincidecia(string cadena);
+        List<Libro> ListarPorCoincidencia(string cadena);
 
 
     }

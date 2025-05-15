@@ -852,7 +852,7 @@ namespace Nucleo
             try
             {
                 List<LibroDTO> lista = new List<LibroDTO>();
-                foreach (var item in ServicioAPILibros.ListarPorCoincidecia(unaCadena))
+                foreach (var item in ServicioAPILibros.ListarPorCoincidencia(unaCadena))
                 {
                     lista.Add(mapeador.Mapear(item));
                 }
