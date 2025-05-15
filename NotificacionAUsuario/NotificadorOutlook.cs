@@ -6,9 +6,9 @@ namespace NotificacionAUsuario
 {
     public class NotificadorOutlook : INotificadorUsuario//es una implementacion de INotificarque nos permite enviar un mail a traves de una cuenta de Outlook
     {
-        const string pass = "Tallerdeprogramacion2021";// contraseña de la cuenta de outlook
-        const string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
-        const string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
+        private  readonly string pass = "Tallerdeprogramacion2021";// contraseña de la cuenta de outlook
+        private readonly string usuario = "proyectofinaltallerdeprogramacion@outlook.com";// usuario de la cuenta de outlook
+        private readonly string nombre = "Gestor de prestamos";//nuestro nombre de destinatario
 
         public string NotificarProximoAVencer(string nombreUsuario, string nombre, string apellido, string email, string titulo, string fechaLimite)//metodo que nos permite enviar un mail mediante nuestra cuenta de outlook
         {
