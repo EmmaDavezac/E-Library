@@ -25,12 +25,22 @@ namespace Nucleo.DTOs
             return usuarioAdministradorDTO;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite mapear un libro a un libro DTO.
+        /// </summary>
+        /// <param name="libro"></param>
+        /// <returns></returns>
         public LibroDTO Mapear(Libro libro)
         {
             LibroDTO libroDTO = new LibroDTO(libro.Id, libro.ISBN, libro.Titulo, libro.Autor, libro.AñoPublicacion);
             return libroDTO;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite mapear un ejemplar a un ejemplar DTO.
+        /// </summary>
+        /// <param name="ejemplar"></param>
+        /// <returns></returns>
         public EjemplarDTO Mapear(Ejemplar ejemplar)
         {
             string estado;
@@ -42,6 +52,11 @@ namespace Nucleo.DTOs
             return ejemplarDTO;
         }
 
+        /// <summary>
+        /// Resumen: Este metodo nos permite mapear un prestamo a un prestamo DTO.
+        /// </summary>
+        /// <param name="prestamo"></param>
+        /// <returns></returns>
         public PrestamoDTO Mapear(Prestamo prestamo)
         {
             string estadoPrestamo = "";
