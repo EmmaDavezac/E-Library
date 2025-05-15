@@ -17,9 +17,9 @@ namespace ServiciosAPILibros
     {   ///<summary>
         ///Resumen: Este metodo transforma la cadena que queremos buscar en el formato solicitado por la api para hacer una consulta(palabra+palabra+...+palabra)
         ///</summary>
-        public string TratarCadenaBusqueda(string ca)
+        private string TratarCadenaBusqueda(string cadena)
         {
-            string[] palabrasSeparadas = ca.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
+            string[] palabrasSeparadas = cadena.Split(new char[] { ' ' });//Toma la cadena de entradas,la separa en subcadenas tomando como separador los espacios y las almacena en el array palabrasSeparadas
             string c = string.Empty;//Creamos una nueva cadena llamada se y le asignamos la cadena vacia
             foreach (string palabra in palabrasSeparadas) //recorremos todas las palabras del array
             {
