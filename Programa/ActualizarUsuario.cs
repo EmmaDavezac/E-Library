@@ -40,15 +40,12 @@ namespace Programa
                                         if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
                                         {
                                             interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                            
                                             interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
                                             MessageBox.Show("Usuario ha sido dado de baja y guardado correctamente: ", "Operacion Exitosa", MessageBoxButtons.OK);
                                         }
-                                        else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)
-                                        {
-                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
-                                            MessageBox.Show("Usuario ha sido dado de baja y guardado correctamente", "Operacion Exitosa", MessageBoxButtons.OK);
-                                        }
-                                        else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)
+                                      
+                                        else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == checkBoxBaja.Checked )
                                         {
                                             interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
                                             MessageBox.Show("La información ha sido guardada correctamente.", "Operacion Exitosa", MessageBoxButtons.OK);

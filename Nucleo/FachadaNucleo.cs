@@ -73,7 +73,7 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Usuario " + pNombreUsuario + " Registrado con exito.";
+               
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     unitOfWork.RepositorioUsuarios.Add(usuario);//Añado el usuario a la base de datos
@@ -950,6 +950,11 @@ namespace Nucleo
                     if (resultado == true)//Si el resultado devuelto anterior mente es true
                     {
                         unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Baja = true;//Da de baja al usuario
+                    }
+                    else//Si el resultado devuelto anterior mente es false
+                    {
+                        msg = "El usuario " + pNombreUsuario + " no puede darse de baja porque tiene prestamos activos.";
+                        throw new Exception(msg);
                     }
                     unitOfWork.Complete();
                 }

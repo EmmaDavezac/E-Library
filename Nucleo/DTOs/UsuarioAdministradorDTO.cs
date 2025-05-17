@@ -15,7 +15,7 @@ namespace Nucleo.DTOs
         /// <param name="mail">Email del administrador</param>
         /// <param name="telefono">Telefono del administrador</param>
         /// <param name="pNombreUsuario">Nombre de usuario</param>
-        public UsuarioAdministradorDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario)//Constructor de la clase que hace uso del contructor de la clase padre
+        public UsuarioAdministradorDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario,bool baja) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario,baja)//Constructor de la clase que hace uso del contructor de la clase padre
         {
         }
 

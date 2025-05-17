@@ -42,7 +42,7 @@
         {
             Estado = estado;//El estado original de un ejemplar es buen estado
             Disponible = true;//Originalmente un ejemplar se encuentra disponible hasta que se preste
-            Baja = false;//Un ejemplar recien creado no se encuentra dado de baja
+            Baja = baja;
             Id = idEjemplar;
             idLibro = pidLibro;
         }

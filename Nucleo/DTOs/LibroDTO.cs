@@ -46,14 +46,14 @@
         /// <param name="titulo">Titulo del libro</param>
         /// <param name="autor">Autor del libro</param>
         /// <param name="añoPublicacion">Año de publicacion del libro</param>
-        public LibroDTO(int ID, string unISBN, string titulo, string autor, string añoPublicacion)
+        public LibroDTO(int ID, string unISBN, string titulo, string autor, string añoPublicacion,bool baja)
         {
             Id = ID;
             ISBN = unISBN;
             Titulo = titulo;
             Autor = autor;
             AñoPublicacion = añoPublicacion;
-            Baja = false;
+            Baja = baja;
         }
 
 

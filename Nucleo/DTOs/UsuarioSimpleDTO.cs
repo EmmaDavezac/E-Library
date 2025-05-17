@@ -21,7 +21,7 @@ namespace Nucleo.DTOs
         /// <param name="mail">Email del usuario</param>
         /// <param name="telefono">Telefono del usuario</param>
         /// <param name="pNombreUsuario">Nombre de usuario</param>
-        public UsuarioSimpleDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario, int pScoring) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario)
+        public UsuarioSimpleDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario, int pScoring,bool baja) : base(nombre, apellido, fechaNacimiento, mail, telefono, pNombreUsuario,baja)
         {
             Scoring = pScoring;
         }

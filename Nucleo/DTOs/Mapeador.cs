@@ -10,7 +10,7 @@ namespace Nucleo.DTOs
         /// <returns>Usuario simple DTO</returns>
         public UsuarioSimpleDTO Mapear(UsuarioSimple usuarioSimple)
         {
-            UsuarioSimpleDTO usuarioSimpleDTO = new UsuarioSimpleDTO(usuarioSimple.Nombre, usuarioSimple.Apellido, usuarioSimple.FechaNacimiento, usuarioSimple.Mail, usuarioSimple.Telefono, usuarioSimple.nombreUsuario, usuarioSimple.Scoring);
+            UsuarioSimpleDTO usuarioSimpleDTO = new UsuarioSimpleDTO(usuarioSimple.Nombre, usuarioSimple.Apellido, usuarioSimple.FechaNacimiento, usuarioSimple.Mail, usuarioSimple.Telefono, usuarioSimple.nombreUsuario, usuarioSimple.Scoring,usuarioSimple.Baja);
             return usuarioSimpleDTO;
         }
 
@@ -21,7 +21,7 @@ namespace Nucleo.DTOs
         /// <returns></returns>
         public UsuarioAdministradorDTO Mapear(UsuarioAdministrador usuarioAdministrador)
         {
-            UsuarioAdministradorDTO usuarioAdministradorDTO = new UsuarioAdministradorDTO(usuarioAdministrador.Nombre, usuarioAdministrador.Apellido, usuarioAdministrador.FechaNacimiento, usuarioAdministrador.Mail, usuarioAdministrador.Telefono, usuarioAdministrador.nombreUsuario);
+            UsuarioAdministradorDTO usuarioAdministradorDTO = new UsuarioAdministradorDTO(usuarioAdministrador.Nombre, usuarioAdministrador.Apellido, usuarioAdministrador.FechaNacimiento, usuarioAdministrador.Mail, usuarioAdministrador.Telefono, usuarioAdministrador.nombreUsuario,usuarioAdministrador.Baja);
             return usuarioAdministradorDTO;
         }
 
@@ -32,7 +32,7 @@ namespace Nucleo.DTOs
         /// <returns></returns>
         public LibroDTO Mapear(Libro libro)
         {
-            LibroDTO libroDTO = new LibroDTO(libro.Id, libro.ISBN, libro.Titulo, libro.Autor, libro.AñoPublicacion);
+            LibroDTO libroDTO = new LibroDTO(libro.Id, libro.ISBN, libro.Titulo, libro.Autor, libro.AñoPublicacion,libro.Baja);
             return libroDTO;
         }
 

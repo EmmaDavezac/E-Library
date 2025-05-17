@@ -41,7 +41,7 @@ namespace Nucleo.DTOs
         /// <param name="mail">Email del usuario</param>
         /// <param name="telefono">Telefono del usuario</param>
         /// <param name="pNombreUsuario">Nombre de usuario</param>
-        public UsuarioDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario)//constructor de la clase
+        public UsuarioDTO(string nombre, string apellido, DateTime fechaNacimiento, string mail, string telefono, string pNombreUsuario,bool baja)//constructor de la clase
         {
             Nombre = nombre;
             Apellido = apellido;
@@ -49,7 +49,7 @@ namespace Nucleo.DTOs
             Mail = mail;
             Telefono = telefono;
             nombreUsuario = pNombreUsuario;
-            Baja = false;
+            Baja = baja;
         }
         /// <summary>
         /// Resumen: Constructor de la clase sin parametros
