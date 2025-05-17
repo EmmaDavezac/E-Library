@@ -1,4 +1,4 @@
-﻿namespace Nucleo.DTOs
+﻿namespace BibliotecaMapeado
 {
     public class EjemplarDTO
 
@@ -7,7 +7,7 @@
         ///</summary>
         public int Id { get; set; }
 
-        public int idLibro { get; set; }
+        public int IdLibro { get; set; }
 
         ///<summary>
         ///Resumen: Propiedad que nos permite saber si el ejemplar se encuentra disponible para prestamo.
@@ -41,10 +41,10 @@
         public EjemplarDTO(int idEjemplar, int pidLibro, string estado, bool disponible, bool baja)//Constructor de la clase que toma como parametro el libro al que pertenece el ejemplar
         {
             Estado = estado;//El estado original de un ejemplar es buen estado
-            Disponible = true;//Originalmente un ejemplar se encuentra disponible hasta que se preste
+            Disponible = disponible;//Originalmente un ejemplar se encuentra disponible hasta que se preste
             Baja = baja;
             Id = idEjemplar;
-            idLibro = pidLibro;
+            IdLibro = pidLibro;
         }
 
     }

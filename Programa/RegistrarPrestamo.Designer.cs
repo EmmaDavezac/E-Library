@@ -179,7 +179,7 @@ namespace Programa
             this.labelTitulo.Size = new System.Drawing.Size(116, 13);
             this.labelTitulo.TabIndex = 78;
             this.labelTitulo.Text = "Seleccione el Libro";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            this.labelTitulo.Click += new System.EventHandler(this.LabelTitulo_Click);
             // 
             // dataGridViewLibros
             // 
@@ -200,8 +200,8 @@ namespace Programa
             this.dataGridViewLibros.RowHeadersWidth = 51;
             this.dataGridViewLibros.Size = new System.Drawing.Size(591, 158);
             this.dataGridViewLibros.TabIndex = 79;
-            this.dataGridViewLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
-            this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
+            this.dataGridViewLibros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLibros_CellContentClick);
+            this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLibros_CellContentClick);
             // 
             // IdLibro
             // 
@@ -263,7 +263,7 @@ namespace Programa
             this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
             this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(371, 20);
             this.textBoxTituloOISBNLibro.TabIndex = 81;
-            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNLibro_TextChanged);
+            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.TextBoxTituloOISBNLibro_TextChanged);
             // 
             // label1
             // 
@@ -273,7 +273,7 @@ namespace Programa
             this.label1.Size = new System.Drawing.Size(162, 13);
             this.label1.TabIndex = 80;
             this.label1.Text = "Buscar por titulo o ISBN del libro:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // textBoxISBN
             // 
@@ -354,7 +354,7 @@ namespace Programa
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 94;
             this.label4.Text = "Apellido:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // label6
             // 
@@ -380,7 +380,7 @@ namespace Programa
             this.textBoxNomUsuario.ReadOnly = true;
             this.textBoxNomUsuario.Size = new System.Drawing.Size(134, 20);
             this.textBoxNomUsuario.TabIndex = 90;
-            this.textBoxNomUsuario.TextChanged += new System.EventHandler(this.textBoxNomUsuario_TextChanged);
+            this.textBoxNomUsuario.TextChanged += new System.EventHandler(this.TextBoxNomUsuario_TextChanged);
             // 
             // textBoxNombre
             // 
@@ -396,7 +396,7 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(371, 20);
             this.textBoxNombreUsuario.TabIndex = 97;
-            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.TextBox7_TextChanged);
             // 
             // label7
             // 
@@ -425,8 +425,8 @@ namespace Programa
             this.dataGridViewUsuarios.RowHeadersWidth = 51;
             this.dataGridViewUsuarios.Size = new System.Drawing.Size(577, 160);
             this.dataGridViewUsuarios.TabIndex = 98;
-            this.dataGridViewUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
-            this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
+            this.dataGridViewUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUsuarios_CellContentClick);
+            this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUsuarios_CellContentClick);
             // 
             // NombreUsuario
             // 
@@ -491,7 +491,7 @@ namespace Programa
             this.botonVolver.TabIndex = 99;
             this.botonVolver.Text = "Cancelar";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // buttonRegistrarPrestamo
             // 
@@ -508,7 +508,7 @@ namespace Programa
             this.buttonRegistrarPrestamo.TabIndex = 100;
             this.buttonRegistrarPrestamo.Text = "Guardar";
             this.buttonRegistrarPrestamo.UseVisualStyleBackColor = false;
-            this.buttonRegistrarPrestamo.Click += new System.EventHandler(this.buttonRegistrarPrestamo_Click);
+            this.buttonRegistrarPrestamo.Click += new System.EventHandler(this.ButtonRegistrarPrestamo_Click);
             // 
             // label8
             // 

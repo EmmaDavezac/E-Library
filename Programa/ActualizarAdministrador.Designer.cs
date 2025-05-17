@@ -74,7 +74,7 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(399, 22);
             this.textBoxNombreUsuario.TabIndex = 1;
-            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.TextBoxId_TextChanged);
             // 
             // label1
             // 
@@ -85,7 +85,7 @@ namespace Programa
             this.label1.Size = new System.Drawing.Size(125, 16);
             this.label1.TabIndex = 49;
             this.label1.Text = "Nombre de Usuario";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // labelError
             // 
@@ -145,7 +145,7 @@ namespace Programa
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(399, 22);
             this.textBoxMail.TabIndex = 6;
-            this.textBoxMail.TextChanged += new System.EventHandler(this.textBoxMail_TextChanged);
+            this.textBoxMail.TextChanged += new System.EventHandler(this.TextBoxMail_TextChanged);
             // 
             // textBoxApellido
             // 
@@ -155,7 +155,7 @@ namespace Programa
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(399, 22);
             this.textBoxApellido.TabIndex = 5;
-            this.textBoxApellido.TextChanged += new System.EventHandler(this.textBoxApellido_TextChanged);
+            this.textBoxApellido.TextChanged += new System.EventHandler(this.TextBoxApellido_TextChanged);
             // 
             // textBoxNombre
             // 
@@ -165,7 +165,7 @@ namespace Programa
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(399, 22);
             this.textBoxNombre.TabIndex = 4;
-            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.TextBoxNombre_TextChanged);
             // 
             // buttonGuardar
             // 
@@ -180,7 +180,7 @@ namespace Programa
             this.buttonGuardar.TabIndex = 7;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
             // botonVolver
             // 
@@ -197,7 +197,7 @@ namespace Programa
             this.botonVolver.TabIndex = 8;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // label2
             // 
@@ -218,7 +218,7 @@ namespace Programa
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(399, 22);
             this.textBoxTelefono.TabIndex = 55;
-            this.textBoxTelefono.TextChanged += new System.EventHandler(this.textBoxTelefono_TextChanged);
+            this.textBoxTelefono.TextChanged += new System.EventHandler(this.TextBoxTelefono_TextChanged);
             // 
             // buttonModificarContraseña
             // 
@@ -235,7 +235,7 @@ namespace Programa
             this.buttonModificarContraseña.TabIndex = 57;
             this.buttonModificarContraseña.Text = "Actualizar Contraseña";
             this.buttonModificarContraseña.UseVisualStyleBackColor = false;
-            this.buttonModificarContraseña.Click += new System.EventHandler(this.buttonModificarContraseña_Click);
+            this.buttonModificarContraseña.Click += new System.EventHandler(this.ButtonModificarContraseña_Click);
             // 
             // dateTimePickerFechaNacimiento
             // 
@@ -247,7 +247,7 @@ namespace Programa
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(399, 22);
             this.dateTimePickerFechaNacimiento.TabIndex = 58;
             this.dateTimePickerFechaNacimiento.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
+            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.DateTimePickerFechaNacimiento_ValueChanged);
             // 
             // panel3
             // 
@@ -342,7 +342,7 @@ namespace Programa
             this.checkBoxBaja.TabIndex = 102;
             this.checkBoxBaja.Text = "Baja";
             this.checkBoxBaja.UseVisualStyleBackColor = true;
-            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.checkBoxBaja_CheckedChanged);
+            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.CheckBoxBaja_CheckedChanged);
             // 
             // label6
             // 
@@ -355,7 +355,7 @@ namespace Programa
             this.label6.Size = new System.Drawing.Size(301, 17);
             this.label6.TabIndex = 101;
             this.label6.Text = "Actualizar información del Administrador";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // label11
             // 
@@ -368,7 +368,7 @@ namespace Programa
             this.label11.Size = new System.Drawing.Size(175, 17);
             this.label11.TabIndex = 100;
             this.label11.Text = "Dar de baja el usuario:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.label11.Click += new System.EventHandler(this.Label11_Click);
             // 
             // ActualizarAdministrador
             // 

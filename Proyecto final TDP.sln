@@ -23,6 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaTrabajoEnSegundoP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaEncriptacion", "Biblioteca Encriptación\BibliotecaEncriptacion.csproj", "{5629C1BE-FB83-46BD-9A68-082FA619584F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaMapeado", "BibliotecaMapeado\BibliotecaMapeado.csproj", "{05A33FFC-D183-49C2-9D49-97F68B42ED41}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4F50181B-4C40-4F3F-B222-C591AEE95853} = {4F50181B-4C40-4F3F-B222-C591AEE95853}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +74,10 @@ Global
 		{5629C1BE-FB83-46BD-9A68-082FA619584F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5629C1BE-FB83-46BD-9A68-082FA619584F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5629C1BE-FB83-46BD-9A68-082FA619584F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05A33FFC-D183-49C2-9D49-97F68B42ED41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A33FFC-D183-49C2-9D49-97F68B42ED41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A33FFC-D183-49C2-9D49-97F68B42ED41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A33FFC-D183-49C2-9D49-97F68B42ED41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -89,7 +89,7 @@ namespace Programa
             this.botonVolver.TabIndex = 22;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // label1
             // 
@@ -101,7 +101,7 @@ namespace Programa
             this.label1.Size = new System.Drawing.Size(196, 16);
             this.label1.TabIndex = 33;
             this.label1.Text = "Buscar por Nombre de Usuario:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // textBoxNombreUsuario
             // 
@@ -110,7 +110,7 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(771, 22);
             this.textBoxNombreUsuario.TabIndex = 34;
-            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.TextBoxId_TextChanged);
             // 
             // dataGridViewUsuarios
             // 
@@ -135,7 +135,7 @@ namespace Programa
             this.dataGridViewUsuarios.RowHeadersWidth = 51;
             this.dataGridViewUsuarios.Size = new System.Drawing.Size(1049, 446);
             this.dataGridViewUsuarios.TabIndex = 40;
-            this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUsuarios_CellContentClick);
+            this.dataGridViewUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewUsuarios_CellContentClick);
             // 
             // Edit
             // 
@@ -221,7 +221,7 @@ namespace Programa
             this.labelErro.Name = "labelErro";
             this.labelErro.Size = new System.Drawing.Size(0, 16);
             this.labelErro.TabIndex = 42;
-            this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
+            this.labelErro.Click += new System.EventHandler(this.LabelErro_Click);
             // 
             // panel3
             // 
@@ -316,7 +316,7 @@ namespace Programa
             this.labelTitulo.Size = new System.Drawing.Size(149, 17);
             this.labelTitulo.TabIndex = 73;
             this.labelTitulo.Text = "Gestor de Usuarios";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            this.labelTitulo.Click += new System.EventHandler(this.LabelTitulo_Click);
             // 
             // GestionarUsuarios
             // 

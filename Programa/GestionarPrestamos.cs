@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,9 +11,9 @@ namespace Programa
     public partial class GestionarPrestamos : Form
     /*La finalidad de este formulario es permitir ver la informacion de todos los prestamos y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly string nombreUsuario;//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
 
         public GestionarPrestamos(string pNombreUsuario)//Constructor de la clase
         {
@@ -37,7 +37,7 @@ namespace Programa
             }
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void Panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -48,7 +48,7 @@ namespace Programa
             this.Owner.Show();
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
+        private void BotonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
         {
             this.Hide();
             this.Owner.Show();
@@ -62,11 +62,11 @@ namespace Programa
                 dataGridViewPrestamos.Rows.Clear();//Eliminamos todo el contenido de la tabla
                 foreach (var item in prestamos)//Recorremos lcada elemento de la lista y lo agregamos a la tabla
                 {
-                    EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(item.idEjemplar);
-                    LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.idLibro);
+                    EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(item.IdEjemplar);
+                    LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.IdLibro);
                     int n = dataGridViewPrestamos.Rows.Add();
                     dataGridViewPrestamos.Rows[n].Cells[1].Value = item.Id;
-                    dataGridViewPrestamos.Rows[n].Cells[2].Value = item.nombreUsuario;
+                    dataGridViewPrestamos.Rows[n].Cells[2].Value = item.NombreUsuario;
                     dataGridViewPrestamos.Rows[n].Cells[3].Value = libro.Titulo;
                     dataGridViewPrestamos.Rows[n].Cells[4].Value = libro.ISBN;
                     dataGridViewPrestamos.Rows[n].Cells[5].Value = item.FechaPrestamo;
@@ -108,7 +108,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewPrestamos_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda de la tabla
+        private void DataGridViewPrestamos_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda de la tabla
         {
             try
             {
@@ -120,8 +120,8 @@ namespace Programa
                     if (cell.Value.ToString() == "Devolucion" && estadoPrestamo != "Devuelto")//Si se presiona la celda con el texto Devolucion, se verifica que el prestamo no se haya devuelto y luego se abre una nueva ventana para registrar la devolucion del prestamo
                     {
                         PrestamoDTO prestamo = interfazNucleo.ObtenerPrestamo(Convert.ToInt32(dataGridViewPrestamos.Rows[e.RowIndex].Cells[1].Value.ToString()));
-                        EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(prestamo.idEjemplar);
-                        LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.idLibro);
+                        EjemplarDTO ejemplar = interfazNucleo.ObtenerEjemplar(prestamo.IdEjemplar);
+                        LibroDTO libro = interfazNucleo.ObtenerLibro(ejemplar.IdLibro);
                         string usuario = dataGridViewPrestamos.Rows[e.RowIndex].Cells[2].Value.ToString();
                         UsuarioSimpleDTO usuarioSimple = interfazNucleo.ObtenerUsuario(usuario);
                         string titulo = libro.Titulo;
@@ -146,7 +146,7 @@ namespace Programa
             }
         }
 
-        private void checkBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox heckBoxProximosAVencerse y permite que la tabla solo muestre los prestamos proximos a vencer
+        private void CheckBoxProximosAVencerse_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox heckBoxProximosAVencerse y permite que la tabla solo muestre los prestamos proximos a vencer
         {
             try
             {
@@ -212,7 +212,7 @@ namespace Programa
             }
         }
 
-        private void checkBoxRestrasados_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox chcheckBoxRestrasados_y permite que la tabla solo muestre los prestamos retrasados
+        private void CheckBoxRestrasados_CheckedChanged(object sender, EventArgs e)//Este metodo se ejecuara cuando se marque el checkBox chcheckBoxRestrasados_y permite que la tabla solo muestre los prestamos retrasados
         {
             try
             {
@@ -277,7 +277,7 @@ namespace Programa
             }
         }
 
-        private void textBoxUsuarioOTituloLibro_TextChanged(object sender, EventArgs e)//Se ejecutara cuando se modifique el texto del textbox textBoxUsuarioOTituloLibro
+        private void TextBoxUsuarioOTituloLibro_TextChanged(object sender, EventArgs e)//Se ejecutara cuando se modifique el texto del textbox textBoxUsuarioOTituloLibro
         {
             try
             {
@@ -308,7 +308,7 @@ namespace Programa
             }
         }
 
-        private void checkDevueltos_CheckedChanged(object sender, EventArgs e)
+        private void CheckDevueltos_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -366,7 +366,7 @@ namespace Programa
             }
         }
 
-        private void labelTitulo_Click(object sender, EventArgs e)
+        private void LabelTitulo_Click(object sender, EventArgs e)
         {
 
         }

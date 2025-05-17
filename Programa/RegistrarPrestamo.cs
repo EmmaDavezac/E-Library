@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,15 +12,14 @@ namespace Programa
     public partial class RegistrarPrestamo : Form
     //La finalidad de este formulario es la de permitir registrar un nuevo prestamo
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly string nombreUsuario;//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
         public RegistrarPrestamo(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-
-            labelNombreUsuario.Text = "Usuario: " + nombreUsuario;
+            labelNombreUsuario.Text = nombreUsuario;
         }
 
         private void RegistrarPrestamo_Load(object sender, EventArgs e)
@@ -39,12 +38,12 @@ namespace Programa
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)//permite buscar un libro por titulo o isbn, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
+        private void TextBoxTituloOISBNLibro_TextChanged(object sender, EventArgs e)//permite buscar un libro por titulo o isbn, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
             try
             {
@@ -75,15 +74,15 @@ namespace Programa
             }
         }
 
-        private void labelTitulo_Click(object sender, EventArgs e)
+        private void LabelTitulo_Click(object sender, EventArgs e)
         {
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void Label4_Click(object sender, EventArgs e)
         {
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)//permite buscar un libro por nombreUsuario, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
+        private void TextBox7_TextChanged(object sender, EventArgs e)//permite buscar un libro por nombreUsuario, se ejecuta cuando se modifica el texto de textBoxTituloOISBNLibro
         {
             try
             {
@@ -111,7 +110,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de libros
+        private void DataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de libros
         {
             try
             {
@@ -182,7 +181,7 @@ namespace Programa
                     if (item.Baja == false)
                     {
                         int n = dataGridViewUsuarios.Rows.Add();
-                        dataGridViewUsuarios.Rows[n].Cells[0].Value = item.nombreUsuario;
+                        dataGridViewUsuarios.Rows[n].Cells[0].Value = item.NombreUsuario;
                         dataGridViewUsuarios.Rows[n].Cells[1].Value = item.Nombre;
                         dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Apellido;
                         dataGridViewUsuarios.Rows[n].Cells[3].Value = item.FechaNacimiento.ToShortDateString();
@@ -199,7 +198,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de usuarios y se muestran los datos del usuario en pantalla
+        private void DataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se presiona una celda de la tabla de usuarios y se muestran los datos del usuario en pantalla
         {
             try
             {
@@ -218,7 +217,7 @@ namespace Programa
             }
         }
 
-        private void textBoxNomUsuario_TextChanged(object sender, EventArgs e)
+        private void TextBoxNomUsuario_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -244,7 +243,7 @@ namespace Programa
             else return DateTime.Now.AddDays(5);
         }
 
-        private void buttonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
+        private void ButtonRegistrarPrestamo_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton registrar prestamo, registra el prestamo y muestra un mensaje en pantalla
         {
             try
             {
@@ -313,7 +312,7 @@ namespace Programa
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
+        private void BotonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
         {
             this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre

@@ -8,20 +8,20 @@ namespace Programa
 {
     public partial class ActualizarUsuario : Form
     {
-        FachadaNucleo interfazNucleo = new FachadaNucleo();
-        private string nombreUsuario { get; set; }
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();
+        private string NombreUsuario { get; set; }
 
-        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
         public ActualizarUsuario(string pNombreUsuario)
         {
             InitializeComponent();
-            nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = nombreUsuario;
+            NombreUsuario = pNombreUsuario;
+            labelNombreUsuario.Text = NombreUsuario;
         }
 
 
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void ButtonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace Programa
                                     {
                                         if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)
                                         {
-                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);
                                             
                                             interfazNucleo.DarDeBajaUsuario(textBoxNombreUsuario.Text);
                                             MessageBox.Show("Usuario ha sido dado de baja y guardado correctamente: ", "Operacion Exitosa", MessageBoxButtons.OK);
@@ -47,12 +47,12 @@ namespace Programa
                                       
                                         else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == checkBoxBaja.Checked )
                                         {
-                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);
                                             MessageBox.Show("La información ha sido guardada correctamente.", "Operacion Exitosa", MessageBoxButtons.OK);
                                         }
                                         else if (interfazNucleo.ObtenerUsuario(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)
                                         {
-                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);
+                                            interfazNucleo.ActualizarUsuario(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);
                                             interfazNucleo.DarDeAltaUsuario(textBoxNombreUsuario.Text);
                                             MessageBox.Show("Usuario ha sido dado de alta y guardado correctamente", "Operacion Exitosa", MessageBoxButtons.OK);
                                         }
@@ -123,28 +123,28 @@ namespace Programa
 
         }
 
-        private void labelNombre_Click(object sender, EventArgs e)
+        private void LabelNombre_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-            buttonGuardar.Enabled = true;
-        }
-
-        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        private void TextBoxNombre_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
-
-        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        private void TextBoxApellido_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
-        private void textBoxMail_TextChanged(object sender, EventArgs e)
+
+        private void TextBoxTelefono_TextChanged(object sender, EventArgs e)
+        {
+            buttonGuardar.Enabled = true;
+        }
+
+        private void TextBoxMail_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
@@ -159,7 +159,7 @@ namespace Programa
             try
             {
                 var usuario = interfazNucleo.ObtenerUsuario(pNombreUsuario);
-                textBoxNombreUsuario.Text = usuario.nombreUsuario;
+                textBoxNombreUsuario.Text = usuario.NombreUsuario;
                 textBoxNombre.Text = usuario.Nombre;
                 textBoxApellido.Text = usuario.Apellido;
                 dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;
@@ -179,18 +179,18 @@ namespace Programa
         }
 
 
-        private void botonVolver_Click_1(object sender, EventArgs e)
+        private void BotonVolver_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             this.Owner.Show();
         }
 
-        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        private void DateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
-        private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxBaja_CheckedChanged(object sender, EventArgs e)
         {
             try
             {

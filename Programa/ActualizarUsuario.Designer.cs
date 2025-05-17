@@ -117,7 +117,7 @@ namespace Programa
             this.labelNombre.Size = new System.Drawing.Size(56, 16);
             this.labelNombre.TabIndex = 43;
             this.labelNombre.Text = "Nombre";
-            this.labelNombre.Click += new System.EventHandler(this.labelNombre_Click);
+            this.labelNombre.Click += new System.EventHandler(this.LabelNombre_Click);
             // 
             // textBoxMail
             // 
@@ -127,7 +127,7 @@ namespace Programa
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(399, 22);
             this.textBoxMail.TabIndex = 6;
-            this.textBoxMail.TextChanged += new System.EventHandler(this.textBoxMail_TextChanged);
+            this.textBoxMail.TextChanged += new System.EventHandler(this.TextBoxMail_TextChanged);
             // 
             // textBoxApellido
             // 
@@ -137,7 +137,7 @@ namespace Programa
             this.textBoxApellido.Name = "textBoxApellido";
             this.textBoxApellido.Size = new System.Drawing.Size(399, 22);
             this.textBoxApellido.TabIndex = 5;
-            this.textBoxApellido.TextChanged += new System.EventHandler(this.textBoxApellido_TextChanged);
+            this.textBoxApellido.TextChanged += new System.EventHandler(this.TextBoxApellido_TextChanged);
             // 
             // textBoxNombre
             // 
@@ -147,7 +147,7 @@ namespace Programa
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(399, 22);
             this.textBoxNombre.TabIndex = 4;
-            this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
+            this.textBoxNombre.TextChanged += new System.EventHandler(this.TextBoxNombre_TextChanged);
             // 
             // buttonGuardar
             // 
@@ -162,7 +162,7 @@ namespace Programa
             this.buttonGuardar.TabIndex = 7;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
             // label2
             // 
@@ -183,7 +183,7 @@ namespace Programa
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(399, 22);
             this.textBoxTelefono.TabIndex = 55;
-            this.textBoxTelefono.TextChanged += new System.EventHandler(this.textBoxTelefono_TextChanged);
+            this.textBoxTelefono.TextChanged += new System.EventHandler(this.TextBoxTelefono_TextChanged);
             // 
             // label1
             // 
@@ -219,7 +219,7 @@ namespace Programa
             this.botonVolver.TabIndex = 59;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click_1);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click_1);
             // 
             // dateTimePickerFechaNacimiento
             // 
@@ -231,7 +231,7 @@ namespace Programa
             this.dateTimePickerFechaNacimiento.Size = new System.Drawing.Size(399, 22);
             this.dateTimePickerFechaNacimiento.TabIndex = 60;
             this.dateTimePickerFechaNacimiento.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.dateTimePickerFechaNacimiento_ValueChanged);
+            this.dateTimePickerFechaNacimiento.ValueChanged += new System.EventHandler(this.DateTimePickerFechaNacimiento_ValueChanged);
             // 
             // panel3
             // 
@@ -350,7 +350,7 @@ namespace Programa
             this.checkBoxBaja.TabIndex = 99;
             this.checkBoxBaja.Text = "Baja";
             this.checkBoxBaja.UseVisualStyleBackColor = true;
-            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.checkBoxBaja_CheckedChanged);
+            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.CheckBoxBaja_CheckedChanged);
             // 
             // ActualizarUsuario
             // 

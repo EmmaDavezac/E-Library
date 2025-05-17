@@ -1,14 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{78E66839-ECB5-457F-ADC5-5F3722DEBC5E}</ProjectGuid>
+    <ProjectGuid>{05A33FFC-D183-49C2-9D49-97F68B42ED41}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bitacora</RootNamespace>
-    <AssemblyName>Bitacora</AssemblyName>
+    <RootNamespace>BibliotecaMapeado</RootNamespace>
+    <AssemblyName>BibliotecaMapeado</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,13 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=3.0.4.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.3.0.4\lib\net462\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,13 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBitacora.cs" />
-    <Compile Include="BitacoraImplementacionPropia.cs" />
-    <Compile Include="ImplementacionConLog4Net.cs" />
+    <Compile Include="EjemplarDTO.cs" />
+    <Compile Include="LibroDTO.cs" />
+    <Compile Include="Mapeador.cs" />
+    <Compile Include="PrestamoDTO.cs" />
+    <Compile Include="UsuarioAdministradorDTO.cs" />
+    <Compile Include="UsuarioDTO.cs" />
+    <Compile Include="UsuarioSimpleDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

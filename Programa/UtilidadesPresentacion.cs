@@ -10,7 +10,7 @@ namespace Programa
     /// </summary>
     public class UtilidadesPresentacion
     {
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
 
         /// <summary>
         /// Resumen: Constructor de la clase

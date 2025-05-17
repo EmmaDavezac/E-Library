@@ -1,4 +1,4 @@
-﻿namespace Nucleo.DTOs
+﻿namespace BibliotecaMapeado
 {
     public class LibroDTO
     {

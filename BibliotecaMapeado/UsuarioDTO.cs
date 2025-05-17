@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nucleo.DTOs
+namespace BibliotecaMapeado
 {
     public class UsuarioDTO
     {   ///<summary>
@@ -27,7 +27,7 @@ namespace Nucleo.DTOs
         /// Resumen: Nombre de usuario, nos permite diferenciar a los usuarios.
         /// </summary>
 
-        public string nombreUsuario { get; set; }
+        public string NombreUsuario { get; set; }
         /// <summary>
         /// Resumen: Campo para dar una baja logica al usuario
         /// </summary>
@@ -48,7 +48,7 @@ namespace Nucleo.DTOs
             FechaNacimiento = fechaNacimiento;
             Mail = mail;
             Telefono = telefono;
-            nombreUsuario = pNombreUsuario;
+            NombreUsuario = pNombreUsuario;
             Baja = baja;
         }
         /// <summary>

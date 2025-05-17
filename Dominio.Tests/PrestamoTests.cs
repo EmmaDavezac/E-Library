@@ -16,8 +16,8 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar);
-            unPrestamo.FechaLimite = "2008, 2, 2";
+            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar) { FechaLimite= "2008, 2, 2" };
+            
 
             //Act
             bool resultado = unPrestamo.Retrasado();
@@ -33,9 +33,8 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar);
-            unPrestamo.FechaLimite = "2008, 2, 2";
-            unPrestamo.EstadoPrestamo = EstadoPrestamo.Devuelto;
+            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar) { FechaLimite = "2008, 2, 2" , EstadoPrestamo = EstadoPrestamo.Devuelto };
+            
 
             //Act
             bool resultado = unPrestamo.Retrasado();
@@ -56,7 +55,7 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo() { Usuario=unUsuario,EstadoPrestamo=EstadoPrestamo.Normal};
+            Prestamo unPrestamo = new Prestamo() { Usuario=unUsuario,EstadoPrestamo=EstadoPrestamo.Normal,Ejemplar= unEjemplar };
             
 
             //Act
@@ -76,7 +75,7 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo() { Usuario = unUsuario,FechaLimite="", EstadoPrestamo = EstadoPrestamo.Normal };
+            Prestamo unPrestamo = new Prestamo() { Usuario = unUsuario,FechaLimite="", EstadoPrestamo = EstadoPrestamo.Normal,Ejemplar = unEjemplar };
             bool fallo = false;
 
             //Act
@@ -106,14 +105,13 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar);
-            unPrestamo.FechaLimite = DateTime.Now.AddDays(1).ToShortDateString();
+            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar) {FechaLimite= DateTime.Now.AddDays(1).ToShortDateString() };
 
             //Act
             bool resultado = unPrestamo.ProximoAVencerse();
 
             //Assert
-            Assert.IsTrue(true, "El deberia prestamo deberia estar proximo a vencer");
+            Assert.IsTrue(resultado, "El deberia prestamo deberia estar proximo a vencer");
         }
 
         /// <summary>
@@ -126,14 +124,13 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar);
-            unPrestamo.FechaLimite = DateTime.Now.AddDays(3).ToShortDateString();
+            Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now, unEjemplar) { FechaLimite= DateTime.Now.AddDays(3).ToShortDateString() };
 
             //Act
             bool resultado = unPrestamo.ProximoAVencerse();
 
             //Assert
-            Assert.IsTrue(true, "El deberia prestamo deberia estar proximo a vencer");
+            Assert.IsTrue(resultado, "El deberia prestamo deberia estar proximo a vencer");
         }
 
 
@@ -166,7 +163,7 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("", "", new DateTime(2000, 2, 2), "", "", "");
             Libro unLibro = new Libro("", "", "", "");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo();
+            Prestamo unPrestamo = new Prestamo(unUsuario,DateTime.Now,unEjemplar);
 
             //Act
             bool resultado = unPrestamo.ProximoAVencerse();
@@ -246,7 +243,7 @@ namespace Dominio.Tests
             UsuarioSimple unUsuario = new UsuarioSimple("Juan", "Gomez", new DateTime(2000, 2, 2), "juan@gmail.com", "3438123456", "juangomez");
             Libro unLibro = new Libro("123456", "Libro", "Autor", "1999");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-            Prestamo unPrestamo = new Prestamo() { Ejemplar=unEjemplar};
+            Prestamo unPrestamo = new Prestamo() { Ejemplar=unEjemplar,Usuario=unUsuario};
             EstadoEjemplar unEstado = EstadoEjemplar.Bueno;
             bool fallo = false;
             //Act
@@ -277,7 +274,7 @@ namespace Dominio.Tests
             Libro unLibro = new Libro("123456", "Libro", "Autor", "1999");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
             Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now.AddDays(5), unEjemplar) { EstadoDevolucion=EstadoEjemplar.Bueno,EstadoPrestamo=EstadoPrestamo.Devuelto};
-            int scoring = 0;
+            int scoring;
 
             //Act
             scoring=unPrestamo.CalcularScoring();
@@ -297,7 +294,7 @@ namespace Dominio.Tests
             Libro unLibro = new Libro("123456", "Libro", "Autor", "1999");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
             Prestamo unPrestamo = new Prestamo(unUsuario, DateTime.Now.AddDays(5), unEjemplar) { EstadoDevolucion = EstadoEjemplar.Malo, EstadoPrestamo = EstadoPrestamo.Devuelto };
-            int scoring = 0;
+            int scoring;
 
             //Act
             scoring = unPrestamo.CalcularScoring();
@@ -335,7 +332,7 @@ namespace Dominio.Tests
 
             Libro unLibro = new Libro("123456", "Libro", "Autor", "1999");
             Ejemplar unEjemplar = new Ejemplar(unLibro);
-          Prestamo unPrestamo = new Prestamo() { FechaLimite=DateTime.Now.ToShortDateString(),EstadoDevolucion=EstadoEjemplar.Bueno,EstadoPrestamo=EstadoPrestamo.Devuelto};
+            Prestamo unPrestamo = new Prestamo() { FechaLimite=DateTime.Now.ToShortDateString(),EstadoDevolucion=EstadoEjemplar.Bueno,EstadoPrestamo=EstadoPrestamo.Devuelto,Ejemplar=unEjemplar};
             bool fallo = false;
             //Act
             try

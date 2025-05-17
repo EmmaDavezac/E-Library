@@ -1,4 +1,4 @@
-﻿using Dominio;
+﻿using BibliotecaMapeado;
 using System.Collections.Generic;
 
 namespace ServiciosAPILibros
@@ -9,7 +9,7 @@ namespace ServiciosAPILibros
     {   ///<summary>
         ///Resumen: Metodo que nos permite obtener una lista de libros que coinciden con el termino buscado.
         ///</summary>
-        List<Libro> ListarPorCoincidencia(string cadena);
+        List<LibroDTO> ListarPorCoincidencia(string cadena);
 
 
     }

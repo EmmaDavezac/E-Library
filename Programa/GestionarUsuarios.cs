@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,9 +11,9 @@ namespace Programa
     public partial class GestionarUsuarios : Form
     /*La finalidad de este formulario es permitir ver la informacion de todos los usuarios simples y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly string nombreUsuario;//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
 
         public GestionarUsuarios(string pNombreUsuario)//Constructor de la clase
         {
@@ -22,12 +22,12 @@ namespace Programa
             labelNombreUsuario.Text = nombreUsuario;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void TextBoxId_TextChanged(object sender, EventArgs e)
         //este evento se ejecuta cuando se modifica el texto de textBoxId y nos permite buscar un usuario escribiendo su nombre de usuario
         {
             try
@@ -55,7 +55,7 @@ namespace Programa
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
+        private void BotonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
             this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
@@ -97,7 +97,7 @@ namespace Programa
                 foreach (var item in usuarios)//recorremos cada item de la lista y lo agregamos a la tabla
                 {
                     int n = dataGridViewUsuarios.Rows.Add();
-                    dataGridViewUsuarios.Rows[n].Cells[1].Value = item.nombreUsuario;
+                    dataGridViewUsuarios.Rows[n].Cells[1].Value = item.NombreUsuario;
                     dataGridViewUsuarios.Rows[n].Cells[2].Value = item.Scoring;
                     dataGridViewUsuarios.Rows[n].Cells[2].Style.Font = new Font(dataGridViewUsuarios.Font, FontStyle.Bold);
                     if (item.Scoring >= 0)
@@ -129,7 +129,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//este metodo se ejecuta cuando se hace click a una celda de la tabla
+        private void DataGridViewUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)//este metodo se ejecuta cuando se hace click a una celda de la tabla
         {
             try
             {
@@ -154,14 +154,14 @@ namespace Programa
             }
         }
 
-        private void labelErro_Click(object sender, EventArgs e)
+        private void LabelErro_Click(object sender, EventArgs e)
         {
 
         }
 
 
 
-        private void labelTitulo_Click(object sender, EventArgs e)
+        private void LabelTitulo_Click(object sender, EventArgs e)
         {
 
         }

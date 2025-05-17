@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Nucleo.DTOs
+namespace BibliotecaMapeado
 {   ///<summary>
     ///Resumen: DTO para pasar la informacion de un Usuario Simple a la capa de presentación.
     ///</summary>

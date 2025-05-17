@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Nucleo.DTOs
+namespace BibliotecaMapeado
 {
     public class PrestamoDTO
     {   ///<summary>
@@ -30,12 +30,12 @@ namespace Nucleo.DTOs
         /// <summary>
         /// Resumen: Nombre del usuario que solicito el prestamo.
         /// </summary>
-        public string nombreUsuario { get; set; }
+        public string NombreUsuario { get; set; }
 
         /// <summary>
         /// Resumen: Clave foranea que nos permite relacionar el prestamo con un ejemplar.
         /// </summary>
-        public int idEjemplar { get; set; }
+        public int IdEjemplar { get; set; }
 
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Nucleo.DTOs
             Id = id;
             FechaPrestamo = fechaPrestamo;
             FechaLimite = fechaLimite;
-            nombreUsuario = pNombreUsuario;
-            idEjemplar = PIdEjemplar;
+            NombreUsuario = pNombreUsuario;
+            IdEjemplar = PIdEjemplar;
             EstadoPrestamo = estadoPrestamo;
             EstadoDevolucion = estadoDevolucion;
         }

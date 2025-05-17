@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -11,10 +11,10 @@ namespace Programa
     public partial class RegistrarLibro : Form//La finalidad de este formulario es la de permitir registrar un nuevo libro
     {
         private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
 
-        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
         public RegistrarLibro(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace Programa
             labelNombreUsuario.Text = "Usuario: " + NombreUsuario;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se pselecciona un libro  de la tabla de libros
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//se ejecuta cuando se pselecciona un libro  de la tabla de libros
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Programa
             VerificarVentanaPadre();
         }
 
-        private void button1_Click(object sender, EventArgs e)//este men todo se ejecutara cuando se presione button1, nos permite hacer una consulta a open library y obtener una lista de libros
+        private void Button1_Click(object sender, EventArgs e)//este men todo se ejecutara cuando se presione button1, nos permite hacer una consulta a open library y obtener una lista de libros
         {
             try
             {
@@ -95,18 +95,18 @@ namespace Programa
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)//activa el boton buscar cuando se modifica el texto de textBox1
+        private void TextBox1_TextChanged(object sender, EventArgs e)//activa el boton buscar cuando se modifica el texto de textBox1
         {
             buttonBuscar.Enabled = true;
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void Label4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonAñadirLibro_Click(object sender, EventArgs e)
+        private void ButtonAñadirLibro_Click(object sender, EventArgs e)
         //se ejecuta cuando se presiona el boton añadir libro, registra el libro en el caso de que se haya ingresado toda la informacion del libro y posea el formato correcto
         {
             try
@@ -133,7 +133,7 @@ namespace Programa
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
+        private void BotonVolver_Click(object sender, EventArgs e)//se ejecuta cuando se presiona el boton volver
         {
             this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
@@ -145,27 +145,27 @@ namespace Programa
             this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void TextBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void Label5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        private void TextBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonBorrarDatos_Click(object sender, EventArgs e)
+        private void ButtonBorrarDatos_Click(object sender, EventArgs e)
         //borra el contenido de los textbox con la informacion del libro a registrar cuando se presiona el boton  borrar datos
         {
             textBoxAutor.Clear();
@@ -176,32 +176,32 @@ namespace Programa
 
         }
 
-        private void labelIngreseISBN_Click(object sender, EventArgs e)
+        private void LabelIngreseISBN_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBoxBuscarPorISBN_TextChanged(object sender, EventArgs e)
+        private void TextBoxBuscarPorISBN_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonBuscarPorISBN_Click(object sender, EventArgs e)
+        private void ButtonBuscarPorISBN_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label4_Click_1(object sender, EventArgs e)
+        private void Label4_Click_1(object sender, EventArgs e)
         {
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void Label6_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -211,7 +211,7 @@ namespace Programa
 
 
 
-        private void labelSeleccionarAño_Click(object sender, EventArgs e)
+        private void LabelSeleccionarAño_Click(object sender, EventArgs e)
         {
 
         }
@@ -250,7 +250,7 @@ namespace Programa
                 textBoxISBN.Text = libro.ISBN;
                 textBoxTitulo.Text = libro.Titulo;
                 textBoxBuscar.Text = libro.Titulo;
-                button1_Click(this, null);
+                Button1_Click(this, null);
             }
             catch (Exception ex)
             {
@@ -259,7 +259,7 @@ namespace Programa
                 MessageBox.Show(texto, "Ha ocurrido un error." + ex.Message + ex.StackTrace);
             }
         }
-        private void buttonActualizar_Click_1(object sender, EventArgs e)
+        private void ButtonActualizar_Click_1(object sender, EventArgs e)
         //se ejecuta cuando se presiona el boton actualizar
         {
             try
@@ -288,7 +288,7 @@ namespace Programa
 
 
 
-        private void textBoxCantidadEjemplares_TextChanged(object sender, EventArgs e)
+        private void TextBoxCantidadEjemplares_TextChanged(object sender, EventArgs e)
         {
 
         }

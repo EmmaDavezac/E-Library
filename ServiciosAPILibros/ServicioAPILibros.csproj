@@ -53,13 +53,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BibliotecaMapeado\BibliotecaMapeado.csproj">
+      <Project>{05a33ffc-d183-49c2-9d49-97f68b42ed41}</Project>
+      <Name>BibliotecaMapeado</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>
       <Name>BibliotecaBitacora</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{4f50181b-4c40-4f3f-b222-c591aee95853}</Project>
-      <Name>Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

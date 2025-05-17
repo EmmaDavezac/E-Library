@@ -84,8 +84,8 @@ namespace Programa
             this.dataGridViewTituloYAutor.RowHeadersWidth = 51;
             this.dataGridViewTituloYAutor.Size = new System.Drawing.Size(624, 224);
             this.dataGridViewTituloYAutor.TabIndex = 0;
-            this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewTituloYAutor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            this.dataGridViewTituloYAutor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // Titulo
             // 
@@ -121,7 +121,7 @@ namespace Programa
             this.textBoxBuscar.Name = "textBoxBuscar";
             this.textBoxBuscar.Size = new System.Drawing.Size(200, 22);
             this.textBoxBuscar.TabIndex = 1;
-            this.textBoxBuscar.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxBuscar.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // buttonBuscar
             // 
@@ -136,7 +136,7 @@ namespace Programa
             this.buttonBuscar.TabIndex = 2;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = false;
-            this.buttonBuscar.Click += new System.EventHandler(this.button1_Click);
+            this.buttonBuscar.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label1
             // 
@@ -167,7 +167,7 @@ namespace Programa
             this.label3.Size = new System.Drawing.Size(106, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Año publicacion:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.Click += new System.EventHandler(this.Label3_Click);
             // 
             // textBoxTitulo
             // 
@@ -192,7 +192,7 @@ namespace Programa
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(349, 22);
             this.textBoxAñoPublicacion.TabIndex = 8;
-            this.textBoxAñoPublicacion.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBoxAñoPublicacion.TextChanged += new System.EventHandler(this.TextBox4_TextChanged);
             // 
             // labelIngreseTitulo
             // 
@@ -203,7 +203,7 @@ namespace Programa
             this.labelIngreseTitulo.Size = new System.Drawing.Size(140, 16);
             this.labelIngreseTitulo.TabIndex = 9;
             this.labelIngreseTitulo.Text = "Ingrese el titulo o autor";
-            this.labelIngreseTitulo.Click += new System.EventHandler(this.label4_Click);
+            this.labelIngreseTitulo.Click += new System.EventHandler(this.Label4_Click);
             // 
             // botonVolver
             // 
@@ -220,7 +220,7 @@ namespace Programa
             this.botonVolver.TabIndex = 13;
             this.botonVolver.Text = "Cancelar";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // labelResultados
             // 
@@ -239,7 +239,7 @@ namespace Programa
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(349, 22);
             this.textBoxISBN.TabIndex = 16;
-            this.textBoxISBN.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.textBoxISBN.TextChanged += new System.EventHandler(this.TextBox1_TextChanged_1);
             // 
             // label5
             // 
@@ -250,7 +250,7 @@ namespace Programa
             this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 15;
             this.label5.Text = "ISBN:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // botonAñadirLibro
             // 
@@ -267,7 +267,7 @@ namespace Programa
             this.botonAñadirLibro.TabIndex = 12;
             this.botonAñadirLibro.Text = "Guardar";
             this.botonAñadirLibro.UseVisualStyleBackColor = false;
-            this.botonAñadirLibro.Click += new System.EventHandler(this.buttonAñadirLibro_Click);
+            this.botonAñadirLibro.Click += new System.EventHandler(this.ButtonAñadirLibro_Click);
             // 
             // label4
             // 
@@ -279,7 +279,7 @@ namespace Programa
             this.label4.Size = new System.Drawing.Size(227, 17);
             this.label4.TabIndex = 22;
             this.label4.Text = "Consultar en pagina de libros:";
-            this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            this.label4.Click += new System.EventHandler(this.Label4_Click_1);
             // 
             // buttonBorrarDatos
             // 
@@ -294,7 +294,7 @@ namespace Programa
             this.buttonBorrarDatos.TabIndex = 21;
             this.buttonBorrarDatos.Text = "Borrar datos";
             this.buttonBorrarDatos.UseVisualStyleBackColor = false;
-            this.buttonBorrarDatos.Click += new System.EventHandler(this.buttonBorrarDatos_Click);
+            this.buttonBorrarDatos.Click += new System.EventHandler(this.ButtonBorrarDatos_Click);
             // 
             // label6
             // 
@@ -306,7 +306,7 @@ namespace Programa
             this.label6.Size = new System.Drawing.Size(208, 17);
             this.label6.TabIndex = 23;
             this.label6.Text = "Cargar datos manualmente:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // labelError
             // 
@@ -333,7 +333,7 @@ namespace Programa
             this.buttonActualizar.TabIndex = 72;
             this.buttonActualizar.Text = "Guardar";
             this.buttonActualizar.UseVisualStyleBackColor = false;
-            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click_1);
+            this.buttonActualizar.Click += new System.EventHandler(this.ButtonActualizar_Click_1);
             // 
             // label8
             // 

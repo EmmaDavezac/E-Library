@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,18 +11,18 @@ namespace Programa
     public partial class GestionarAdministradores : Form
     /*La finalidad de este formulario es permitir ver la informacion de todos los administradores y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private readonly string nombreUsuario;//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
 
         public GestionarAdministradores(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
             nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = nombreUsuario;
+            labelNombreUsuario.Text = pNombreUsuario;
         }
 
-        private void textBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
+        private void TextBoxId_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto del textbox textBoxId
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Programa
             }
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
+        private void BotonVolver_Click(object sender, EventArgs e)//Este evento se ejecuta cuando se presiona el boton botonVolver
         {
             this.Hide();//Se oculta el formulario 
             this.Owner.Show();//Se muestra el formulario padre
@@ -71,7 +71,7 @@ namespace Programa
 
 
 
-        private void dataGridViewAdministradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewAdministradores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Programa
                 foreach (var item in administradores)
                 {
                     int n = dataGridViewAdministradores.Rows.Add();
-                    dataGridViewAdministradores.Rows[n].Cells[1].Value = item.nombreUsuario;
+                    dataGridViewAdministradores.Rows[n].Cells[1].Value = item.NombreUsuario;
                     dataGridViewAdministradores.Rows[n].Cells[2].Value = item.Nombre;
                     dataGridViewAdministradores.Rows[n].Cells[3].Value = item.Apellido;
                     dataGridViewAdministradores.Rows[n].Cells[4].Value = item.FechaNacimiento.ToShortDateString();
@@ -127,7 +127,7 @@ namespace Programa
         }
 
 
-        private void labelErro_Click(object sender, EventArgs e)
+        private void LabelErro_Click(object sender, EventArgs e)
         {
 
         }

@@ -76,7 +76,7 @@ namespace Programa
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1045, 74);
             this.panel3.TabIndex = 72;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel3_Paint);
             // 
             // panel4
             // 
@@ -169,7 +169,7 @@ namespace Programa
             this.dataGridViewPrestamos.RowHeadersWidth = 51;
             this.dataGridViewPrestamos.Size = new System.Drawing.Size(1045, 418);
             this.dataGridViewPrestamos.TabIndex = 77;
-            this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrestamos_CellContentClick);
+            this.dataGridViewPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPrestamos_CellContentClick);
             // 
             // RegistrarDevolucion
             // 
@@ -252,7 +252,7 @@ namespace Programa
             this.labelTitulo.Size = new System.Drawing.Size(161, 17);
             this.labelTitulo.TabIndex = 80;
             this.labelTitulo.Text = "Gestor de Prestamos";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            this.labelTitulo.Click += new System.EventHandler(this.LabelTitulo_Click);
             // 
             // textBoxUsuarioOTituloLibro
             // 
@@ -261,7 +261,7 @@ namespace Programa
             this.textBoxUsuarioOTituloLibro.Name = "textBoxUsuarioOTituloLibro";
             this.textBoxUsuarioOTituloLibro.Size = new System.Drawing.Size(663, 22);
             this.textBoxUsuarioOTituloLibro.TabIndex = 79;
-            this.textBoxUsuarioOTituloLibro.TextChanged += new System.EventHandler(this.textBoxUsuarioOTituloLibro_TextChanged);
+            this.textBoxUsuarioOTituloLibro.TextChanged += new System.EventHandler(this.TextBoxUsuarioOTituloLibro_TextChanged);
             // 
             // label1
             // 
@@ -288,7 +288,7 @@ namespace Programa
             this.botonVolver.TabIndex = 81;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // checkBoxProximosAVencerse
             // 
@@ -302,7 +302,7 @@ namespace Programa
             this.checkBoxProximosAVencerse.TabIndex = 82;
             this.checkBoxProximosAVencerse.Text = "A vencerse";
             this.checkBoxProximosAVencerse.UseVisualStyleBackColor = false;
-            this.checkBoxProximosAVencerse.CheckedChanged += new System.EventHandler(this.checkBoxProximosAVencerse_CheckedChanged);
+            this.checkBoxProximosAVencerse.CheckedChanged += new System.EventHandler(this.CheckBoxProximosAVencerse_CheckedChanged);
             // 
             // checkBoxRestrasados
             // 
@@ -314,7 +314,7 @@ namespace Programa
             this.checkBoxRestrasados.TabIndex = 83;
             this.checkBoxRestrasados.Text = "Retrasados";
             this.checkBoxRestrasados.UseVisualStyleBackColor = true;
-            this.checkBoxRestrasados.CheckedChanged += new System.EventHandler(this.checkBoxRestrasados_CheckedChanged);
+            this.checkBoxRestrasados.CheckedChanged += new System.EventHandler(this.CheckBoxRestrasados_CheckedChanged);
             // 
             // checkDevueltos
             // 
@@ -326,7 +326,7 @@ namespace Programa
             this.checkDevueltos.TabIndex = 84;
             this.checkDevueltos.Text = "Mostrar prestamos devueltos";
             this.checkDevueltos.UseVisualStyleBackColor = true;
-            this.checkDevueltos.CheckedChanged += new System.EventHandler(this.checkDevueltos_CheckedChanged);
+            this.checkDevueltos.CheckedChanged += new System.EventHandler(this.CheckDevueltos_CheckedChanged);
             // 
             // labelNombreLista
             // 

@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Nucleo.DTOs
+namespace BibliotecaMapeado
 {
     public class UsuarioAdministradorDTO : UsuarioDTO
     {

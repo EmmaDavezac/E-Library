@@ -66,13 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\EjemplarDTO.cs" />
-    <Compile Include="DTOs\LibroDTO.cs" />
-    <Compile Include="DTOs\Mapeador.cs" />
-    <Compile Include="DTOs\PrestamoDTO.cs" />
-    <Compile Include="DTOs\UsuarioAdministradorDTO.cs" />
-    <Compile Include="DTOs\UsuarioDTO.cs" />
-    <Compile Include="DTOs\UsuarioSimpleDTO.cs" />
     <Compile Include="FachadaNucleo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +73,10 @@
     <ProjectReference Include="..\Biblioteca Encriptación\BibliotecaEncriptacion.csproj">
       <Project>{5629c1be-fb83-46bd-9a68-082fa619584f}</Project>
       <Name>BibliotecaEncriptacion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BibliotecaMapeado\BibliotecaMapeado.csproj">
+      <Project>{05a33ffc-d183-49c2-9d49-97f68b42ed41}</Project>
+      <Name>BibliotecaMapeado</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bitacora\BibliotecaBitacora.csproj">
       <Project>{78e66839-ecb5-457f-adc5-5f3722debc5e}</Project>

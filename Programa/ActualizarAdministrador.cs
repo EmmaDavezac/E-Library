@@ -10,11 +10,11 @@ namespace Programa
     /// </summary>
     public partial class ActualizarAdministrador : Form
     {
-        FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
-        public string contraseñaNueva;//Variable para guardar la contraseña nueva
-        private UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
-        private string nombreUsuario { get; set; }
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia de la fachada del nucleo para realizar operaciones dentro del dominio
+        private string contraseñaNueva;//Variable para guardar la contraseña nueva
+        private readonly UtilidadesPresentacion utilidades = new UtilidadesPresentacion();
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
+        private string NombreUsuario { get; set; }
 
         /// <summary>
         /// Resumen: Constructor de la clase.
@@ -23,8 +23,8 @@ namespace Programa
         public ActualizarAdministrador(string pNombreUsuario)//Inicializamos los datos del administrador actual que se van a mostrar en la interfaz
         {
             InitializeComponent();
-            nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = nombreUsuario;
+            NombreUsuario = pNombreUsuario;
+            labelNombreUsuario.Text = NombreUsuario;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Programa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void botonVolver_Click(object sender, EventArgs e)
+        private void BotonVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
             this.Owner.Show();
@@ -43,7 +43,7 @@ namespace Programa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonGuardar_Click(object sender, EventArgs e)
+        private void ButtonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -61,23 +61,23 @@ namespace Programa
                                     {
                                         if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == true)//Verifica si el administrador esta dado de baja y si el checkbox baja esta checkeado
                                         {
-                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//De ser asi permite actualizar los camops
+                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);//De ser asi permite actualizar los camops
                                             interfazNucleo.DarDeBajaAdministrador(textBoxNombreUsuario.Text);// Y da de baja al administrador.
                                             MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                         }
                                         else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == true)//Otra situacion es que el administrador esta dado de baja y ademas el checbox este checkeado
                                         {
-                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
+                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
                                             MessageBox.Show("Administrador ha sido dado de baja, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                         }
                                         else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == false && checkBoxBaja.Checked == false)//Otra situacion es que el administrador no este dado de baja y que ademas el checkbox no este checkeado.
                                         {
-                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
+                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);//En este caso solo actualiza los datos del administrador
                                             MessageBox.Show("Administrador ha sido guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                         }
                                         else if (interfazNucleo.ObtenerAdministrador(textBoxNombreUsuario.Text).Baja == true && checkBoxBaja.Checked == false)//Otra situacion es que el administrador este dado de baja y que no este checkeado el checkbox de baja es decir que se de de alta nuevamente.
                                         {
-                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date.ToString(), textBoxMail.Text, textBoxTelefono.Text);//En este caso se actualiza el administrador.
+                                            interfazNucleo.ActualizarAdministrador(textBoxNombreUsuario.Text, textBoxNombre.Text, textBoxApellido.Text, dateTimePickerFechaNacimiento.Value.Date, textBoxMail.Text, textBoxTelefono.Text);//En este caso se actualiza el administrador.
                                             interfazNucleo.DarDeAltaAdministrador(textBoxNombreUsuario.Text);//Y se da de alta nuevamente al administrador.
                                             MessageBox.Show("Administrador ha sido dado de alta y guardado correctamente, el nombre de usuario es: " + textBoxNombreUsuario.Text, "Operacion Exitosa", MessageBoxButtons.OK);//Mensaje informativo al administrador
                                         }
@@ -151,23 +151,23 @@ namespace Programa
         {
         }
 
-        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        private void TextBoxNombre_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
-        private void textBoxApellido_TextChanged(object sender, EventArgs e)
+        private void TextBoxApellido_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
 
-        private void textBoxTelefono_TextChanged(object sender, EventArgs e)
+        private void TextBoxTelefono_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
 
-        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        private void TextBoxMail_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
@@ -183,13 +183,13 @@ namespace Programa
             this.Owner.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
         /// <summary>
         /// Resumen: Este metodo se encarga de habilitar el boton de guardar cuando se modifica el nombre de usuario.
-        private void textBoxId_TextChanged(object sender, EventArgs e)
+        private void TextBoxId_TextChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
@@ -204,7 +204,7 @@ namespace Programa
             try
             {
                 var usuario = interfazNucleo.ObtenerAdministrador(pNombreUsuario);//Obtiene el administrador.
-                textBoxNombreUsuario.Text = usuario.nombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
+                textBoxNombreUsuario.Text = usuario.NombreUsuario;//Carga los textbox con sus datos correspondientes del administrador.
                 textBoxNombre.Text = usuario.Nombre;
                 textBoxApellido.Text = usuario.Apellido;
                 dateTimePickerFechaNacimiento.Value = usuario.FechaNacimiento;
@@ -228,7 +228,7 @@ namespace Programa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonModificarContraseña_Click(object sender, EventArgs e)
+        private void ButtonModificarContraseña_Click(object sender, EventArgs e)
         {
             try
             {
@@ -252,7 +252,7 @@ namespace Programa
             contraseñaNueva = contraseña;
         }
 
-        private void dateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
+        private void DateTimePickerFechaNacimiento_ValueChanged(object sender, EventArgs e)
         {
             buttonGuardar.Enabled = true;
         }
@@ -262,7 +262,7 @@ namespace Programa
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void checkBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
+        private void CheckBoxBaja_CheckedChanged(object sender, EventArgs e)//Checkbox que nos permite dar de baja o alta a un administrador
         {
             try
             {
@@ -297,11 +297,11 @@ namespace Programa
             }
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        private void Label11_Click(object sender, EventArgs e)
         {
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void Label6_Click(object sender, EventArgs e)
         {
         }
     }

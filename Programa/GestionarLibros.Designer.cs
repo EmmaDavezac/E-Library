@@ -74,7 +74,7 @@ namespace Programa
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1045, 74);
             this.panel3.TabIndex = 71;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel3_Paint);
             // 
             // panel4
             // 
@@ -156,7 +156,7 @@ namespace Programa
             this.labelTitulo.Size = new System.Drawing.Size(130, 17);
             this.labelTitulo.TabIndex = 77;
             this.labelTitulo.Text = "Gestor de Libros";
-            this.labelTitulo.Click += new System.EventHandler(this.labelTitulo_Click);
+            this.labelTitulo.Click += new System.EventHandler(this.LabelTitulo_Click);
             // 
             // dataGridViewLibros
             // 
@@ -181,7 +181,7 @@ namespace Programa
             this.dataGridViewLibros.RowHeadersWidth = 51;
             this.dataGridViewLibros.Size = new System.Drawing.Size(1045, 491);
             this.dataGridViewLibros.TabIndex = 76;
-            this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLibros_CellContentClick);
+            this.dataGridViewLibros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewLibros_CellContentClick);
             // 
             // Editar
             // 
@@ -265,7 +265,7 @@ namespace Programa
             this.textBoxTituloOISBNLibro.Name = "textBoxTituloOISBNLibro";
             this.textBoxTituloOISBNLibro.Size = new System.Drawing.Size(819, 22);
             this.textBoxTituloOISBNLibro.TabIndex = 75;
-            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.textBoxTituloOISBNlibro_TextChanged);
+            this.textBoxTituloOISBNLibro.TextChanged += new System.EventHandler(this.TextBoxTituloOISBNlibro_TextChanged);
             // 
             // label1
             // 
@@ -276,7 +276,7 @@ namespace Programa
             this.label1.Size = new System.Drawing.Size(156, 16);
             this.label1.TabIndex = 74;
             this.label1.Text = "Buscar por Titulo o ISBN:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // botonVolver
             // 
@@ -293,7 +293,7 @@ namespace Programa
             this.botonVolver.TabIndex = 78;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // GestionarLibros
             // 

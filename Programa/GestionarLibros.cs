@@ -1,6 +1,6 @@
 using Bitacora;
 using Nucleo;
-using Nucleo.DTOs;
+using BibliotecaMapeado;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,14 +11,14 @@ namespace Programa
 {
     public partial class GestionarLibros : Form  /*La finalidad de este formulario es permitir ver la informacion de todos los alibros y poder modificarla*/
     {
-        private string nombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
-        private FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private string NombreUsuario { get; set; }//Aqui se almacena el nombre de usuario del administrador que esta usando el programa
+        private readonly FachadaNucleo interfazNucleo = new FachadaNucleo();//Instancia del nucleo del programa que nos permite acceder a las funciones del mismo
+        private readonly IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
         public GestionarLibros(string pNombreUsuario)//Constructor de la clase
         {
             InitializeComponent();
-            nombreUsuario = pNombreUsuario;
-            labelNombreUsuario.Text = nombreUsuario;
+            NombreUsuario = pNombreUsuario;
+            labelNombreUsuario.Text = NombreUsuario;
         }
 
         private void GestionarLibros_Load(object sender, EventArgs e)//carga la tabla de libros cuando se crea el formulario
@@ -35,7 +35,7 @@ namespace Programa
             }
         }
 
-        private void dataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda
+        private void DataGridViewLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)//Este evento se ejecuta si se hace click al contenido de una celda
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Programa
                         string autor = dataGridViewLibros.Rows[e.RowIndex].Cells[4].Value.ToString();
                         string añoPublicacion = dataGridViewLibros.Rows[e.RowIndex].Cells[5].Value.ToString();
                         string baja = dataGridViewLibros.Rows[e.RowIndex].Cells[8].Value.ToString();
-                        ActualizarLibro ventana = new ActualizarLibro(nombreUsuario, id);//Intanciamos lel formulario ActualizarLibro
+                        ActualizarLibro ventana = new ActualizarLibro(NombreUsuario, id);//Intanciamos lel formulario ActualizarLibro
                         this.Hide();//Ocultamos esta ventana
                         ventana.InicializarLibro(ISBN, titulo, autor, añoPublicacion, baja);//Le pasamos los datos del libro a la nueva ventana
                         ventana.Show(this);//mostramos la ventana nueva
@@ -65,7 +65,7 @@ namespace Programa
             }
         }
 
-        private void textBoxTituloOISBNlibro_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto dentro del textBoxTituloOISBNlibro
+        private void TextBoxTituloOISBNlibro_TextChanged(object sender, EventArgs e)//Este evento se ejecuta cuando se modifica el texto dentro del textBoxTituloOISBNlibro
         {
             try
             {
@@ -138,23 +138,23 @@ namespace Programa
             this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void botonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
+        private void BotonVolver_Click(object sender, EventArgs e)//este evento se ejecutara cuando se presione el boton botonVolver
         {
             this.Hide();//la ventana se oculta
             this.Owner.Show();//se muestra la ventana padre
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void Panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void labelTitulo_Click(object sender, EventArgs e)
+        private void LabelTitulo_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }

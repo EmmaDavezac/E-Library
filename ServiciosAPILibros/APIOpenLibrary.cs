@@ -1,5 +1,5 @@
 ﻿using Bitacora;
-using Dominio;
+using BibliotecaMapeado;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -34,14 +34,14 @@ namespace ServiciosAPILibros
         /// </summary>
         /// <param name="cadena"></param>
         /// <returns></returns>
-        public List<Libro> ListarPorCoincidencia(string cadena)
+        public List<LibroDTO> ListarPorCoincidencia(string cadena)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // Establecimiento del protocolo ssl de transporte
-            List<Libro> lista = new List<Libro>();//Creamos una lista de libro
+            List<LibroDTO> lista = new List<LibroDTO>();//Creamos una lista de libro
             string terminoDeBusqueda = TratarCadenaBusqueda(cadena);//Convertimos la cadena al formato necesario para realizar una busqueda solicitado por la API
             var mUrl = "http://openlibrary.org/search.json?q=" + terminoDeBusqueda;
             HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUrl);            // Se crea el request http
-            IBitacora oLog = new ImplementacionBitacora();// Instancia del objeto que maneja los logs.
+            IBitacora oLog = new BitacoraImplementacionPropia();// Instancia del objeto que maneja los logs.
             string msg;//Mensaje a guardar en el log.
             try
             {
@@ -54,10 +54,12 @@ namespace ServiciosAPILibros
                     // Se parsea la respuesta y se serializa a JSON a un objeto dynamic
                     dynamic mResponseJSON = JsonConvert.DeserializeObject(reader.ReadToEnd());
                     // Se iteran cada uno de los resultados.
+                    int id =0;
                     string titulo;
                     string autor;
                     string añoPublicacion;
                     string isbn;
+                    bool baja = false;
                     foreach (var bResponseItem in mResponseJSON.docs)//Recorremos cada item de la respuesta que nos dio la api
                     {
                         //Convertimos el objeto que obtenemos como respuesta por parte de la api y lo convertimos en una lista de libros
@@ -71,6 +73,7 @@ namespace ServiciosAPILibros
                             autor = HttpUtility.HtmlDecode(bResponseItem.author_name.ToString());
                         }
                         else { autor = "desconocido"; }
+
                         if (bResponseItem.first_publish_year != null)
                         {
                             añoPublicacion = HttpUtility.HtmlDecode(bResponseItem.first_publish_year.ToString());
@@ -82,7 +85,7 @@ namespace ServiciosAPILibros
                             isbn = HttpUtility.HtmlDecode(bResponseItem.isbn.ToString());
                         }
                         else { isbn = "desconocido"; }
-                        lista.Add(new Libro(isbn, titulo, autor, añoPublicacion));//creamos una instancia de la clase Libro y lo añadimos a la lista de libros
+                        lista.Add(new LibroDTO(id,isbn, titulo, autor, añoPublicacion,baja));//creamos una instancia de la clase Libro y lo añadimos a la lista de libros
                     }
                 }
                 msg = "Listado por coincidencia con la api OpenLibrary a funcionado correctemente.";

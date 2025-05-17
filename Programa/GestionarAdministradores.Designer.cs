@@ -73,7 +73,7 @@ namespace Programa
             this.textBoxNombreUsuario.Name = "textBoxNombreUsuario";
             this.textBoxNombreUsuario.Size = new System.Drawing.Size(781, 22);
             this.textBoxNombreUsuario.TabIndex = 51;
-            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.textBoxId_TextChanged);
+            this.textBoxNombreUsuario.TextChanged += new System.EventHandler(this.TextBoxId_TextChanged);
             // 
             // labelError
             // 
@@ -100,7 +100,7 @@ namespace Programa
             this.botonVolver.TabIndex = 40;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // label1
             // 
@@ -146,7 +146,7 @@ namespace Programa
             this.dataGridViewAdministradores.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAdministradores.Size = new System.Drawing.Size(989, 425);
             this.dataGridViewAdministradores.TabIndex = 54;
-            this.dataGridViewAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdministradores_CellContentClick);
+            this.dataGridViewAdministradores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAdministradores_CellContentClick);
             // 
             // Editar
             // 
@@ -223,7 +223,7 @@ namespace Programa
             this.labelErro.Name = "labelErro";
             this.labelErro.Size = new System.Drawing.Size(0, 16);
             this.labelErro.TabIndex = 56;
-            this.labelErro.Click += new System.EventHandler(this.labelErro_Click);
+            this.labelErro.Click += new System.EventHandler(this.LabelErro_Click);
             // 
             // panel3
             // 

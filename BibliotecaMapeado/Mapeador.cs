@@ -1,6 +1,6 @@
 ﻿using Dominio;
 
-namespace Nucleo.DTOs
+namespace BibliotecaMapeado
 {
     public class Mapeador
     {   ///<summary>

@@ -4,7 +4,7 @@ using DAL;//Libreria de la capa de acceso a datos,nos permite interactuar con la
 using DAL.EntityFramework;
 using Dominio;//Liberia que contiene las clases de dominio  
 using NotificacionAUsuario;//Libreria que nos permite notificar a usuarios con prestamos retrasados o proximos a vencer
-using Nucleo.DTOs;
+using BibliotecaMapeado;//Libreria que nos permite mapear objetos de dominio a objetos DTO y viceversa
 using ServiciosAPILibros;//Libreria que nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros
 using System;
 using System.Collections.Generic;
@@ -23,20 +23,20 @@ namespace Nucleo
         ///<summary>
         ///Resumen: Esta variable nos permite interactuar con la API de libros, pudiendo hacer consultas y obtener informacion acerca de libros.
         ///</summary>  
-        private IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
+        private readonly IServicioAPILibros ServicioAPILibros = new APIOpenLibrary();
         /// <summary>
         /// Resumen: Esta variable nos permite notificar a los usuarios con prestamos retrasados o proximos a vencer.
         /// </summary>
-        private INotificadorUsuario NotificadorUsuarios = new NotificadorOutlook();
+        private readonly INotificadorUsuario NotificadorUsuarios = new NotificadorOutlook();
         /// <summary>
         /// Resumen: Esta variable nos permite registrar logs en la bitacora.
         /// </summary>
-        private IBitacora bitacora = new ImplementacionBitacora();
+        private readonly IBitacora bitacora = new BitacoraImplementacionPropia();
         /// <summary>
         /// Resumen: Encriptador que nos permite encriptar y desencriptar la contraseña del administrador.
         /// </summary>
-        private IEncriptador encriptador = new EncriptadorCesar();
-        private Mapeador mapeador = new Mapeador();
+        private readonly IEncriptador encriptador = new EncriptadorCesar();
+        private readonly Mapeador mapeador = new Mapeador();
 
 
 
@@ -129,19 +129,20 @@ namespace Nucleo
         /// <param name="pFechaNacimiento">Fecha de nacimiento del usuario</param>
         /// <param name="mail">Email del usuario</param>
         /// <param name="telefono">Telefono del usuario</param>
-        public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
+        public void ActualizarUsuario(string pNombreUsuario, string nombre, string apellido, DateTime pFechaNacimiento, string mail, string telefono)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Usuario " + pNombreUsuario + " Actualizado con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Apellido = apellido;
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Mail = mail;
-                    unitOfWork.RepositorioUsuarios.Get(pNombreUsuario).Telefono = telefono;
+                {   //Obtenemos el usuario a traves del nombre de usuario
+                    UsuarioSimple usuario = unitOfWork.RepositorioUsuarios.Get(pNombreUsuario);
+                    //Modificamos uno por uno los valores por los parametros pasados
+                    usuario.Nombre = nombre;
+                    usuario.Apellido = apellido;
+                    usuario.FechaNacimiento = pFechaNacimiento;
+                    usuario.Mail = mail;
+                    usuario.Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
 
@@ -173,7 +174,6 @@ namespace Nucleo
             UsuarioAdministrador usuario = new UsuarioAdministrador(nombre, apellido, fechaNacimiento, mail, encriptador.Encriptar(contraseña), telefono, pNombreUsuario);//Instanciamos un administrador con los datos pasados por parametro
             try
             {
-                msg = "Administrador " + pNombreUsuario + " registrado con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Add(usuario);//Añadimos el administrador a la base de datos
@@ -227,19 +227,20 @@ namespace Nucleo
         /// <param name="pFechaNacimiento">Fecha de nacimiento del administrador</param>
         /// <param name="mail">Email del administrador</param>
         /// <param name="telefono">Telefono del administrador</param>
-        public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, string pFechaNacimiento, string mail, string telefono)
+        public void ActualizarAdministrador(string pNombreUsuario, string nombre, string apellido, DateTime pFechaNacimiento, string mail, string telefono)
         {
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Administrador " + pNombreUsuario + " actualizado con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Apellido = apellido;
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).FechaNacimiento = Convert.ToDateTime(pFechaNacimiento);
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Mail = mail;
-                    unitOfWork.RepositorioAdministradores.Get(pNombreUsuario).Telefono = telefono;
+                    //Obtenemos el administrador a traves del nombre de usuario
+                    UsuarioAdministrador administrador = unitOfWork.RepositorioAdministradores.Get(pNombreUsuario);
+                    administrador.Nombre = nombre;//Modificamos uno por uno los valores por los parametros pasados
+                    administrador.Apellido = apellido;
+                    administrador.FechaNacimiento = pFechaNacimiento;
+                    administrador.Mail = mail;
+                    administrador.Telefono = telefono;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -262,7 +263,6 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Contraseña del administrador " + pNombreAdministrador + " actualizada con exito.";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     unitOfWork.RepositorioAdministradores.Get(pNombreAdministrador).Pass=encriptador.Encriptar(contraseña);//Modificamos la contraseña actual por la que pasamos como parametro
@@ -400,7 +400,6 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = ("Ejemplares Añadidos a libro con exito (ID LIbro: " + pIdLibro + " Cantidad: " + pCantidad + ").");
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     for (int i = 1; i <= pCantidad; i++)//Añadimos la cantidad de ejemplares pasado como parametro al libro con un ciclo for.
@@ -431,12 +430,11 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Libro Dado de baja con exito (Id: " + pIdLibro + ").";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    Libro libro = unitOfWork.RepositorioLibros.Get(pIdLibro);//Obtenemos el libro por medio del metodo get y lo asignamos a una variable libro.
-                    libro.DarDeBaja();//Llamamos al metodo dar de baja del libro
-                    unitOfWork.Complete();//Guardamos los cambios
+                    //Obtenemos el libro a traves del parametro pasado, y llamamos al metodo DarDeBaja.
+                    unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeBaja();
+                   unitOfWork.Complete();//Guardamos los cambios
                 }
             }
             catch (Exception ex)
@@ -457,10 +455,10 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = "Libro Dado de alta con exito (Id: " + pIdLibro + ").";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
-                    unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeAlta();//Obtnemos el libro a traves del parametro pasado, y llamamos al metodo DarDeAlta.
+                    //Obtenemos el libro a traves del parametro pasado, y llamamos al metodo DarDeAlta.
+                    unitOfWork.RepositorioLibros.Get(pIdLibro).DarDeAlta();
                     unitOfWork.Complete();//Guardamos los cambios.
                 }
             }
@@ -604,11 +602,13 @@ namespace Nucleo
             try
             {
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
-                {
-                    unitOfWork.RepositorioLibros.Get(id).ISBN = unISBN;//Modificamos uno por uno los atributos del libro por los parametros pasados.
-                    unitOfWork.RepositorioLibros.Get(id).Titulo = titulo;
-                    unitOfWork.RepositorioLibros.Get(id).Autor = autor;
-                    unitOfWork.RepositorioLibros.Get(id).AñoPublicacion = añoPublicacion;
+                {   //Obtenemos el libro a traves del id pasado como parametro
+                    Libro libro = unitOfWork.RepositorioLibros.Get(id);
+                    //Modificamos uno por uno los atributos del libro por los parametros pasados.
+                    libro.ISBN = unISBN;
+                    libro.Titulo = titulo;
+                    libro.Autor = autor;
+                    libro.AñoPublicacion = añoPublicacion;
                     unitOfWork.Complete();//Guardamos los cambios
                 }
             }
@@ -617,7 +617,6 @@ namespace Nucleo
                 msg = "Error al actualizar el libro (Id: " + id + "titulo: " + titulo + "autor: " + autor + ")." + ex.Message + ex.StackTrace;
                 bitacora.RegistrarLog(msg);//Añadimos el mensaje al log
                 throw new Exception(msg);
-
             }
         }
 
@@ -631,7 +630,6 @@ namespace Nucleo
             string msg;//String que nos permite guardar el mensaje que vamos a mandar al log
             try
             {
-                msg = " Prestamo devuelto (Id Prestamo: " + idPrestamo + " Estado:" + estado + ")";
                 using (IUnitOfWork unitOfWork = GetUnitOfWork())//Definimos el ambito donde se va a usar el objet unitOfWork
                 {
                     if (estado == "Bueno")
@@ -851,12 +849,7 @@ namespace Nucleo
         {
             try
             {
-                List<LibroDTO> lista = new List<LibroDTO>();
-                foreach (var item in ServicioAPILibros.ListarPorCoincidencia(unaCadena))
-                {
-                    lista.Add(mapeador.Mapear(item));
-                }
-                return lista;
+                return ServicioAPILibros.ListarPorCoincidencia(unaCadena);
             }
             catch (Exception ex)
             {
@@ -874,11 +867,11 @@ namespace Nucleo
             {
                 foreach (var item in ObtenerListadePrestamosProximosAVencerse())
                 {
-                    string nombreUsuario = item.nombreUsuario;
-                    EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
-                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
-                    string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
-                    NotificadorUsuarios.NotificarProximoAVencer(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
+                    string nombreUsuario = item.NombreUsuario;
+                    EjemplarDTO ejemplar = ObtenerEjemplar(item.IdEjemplar);
+                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.NombreUsuario);
+                    string titulo = ObtenerLibro(ejemplar.IdLibro).Titulo;
+                    NotificadorUsuarios.NotificarProximoAVencer(usuario.NombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
                 }
             }
             catch (Exception ex)
@@ -897,11 +890,11 @@ namespace Nucleo
             {
                 foreach (var item in ObtenerListadePrestamosRetrasados())
                 {
-                    string nombreUsuario = item.nombreUsuario;
-                    EjemplarDTO ejemplar = ObtenerEjemplar(item.idEjemplar);
-                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.nombreUsuario);
-                    string titulo = ObtenerLibro(ejemplar.idLibro).Titulo;
-                    NotificadorUsuarios.NotificarRetraso(usuario.nombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
+                    string nombreUsuario = item.NombreUsuario;
+                    EjemplarDTO ejemplar = ObtenerEjemplar(item.IdEjemplar);
+                    UsuarioSimpleDTO usuario = ObtenerUsuario(item.NombreUsuario);
+                    string titulo = ObtenerLibro(ejemplar.IdLibro).Titulo;
+                    NotificadorUsuarios.NotificarRetraso(usuario.NombreUsuario, usuario.Nombre, usuario.Apellido, usuario.Mail, titulo, item.FechaLimite);
                 }
             }
             catch (Exception ex)

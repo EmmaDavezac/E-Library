@@ -13,7 +13,7 @@ namespace Programa
         private FachadaNucleo interfazNucleo = new FachadaNucleo();
         private int idPrestamo;
         private bool modificado;
-        private IBitacora bitacora = new Bitacora.ImplementacionBitacora();
+        private IBitacora bitacora = new Bitacora.BitacoraImplementacionPropia();
         private string nombreUsuario;
         public DevolucionPrestamo(string pNombreUsuario)//contructor de la clase
         {

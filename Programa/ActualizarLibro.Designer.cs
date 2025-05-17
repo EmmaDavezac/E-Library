@@ -82,7 +82,7 @@ namespace Programa
             this.textBoxISBN.Name = "textBoxISBN";
             this.textBoxISBN.Size = new System.Drawing.Size(359, 22);
             this.textBoxISBN.TabIndex = 38;
-            this.textBoxISBN.TextChanged += new System.EventHandler(this.textBoxISBN_TextChanged);
+            this.textBoxISBN.TextChanged += new System.EventHandler(this.TextBoxISBN_TextChanged);
             // 
             // label5
             // 
@@ -109,7 +109,7 @@ namespace Programa
             this.botonVolver.TabIndex = 35;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = false;
-            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
+            this.botonVolver.Click += new System.EventHandler(this.BotonVolver_Click);
             // 
             // buttonGuardar
             // 
@@ -127,7 +127,7 @@ namespace Programa
             this.buttonGuardar.TabIndex = 34;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
-            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
+            this.buttonGuardar.Click += new System.EventHandler(this.ButtonGuardar_Click);
             // 
             // textBoxAñoPublicacion
             // 
@@ -136,7 +136,7 @@ namespace Programa
             this.textBoxAñoPublicacion.Name = "textBoxAñoPublicacion";
             this.textBoxAñoPublicacion.Size = new System.Drawing.Size(359, 22);
             this.textBoxAñoPublicacion.TabIndex = 31;
-            this.textBoxAñoPublicacion.TextChanged += new System.EventHandler(this.textBoxAñoPublicacion_TextChanged);
+            this.textBoxAñoPublicacion.TextChanged += new System.EventHandler(this.TextBoxAñoPublicacion_TextChanged);
             // 
             // textBoxAutor
             // 
@@ -145,7 +145,7 @@ namespace Programa
             this.textBoxAutor.Name = "textBoxAutor";
             this.textBoxAutor.Size = new System.Drawing.Size(359, 22);
             this.textBoxAutor.TabIndex = 30;
-            this.textBoxAutor.TextChanged += new System.EventHandler(this.textBoxAutor_TextChanged);
+            this.textBoxAutor.TextChanged += new System.EventHandler(this.TextBoxAutor_TextChanged);
             // 
             // textBoxTitulo
             // 
@@ -154,7 +154,7 @@ namespace Programa
             this.textBoxTitulo.Name = "textBoxTitulo";
             this.textBoxTitulo.Size = new System.Drawing.Size(359, 22);
             this.textBoxTitulo.TabIndex = 29;
-            this.textBoxTitulo.TextChanged += new System.EventHandler(this.textBoxTitulo_TextChanged);
+            this.textBoxTitulo.TextChanged += new System.EventHandler(this.TextBoxTitulo_TextChanged);
             // 
             // label2
             // 
@@ -209,7 +209,7 @@ namespace Programa
             this.buttonDeshacerCambios.TabIndex = 46;
             this.buttonDeshacerCambios.Text = "Deshacer";
             this.buttonDeshacerCambios.UseVisualStyleBackColor = false;
-            this.buttonDeshacerCambios.Click += new System.EventHandler(this.buttonDeshacerCambios_Click);
+            this.buttonDeshacerCambios.Click += new System.EventHandler(this.ButtonDeshacerCambios_Click);
             // 
             // panel3
             // 
@@ -223,7 +223,7 @@ namespace Programa
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1043, 74);
             this.panel3.TabIndex = 72;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel3_Paint);
             // 
             // panel4
             // 
@@ -317,7 +317,7 @@ namespace Programa
             this.buttonBusquedaAvanzada.TabIndex = 87;
             this.buttonBusquedaAvanzada.Text = "Buscar Información";
             this.buttonBusquedaAvanzada.UseVisualStyleBackColor = false;
-            this.buttonBusquedaAvanzada.Click += new System.EventHandler(this.buttonBusquedaAvanzada_Click);
+            this.buttonBusquedaAvanzada.Click += new System.EventHandler(this.ButtonBusquedaAvanzada_Click);
             // 
             // label4
             // 
@@ -329,7 +329,7 @@ namespace Programa
             this.label4.Size = new System.Drawing.Size(238, 17);
             this.label4.TabIndex = 88;
             this.label4.Text = "Actualizar información del Libro";
-            this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            this.label4.Click += new System.EventHandler(this.Label4_Click_1);
             // 
             // label8
             // 
@@ -341,7 +341,7 @@ namespace Programa
             this.label8.Size = new System.Drawing.Size(88, 17);
             this.label8.TabIndex = 89;
             this.label8.Text = "Ejemplares";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
+            this.label8.Click += new System.EventHandler(this.Label8_Click);
             // 
             // buttonAñadirEjemplares
             // 
@@ -356,7 +356,7 @@ namespace Programa
             this.buttonAñadirEjemplares.TabIndex = 90;
             this.buttonAñadirEjemplares.Text = "Añadir";
             this.buttonAñadirEjemplares.UseVisualStyleBackColor = false;
-            this.buttonAñadirEjemplares.Click += new System.EventHandler(this.buttonAñadirEjemplares_Click);
+            this.buttonAñadirEjemplares.Click += new System.EventHandler(this.ButtonAñadirEjemplares_Click);
             // 
             // textBoxAñadirEjemplares
             // 
@@ -365,7 +365,7 @@ namespace Programa
             this.textBoxAñadirEjemplares.Name = "textBoxAñadirEjemplares";
             this.textBoxAñadirEjemplares.Size = new System.Drawing.Size(308, 22);
             this.textBoxAñadirEjemplares.TabIndex = 91;
-            this.textBoxAñadirEjemplares.TextChanged += new System.EventHandler(this.textBoxAñadirEjemplares_TextChanged);
+            this.textBoxAñadirEjemplares.TextChanged += new System.EventHandler(this.TextBoxAñadirEjemplares_TextChanged);
             // 
             // label9
             // 
@@ -387,7 +387,7 @@ namespace Programa
             this.label11.Size = new System.Drawing.Size(93, 17);
             this.label11.TabIndex = 96;
             this.label11.Text = "Dar de baja";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.label11.Click += new System.EventHandler(this.Label11_Click);
             // 
             // checkBoxBaja
             // 
@@ -399,7 +399,7 @@ namespace Programa
             this.checkBoxBaja.TabIndex = 97;
             this.checkBoxBaja.Text = "Baja";
             this.checkBoxBaja.UseVisualStyleBackColor = true;
-            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.checkBoxBaja_CheckedChanged);
+            this.checkBoxBaja.CheckedChanged += new System.EventHandler(this.CheckBoxBaja_CheckedChanged);
             // 
             // labelCantidadActual
             // 
@@ -410,7 +410,7 @@ namespace Programa
             this.labelCantidadActual.Size = new System.Drawing.Size(104, 16);
             this.labelCantidadActual.TabIndex = 98;
             this.labelCantidadActual.Text = "Cantidad Actual:";
-            this.labelCantidadActual.Click += new System.EventHandler(this.labelCantidadActual_Click);
+            this.labelCantidadActual.Click += new System.EventHandler(this.LabelCantidadActual_Click);
             // 
             // labelErrorAñadirEjemplares
             // 
@@ -459,7 +459,7 @@ namespace Programa
             this.dataGridView1.Size = new System.Drawing.Size(525, 142);
             this.dataGridView1.TabIndex = 104;
             this.dataGridView1.TabStop = false;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // Eiminar
             // 

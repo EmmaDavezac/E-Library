@@ -5,7 +5,7 @@ namespace Bitacora
 {   /// <summary>
     /// Resumen: Esta clase nos permite crear y manipular una bitacora del programa donde se registraran las operaciones del programa y los errores que surgan durante la ejecucion del mismo
     /// </summary>
-    public class ImplementacionBitacora : IBitacora
+    public class BitacoraImplementacionPropia : IBitacora
     {
         /// <summary>
         /// Establece la direccion relativa de los archivos de la bitacora
@@ -15,7 +15,7 @@ namespace Bitacora
         /// <summary>
         /// Contructor de la clase
         /// </summary>
-        public ImplementacionBitacora()//contructor de la clase
+        public BitacoraImplementacionPropia()//contructor de la clase
         {
 
         }
